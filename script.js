@@ -92,11 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Hero Slider Logic
-    const slides = document.querySelectorAll('.slide');
+    const slides = document.querySelectorAll('.hero-slider .slide');
     const dots = document.querySelectorAll('.dot');
     const prevBtn = document.querySelector('.prev-arrow');
     const nextBtn = document.querySelector('.next-arrow');
-    const sliderContainer = document.querySelector('.slider-container');
 
     if (slides.length > 0) {
         let currentSlide = 0;
@@ -104,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const goToSlide = (index) => {
             slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
+            if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
 
             currentSlide = index;
 
@@ -112,14 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentSlide < 0) currentSlide = slides.length - 1;
 
             slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+            if (dots[currentSlide]) dots[currentSlide].classList.add('active');
         };
 
         const nextSlide = () => goToSlide(currentSlide + 1);
         const prevSlide = () => goToSlide(currentSlide - 1);
 
         const startSlider = () => {
-            slideInterval = setInterval(nextSlide, 5000); // 5 seconds per slide
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 2000);
         };
 
         const stopSlider = () => {
@@ -146,12 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 startSlider();
             });
         });
-
-        // Pause on hover
-        if (sliderContainer) {
-            sliderContainer.addEventListener('mouseenter', stopSlider);
-            sliderContainer.addEventListener('mouseleave', startSlider);
-        }
 
         // Start auto slide
         startSlider();
