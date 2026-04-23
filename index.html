@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meher Hodiyas - Explore India</title>
+    <meta name="description"
+        content="Affordable and unforgettable travel experiences across India with Meher Holidays.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header / Nav -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo"><img src="images/logo.png" alt="Meher Holidays Logo"></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#packages">Packages</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero slider-container">
+        <!-- Slider Images -->
+        <div class="slider-track">
+            <div class="slide active" style="background-image: url('images/hero.png');"></div>
+            <div class="slide" style="background-image: url('images/goa.png');"></div>
+            <div class="slide" style="background-image: url('images/manali.png');"></div>
+        </div>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content z-index-content">
+            <h1>Explore the World with<br><span>Meher Holidays</span></h1>
+            <p class="hero-subtitle"><span id="typing-text"
+                    data-text="Affordable and unforgettable travel experiences across India"></span><span
+                    class="cursor"></span></p>
+            <a href="#packages" class="btn btn-primary">
+                Book Now
+            </a>
+        </div>
+
+        <!-- Slider Controls -->
+        <button class="slider-arrow prev-arrow"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-arrow next-arrow"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="slider-dots z-index-content">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+        </div>
+    </section>
+
+    <!-- Popular Services -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Popular Services!</h2>
+                <p>Choose the service that excites you, and reach out to us with your details.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <h3>Family Custom Packages</h3>
+                    <div class="service-img">
+                        <img src="https://placehold.co/400x250/1E40AF/ffffff?text=Family+Packages"
+                            alt="Family Custom Packages">
+                    </div>
+                    <p class="desc">Create unforgettable memories with our specially tailored family travel packages
+                        designed for all ages.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <h3>Honeymoon Packages</h3>
+                    <div class="service-img">
+                        <img src="https://placehold.co/400x250/3B82F6/ffffff?text=Honeymoon" alt="Honeymoon Packages">
+                    </div>
+                    <p class="desc">Experience romance and luxury with our exclusive honeymoon getaways in beautiful
+                        destinations.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <h3>Group Trips</h3>
+                    <div class="service-img">
+                        <img src="https://placehold.co/400x250/DBEAFE/1E293B?text=Group+Trips" alt="Group Trips">
+                    </div>
+                    <p class="desc">Travel with friends or join like-minded explorers on our well-organized and
+                        fun-filled group adventures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Packages -->
+    <section id="packages" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Top Packages</h2>
+                <p>Discover our most popular travel destinations</p>
+            </div>
+
+            <div class="packages-grid">
+                <!-- Package 1 -->
+                <div class="package-card">
+                    <div class="package-img">
+                        <img src="images/goa.png" alt="Goa Trip">
+                        <span class="price-badge">₹7,999</span>
+                    </div>
+                    <div class="package-info">
+                        <h3>Goa Trip</h3>
+                        <p class="trip-duration">4 Days / 3 Nights</p>
+                        <p class="desc">Experience the sun, sand, and vibrant nightlife in the beautiful beaches of Goa.
+                        </p>
+                        <a href="goa.html" class="btn btn-outline">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="package-card">
+                    <div class="package-img">
+                        <img src="images/manali.png" alt="Manali Trip">
+                        <span class="price-badge">₹12,999</span>
+                    </div>
+                    <div class="package-info">
+                        <h3>Manali Trip</h3>
+                        <p class="trip-duration">5 Days / 4 Nights</p>
+                        <p class="desc">Relax in the snow-capped mountains and lush green valleys of Manali.</p>
+                        <a href="manali.html" class="btn btn-outline">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Package 3 -->
+                <div class="package-card">
+                    <div class="package-img">
+                        <img src="images/jaipur.png" alt="Jaipur Tour">
+                        <span class="price-badge">₹6,999</span>
+                    </div>
+                    <div class="package-info">
+                        <h3>Jaipur Tour</h3>
+                        <p class="trip-duration">3 Days / 2 Nights</p>
+                        <p class="desc">Explore the royal heritage, colorful streets, and historic palaces of the Pink
+                            City.</p>
+                        <a href="jaipur.html" class="btn btn-outline">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Destinations -->
+    <section id="destinations" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Other Popular Destinations in India</h2>
+                <p>Explore more beautiful destinations across India</p>
+            </div>
+
+            <div class="destinations-grid">
+                <!-- Card 1 -->
+                <div class="dest-card">
+                    <div class="dest-img-wrap">
+                        <img src="https://placehold.co/400x250/1E40AF/ffffff?text=Kerala" alt="Kerala">
+                        <div class="dest-overlay"></div>
+                    </div>
+                    <div class="dest-info">
+                        <h3>Kerala</h3>
+                        <p class="trip-duration">6 Days / 5 Nights</p>
+                        <p class="desc">Experience the serene backwaters and lush green landscapes.</p>
+                        <a href="kerala.html" class="btn btn-outline dest-btn">Explore</a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="dest-card">
+                    <div class="dest-img-wrap">
+                        <img src="https://placehold.co/400x250/3B82F6/ffffff?text=Ladakh" alt="Ladakh">
+                        <div class="dest-overlay"></div>
+                    </div>
+                    <div class="dest-info">
+                        <h3>Ladakh</h3>
+                        <p class="trip-duration">7 Days / 6 Nights</p>
+                        <p class="desc">Discover the majestic mountains and high-altitude lakes.</p>
+                        <a href="ladakh.html" class="btn btn-outline dest-btn">Explore</a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="dest-card">
+                    <div class="dest-img-wrap">
+                        <img src="https://placehold.co/400x250/DBEAFE/1E293B?text=Rishikesh" alt="Rishikesh">
+                        <div class="dest-overlay"></div>
+                    </div>
+                    <div class="dest-info">
+                        <h3>Rishikesh</h3>
+                        <p class="trip-duration">3 Days / 2 Nights</p>
+                        <p class="desc">Find peace and adventure in the Yoga capital of the world.</p>
+                        <a href="rishikesh.html" class="btn btn-outline dest-btn">Explore</a>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="dest-card">
+                    <div class="dest-img-wrap">
+                        <img src="https://placehold.co/400x250/1E40AF/ffffff?text=Andaman" alt="Andaman">
+                        <div class="dest-overlay"></div>
+                    </div>
+                    <div class="dest-info">
+                        <h3>Andaman</h3>
+                        <p class="trip-duration">5 Days / 4 Nights</p>
+                        <p class="desc">Pristine white-sand beaches and crystal clear coral waters.</p>
+                        <a href="andaman.html" class="btn btn-outline dest-btn">Explore</a>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="dest-card">
+                    <div class="dest-img-wrap">
+                        <img src="https://placehold.co/400x250/3B82F6/ffffff?text=Kashmir" alt="Kashmir">
+                        <div class="dest-overlay"></div>
+                    </div>
+                    <div class="dest-info">
+                        <h3>Kashmir</h3>
+                        <p class="trip-duration">6 Days / 5 Nights</p>
+                        <p class="desc">Paradise on earth with beautiful valleys and snow-capped peaks.</p>
+                        <a href="kashmir.html" class="btn btn-outline dest-btn">Explore</a>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="dest-card">
+                    <div class="dest-img-wrap">
+                        <img src="https://placehold.co/400x250/DBEAFE/1E293B?text=Darjeeling" alt="Darjeeling">
+                        <div class="dest-overlay"></div>
+                    </div>
+                    <div class="dest-info">
+                        <h3>Darjeeling</h3>
+                        <p class="trip-duration">4 Days / 3 Nights</p>
+                        <p class="desc">Famous for its tea gardens and views of the Kanchenjunga.</p>
+                        <a href="darjeeling.html" class="btn btn-outline dest-btn">Explore</a>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="dest-card">
+                    <div class="dest-img-wrap">
+                        <img src="https://placehold.co/400x250/1E40AF/ffffff?text=Udaipur" alt="Udaipur">
+                        <div class="dest-overlay"></div>
+                    </div>
+                    <div class="dest-info">
+                        <h3>Udaipur</h3>
+                        <p class="trip-duration">3 Days / 2 Nights</p>
+                        <p class="desc">The city of lakes, known for its grand palaces and romance.</p>
+                        <a href="udaipur.html" class="btn btn-outline dest-btn">Explore</a>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="dest-card">
+                    <div class="dest-img-wrap">
+                        <img src="https://placehold.co/400x250/3B82F6/ffffff?text=Varanasi" alt="Varanasi">
+                        <div class="dest-overlay"></div>
+                    </div>
+                    <div class="dest-info">
+                        <h3>Varanasi</h3>
+                        <p class="trip-duration">2 Days / 1 Night</p>
+                        <p class="desc">The spiritual heart of India along the holy River Ganges.</p>
+                        <a href="varanasi.html" class="btn btn-outline dest-btn">Explore</a>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="dest-card">
+                    <div class="dest-img-wrap">
+                        <img src="https://placehold.co/400x250/DBEAFE/1E293B?text=Agra" alt="Agra">
+                        <div class="dest-overlay"></div>
+                    </div>
+                    <div class="dest-info">
+                        <h3>Agra</h3>
+                        <p class="trip-duration">2 Days / 1 Night</p>
+                        <p class="desc">Home to the majestic Taj Mahal and rich Mughal history.</p>
+                        <a href="agra.html" class="btn btn-outline dest-btn">Explore</a>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div class="dest-card">
+                    <div class="dest-img-wrap">
+                        <img src="https://www.esikkimtourism.in/wp-content/uploads/2019/04/buddhaprkoctbr.jpg"
+                            alt="Sikkim">
+                        <div class="dest-overlay"></div>
+                    </div>
+                    <div class="dest-info">
+                        <h3>Sikkim</h3>
+                        <p class="trip-duration">5 Days / 4 Nights</p>
+                        <p class="desc">A beautiful blend of nature, monasteries, and rich culture.</p>
+                        <a href="sikkim.html" class="btn btn-outline dest-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="section bg-light">
+        <div class="container about-container">
+
+            <!-- 🔥 PEHLE FOUNDERS -->
+            <div style="display:flex; gap:20px; justify-content:center; margin-bottom:40px; flex-wrap:wrap;">
+
+                <!-- Founder 1 -->
+                <div class="founder-card">
+                    <img src="images/founder1.jpg" class="founder-img" alt="Anjali Gupta">
+                    <h3>Anjali Gupta</h3>
+                    <p class="founder-role">Founder</p>
+                    <p>Passionate about travel and making journeys affordable for everyone.</p>
+                    <div class="founder-socials">
+                        <a href="#" class="f-social"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="f-social"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="f-social"><i class="far fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Founder 2 -->
+                <div class="founder-card">
+                    <img src="images/founder2.png" class="founder-img" alt="Rahul Sharma">
+                    <h3>Rahul Sharma</h3>
+                    <p class="founder-role">Co-Founder</p>
+                    <p>Expert in planning trips and delivering unforgettable experiences.</p>
+                    <div class="founder-socials">
+                        <a href="#" class="f-social"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="f-social"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="f-social"><i class="far fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Founder 3 -->
+                <div class="founder-card">
+                    <img src="images/founder3.png" class="founder-img" alt="Priya Verma">
+                    <h3>Priya Verma</h3>
+                    <p class="founder-role">Co-Founder</p>
+                    <p>Focused on customer experience and smooth travel planning.</p>
+                    <div class="founder-socials">
+                        <a href="#" class="f-social"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="f-social"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="f-social"><i class="far fa-envelope"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 👇 PHIR OUR STORY -->
+            <div class="about-content">
+                <h2>Our Story</h2>
+                <div class="divider"></div>
+
+                <p>Meher Holidays started with a simple belief: <strong>travel should be for everyone</strong>. We
+                    noticed that exploring the beautiful corners of India often felt complicated and expensive. That's
+                    why we set out to change the way people travel.</p>
+
+                <p>Our goal is to help you explore India easily and affordably. We craft unforgettable experiences,
+                    blending local culture, breathtaking sights, and total comfort. Whether you're seeking the thrill of
+                    the mountains or the calm of the beach, we are here to make your dream trip a reality.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Travel Memories</h2>
+                <p>Glimpses of the beautiful moments we've shared</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="images/gallery_1.png" alt="Travel Gallery 1"></div>
+                <div class="gallery-item"><img src="images/goa.png" alt="Travel Gallery 2"></div>
+                <div class="gallery-item"><img src="images/manali.png" alt="Travel Gallery 3"></div>
+                <div class="gallery-item"><img src="images/jaipur.png" alt="Travel Gallery 4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section bg-pastel">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>Ready for your next adventure? Contact us today to plan your trip!</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>holidaysmeher@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>New Delhi, India</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i
+                            class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="4" placeholder="How can we help you plan your trip?"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
