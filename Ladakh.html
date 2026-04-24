@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goa Trip - Meher Holidays</title>
-    <meta name="description" content="Explore Goa Trip with Meher Holidays.">
+    <title>Ladakh - Meher Holidays</title>
+    <meta name="description" content="Explore Ladakh with Meher Holidays.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,38 +22,66 @@
             height: 80vh;
             min-height: 520px;
             overflow: hidden;
-            background-image: url('images/himachal_pradesh.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color: #000;
+            /* Solid background to prevent flash */
         }
 
-        .dest-page-hero .hero-overlay {
+        .hero-video {
+            position: absolute;
+            top: 60%;
+            /* Re-centered from 60% to 50% for standard cover */
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            /* Start hidden for fade-in */
+            transition: opacity 0.5s ease-in-out;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        .hero-video.playing {
+            opacity: 1;
+            /* Fade in when playing */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(68, 67, 67, 0.45);
+            /* Balanced dark overlay */
             z-index: 2;
-            background:
-                linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.62)),
-                radial-gradient(circle at center, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.28));
         }
 
-        .dest-page-hero .hero-content {
+        .ladakh-hero .hero-content {
             position: relative;
             z-index: 3;
-            padding-top: 80px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            font-weight: 700;
         }
 
         @media (max-width: 768px) {
-            .dest-page-hero {
+            .ladakh-hero {
                 height: 80vh;
                 min-height: 420px;
             }
 
-            .dest-page-hero .hero-content {
-                padding-top: 96px;
+            .ladakh-hero .hero-content {
+                padding-top: 120px;
                 padding-left: 20px;
                 padding-right: 20px;
             }
 
-            .dest-page-hero .hero-content h1 {
+            .ladakh-hero .hero-content h1 {
                 font-size: 2.6rem !important;
             }
         }
@@ -80,10 +108,46 @@
     </header>
 
     <!-- Destination Hero Section -->
-    <section class="hero dest-page-hero">
+    <section class="hero dest-page-hero ladakh-hero">
+        <!-- Video Placeholder -->
+        <div class="ladakh-video-wrap" data-src="videos/Ladakh_intro.mp4" data-poster="images/LadakhCard.jpg"></div>
+
+        <script>
+            (function () {
+                try {
+                    var wrap = document.querySelector('.ladakh-video-wrap');
+                    if (!wrap) return;
+                    var src = wrap.getAttribute('data-src');
+                    var poster = wrap.getAttribute('data-poster');
+                    var v = document.createElement('video');
+                    v.className = 'hero-video';
+                    v.autoplay = true;
+                    v.muted = true;
+                    v.loop = true;
+                    v.playsInline = true;
+                    v.setAttribute('playsinline', '');
+                    v.setAttribute('preload', 'auto');
+                    if (poster) v.setAttribute('poster', poster);
+
+                    // Fade in when video is ready to play
+                    v.onplay = function () { v.classList.add('playing'); };
+                    v.oncanplay = function () { v.classList.add('playing'); };
+
+                    var source = document.createElement('source');
+                    source.src = src;
+                    source.type = 'video/mp4';
+                    v.appendChild(source);
+                    wrap.parentNode.insertBefore(v, wrap);
+                    wrap.parentNode.removeChild(wrap);
+                } catch (e) {
+                    console.warn('Video load skipped', e);
+                }
+            })();
+        </script>
+
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 style="font-size: 3.5rem;">Discover <br><span>Goa Trip</span></h1>
+            <h1 style="font-size: 3.5rem;">Discover <br><span>Ladakh</span></h1>
         </div>
     </section>
 
@@ -91,15 +155,15 @@
     <section class="section bg-light">
         <div class="container about-container" style="align-items: flex-start; text-align: left; max-width: 900px;">
             <div class="about-content" style="padding: 40px; width: 100%; text-align: left;">
-                <h2 style="margin-bottom: 20px;">About Goa Trip</h2>
+                <h2 style="margin-bottom: 20px;">About Ladakh</h2>
                 <div class="divider" style="margin: 0 0 30px 0;"></div>
 
-                <p>Welcome to Goa Trip, one of the most mesmerizing destinations in India. From its breathtaking
-                    landscapes to its vibrant culture, Goa Trip offers an unforgettable experience for every traveler.
+                <p>Welcome to Ladakh, one of the most mesmerizing destinations in India. From its breathtaking
+                    landscapes to its vibrant culture, Ladakh offers an unforgettable experience for every traveler.
                     Whether you're seeking adventure, relaxation, or spiritual awakening, this destination has something
                     special for you.</p>
                 <p>Join Meher Holidays as we take you on a carefully curated journey through the best spots, hidden
-                    gems, and local experiences that Goa Trip has to offer.</p>
+                    gems, and local experiences that Ladakh has to offer.</p>
 
 
                 <h3 style="margin-top: 40px; margin-bottom: 20px;">Travel Highlights</h3>
@@ -119,7 +183,7 @@
                 </ul>
 
                 <div style="margin-top: 50px; text-align: center;">
-                    <a href="https://wa.me/917338132315?text=I'm interested in booking a trip to Goa Trip"
+                    <a href="https://wa.me/917338132315?text=I'm interested in booking a trip to Ladakh"
                         class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;">
                         <i class="fab fa-whatsapp"></i> Book Now via WhatsApp
                     </a>
@@ -132,18 +196,17 @@
     <section class="section">
         <div class="container" style="max-width: 1000px;">
             <div class="section-title">
-                <h2>Top Packages for Goa Trip</h2>
+                <h2>Top Packages for Ladakh</h2>
                 <p>Choose from our best-selling itineraries tailored for you</p>
             </div>
             <div class="tour-package-grid">
                 <!-- Card 1 -->
                 <div class="tour-package-card">
                     <div class="tp-img-wrap">
-                        <img src="images/GoaPKG1.jpg"
-                            alt="Package 1">
+                        <img src="images/Himachal_pradesh_Card.jpg" alt="Package 1">
                     </div>
                     <div class="tp-content">
-                        <h3>Goa Trip</h3>
+                        <h3>Ladakh</h3>
                         <div class="tp-details">
                             <p><i class="fas fa-route"></i> North Goa &#8594; South Goa &#8594; Dudhsagar &#8594;
                                 Departure</p>
@@ -155,7 +218,7 @@
                                 <h4>INR 24,999/-</h4>
                             </div>
                             <div class="tp-actions">
-                                <a href="https://wa.me/917338132315?text=I'm interested in the Goa Trip Essential Tour"
+                                <a href="https://wa.me/917338132315?text=I'm interested in the Ladakh Essential Tour"
                                     class="btn btn-outline" target="_blank">Contact Us</a>
                                 <a href="Ladakh.html" class="btn btn-primary">View Details</a>
                             </div>
@@ -166,7 +229,7 @@
                 <!-- Card 2 -->
                 <div class="tour-package-card">
                     <div class="tp-img-wrap">
-                        <img src="himachal_pradesh.jpg" alt="Package 2">
+                        <img src="Himachal_pradesh_Card.jpg" alt="Package 2">
                     </div>
                     <div class="tp-content">
                         <h3>Ultimate Goa Adventure</h3>
@@ -182,7 +245,7 @@
                                 <h4>INR 23,000/-</h4>
                             </div>
                             <div class="tp-actions">
-                                <a href="https://wa.me/917338132315?text=I'm interested in the Ultimate Goa Trip Adventure"
+                                <a href="https://wa.me/917338132315?text=I'm interested in the Ultimate Ladakh Adventure"
                                     class="btn btn-outline" target="_blank">Contact Us</a>
                                 <a href="Ladakh.html" class="btn btn-primary">View Details</a>
                             </div>

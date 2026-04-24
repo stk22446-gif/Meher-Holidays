@@ -18,35 +18,35 @@
 
         <script>
             (function () {
-                // Only load video on desktop (width >= 769px)
+                // Load video on all devices
                 try {
-                    var shouldLoadVideo = window.matchMedia && window.matchMedia('(min-width: 769px)').matches;
                     var wrap = document.querySelector('.bhutan-video-wrap');
                     if (!wrap) return;
 
-                    if (shouldLoadVideo) {
-                        var src = wrap.getAttribute('data-src');
-                        var poster = wrap.getAttribute('data-poster');
-                        var v = document.createElement('video');
-                        v.className = 'bhutan-video';
-                        v.autoplay = true;
-                        v.muted = true;
-                        v.loop = true;
-                        v.playsInline = true;
-                        v.setAttribute('playsinline', '');
-                        v.setAttribute('preload', 'metadata');
-                        if (poster) v.setAttribute('poster', poster);
-                        var source = document.createElement('source');
-                        source.src = src;
-                        source.type = 'video/mp4';
-                        v.appendChild(source);
-                        // insert before the wrap so CSS absolute positioning works
-                        wrap.parentNode.insertBefore(v, wrap);
-                        // remove the placeholder
-                        wrap.parentNode.removeChild(wrap);
-                    } else {
-                        // leave the placeholder div (CSS will show background-image via media query)
-                    }
+                    var src = wrap.getAttribute('data-src');
+                    var poster = wrap.getAttribute('data-poster');
+                    var v = document.createElement('video');
+                    v.className = 'bhutan-video';
+                    v.autoplay = true;
+                    v.muted = true;
+                    v.loop = true;
+                    v.playsInline = true;
+                    v.setAttribute('playsinline', '');
+                    v.setAttribute('preload', 'auto');
+                    if (poster) v.setAttribute('poster', poster);
+
+                    // Fade in when video is ready to play
+                    v.onplay = function() { v.classList.add('playing'); };
+                    v.oncanplay = function() { v.classList.add('playing'); };
+
+                    var source = document.createElement('source');
+                    source.src = src;
+                    source.type = 'video/mp4';
+                    v.appendChild(source);
+                    // insert before the wrap so CSS absolute positioning works
+                    wrap.parentNode.insertBefore(v, wrap);
+                    // remove the placeholder
+                    wrap.parentNode.removeChild(wrap);
                 } catch (e) {
                     // fail silently
                     console.warn('Video load skipped', e);
