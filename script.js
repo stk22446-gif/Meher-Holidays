@@ -93,17 +93,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Hero Slider Logic
     const slides = document.querySelectorAll('.hero-slider .slide');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.prev-arrow');
-    const nextBtn = document.querySelector('.next-arrow');
+    const prevBtn = document.querySelector('.slider-nav.prev');
+    const nextBtn = document.querySelector('.slider-nav.next');
+    const dots = document.querySelectorAll('.slider-dots .dot');
 
     if (slides.length > 0) {
-        let currentSlide = 0;
-        let slideInterval;
+        const initialActiveIndex = Array.from(slides).findIndex((slide) => slide.classList.contains('active'));
+        let currentSlide = initialActiveIndex >= 0 ? initialActiveIndex : 0;
+        let sliderInterval;
+
+        const updateDots = (index) => {
+            dots.forEach((dot) => {
+                dot.classList.remove('active');
+            });
+            if (dots[index]) {
+                dots[index].classList.add('active');
+            }
+        };
 
         const goToSlide = (index) => {
             slides[currentSlide].classList.remove('active');
-            if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
 
             currentSlide = index;
 
@@ -111,44 +120,92 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentSlide < 0) currentSlide = slides.length - 1;
 
             slides[currentSlide].classList.add('active');
-            if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+            updateDots(currentSlide);
         };
 
-        const nextSlide = () => goToSlide(currentSlide + 1);
-        const prevSlide = () => goToSlide(currentSlide - 1);
+        const showNextSlide = () => {
+            goToSlide(currentSlide + 1);
+        };
+
+        const showPrevSlide = () => {
+            goToSlide(currentSlide - 1);
+        };
 
         const startSlider = () => {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 2000);
+            clearInterval(sliderInterval);
+            sliderInterval = setInterval(() => {
+                showNextSlide();
+            }, 2000);
         };
 
         const stopSlider = () => {
-            clearInterval(slideInterval);
+            clearInterval(sliderInterval);
         };
 
-        // Event Listeners
-        if (nextBtn) nextBtn.addEventListener('click', () => {
-            nextSlide();
-            stopSlider();
-            startSlider();
-        });
-
-        if (prevBtn) prevBtn.addEventListener('click', () => {
-            prevSlide();
-            stopSlider();
-            startSlider();
-        });
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                goToSlide(index);
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
                 stopSlider();
+            } else {
                 startSlider();
+            }
+        });
+
+        const bindSliderControl = (button, handler) => {
+            if (!button) return;
+
+            const trigger = (event) => {
+                event.preventDefault();
+                handler();
+                startSlider();
+            };
+
+            const inputEvent = window.PointerEvent ? 'pointerup' : 'click';
+            button.addEventListener(inputEvent, trigger);
+        };
+
+        bindSliderControl(nextBtn, showNextSlide);
+        bindSliderControl(prevBtn, showPrevSlide);
+
+        // Dot Navigation
+        dots.forEach((dot) => {
+            const handleDotClick = (event) => {
+                event.preventDefault();
+                const slideIndex = parseInt(dot.getAttribute('data-slide'), 10);
+                goToSlide(slideIndex);
+                startSlider();
+            };
+
+            const inputEvent = window.PointerEvent ? 'pointerup' : 'click';
+            dot.addEventListener(inputEvent, handleDotClick);
+
+            // Keyboard support (Enter and Space)
+            dot.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    handleDotClick(event);
+                }
             });
         });
 
-        // Start auto slide
         startSlider();
+    }
+
+    // Travel Memories View More toggle
+    const galleryToggleBtn = document.getElementById('gallery-view-more');
+    const hiddenGalleryItems = document.querySelectorAll('.gallery-grid .gallery-item.hidden');
+
+    if (galleryToggleBtn && hiddenGalleryItems.length > 0) {
+        let galleryExpanded = false;
+
+        galleryToggleBtn.addEventListener('click', () => {
+            galleryExpanded = !galleryExpanded;
+
+            hiddenGalleryItems.forEach((item) => {
+                item.classList.toggle('hidden', !galleryExpanded);
+            });
+
+            galleryToggleBtn.textContent = galleryExpanded ? 'Show Less' : 'View More';
+        });
     }
 
     // Show More Destinations Logic

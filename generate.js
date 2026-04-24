@@ -115,7 +115,7 @@ destinations.forEach(dest => {
                             </div>
                             <div class="tp-actions">
                                 <a href="https://wa.me/917338132315?text=I'm interested in the ${dest.name} Essential Tour" class="btn btn-outline" target="_blank">Contact Us</a>
-                                <a href="#" class="btn btn-primary">View Details</a>
+                                <a href="${dest.id}.html" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -139,7 +139,7 @@ destinations.forEach(dest => {
                             </div>
                             <div class="tp-actions">
                                 <a href="https://wa.me/917338132315?text=I'm interested in the Ultimate ${dest.name} Adventure" class="btn btn-outline" target="_blank">Contact Us</a>
-                                <a href="#" class="btn btn-primary">View Details</a>
+                                <a href="${dest.id}.html" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
