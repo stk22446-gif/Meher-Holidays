@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* HERO */
+        .hero {
+            height: 50vh;
+            background: url('images/bhutan.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .price {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .duration {
+            color: #3b5bdb;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+
+        /* BUTTONS */
+        .buttons {
+            margin: 20px 0;
+        }
+
+        .buttons a {
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: #3b5bdb;
+            color: white;
+        }
+
+        .btn-outline {
+            border: 1px solid #3b5bdb;
+            color: #3b5bdb;
+        }
+
+        /* ACCORDION */
+        .item {
+            max-width: 700px;
+            margin: 10px auto;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .title {
+            font-weight: bold;
+        }
+
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .item.active .content {
+            max-height: 200px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Bhutan Adventure</h1>
+    </section>
+
+    <!-- DETAILS -->
+    <section class="section">
+
+        <div class="price">Cost Per Person - INR 20,999/- including GST</div>
+        <div class="duration">ITINERARY (5 NIGHTS / 6 DAYS)</div>
+
+        <h2>Bhutan Itinerary</h2>
+
+        <!-- BUTTONS -->
+        <div class="buttons">
+            <a href="https://wa.me/917338132315" class="btn-primary">Contact Us</a>
+            <a href="pdf/bhutan.pdf" class="btn-outline">Download Itinerary</a>
+        </div>
+
+        <!-- ACCORDION -->
+        <div class="item">
+            <div class="title">Day 1: Arrival in Paro</div>
+            <div class="content">Airport pickup and transfer to Thimphu</div>
+        </div>
+
+        <div class="item">
+            <div class="title">Day 2: Thimphu Sightseeing</div>
+            <div class="content">Visit Buddha Dordenma, Memorial Chorten</div>
+        </div>
+
+        <div class="item">
+            <div class="title">Day 3: Paro Exploration</div>
+            <div class="content">Visit Paro Dzong and local markets</div>
+        </div>
+
+        <div class="item">
+            <div class="title">Day 4: Tiger’s Nest Trek</div>
+            <div class="content">Trek to Taktsang Monastery</div>
+        </div>
+
+        <div class="item">
+            <div class="title">Day 5: Departure</div>
+            <div class="content">Return journey</div>
+        </div>
+
+    </section>
+
+    <script>
+        document.querySelectorAll(".item").forEach(item => {
+            item.addEventListener("click", () => {
+                item.classList.toggle("active");
+            });
+        });
+    </script>
+
+</body>
+
+</html>
