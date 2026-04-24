@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Himachal Trip - Meher Holidays</title>
-    <meta name="description" content="Explore Himachal Trip with Meher Holidays.">
+    <title>Himachal Adventure - Meher Holidays</title>
+    <meta name="description" content="Explore Himachal Pradesh with Meher Holidays.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,18 +23,49 @@
             min-height: 520px;
             overflow: hidden;
             background-color: #000;
-            background:
-                linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('images/Himachal_pradesh_Banner.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            /* Solid background to prevent flash */
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            /* Start hidden for fade-in */
+            transition: opacity 0.5 ease-in-out;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        .hero-video.playing {
+            opacity: 1;
+            /* Fade in when playing */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(68, 67, 67, 0.45);
+            /* Balanced dark overlay */
+            z-index: 2;
         }
 
         .himachal-hero .hero-content {
             position: relative;
             z-index: 3;
-            padding-top: 80px;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            font-weight: 700;
         }
 
         @media (max-width: 768px) {
@@ -76,9 +107,47 @@
     </header>
 
     <!-- Destination Hero Section -->
-    <section class="hero himachal-hero">
+    <section class="hero dest-page-hero himachal-hero">
+        <!-- Video Placeholder -->
+        <div class="himachal-video-wrap" data-src="videos/Himachal_pradesh.mp4"
+            data-poster="images/Himachal_pradesh_Banner.jpg"></div>
+
+        <script>
+            (function () {
+                try {
+                    var wrap = document.querySelector('.himachal-video-wrap');
+                    if (!wrap) return;
+                    var src = wrap.getAttribute('data-src');
+                    var poster = wrap.getAttribute('data-poster');
+                    var v = document.createElement('video');
+                    v.className = 'hero-video';
+                    v.autoplay = true;
+                    v.muted = true;
+                    v.loop = true;
+                    v.playsInline = true;
+                    v.setAttribute('playsinline', '');
+                    v.setAttribute('preload', 'auto');
+                    if (poster) v.setAttribute('poster', poster);
+
+                    // Fade in when video is ready to play
+                    v.onplay = function () { v.classList.add('playing'); };
+                    v.oncanplay = function () { v.classList.add('playing'); };
+
+                    var source = document.createElement('source');
+                    source.src = src;
+                    source.type = 'video/mp4';
+                    v.appendChild(source);
+                    wrap.parentNode.insertBefore(v, wrap);
+                    wrap.parentNode.removeChild(wrap);
+                } catch (e) {
+                    console.warn('Video load skipped', e);
+                }
+            })();
+        </script>
+
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 style="font-size: 3.5rem;">Discover <br><span>Himachal Trip</span></h1>
+            <h1 style="font-size: 3.5rem;">Discover <br><span>Himachal Pradesh</span></h1>
         </div>
     </section>
 
@@ -86,16 +155,15 @@
     <section class="section bg-light">
         <div class="container about-container" style="align-items: flex-start; text-align: left; max-width: 900px;">
             <div class="about-content" style="padding: 40px; width: 100%; text-align: left;">
-                <h2 style="margin-bottom: 20px;">About Himachal Trip</h2>
+                <h2 style="margin-bottom: 20px;">About Himachal Pradesh</h2>
                 <div class="divider" style="margin: 0 0 30px 0;"></div>
 
-                <p>Welcome to Himachal Trip, one of the most mesmerizing destinations in India. From its breathtaking
-                    landscapes to its vibrant culture, Himachal Trip offers an unforgettable experience for every
-                    traveler.
+                <p>Welcome to Himachal Pradesh, one of the most mesmerizing destinations in India. From its breathtaking
+                    landscapes to its vibrant culture, Himachal offers an unforgettable experience for every traveler.
                     Whether you're seeking adventure, relaxation, or spiritual awakening, this destination has something
                     special for you.</p>
                 <p>Join Meher Holidays as we take you on a carefully curated journey through the best spots, hidden
-                    gems, and local experiences that Himachal Trip has to offer.</p>
+                    gems, and local experiences that Himachal has to offer.</p>
 
 
                 <h3 style="margin-top: 40px; margin-bottom: 20px;">Travel Highlights</h3>
@@ -115,7 +183,7 @@
                 </ul>
 
                 <div style="margin-top: 50px; text-align: center;">
-                    <a href="https://wa.me/917338132315?text=I'm interested in booking a trip to Himachal Trip"
+                    <a href="https://wa.me/917338132315?text=I'm interested in booking a trip to Himachal Pradesh"
                         class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;">
                         <i class="fab fa-whatsapp"></i> Book Now via WhatsApp
                     </a>
@@ -128,7 +196,7 @@
     <section class="section">
         <div class="container" style="max-width: 1000px;">
             <div class="section-title">
-                <h2>Top Packages for Himachal Trip</h2>
+                <h2>Top Packages for Himachal Pradesh</h2>
                 <p>Choose from our best-selling itineraries tailored for you</p>
             </div>
             <div class="tour-package-grid">
@@ -215,7 +283,7 @@
                 <!-- Card 4 -->
                 <div class="tour-package-card">
                     <div class="tp-img-wrap">
-                        <img src="images/slide1.jpg" alt="Package 4">
+                        <img src="images/Himachal_pradesh_Card.jpg" alt="Package 2">
                     </div>
                     <div class="tp-content">
                         <h3>Dharamshala & Dalhousie Retreat</h3>
@@ -296,7 +364,7 @@
                         <img src="images/slide3.jpg" alt="Package 7">
                     </div>
                     <div class="tp-content">
-                        <h3>Complete Himachal Tour</h3>
+                        <h3>Himachal Explorer</h3>
                         <p class="trip-duration">10 Days / 9 Nights &#8594;</p>
                         <div class="tp-details">
                             <p><i class="fas fa-route"></i> Shimla &#8594; Manali &#8594; Dharamshala &#8594; Dalhousie

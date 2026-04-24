@@ -225,8 +225,6 @@ header {
 .slider-container {
     overflow: hidden;
     position: relative;
-    background-image: none !important;
-    /* override the default hero bg */
     isolation: isolate;
 }
 
@@ -1217,16 +1215,8 @@ header {
 @media (max-width: 480px) {
 
     /* hide video on very small devices for performance; fallback to poster/background */
-    .bhutan-video {
-        display: none;
-    }
-
-    .bhutan-overlay {
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65));
-    }
-
     .bhutan-hero {
-        background-image: url('images/bhutan.jpg');
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('images/Bhutan_Banner.jpg');
         background-size: cover;
         background-position: center;
     }
@@ -1238,16 +1228,8 @@ header {
 
 /* Mobile fallback: hide video and use background image for devices <= 768px */
 @media (max-width: 768px) {
-    .bhutan-video {
-        display: none !important;
-    }
-
-    .bhutan-overlay {
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65));
-    }
-
     .bhutan-hero {
-        background-image: url('images/bhutan.jpg');
+        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('images/Bhutan_Banner.jpg');
         background-size: cover;
         background-position: center;
     }
@@ -1853,7 +1835,6 @@ footer {
     /* HERO */
     .hero {
         height: 100vh;
-        background-image: none !important;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -2102,23 +2083,33 @@ footer {
         position: relative;
         height: 100vh;
         overflow: hidden;
+        background-color: #000; /* Prevent flash */
     }
 
-    /* VIDEO */
     .bhutan-video {
         position: absolute;
+        top: 50%;
+        left: 50%;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        top: 0;
-        left: 0;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        min-width: 100%;
+        min-height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .bhutan-video.playing {
+        opacity: 1;
     }
 
     /* OVERLAY */
     .bhutan-overlay {
         position: absolute;
         inset: 0;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.45);
     }
 
     /* CONTENT */
@@ -2130,6 +2121,11 @@ footer {
         top: 50%;
         transform: translateY(-50%);
         padding: 0 20px;
+        width: 100%;
+    }
+
+    .bhutan-title {
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     }
 
     /* BUTTONS */
