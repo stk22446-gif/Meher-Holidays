@@ -17,6 +17,74 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+    <style>
+        .dest-page-hero {
+            position: relative;
+            height: 80vh;
+            min-height: 520px;
+            overflow: hidden;
+            background-color: #000;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        .hero-video.playing {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(68, 67, 67, 0.45);
+            z-index: 2;
+        }
+
+        .Sikkim-hero .hero-content {
+            position: relative;
+            z-index: 3;
+            width: 70%;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .Sikkim-hero {
+                height: 80vh;
+                min-height: 420px;
+            }
+
+            .Sikkim-hero .hero-content {
+                padding-top: 120px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .Sikkim-hero .hero-content h1 {
+                font-size: 2.6rem !important;
+            }
+        }
+    </style>
+</head>
 
 <body>
 
@@ -38,11 +106,51 @@
     </header>
 
     <!-- Destination Hero Section -->
-    <section class="hero dest-page-hero"
-        style="background-image: url('https://www.esikkimtourism.in/wp-content/uploads/2019/04/buddhaprkoctbr.jpg'); height: 80vh;">
+    <section class="hero dest-page-hero Sikkim-hero" style="background-image: url('https://www.esikkimtourism.in/wp-content/uploads/2019/04/buddhaprkoctbr.jpg');">
+        <!-- Video Placeholder -->
+        <div class="Sikkim-video-wrap" data-src="videos/Sikkim_intro.mp4" data-poster="https://www.esikkimtourism.in/wp-content/uploads/2019/04/buddhaprkoctbr.jpg">
+        </div>
+
+        <script>
+            (function () {
+                try {
+                    var wrap = document.querySelector('.Sikkim-video-wrap');
+                    if (!wrap) return;
+                    var src = wrap.getAttribute('data-src');
+                    var poster = wrap.getAttribute('data-poster');
+                    var v = document.createElement('video');
+                    v.className = 'hero-video';
+                    v.autoplay = true;
+                    v.muted = true;
+                    v.loop = true;
+                    v.playsInline = true;
+                    v.setAttribute('playsinline', '');
+                    v.setAttribute('preload', 'auto');
+                    if (poster) v.setAttribute('poster', poster);
+
+                    // Fade in when video is ready to play
+                    v.onplay = function () { v.classList.add('playing'); };
+                    v.oncanplay = function () { v.classList.add('playing'); };
+
+                    var source = document.createElement('source');
+                    source.src = src;
+                    source.type = 'video/mp4';
+                    v.appendChild(source);
+                    wrap.parentNode.insertBefore(v, wrap);
+                    wrap.parentNode.removeChild(wrap);
+                } catch (e) {
+                    console.warn('Video load skipped', e);
+                }
+            })();
+        </script>
         <div class="hero-overlay"></div>
-        <div class="hero-content" style="padding-top: 80px;">
-            <h1 style="font-size: 3.5rem;">Discover <br><span>Sikkim</span></h1>
+        <div class="hero-content">
+            <h1 style="color:#ffffff; font-size:3.5rem;">
+                Discover <br>
+                <span style="color:#ffd700; font-size:3.5rem;">
+                    Sikkim
+                </span>
+            </h1>
         </div>
     </section>
 
@@ -98,14 +206,12 @@
                 <!-- Card 1 -->
                 <div class="tour-package-card">
                     <div class="tp-img-wrap">
-                        <img src="https://s7ap1.scene7.com/is/image/incredibleindia/lingdum-monastery-gangtok-sikkim-1-attr-hero?qlt=82&ts=1742166048831"
-                            alt="Package 1">
+                        <img src="https://s7ap1.scene7.com/is/image/incredibleindia/lingdum-monastery-gangtok-sikkim-1-attr-hero?qlt=82&ts=1742166048831" alt="Sikkim Serenity Tour">
                     </div>
                     <div class="tp-content">
                         <h3>Sikkim Serenity Tour</h3>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Gangtok &#8594; Nathula pass &#8594; Darjeeling &#8594;
-                                Departure</p>
+                            <p><i class="fas fa-route"></i> Gangtok &#8594; Nathula Pass &#8594; Darjeeling &#8594; Departure</p>
                             <p class="trip-duration">6 Days / 5 Nights</p>
                         </div>
                         <div class="tp-footer">
@@ -114,9 +220,9 @@
                                 <h4>INR 24,999/-</h4>
                             </div>
                             <div class="tp-actions">
-                                <a href="https://wa.me/917338132315?text=I'm interested in the Sikkim Essential Tour"
+                                <a href="https://wa.me/917338132315?text=I'm interested in the Sikkim Serenity Tour"
                                     class="btn btn-outline" target="_blank">Contact Us</a>
-                                <a href="sikkim.html" class="btn btn-primary">View Details</a>
+                                <a href="packages/Sikkim-Pakage-1.html" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -125,14 +231,13 @@
                 <!-- Card 2 -->
                 <div class="tour-package-card">
                     <div class="tp-img-wrap">
-                        <img src="https://placehold.co/600x350/1E40AF/ffffff?text=Sikkim+Adventure" alt="Package 2">
+                        <img src="images/slide1.jpg" alt="Ultimate Sikkim Adventure">
                     </div>
                     <div class="tp-content">
                         <h3>Ultimate Sikkim Adventure</h3>
-                        <p class="trip-duration">6 Days / 5 Nights &#8594;</p>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Arrival &#8594; Base Camp &#8594; Trekking &#8594; Departure
-                            </p>
+                            <p><i class="fas fa-route"></i> Gangtok &#8594; Lachen &#8594; Lachung &#8594; Gangtok</p>
+                            <p class="trip-duration">6 Days / 5 Nights</p>
                         </div>
                         <div class="tp-footer">
                             <div class="tp-price">
@@ -142,7 +247,7 @@
                             <div class="tp-actions">
                                 <a href="https://wa.me/917338132315?text=I'm interested in the Ultimate Sikkim Adventure"
                                     class="btn btn-outline" target="_blank">Contact Us</a>
-                                <a href="sikkim.html" class="btn btn-primary">View Details</a>
+                                <a href="packages/Sikkim-Pakage-2.html" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>

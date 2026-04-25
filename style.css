@@ -3,6 +3,14 @@
   Color Palette: White, Beige, Pastel tones
 */
 
+/*
+  MEHER HOLIDAYS - STYLE SYSTEM GUIDE
+  ===================================
+  1. DESIGN TOKENS: Root variables define the palette (Gold #ffd700, Dark #1e293b).
+  2. UTILITIES: Common classes for spacing and typography are at the top.
+  3. COMPONENTS: Styles for Hero, Gallery, and Testimonials are organized in sections.
+  4. RESPONSIVENESS: Media queries at the bottom handle mobile/tablet layouts.
+*/
 :root {
     --primary-color: #1E40AF;
     --primary-hover: #1E3A8A;
@@ -267,6 +275,7 @@ header {
     backface-visibility: hidden;
     transform: translateZ(0) scale(1);
     will-change: opacity;
+    filter: brightness(1.15);
 }
 
 .slide.active {
@@ -307,8 +316,8 @@ header {
     width: 100%;
     height: 100%;
     background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.62)),
-        radial-gradient(circle at center, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.28));
+        linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45)),
+        radial-gradient(circle at center, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.2));
     z-index: 2;
     pointer-events: none;
 }
@@ -320,7 +329,7 @@ header {
     height: 48px;
     border: none;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(124, 121, 121, 0.16);
     color: white;
     display: inline-flex;
     align-items: center;
@@ -574,12 +583,13 @@ header {
 }
 
 .promo-title {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 2rem;
+    font-family: 'Satisfy', cursive;
+    color: #ffffff;
+    font-size: 3.2rem;
     margin-bottom: 26px;
-    font-weight: 600;
-    text-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
-    letter-spacing: 0.3px;
+    font-weight: 400;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    letter-spacing: 1px;
 }
 
 .promo-description {
@@ -1216,7 +1226,7 @@ header {
 
     /* hide video on very small devices for performance; fallback to poster/background */
     .bhutan-hero {
-        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('images/Bhutan_Banner.jpg');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('images/Bhutan_Banner.jpg');
         background-size: cover;
         background-position: center;
     }
@@ -1229,7 +1239,7 @@ header {
 /* Mobile fallback: hide video and use background image for devices <= 768px */
 @media (max-width: 768px) {
     .bhutan-hero {
-        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('images/Bhutan_Banner.jpg');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('images/Bhutan_Banner.jpg');
         background-size: cover;
         background-position: center;
     }
@@ -2083,7 +2093,8 @@ footer {
         position: relative;
         height: 100vh;
         overflow: hidden;
-        background-color: #000; /* Prevent flash */
+        background-color: #000;
+        /* Prevent flash */
     }
 
     .bhutan-video {
@@ -2099,6 +2110,7 @@ footer {
         min-height: 100%;
         opacity: 0;
         transition: opacity 1s ease-in-out;
+        animation: none; /* Disable zoom animation on mobile to keep centering */
     }
 
     .bhutan-video.playing {
@@ -2118,8 +2130,6 @@ footer {
         z-index: 2;
         text-align: center;
         color: white;
-        top: 50%;
-        transform: translateY(-50%);
         padding: 0 20px;
         width: 100%;
     }
@@ -2231,3 +2241,215 @@ footer {
         padding: 20px;
     }
 }
+
+/* ── TESTIMONIALS SLIDER ─────────────────────────── */
+.testimonials-section {
+    padding: 100px 0;
+    background: radial-gradient(circle at top right, #ffffff, #f0f4f8);
+    overflow: hidden;
+    position: relative;
+}
+
+.testimonial-carousel-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 50px auto 0;
+    padding: 0 40px;
+}
+
+.testimonial-track-wrapper {
+    overflow: visible;
+    padding: 40px 0;
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    gap: 30px;
+    cursor: grab;
+}
+
+.testimonial-track:active {
+    cursor: grabbing;
+}
+
+.testimonial-card {
+    flex: 0 0 450px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    user-select: none;
+    opacity: 0.3;
+    filter: blur(4px);
+    transform: scale(0.85);
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+    background: #fff;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.rev-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.rev-user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rev-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.rev-name-wrap h4 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    font-family: var(--font-main);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rev-badge {
+    color: #3b82f6;
+    font-size: 0.9rem;
+}
+
+.rev-google-link {
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.rev-google-link:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rev-google-link img {
+    width: 18px;
+    height: 18px;
+}
+
+.rev-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 15px;
+}
+
+.rev-stars svg {
+    width: 18px;
+    height: 18px;
+    fill: #ffb400;
+}
+
+.rev-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #526071;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-style: italic;
+}
+
+/* Controls */
+.rev-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.rev-nav-btn {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #fff;
+    color: #1e293b;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.rev-nav-btn:hover {
+    background: #1e293b;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.rev-dots {
+    display: flex;
+    gap: 12px;
+}
+
+.rev-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(30, 41, 59, 0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.rev-dot.active {
+    width: 30px;
+    border-radius: 10px;
+    background: #3b82f6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .testimonial-card {
+        flex: 0 0 320px;
+        padding: 30px;
+    }
+    
+    .testimonial-card:not(.active) {
+        opacity: 0.1;
+        filter: blur(6px);
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-card {
+        flex: 0 0 100%;
+    }
+    .testimonial-card:not(.active) {
+        display: none;
+    }
+}

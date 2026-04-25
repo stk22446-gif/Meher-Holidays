@@ -22,38 +22,63 @@
             height: 80vh;
             min-height: 520px;
             overflow: hidden;
-            background-image: url('images/Himachal_pradesh_Banner.jpg');
+            background-color: #000;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
         }
 
-        .dest-page-hero .hero-overlay {
+        .hero-video {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        .hero-video.playing {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(68, 67, 67, 0.45);
             z-index: 2;
-            background:
-                linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.62)),
-                radial-gradient(circle at center, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.28));
         }
 
-        .dest-page-hero .hero-content {
+        .Kerala-hero .hero-content {
             position: relative;
             z-index: 3;
-            padding-top: 80px;
+            width: 70%;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            font-weight: 700;
         }
 
         @media (max-width: 768px) {
-            .dest-page-hero {
+            .Kerala-hero {
                 height: 80vh;
                 min-height: 420px;
             }
 
-            .dest-page-hero .hero-content {
-                padding-top: 96px;
+            .Kerala-hero .hero-content {
+                padding-top: 120px;
                 padding-left: 20px;
                 padding-right: 20px;
             }
 
-            .dest-page-hero .hero-content h1 {
+            .Kerala-hero .hero-content h1 {
                 font-size: 2.6rem !important;
             }
         }
@@ -80,12 +105,54 @@
     </header>
 
     <!-- Destination Hero Section -->
-    <section class="hero dest-page-hero">
+    <section class="hero dest-page-hero Kerala-hero" style="background-image: url('images/KeralaCard.jpg');">
+        <!-- Video Placeholder -->
+        <div class="Kerala-video-wrap" data-src="videos/Kerala.mp4" data-poster="images/KeralaCard.jpg"></div>
+
+        <script>
+            (function () {
+                try {
+                    var wrap = document.querySelector('.Kerala-video-wrap');
+                    if (!wrap) return;
+                    var src = wrap.getAttribute('data-src');
+                    var poster = wrap.getAttribute('data-poster');
+                    var v = document.createElement('video');
+                    v.className = 'hero-video';
+                    v.autoplay = true;
+                    v.muted = true;
+                    v.loop = true;
+                    v.playsInline = true;
+                    v.setAttribute('playsinline', '');
+                    v.setAttribute('preload', 'auto');
+                    if (poster) v.setAttribute('poster', poster);
+
+                    // Fade in when video is ready to play
+                    v.onplay = function () { v.classList.add('playing'); };
+                    v.oncanplay = function () { v.classList.add('playing'); };
+
+                    var source = document.createElement('source');
+                    source.src = src;
+                    source.type = 'video/mp4';
+                    v.appendChild(source);
+                    wrap.parentNode.insertBefore(v, wrap);
+                    wrap.parentNode.removeChild(wrap);
+                } catch (e) {
+                    console.warn('Video load skipped', e);
+                }
+            })();
+        </script>
+
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 style="font-size: 3.5rem;">Discover <br><span>Kerala</span></h1>
+            <h1 style="color:#ffffff; font-size:3.5rem;">
+                Discover <br>
+                <span style="color:#ffd700; font-size:3.5rem;">
+                    Kerala
+                </span>
+            </h1>
         </div>
     </section>
+
 
     <!-- Destination Details -->
     <section class="section bg-light">
@@ -139,20 +206,19 @@
                 <!-- Card 1 -->
                 <div class="tour-package-card">
                     <div class="tp-img-wrap">
-                        <img src="images/Himachal_pradesh_Card.jpg"
-                            alt="Package 1">
+                        <img src="images/KeralaCard.jpg" alt="Kerala Essential Tour">
                     </div>
                     <div class="tp-content">
-                        <h3>Kerala</h3>
+                        <h3>Kerala Essential Tour</h3>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> North Goa &#8594; South Goa &#8594; Dudhsagar &#8594;
-                                Departure</p>
+                            <p><i class="fas fa-route"></i> Kochi &#8594; Munnar &#8594; Thekkady &#8594; Alleppey
+                                &#8594; Kochi</p>
                             <p class="trip-duration">6 Days / 5 Nights</p>
                         </div>
                         <div class="tp-footer">
                             <div class="tp-price">
                                 <span>Starting from</span>
-                                <h4>INR 24,999/-</h4>
+                                <h4>INR 21,500/-</h4>
                             </div>
                             <div class="tp-actions">
                                 <a href="https://wa.me/917338132315?text=I'm interested in the Kerala Essential Tour"
@@ -166,20 +232,19 @@
                 <!-- Card 2 -->
                 <div class="tour-package-card">
                     <div class="tp-img-wrap">
-                        <img src="Himachal_pradesh_Card.jpg" alt="Package 2">
+                        <img src="images/slide3.jpg" alt="Ultimate Kerala Adventure">
                     </div>
                     <div class="tp-content">
-                        <h3>Ultimate Goa Adventure</h3>
-                        <p class="trip-duration">6 Days / 5 Nights &#8594;</p>
+                        <h3>Ultimate Kerala Adventure</h3>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Arrival &#8594; North Goa &#8594; South Goa &#8594;
-                                Dudhsagar &#8594; Departure
-                            </p>
+                            <p><i class="fas fa-route"></i> Kochi &#8594; Munnar &#8594; Thekkady &#8594; Kumarakom
+                                &#8594; Kovalam &#8594; Trivandrum</p>
+                            <p class="trip-duration">8 Days / 7 Nights</p>
                         </div>
                         <div class="tp-footer">
                             <div class="tp-price">
                                 <span>Starting from</span>
-                                <h4>INR 23,000/-</h4>
+                                <h4>INR 28,000/-</h4>
                             </div>
                             <div class="tp-actions">
                                 <a href="https://wa.me/917338132315?text=I'm interested in the Ultimate Kerala Adventure"

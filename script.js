@@ -1,3 +1,11 @@
+/**
+ * MEHER HOLIDAYS - JAVASCRIPT LOGIC GUIDE
+ * =======================================
+ * 1. HEADER: Handles sticky background and visibility on scroll.
+ * 2. MOBILE NAV: Manages the hamburger menu and drawer overlay.
+ * 3. ANIMATIONS: Handles Intersection Observer for fade-in effects.
+ * 4. DESTINATION PAGES: Destination-specific logic is often kept inside the page's <script> tag.
+ */
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Drawer Menu
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
