@@ -167,8 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 startSlider();
             };
 
-            const inputEvent = window.PointerEvent ? 'pointerup' : 'click';
-            button.addEventListener(inputEvent, trigger);
+            button.addEventListener('click', trigger);
+            button.addEventListener('touchstart', trigger, { passive: false });
         };
 
         bindSliderControl(nextBtn, showNextSlide);

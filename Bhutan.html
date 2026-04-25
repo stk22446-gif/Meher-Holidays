@@ -17,6 +17,26 @@
 </head>
 
 <body>
+    
+
+
+    <!-- Header / Nav -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="images/logo.png" alt="Meher Holidays Logo"></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#packages">Packages</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="index.html#reviews">Reviews</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
 
     <!-- HERO -->
     <section class="bhutan-hero" aria-label="Bhutan hero section">
@@ -77,7 +97,7 @@
     </section>
 
     <!-- CONTENT -->
-    <section class="why-section" style="background-image: url('images/WhyVisitBhutan.jpg');">
+    <section class="why-section section" data-animated-bg="true" style="background-image: url('images/WhyVisitBhutan.jpg');">
         <div class="container">
             <!-- 
                 EXAMPLE: CHANGING THE BACKGROUND IMAGE
@@ -93,7 +113,7 @@
     </section>
 
     <!-- ITINERARY -->
-    <section id="itinerary" class="itinerary-section">
+    <section id="itinerary" class="itinerary-section section" data-animated-bg="true">
         <div class="container">
             <h2>Bhutan Itinerary</h2>
             <p class="itinerary-price">Cost Per Person - INR 20,999/- including GST</p>
@@ -334,6 +354,43 @@
         })();
     </script>
 
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- Travel Background Animation -->
+    <div class="travel-bg-animation">
+        <i class="fas fa-solid fa-cloud cloud c1"></i>
+        <i class="fas fa-solid fa-cloud cloud c2"></i>
+        <i class="fas fa-solid fa-cloud cloud c3"></i>
+        <i class="fas fa-solid fa-plane plane"></i>
+        <i class="fas fa-solid fa-motorcycle bike"></i>
+        <!-- Detailed Shikara Houseboat SVG -->
+        <svg class="houseboat" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z" fill="currentColor"/>
+            <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8"/>
+            <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor"/>
+            <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+        </svg>
+    </div>
 </body>
 
 </html>
