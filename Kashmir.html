@@ -57,7 +57,7 @@
             z-index: 2;
         }
 
-        .ladakh-hero .hero-content {
+        .Kashmir-hero .hero-content {
             position: relative;
             z-index: 3;
             width: 70%;
@@ -70,18 +70,18 @@
         }
 
         @media (max-width: 768px) {
-            .ladakh-hero {
+            .Kashmir-hero {
                 height: 80vh;
                 min-height: 420px;
             }
 
-            .ladakh-hero .hero-content {
+            .Kashmir-hero .hero-content {
                 padding-top: 120px;
                 padding-left: 20px;
                 padding-right: 20px;
             }
 
-            .ladakh-hero .hero-content h1 {
+            .Kashmir-hero .hero-content h1 {
                 font-size: 2.6rem !important;
             }
         }
@@ -89,6 +89,8 @@
 </head>
 
 <body>
+    
+
 
     <!-- Header / Nav -->
     <header id="header">
@@ -100,6 +102,7 @@
                     <li><a href="index.html#packages">Packages</a></li>
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="index.html#reviews">Reviews</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -108,14 +111,14 @@
     </header>
 
     <!-- Destination Hero Section -->
-    <section class="hero dest-page-hero ladakh-hero">
+    <section class="hero dest-page-hero Kashmir-hero">
         <!-- Video Placeholder -->
-        <div class="ladakh-video-wrap" data-src="videos/Kashmir_intro.mp4" data-poster="images/KashmirCard.jpg"></div>
+        <div class="Kashmir-video-wrap" data-src="videos/Kashmir_intro.mp4" data-poster="images/KashmirCard.jpg"></div>
 
         <script>
             (function () {
                 try {
-                    var wrap = document.querySelector('.ladakh-video-wrap');
+                    var wrap = document.querySelector('.Kashmir-video-wrap');
                     if (!wrap) return;
                     var src = wrap.getAttribute('data-src');
                     var poster = wrap.getAttribute('data-poster');
@@ -147,7 +150,12 @@
 
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 style="font-size: 3.5rem;">Discover <br><span>Kashmir</span></h1>
+            <h1 style="color:#ffffff; font-size:3.5rem;">
+                Discover <br>
+                <span style="color:#ffd700; font-size:3.5rem;">
+                    Kashmir
+                </span>
+            </h1>
         </div>
     </section>
 
@@ -203,13 +211,12 @@
                 <!-- Card 1 -->
                 <div class="tour-package-card">
                     <div class="tp-img-wrap">
-                        <img src="images/Himachal_pradesh_Card.jpg" alt="Package 1">
+                        <img src="images/KashmirCard.jpg" alt="Kashmir Essential Tour">
                     </div>
                     <div class="tp-content">
-                        <h3>Kashmir</h3>
+                        <h3>Kashmir Essential Tour</h3>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> North Goa &#8594; South Goa &#8594; Dudhsagar &#8594;
-                                Departure</p>
+                            <p><i class="fas fa-route"></i> Srinagar &#8594; Gulmarg &#8594; Sonamarg &#8594; Pahalgam &#8594; Departure</p>
                             <p class="trip-duration">6 Days / 5 Nights</p>
                         </div>
                         <div class="tp-footer">
@@ -220,7 +227,7 @@
                             <div class="tp-actions">
                                 <a href="https://wa.me/917338132315?text=I'm interested in the Kashmir Essential Tour"
                                     class="btn btn-outline" target="_blank">Contact Us</a>
-                                <a href="Kashmir.html" class="btn btn-primary">View Details</a>
+                                <a href="packages/Kashmir-Pakage-1.html" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -229,25 +236,23 @@
                 <!-- Card 2 -->
                 <div class="tour-package-card">
                     <div class="tp-img-wrap">
-                        <img src="Himachal_pradesh_Card.jpg" alt="Package 2">
+                        <img src="images/slide1.jpg" alt="Ultimate Kashmir Adventure">
                     </div>
                     <div class="tp-content">
-                        <h3>Ultimate Goa Adventure</h3>
-                        <p class="trip-duration">6 Days / 5 Nights &#8594;</p>
+                        <h3>Ultimate Kashmir Adventure</h3>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Arrival &#8594; North Goa &#8594; South Goa &#8594;
-                                Dudhsagar &#8594; Departure
-                            </p>
+                            <p><i class="fas fa-route"></i> Srinagar &#8594; Gulmarg &#8594; Pahalgam &#8594; Yusmarg &#8594; Departure</p>
+                            <p class="trip-duration">7 Days / 6 Nights</p>
                         </div>
                         <div class="tp-footer">
                             <div class="tp-price">
                                 <span>Starting from</span>
-                                <h4>INR 23,000/-</h4>
+                                <h4>INR 29,500/-</h4>
                             </div>
                             <div class="tp-actions">
                                 <a href="https://wa.me/917338132315?text=I'm interested in the Ultimate Kashmir Adventure"
                                     class="btn btn-outline" target="_blank">Contact Us</a>
-                                <a href="Kashmir.html" class="btn btn-primary">View Details</a>
+                                <a href="packages/Kashmir-Pakage-2.html" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -256,14 +261,13 @@
                 <!-- Card 3 -->
                 <div class="tour-package-card">
                     <div class="tp-img-wrap">
-                        <img src="images/slide1.jpg" alt="Package 3">
+                        <img src="images/slide2.jpg" alt="Magical Kashmir Tour">
                     </div>
                     <div class="tp-content">
                         <h3>Magical Kashmir Tour</h3>
-                        <p class="trip-duration">5 Days / 4 Nights &#8594;</p>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Srinagar &#8594; Gulmarg &#8594; Pahalgam &#8594; Departure
-                            </p>
+                            <p><i class="fas fa-route"></i> Srinagar &#8594; Gulmarg &#8594; Pahalgam &#8594; Departure</p>
+                            <p class="trip-duration">5 Days / 4 Nights</p>
                         </div>
                         <div class="tp-footer">
                             <div class="tp-price">
@@ -273,7 +277,7 @@
                             <div class="tp-actions">
                                 <a href="https://wa.me/917338132315?text=I'm interested in the Magical Kashmir Tour"
                                     class="btn btn-outline" target="_blank">Contact Us</a>
-                                <a href="Kashmir.html" class="btn btn-primary">View Details</a>
+                                <a href="packages/Kashmir-Pakage-3.html" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -283,13 +287,95 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    
+  <!-- Get in Touch -->
+  <section id="contact" class="section bg-pastel">
+    <div class="container contact-container">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p>Ready for your next adventure? Contact us today to plan your trip!</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>+91 98765 43210</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>holidaysmeher@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>New Delhi, India</span>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+
+      <div class="contact-form-container">
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="phone" placeholder="Your Phone Number" required>
+          </div>
+          <div class="form-group">
+            <textarea id="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
         <div class="container footer-content">
             <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- Travel Background Animation -->
+    <div class="travel-bg-animation">
+        <i class="fas fa-solid fa-cloud cloud c1"></i>
+        <i class="fas fa-solid fa-cloud cloud c2"></i>
+        <i class="fas fa-solid fa-cloud cloud c3"></i>
+        <i class="fas fa-solid fa-plane plane"></i>
+        <i class="fas fa-solid fa-motorcycle bike"></i>
+        <!-- Detailed Shikara Houseboat SVG -->
+        <svg class="houseboat" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z" fill="currentColor"/>
+            <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8"/>
+            <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor"/>
+            <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+        </svg>
+    </div>
 </body>
 
 </html>

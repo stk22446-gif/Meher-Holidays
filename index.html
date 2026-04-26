@@ -1,834 +1,1333 @@
+<!-- 
+  MEHER HOLIDAYS - DEVELOPER CONFIGURATION GUIDE
+  ==============================================
+  This website is built with vanilla HTML5, CSS3, and JavaScript.
+  
+  QUICK MAINTENANCE TIPS:
+  1. IMAGES: Most hero and section images are managed via CSS 'background-image' or inline styles.
+  2. COLORS: Primary Brand Color is Gold (#ffd700). 
+  3. NAVIGATION: The mobile drawer and scroll effects are handled in 'script.js'.
+  4. GALLERY: The 'Travel Memories' orbit gallery is configured via the 'groupsData' array in this file.
+  5. PACKAGES: Individual tour details are located in the /packages directory.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meher Holidays - Explore India</title>
-    <meta name="description"
-        content="Affordable and unforgettable travel experiences across India with Meher Holidays.">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap"
-        rel="stylesheet">
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meher Holidays - Explore India</title>
+  <meta name="description" content="Affordable and unforgettable travel experiences across India with Meher Holidays.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&family=Satisfy&display=swap"
+    rel="stylesheet">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="bg-light">
 
-    <!-- Header / Nav -->
-    <header id="header">
-        <div class="container nav-container">
-            <a href="#" class="logo"><img src="images/logo.png" alt="Meher Holidays Logo"></a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#packages">Packages</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+
+
+
+  <!-- Header / Nav -->
+  <header id="header">
+    <div class="container nav-container">
+      <a href="#" class="logo"><img src="images/logo.png" alt="Meher Holidays Logo"></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+
+        </ul>
+      </nav>
+      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero slider-container">
+    <!-- Slider Images -->
+    <!-- 
+      EXAMPLE: ADDING A NEW HERO SLIDE
+      <div class="slide" style="background-image: url('images/YourImage.jpg');"></div>
+    -->
+    <div class="hero-slider">
+      <div class="slide active" style="background-image: url('HomeSlides/slide1.jpg');"></div>
+      <div class="slide" style="background-image: url('HomeSlides/Slide3.jpg');"></div>
+      <div class="slide" style="background-image: url('HomeSlides/Slide2.jpg');"></div>
+      <div class="slide" style="background-image: url('HomeSlides/Slide4.jpg');"></div>
+    </div>
+
+    <button class="slider-nav prev" type="button" aria-label="Previous slide">
+      <i class="fas fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button class="slider-nav next" type="button" aria-label="Next slide">
+      <i class="fas fa-chevron-right" aria-hidden="true"></i>
+    </button>
+
+    <!-- Slider Dots -->
+    <div class="slider-dots">
+      <span class="dot active" data-slide="0" aria-label="Go to slide 1" role="button" tabindex="0"></span>
+      <span class="dot" data-slide="1" aria-label="Go to slide 2" role="button" tabindex="0"></span>
+      <span class="dot" data-slide="2" aria-label="Go to slide 3" role="button" tabindex="0"></span>
+      <span class="dot" data-slide="2" aria-label="Go to slide 3" role="button" tabindex="0"></span>
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <h1>Explore the World with<br><span style="color: #ffd700;">Meher Holidays</span></h1>
+      <p class="hero-subtitle" style="color: #ffd700;"><span id="typing-text"
+          data-text="Affordable and unforgettable travel experiences across India"></span><span class="cursor"></span>
+      </p>
+      <a href="#packages" class="btn btn-primary">
+        Book Now
+      </a>
+    </div>
+
+  </section>
+
+  <!-- Promotional Banner - First International Trip -->
+  <section class="promo-banner">
+    <div class="promo-content">
+      <div class="promo-text">
+        <h2>Join Our First International Trip</h2>
+        <p class="promo-title"> Bhutan Adventure</p>
+        <p class="promo-description" style="color: #ffd700;">Experience the beauty of the Himalayas with our exclusive
+          first
+          international expedition to Bhutan. Explore pristine valleys, ancient monasteries, and vibrant
+          culture with Meher Holidays. Limited slots available!</p>
+        <div class="promo-buttons">
+          <a href="https://wa.me/917338132315?text=I'm%20interested%20in%20the%20Bhutan%20international%20trip"
+            class="btn btn-promo btn-primary-white" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-whatsapp"></i> Book Now
+          </a>
+          <a href="Bhutan.html" class="btn btn-promo btn-secondary-white">
+            <i class="fas fa-compass"></i> Explore
+          </a>
         </div>
-    </header>
+      </div>
+    </div>
+  </section>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero slider-container">
-        <!-- Slider Images -->
-        <div class="hero-slider">
-            <div class="slide active" style="background-image: url('images/slide1.jpg');"></div>
-            <div class="slide" style="background-image: url('images/slide2.jpg');"></div>
-            <div class="slide" style="background-image: url('images/slide3.jpg');"></div>
+  <!-- Popular Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Popular Services!</h2>
+        <p>Choose the service that excites you, and reach out to us with your details.</p>
+      </div>
+
+      <!-- 
+        EXAMPLE: ADDING A NEW SERVICE CARD
+        <div class="service-card">
+          <h3>Service Title</h3>
+          <div class="service-img"><img src="images/YourImage.jpg" alt="Title"></div>
+          <p class="desc">Description of the service.</p>
+          <a href="URL" class="btn btn-primary">Action</a>
+        </div>
+      -->
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card">
+          <h3>Family Custom Packages</h3>
+          <div class="service-img">
+            <img src="images/family.jpg" alt="Family Packages">
+          </div>
+          <p class="desc">Create unforgettable memories with our specially tailored family travel packages
+            designed for all ages.</p>
+          <a href="https://wa.me/917338132315" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Contact
+            Us</a>
         </div>
 
-        <button class="slider-nav prev" type="button" aria-label="Previous slide">
-            <i class="fas fa-chevron-left" aria-hidden="true"></i>
-        </button>
-        <button class="slider-nav next" type="button" aria-label="Next slide">
-            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-        </button>
-
-        <!-- Slider Dots -->
-        <div class="slider-dots">
-            <span class="dot active" data-slide="0" aria-label="Go to slide 1" role="button" tabindex="0"></span>
-            <span class="dot" data-slide="1" aria-label="Go to slide 2" role="button" tabindex="0"></span>
-            <span class="dot" data-slide="2" aria-label="Go to slide 3" role="button" tabindex="0"></span>
+        <!-- Service 2 -->
+        <div class="service-card">
+          <h3>Honeymoon Packages</h3>
+          <div class="service-img">
+            <img src="images/honeymoon.jpg" alt="Honeymoon Packages">
+          </div>
+          <p class="desc">Experience romance and luxury with our exclusive honeymoon getaways in beautiful
+            destinations.</p>
+          <a href="https://wa.me/917338132315" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Contact
+            Us</a>
         </div>
 
-        <div class="hero-overlay"></div>
+        <!-- Service 3 -->
+        <div class="service-card">
+          <h3>Group Trips</h3>
+          <div class="service-img">
+            <img src="images/GroupTrip.jpg" alt="Group Trips">
+          </div>
+          <p class="desc">Travel with friends or join like-minded explorers on our well-organized and
+            fun-filled group adventures.</p>
+          <a href="https://wa.me/917338132315" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Contact
+            Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="hero-content">
-            <h1>Explore the World with<br><span>Meher Holidays</span></h1>
-            <p class="hero-subtitle"><span id="typing-text"
-                    data-text="Affordable and unforgettable travel experiences across India"></span><span
-                    class="cursor"></span></p>
-            <a href="#packages" class="btn btn-primary">
-                Book Now
-            </a>
+  <!-- Tour Packages -->
+  <section id="packages" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Top Packages</h2>
+        <p>Discover our most popular travel destinations</p>
+      </div>
+
+      <div class="packages-grid">
+        <!-- Package 1 -->
+        <div class="package-card">
+          <div class="package-img">
+            <img src="images/Himachal_pradesh_Card.jpg" alt="Himachal Trip">
+          </div>
+          <div class="package-info">
+            <h3>Himachal Trip</h3>
+            <p class="desc">Explore the majestic peaks, lush valleys, and serene atmosphere of the Himachal hills.</p>
+            <!-- 🔥 BUTTONS YAHAN ADD HONGE -->
+            <div class="package-buttons">
+              <a href="Himachal.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
         </div>
 
+        <!-- Package 2 -->
+        <div class="package-card">
+          <div class="package-img">
+            <img src="images/KashmirCard.jpg" alt="Kashmir Trip">
+          </div>
+          <div class="package-info">
+            <h3>Kashmir Trip</h3>
+            <p class="desc">Journey to the 'Paradise on Earth' with breathtaking houseboats, Shikara rides, and snow-capped mountains.</p>
+            <div class="package-buttons">
+              <a href="Kashmir.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 3 -->
+        <div class="package-card">
+          <div class="package-img">
+            <img src="images/LadakhCard.jpg" alt="Ladakh Tour">
+          </div>
+          <div class="package-info">
+            <h3>Ladakh Tour</h3>
+            <p class="desc">Explore the royal heritage, colorful streets, and historic palaces of the Pink
+              City.</p>
+            <div class="package-buttons">
+              <a href="Ladakh.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Destinations -->
+  <section id="destinations" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Other Popular Destinations in India</h2>
+        <p>Explore more beautiful destinations across India</p>
+      </div>
+
+      <!-- 
+        EXAMPLE: ADDING A NEW DESTINATION CARD
+        <div class="dest-card">
+          <div class="dest-img-wrap">
+            <img src="images/YourImage.jpg" alt="Destination Name">
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <h3>Destination Name</h3>
+            <p class="desc">Description here.</p>
+            <a href="destination.html" class="btn btn-outline dest-btn">Explore</a>
+          </div>
+        </div>
+      -->
+      <div class="destinations-grid">
+        <!-- Card 1 -->
+        <div class="dest-card">
+          <div class="dest-img-wrap">
+            <img src="images/KeralaCard.jpg" alt="Kerala">
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <h3>Kerala</h3>
+            <p class="desc">Experience the serene backwaters and lush green landscapes.</p>
+            <a href="Kerala.html" class="btn btn-outline dest-btn">Explore</a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="dest-card">
+          <div class="dest-img-wrap">
+            <img src="images/LakshadweepCard.jpg" alt="Lakshadweep">
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <h3>Lakshadweep</h3>
+            <p class="desc">Find peace and adventure in the Yoga capital of the world.</p>
+            <a href="Lakshadweep.html" class="btn btn-outline dest-btn">Explore</a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="dest-card">
+          <div class="dest-img-wrap">
+            <img src="images/RajasthanCard.jpg" alt="Rajasthan">
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <h3>Rajasthan</h3>
+            <p class="desc">Experience the rich culture and stunning architecture of the desert state.</p>
+            <a href="Rajasthan.html" class="btn btn-outline dest-btn">Explore</a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="dest-card">
+          <div class="dest-img-wrap">
+            <img src="images/sikkimCard.jpg" alt="Sikkim">
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <h3>Sikkim</h3>
+            <p class="desc">A beautiful blend of nature, monasteries, and rich culture.</p>
+            <a href="sikkim.html" class="btn btn-outline dest-btn">Explore</a>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="dest-card">
+          <div class="dest-img-wrap">
+            <img src="images/ArunachalCard.jpg" alt="Arunachal Pradesh">
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <h3>Arunachal Pradesh</h3>
+            <p class="desc">Explore pristine landscapes, ancient monasteries, and vibrant tribal culture.
+            </p>
+            <a href="Arunachal.html" class="btn btn-outline dest-btn">Explore</a>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="dest-card">
+          <div class="dest-img-wrap">
+            <img src="images/MeghalayaCard.jpg" alt="Meghalaya">
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <h3>Meghalaya</h3>
+            <p class="desc">Discover the abode of clouds, living root bridges, and stunning waterfalls.</p>
+            <a href="Meghalaya.html" class="btn btn-outline dest-btn">Explore</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section id="about" class="section bg-light">
+    <div class="container about-container">
+
+      <!-- 🔥 PEHLE FOUNDERS -->
+      <!-- 
+        EXAMPLE: ADDING A NEW TEAM MEMBER
+        <div class="founder-card">
+          <img src="images/Member.png" class="founder-img" alt="Name">
+          <h3>Name</h3>
+          <p class="founder-role">Role</p>
+          <p>Short bio here.</p>
+        </div>
+      -->
+      <div style="display:flex; gap:20px; justify-content:center; margin-bottom:40px; flex-wrap:wrap;">
+
+        <!-- Founder 1 -->
+        <div class="founder-card">
+          <img src="images/Founder.png" class="founder-img" alt="Aishwarya V">
+          <h3>Aishwarya V</h3>
+          <p class="founder-role">Founder</p>
+          <p>Passionate about travel and making journeys affordable for everyone.</p>
+        </div>
+
+        <!-- Founder 2 -->
+        <div class="founder-card">
+          <img src="images/Co-Founder.png" class="founder-img" alt="Anuradha V">
+          <h3>Anuradha V</h3>
+          <p class="founder-role">Co-Founder</p>
+          <p>Expert in planning trips and delivering unforgettable experiences.</p>
+        </div>
+
+      </div>
+
+      <!-- 👇 PHIR OUR STORY -->
+      <div class="about-content">
+        <h2>Our Story</h2>
+        <div class="divider"></div>
+
+        <p>Meher Holidays started with a simple belief: <strong>travel should be for everyone</strong>. We
+          noticed that exploring the beautiful corners of India often felt complicated and expensive. That's
+          why we set out to change the way people travel.</p>
+
+        <p>Our goal is to help you explore India easily and affordably. We craft unforgettable experiences,
+          blending local culture, breathtaking sights, and total comfort. Whether you're seeking the thrill of
+          the mountains or the calm of the beach, we are here to make your dream trip a reality.</p>
+      </div>
+
+    </div>
+
+    <!-- Premium Travel Memories: Circular Orbit Gallery -->
+    <section id="gallery" class="orbit-gallery-section">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="galleryGroupName">Travel Memories</h2>
+          <p id="galleryGroupSubtitle">Glimpses of our recent expeditions</p>
+        </div>
+
+        <div class="orbit-viewport">
+          <div class="orbit-track" id="orbitTrack">
+            <!-- Groups will be injected here -->
+          </div>
+
+          <!-- Controls -->
+          <div class="orbit-nav">
+            <button id="orbitPrev" class="nav-circle"><i class="fas fa-chevron-left"></i></button>
+            <button id="orbitNext" class="nav-circle"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Group Progress Dots -->
+        <div class="orbit-group-indicator" id="orbitGroupDots">
+          <!-- Group dots injected here -->
+        </div>
+      </div>
+
+      <style>
+        .orbit-gallery-section {
+          padding: 100px 0;
+          background: transparent;
+          overflow: hidden;
+        }
+
+        .orbit-viewport {
+          position: relative;
+          width: 100%;
+          height: 800px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          perspective: 1200px;
+        }
+
+        .orbit-track {
+          position: relative;
+          width: 700px;
+          height: 700px;
+          transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+          transform-style: preserve-3d;
+        }
+
+        .orbit-group {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+          transform-origin: center center;
+          pointer-events: none;
+        }
+
+        /* Positioning Groups */
+        .orbit-group.prev {
+          transform: translateX(-750px) scale(0.7) rotateY(25deg);
+          opacity: 0.4;
+          filter: blur(1px);
+        }
+
+        .orbit-group.active {
+          transform: translateX(0) scale(1) rotateY(0);
+          opacity: 1;
+          filter: blur(0);
+          pointer-events: auto;
+          z-index: 10;
+        }
+
+        .orbit-group.next {
+          transform: translateX(750px) scale(0.7) rotateY(-25deg);
+          opacity: 0.4;
+          filter: blur(1px);
+        }
+
+        .orbit-group.hidden {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+
+        /* Orbit Elements */
+        .orbit-path-svg {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          animation: none;
+        }
+
+        @keyframes rotatePath {
+          from {
+            transform: rotate(0deg);
+          }
+
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .orbit-center {
+          position: relative;
+          width: 500px;
+          height: 500px;
+          z-index: 5;
+        }
+
+        .center-img-wrapper {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 8px solid #fff;
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+          position: relative;
+        }
+
+        .center-img-wrapper img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.8s ease, opacity 0.5s ease;
+        }
+
+        .center-info {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+          padding: 40px 20px 20px;
+          text-align: center;
+          color: #fff;
+        }
+
+        .center-info h3 {
+          margin: 0;
+          font-size: 1.8rem;
+          font-weight: 600;
+        }
+
+        .orbit-items-wrap {
+          position: absolute;
+          inset: 0;
+          transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .orbit-item {
+          position: absolute;
+          width: 70px;
+          height: 70px;
+          margin-left: -35px;
+          margin-top: -35px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 3px solid #fff;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+          transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+          z-index: 5;
+        }
+
+        .orbit-item:hover {
+          transform: scale(1.2) !important;
+          z-index: 15;
+        }
+
+        .orbit-item.active {
+          border-color: #3b82f6;
+          box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+          transform: scale(1.1) !important;
+        }
+
+        .orbit-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(20%);
+        }
+
+        .orbit-nav {
+          position: absolute;
+          width: 100%;
+          max-width: 900px;
+          display: flex;
+          justify-content: space-between;
+          top: 50%;
+          transform: translateY(-50%);
+          pointer-events: none;
+          z-index: 100;
+        }
+
+        .nav-circle {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: #fff;
+          border: none;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+          pointer-events: auto;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #1e293b;
+        }
+
+        .nav-circle:hover {
+          background: #1e293b;
+          color: #fff;
+          transform: scale(1.1);
+        }
+
+        .orbit-group-indicator {
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+          margin-top: 40px;
+        }
+
+        .group-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: rgba(30, 41, 59, 0.1);
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .group-dot.active {
+          background: #3b82f6;
+          transform: scale(1.3);
+        }
+
+        @media (max-width: 1300px) {
+          .orbit-group.prev {
+            transform: translateX(-400px) scale(0.6);
+          }
+
+          .orbit-group.next {
+            transform: translateX(400px) scale(0.6);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .orbit-viewport {
+            height: 500px;
+          }
+
+          .orbit-track {
+            width: 350px;
+            height: 350px;
+          }
+
+          .orbit-center {
+            width: 250px;
+            height: 250px;
+          }
+
+          .center-info h3 {
+            font-size: 1.2rem;
+          }
+
+          .orbit-item {
+            width: 50px;
+            height: 50px;
+            margin-left: -25px;
+            margin-top: -25px;
+          }
+
+          .orbit-group.prev {
+            transform: translateX(-120vw) scale(0.5);
+            opacity: 0;
+          }
+
+          .orbit-group.next {
+            transform: translateX(120vw) scale(0.5);
+            opacity: 0;
+          }
+
+          .orbit-nav {
+            padding: 0 10px;
+            max-width: 100%;
+          }
+
+          .nav-circle {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+          }
+        }
+      </style>
+
+      <script>
+        (function () {
+          /* 
+           * CONFIGURATION GUIDE FOR DEVELOPERS:
+           * To update the gallery, simply modify the 'groupsData' array below.
+           * - name: The main title of the memory group.
+           * - subtitle: The secondary description.
+           * - images: Array of 10 images. Each needs a 'src' (path) and 'title' (for the center display).
+           * Note: The system automatically calculates positions for any number of images.
+           */
+          const groupsData = [
+            {
+              name: "Expedition: The North",
+              subtitle: "Mountains, Monasteries & Mystique",
+              images: [
+                { src: "images/Bhutan_Banner.jpg", title: "Tiger's Nest, Bhutan" },
+                { src: "images/Himachal_pradesh_Banner.jpg", title: "Manali, Himachal" },
+                { src: "images/SummerSpitiValleyAdventure.jpg", title: "Kaza, Spiti Valley" },
+                { src: "images/LadakhCard.jpg", title: "Leh, Ladakh" },
+                { src: "images/KashmirCard.jpg", title: "Gulmarg, Kashmir" },
+                { src: "images/SikkimCard.jpg", title: "Gangtok, Sikkim" },
+                { src: "images/Himachal_pradesh_Card.jpg", title: "Rohtang Pass, Himachal" },
+                { src: "images/WhyVisitBhutan.jpg", title: "Punakha Dzong, Bhutan" },
+                { src: "images/slide1.jpg", title: "Northern Valleys" },
+                { src: "images/slide2.jpg", title: "Mountain Peaks" }
+              ]
+            },
+            {
+              name: "The Royal Heritage",
+              subtitle: "Palaces, Culture & Deserts",
+              images: [
+                { src: "images/RajasthanCard.jpg", title: "Jaipur, Rajasthan" },
+                { src: "images/TravelGallary1.jpeg", title: "Ancient Architecture" },
+                { src: "images/TravelGallary2.jpeg", title: "Local Markets" },
+                { src: "images/ArunachalCard.jpg", title: "Tawang, Arunachal" },
+                { src: "images/DreamyHimachalGetaway.jpg", title: "Shimla, Himachal" },
+                { src: "images/MeghalayaCard.jpg", title: "Shillong, Meghalaya" },
+                { src: "images/slide3.jpg", title: "Cultural Heritage" },
+                { src: "images/TravelGallary1.jpeg", title: "Traditional Festivals" },
+                { src: "images/TravelGallary2.jpeg", title: "Artisan Crafts" },
+                { src: "images/RajasthanCard.jpg", title: "Desert Safaris" }
+              ]
+            },
+            {
+              name: "Tropical Serenity",
+              subtitle: "Beaches, Backwaters & Bliss",
+              images: [
+                { src: "images/KeralaCard.jpg", title: "Alleppey, Kerala" },
+                { src: "images/LakshadweepCard.jpg", title: "Agatti Island" },
+                { src: "images/GroupTrip.jpg", title: "Coastal Adventures" },
+                { src: "images/slide1.jpg", title: "Ocean Sunsets" },
+                { src: "images/slide2.jpg", title: "Tropical Palms" },
+                { src: "images/slide3.jpg", title: "Private Retreats" },
+                { src: "images/family.jpg", title: "Family Getaways" },
+                { src: "images/honeymoon.jpg", title: "Honeymoon Bliss" },
+                { src: "images/KeralaCard.jpg", title: "Munnar Tea Gardens" },
+                { src: "images/LakshadweepCard.jpg", title: "Coral Reefs" }
+              ]
+            }
+          ];
+
+          let currentGroupIndex = 0;
+          let currentIndexInGroup = 0;
+          let autoPlayTimer;
+
+          const track = document.getElementById('orbitTrack');
+          const groupDots = document.getElementById('orbitGroupDots');
+          const titleElem = document.getElementById('galleryGroupName');
+          const subtitleElem = document.getElementById('galleryGroupSubtitle');
+
+          // Initialize Groups
+          const groups = groupsData.map((data, gIdx) => {
+            const groupEl = document.createElement('div');
+            groupEl.className = 'orbit-group';
+            groupEl.innerHTML = `
+              <svg class="orbit-path-svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="0.3" stroke-dasharray="2 2" /></svg>
+              <div class="orbit-center">
+                <div class="center-img-wrapper">
+                  <img src="${data.images[0].src}" alt="">
+                  <div class="center-info"><h3>${data.images[0].title}</h3></div>
+                </div>
+              </div>
+              <div class="orbit-items-wrap"></div>
+            `;
+
+            const wrap = groupEl.querySelector('.orbit-items-wrap');
+            const radius = window.innerWidth < 768 ? 175 : 350;
+
+            data.images.forEach((img, i) => {
+              const item = document.createElement('div');
+              item.className = 'orbit-item';
+              item.innerHTML = `<img src="${img.src}" alt="">`;
+              const angle = (i / data.images.length) * 2 * Math.PI - Math.PI / 2;
+              const x = Math.cos(angle) * radius + (window.innerWidth < 768 ? 175 : 350);
+              const y = Math.sin(angle) * radius + (window.innerWidth < 768 ? 175 : 350);
+              item.style.left = `${x}px`;
+              item.style.top = `${y}px`;
+              item.onclick = (e) => {
+                e.stopPropagation();
+                if (gIdx === currentGroupIndex) goToItem(i);
+              };
+              wrap.appendChild(item);
+            });
+
+            track.appendChild(groupEl);
+
+            // Dot
+            const dot = document.createElement('div');
+            dot.className = 'group-dot';
+            dot.onclick = () => switchGroup(gIdx);
+            groupDots.appendChild(dot);
+
+            return { el: groupEl, wrap: wrap, data: data };
+          });
+
+          function updateDisplay() {
+            groups.forEach((group, i) => {
+              group.el.className = 'orbit-group';
+              if (i === currentGroupIndex) group.el.classList.add('active');
+              else if (i === (currentGroupIndex - 1 + groups.length) % groups.length) group.el.classList.add('prev');
+              else if (i === (currentGroupIndex + 1) % groups.length) group.el.classList.add('next');
+              else group.el.classList.add('hidden');
+            });
+
+            Array.from(groupDots.children).forEach((dot, i) => {
+              dot.classList.toggle('active', i === currentGroupIndex);
+            });
+
+            const activeData = groupsData[currentGroupIndex];
+            titleElem.textContent = activeData.name;
+            subtitleElem.textContent = activeData.subtitle;
+          }
+
+          function goToItem(index) {
+            currentIndexInGroup = index;
+            const group = groups[currentGroupIndex];
+            const rotation = -(index / group.data.images.length) * 360;
+
+            group.wrap.style.transform = `rotate(${rotation}deg)`;
+
+            // Counter rotate items
+            const items = group.wrap.querySelectorAll('.orbit-item');
+            items.forEach((item, i) => {
+              item.style.transform = `rotate(${-rotation}deg)`;
+              item.classList.toggle('active', i === index);
+            });
+
+            // Update center
+            const center = group.el.querySelector('.center-img-wrapper img');
+            const centerTitle = group.el.querySelector('.center-info h3');
+
+            center.style.opacity = '0';
+            setTimeout(() => {
+              center.src = group.data.images[index].src;
+              centerTitle.textContent = group.data.images[index].title;
+              center.style.opacity = '1';
+            }, 300);
+
+            resetAutoPlay();
+          }
+
+          function switchGroup(index) {
+            currentGroupIndex = (index + groups.length) % groups.length;
+            currentIndexInGroup = 0;
+            updateDisplay();
+            goToItem(0);
+          }
+
+          function nextItem() {
+            const currentGroup = groupsData[currentGroupIndex];
+            if (currentIndexInGroup < currentGroup.images.length - 1) {
+              goToItem(currentIndexInGroup + 1);
+            } else {
+              switchGroup(currentGroupIndex + 1);
+            }
+          }
+
+          function resetAutoPlay() {
+            clearInterval(autoPlayTimer);
+            autoPlayTimer = setInterval(nextItem, 5000);
+          }
+
+          const btnNext = document.getElementById('orbitNext');
+          const btnPrev = document.getElementById('orbitPrev');
+
+          btnNext.onclick = nextItem;
+          btnNext.ontouchstart = (e) => { e.preventDefault(); nextItem(); };
+
+          btnPrev.onclick = () => {
+            if (currentIndexInGroup > 0) {
+              goToItem(currentIndexInGroup - 1);
+            } else {
+              switchGroup(currentGroupIndex - 1);
+              goToItem(groupsData[currentGroupIndex].images.length - 1);
+            }
+          };
+          btnPrev.ontouchstart = (e) => {
+            e.preventDefault();
+            if (currentIndexInGroup > 0) {
+              goToItem(currentIndexInGroup - 1);
+            } else {
+              switchGroup(currentGroupIndex - 1);
+              goToItem(groupsData[currentGroupIndex].images.length - 1);
+            }
+          };
+
+          // Initial
+          updateDisplay();
+          goToItem(0);
+
+        })();
+      </script>
     </section>
+  </section>
 
-    <!-- Promotional Banner - First International Trip -->
-    <section class="promo-banner">
-        <div class="promo-content">
-            <div class="promo-text">
-                <h2>Join Our First International Trip</h2>
-                <p class="promo-title"> Bhutan Adventure</p>
-                <p class="promo-description">Experience the beauty of the Himalayas with our exclusive first
-                    international expedition to Bhutan. Explore pristine valleys, ancient monasteries, and vibrant
-                    culture with Meher Holidays. Limited slots available!</p>
-                <div class="promo-buttons">
-                    <a href="https://wa.me/917338132315?text=I'm%20interested%20in%20the%20Bhutan%20international%20trip"
-                        class="btn btn-promo btn-primary-white" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-whatsapp"></i> Book Now
-                    </a>
-                    <a href="Bhutan.html" class="btn btn-promo btn-secondary-white">
-                        <i class="fas fa-compass"></i> Explore
-                    </a>
-                </div>
+
+  <!-- Testimonials Section -->
+  <section id="reviews" class="testimonials-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>What Our Travelers Say</h2>
+        <p>Real stories. Real experiences.</p>
+      </div>
+    </div>
+
+    <div class="testimonial-carousel-container">
+      <div class="testimonial-track-wrapper">
+        <!-- 
+          EXAMPLE: ADDING A NEW TESTIMONIAL CARD
+          <div class="testimonial-card">
+            <div class="rev-header">
+              <div class="rev-user-info">
+                <img src="https://ui-avatars.com/api/?name=User+Name&background=random" alt="Name" class="rev-avatar">
+                <div class="rev-name-wrap"><h4>User Name <i class="fas fa-check-circle rev-badge"></i></h4></div>
+              </div>
+              <a href="GOOGLE_REVIEW_LINK" target="_blank" class="rev-google-link"><img src="https://www.google.com/favicon.ico" alt="Google"></a>
             </div>
+            <div class="rev-stars">... (5 SVGs) ...</div>
+            <p class="rev-text">"Your review text here."</p>
+          </div>
+        -->
+        <div class="testimonial-track" id="testimonialTrack">
+          <!-- Review 1 -->
+          <div class="testimonial-card">
+            <div class="rev-header">
+              <div class="rev-user-info">
+                <img src="https://ui-avatars.com/api/?name=Sarah+Johnson&background=random" alt="Sarah Johnson"
+                  class="rev-avatar">
+                <div class="rev-name-wrap">
+                  <h4>Sarah Johnson <i class="fas fa-check-circle rev-badge"></i></h4>
+                </div>
+              </div>
+              <a href="https://www.google.com/search?q=Meher+Holidays+reviews" target="_blank" class="rev-google-link">
+                <img src="https://www.google.com/favicon.ico" alt="Google">
+              </a>
+            </div>
+            <div class="rev-stars">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+            </div>
+            <p class="rev-text">"Amazing experience in Himachal Pradesh! The itinerary was perfectly planned, and the
+              local guides were incredibly knowledgeable. Highly recommend!"</p>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="testimonial-card">
+            <div class="rev-header">
+              <div class="rev-user-info">
+                <img src="https://ui-avatars.com/api/?name=Rajesh+Kumar&background=random" alt="Rajesh Kumar"
+                  class="rev-avatar">
+                <div class="rev-name-wrap">
+                  <h4>Rajesh Kumar <i class="fas fa-check-circle rev-badge"></i></h4>
+                </div>
+              </div>
+              <a href="https://www.google.com/search?q=Meher+Holidays+reviews" target="_blank" class="rev-google-link">
+                <img src="https://www.google.com/favicon.ico" alt="Google">
+              </a>
+            </div>
+            <div class="rev-stars">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+            </div>
+            <p class="rev-text">"Kerala backwaters tour was unforgettable! Professional team, comfortable
+              accommodations. Worth every penny for the memories we made."</p>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="testimonial-card">
+            <div class="rev-header">
+              <div class="rev-user-info">
+                <img src="https://ui-avatars.com/api/?name=Priya+Patel&background=random" alt="Priya Patel"
+                  class="rev-avatar">
+                <div class="rev-name-wrap">
+                  <h4>Priya Patel <i class="fas fa-check-circle rev-badge"></i></h4>
+                </div>
+              </div>
+              <a href="https://www.google.com/search?q=Meher+Holidays+reviews" target="_blank" class="rev-google-link">
+                <img src="https://www.google.com/favicon.ico" alt="Google">
+              </a>
+            </div>
+            <div class="rev-stars">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+            </div>
+            <p class="rev-text">"Ladakh adventure was breathtaking! Everything was perfect. Special thanks to the team
+              for making it so memorable and safe!"</p>
+          </div>
+
+          <!-- Review 4 -->
+          <div class="testimonial-card">
+            <div class="rev-header">
+              <div class="rev-user-info">
+                <img src="https://ui-avatars.com/api/?name=Sumanth+G&background=random" alt="Sumanth G"
+                  class="rev-avatar">
+                <div class="rev-name-wrap">
+                  <h4>Sumanth G <i class="fas fa-check-circle rev-badge"></i></h4>
+                </div>
+              </div>
+              <a href="https://www.google.com/search?q=Meher+Holidays+reviews" target="_blank" class="rev-google-link">
+                <img src="https://www.google.com/favicon.ico" alt="Google">
+              </a>
+            </div>
+            <div class="rev-stars">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+            </div>
+            <p class="rev-text">"The Bhutan trip was planned to perfection. From the monasteries to the local food,
+              every detail was covered by Meher Holidays."</p>
+          </div>
+
+          <!-- Review 5 -->
+          <div class="testimonial-card">
+            <div class="rev-header">
+              <div class="rev-user-info">
+                <img src="https://ui-avatars.com/api/?name=Anjali+S&background=random" alt="Anjali S"
+                  class="rev-avatar">
+                <div class="rev-name-wrap">
+                  <h4>Anjali S <i class="fas fa-check-circle rev-badge"></i></h4>
+                </div>
+              </div>
+              <a href="https://www.google.com/search?q=Meher+Holidays+reviews" target="_blank" class="rev-google-link">
+                <img src="https://www.google.com/favicon.ico" alt="Google">
+              </a>
+            </div>
+            <div class="rev-stars">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+            </div>
+            <p class="rev-text">"Best budget travel agency! Everything from hotels to travel was top-notch. Will
+              definitely book my next trip with them again!"</p>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Popular Services -->
-    <section id="services" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Popular Services!</h2>
-                <p>Choose the service that excites you, and reach out to us with your details.</p>
-            </div>
+      <!-- Controls -->
+      <div class="rev-controls">
+        <button class="rev-nav-btn" id="revPrev" aria-label="Previous review"><i
+            class="fas fa-chevron-left"></i></button>
+        <div class="rev-dots" id="revDots"></div>
+        <button class="rev-nav-btn" id="revNext" aria-label="Next review"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
 
-            <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-card">
-                    <h3>Family Custom Packages</h3>
-                    <div class="service-img">
-                        <img src="images/family.jpg" alt="Family Packages">
-                    </div>
-                    <p class="desc">Create unforgettable memories with our specially tailored family travel packages
-                        designed for all ages.</p>
-                    <a href="https://wa.me/917338132315" class="btn btn-primary" target="_blank"
-                        rel="noopener noreferrer">Contact Us</a>
-                </div>
+    <script>
+      (function () {
+        const track = document.getElementById('testimonialTrack');
+        const cards = Array.from(track.getElementsByClassName('testimonial-card'));
+        const dotsContainer = document.getElementById('revDots');
+        const nextBtn = document.getElementById('revNext');
+        const prevBtn = document.getElementById('revPrev');
 
-                <!-- Service 2 -->
-                <div class="service-card">
-                    <h3>Honeymoon Packages</h3>
-                    <div class="service-img">
-                        <img src="images/honeymoon.jpg" alt="Honeymoon Packages">
-                    </div>
-                    <p class="desc">Experience romance and luxury with our exclusive honeymoon getaways in beautiful
-                        destinations.</p>
-                    <a href="https://wa.me/917338132315" class="btn btn-primary" target="_blank"
-                        rel="noopener noreferrer">Contact Us</a>
-                </div>
+        let currentIndex = 1; // Start with the second card active for better initial visual
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID = 0;
 
-                <!-- Service 3 -->
-                <div class="service-card">
-                    <h3>Group Trips</h3>
-                    <div class="service-img">
-                        <img src="images/GroupTrip.jpg" alt="Group Trips">
-                    </div>
-                    <p class="desc">Travel with friends or join like-minded explorers on our well-organized and
-                        fun-filled group adventures.</p>
-                    <a href="https://wa.me/917338132315" class="btn btn-primary" target="_blank"
-                        rel="noopener noreferrer">Contact Us</a>
-                </div>
-            </div>
+        // Generate dots
+        cards.forEach((_, i) => {
+          const dot = document.createElement('div');
+          dot.classList.add('rev-dot');
+          if (i === currentIndex) dot.classList.add('active');
+          dot.addEventListener('click', () => goToSlide(i));
+          dotsContainer.appendChild(dot);
+        });
+
+        const dots = Array.from(dotsContainer.getElementsByClassName('rev-dot'));
+
+        function updateCarousel() {
+          const firstCard = cards[0];
+          if (!firstCard) return;
+
+          const gap = 30;
+          const cardW = firstCard.offsetWidth;
+          const totalStep = cardW + gap;
+          const containerW = track.parentElement.offsetWidth;
+
+          // Center the active card exactly
+          const offset = (containerW / 2) - (cardW / 2) - (currentIndex * totalStep);
+
+          track.style.transform = `translateX(${offset}px)`;
+
+          cards.forEach((card, i) => {
+            card.classList.toggle('active', i === currentIndex);
+          });
+
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+          });
+        }
+
+        function goToSlide(index) {
+          currentIndex = (index + cards.length) % cards.length;
+          updateCarousel();
+        }
+
+        nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+        prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+
+        // Auto play
+        let autoPlay = setInterval(() => goToSlide(currentIndex + 1), 5000);
+
+        const stopAutoPlay = () => clearInterval(autoPlay);
+        const startAutoPlay = () => {
+          stopAutoPlay();
+          autoPlay = setInterval(() => goToSlide(currentIndex + 1), 5000);
+        };
+
+        [nextBtn, prevBtn, dotsContainer].forEach(el => {
+          el.addEventListener('mouseenter', stopAutoPlay);
+          el.addEventListener('mouseleave', startAutoPlay);
+        });
+
+        // Touch / Drag events
+        track.addEventListener('touchstart', touchStart);
+        track.addEventListener('touchend', touchEnd);
+        track.addEventListener('touchmove', touchMove);
+        track.addEventListener('mousedown', touchStart);
+        track.addEventListener('mouseup', touchEnd);
+        track.addEventListener('mouseleave', touchEnd);
+        track.addEventListener('mousemove', touchMove);
+
+        function touchStart(event) {
+          isDragging = true;
+          startPos = getPositionX(event);
+          stopAutoPlay();
+          track.style.transition = 'none';
+        }
+
+        function touchEnd() {
+          isDragging = false;
+          const movedBy = currentTranslate - prevTranslate;
+          if (movedBy < -100 && currentIndex < cards.length - 1) goToSlide(currentIndex + 1);
+          else if (movedBy > 100 && currentIndex > 0) goToSlide(currentIndex - 1);
+          else goToSlide(currentIndex);
+
+          track.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          startAutoPlay();
+        }
+
+        function touchMove(event) {
+          if (isDragging) {
+            const currentPosition = getPositionX(event);
+            currentTranslate = prevTranslate + currentPosition - startPos;
+            // For free dragging feel, we'd need more complex math here, 
+            // but for this UI we'll just handle swipe on touchEnd
+          }
+        }
+
+        function getPositionX(event) {
+          return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+        }
+
+        window.addEventListener('resize', updateCarousel);
+
+        // Initial update
+        setTimeout(updateCarousel, 100);
+      })();
+    </script>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section bg-pastel">
+    <div class="container contact-container">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p>Ready for your next adventure? Contact us today to plan your trip!</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>+91 98765 43210</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>holidaysmeher@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>New Delhi, India</span>
+          </div>
         </div>
-    </section>
-
-    <!-- Tour Packages -->
-    <section id="packages" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Top Packages</h2>
-                <p>Discover our most popular travel destinations</p>
-            </div>
-
-            <div class="packages-grid">
-                <!-- Package 1 -->
-                <div class="package-card">
-                    <div class="package-img">
-                        <img src="images/Himachal_pradesh_Card.jpg" alt="Himachal Trip">
-                        <span class="price-badge">₹24,999</span>
-                    </div>
-                    <div class="package-info">
-                        <h3>Himachal Trip</h3>
-                        <p class="trip-duration">4 Days / 3 Nights</p>
-                        <p class="desc">Experience the sun, sand, and vibrant nightlife in the beautiful beaches of Goa.
-                        </p>
-                        <!-- 🔥 BUTTONS YAHAN ADD HONGE -->
-                        <div class="package-buttons">
-                            <a href="Himachal.html" class="btn btn-outline">View Details</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package 2 -->
-                <div class="package-card">
-                    <div class="package-img">
-                        <img src="images/KashmirCard.jpg" alt="Kashmir Trip">
-                        <span class="price-badge">₹24,999</span>
-                    </div>
-                    <div class="package-info">
-                        <h3>Kashmir Trip</h3>
-                        <p class="trip-duration">4 Days / 3 Nights</p>
-                        <p class="desc">Experience the sun, sand, and vibrant nightlife in the beautiful beaches of Goa.
-                        </p>
-                        <div class="package-buttons">
-                            <a href="Kashmir.html" class="btn btn-outline">View Details</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Package 3 -->
-                <div class="package-card">
-                    <div class="package-img">
-                        <img src="images/LadakhCard.jpg" alt="Ladakh Tour">
-                        <span class="price-badge">₹6,999</span>
-                    </div>
-                    <div class="package-info">
-                        <h3>Ladakh Tour</h3>
-                        <p class="trip-duration">3 Days / 2 Nights</p>
-                        <p class="desc">Explore the royal heritage, colorful streets, and historic palaces of the Pink
-                            City.</p>
-                        <div class="package-buttons">
-                            <a href="Ladakh.html" class="btn btn-outline">View Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="social-links">
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
         </div>
-    </section>
-
-    <!-- Other Destinations -->
-    <section id="destinations" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Other Popular Destinations in India</h2>
-                <p>Explore more beautiful destinations across India</p>
-            </div>
-
-            <div class="destinations-grid">
-                <!-- Card 1 -->
-                <div class="dest-card">
-                    <div class="dest-img-wrap">
-                        <img src="https://placehold.co/400x250/1E40AF/ffffff?text=Kerala" alt="Kerala">
-                        <div class="dest-overlay"></div>
-                    </div>
-                    <div class="dest-info">
-                        <h3>Kerala</h3>
-                        <p class="trip-duration">6 Days / 5 Nights</p>
-                        <p class="desc">Experience the serene backwaters and lush green landscapes.</p>
-                        <a href="Kerala.html" class="btn btn-outline dest-btn">Explore</a>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="dest-card">
-                    <div class="dest-img-wrap">
-                        <img src="https://placehold.co/400x250/3B82F6/ffffff?text=Ladakh" alt="Zanskar">
-                        <div class="dest-overlay"></div>
-                    </div>
-                    <div class="dest-info">
-                        <h3>Zanskar</h3>
-                        <p class="trip-duration">7 Days / 6 Nights</p>
-                        <p class="desc">Discover the majestic mountains and high-altitude lakes.</p>
-                        <a href="Zanskar.html" class="btn btn-outline dest-btn">Explore</a>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="dest-card">
-                    <div class="dest-img-wrap">
-                        <img src="https://placehold.co/400x250/DBEAFE/1E293B?text=Rishikesh" alt="Lakshadweep">
-                        <div class="dest-overlay"></div>
-                    </div>
-                    <div class="dest-info">
-                        <h3>Lakshadweep</h3>
-                        <p class="trip-duration">3 Days / 2 Nights</p>
-                        <p class="desc">Find peace and adventure in the Yoga capital of the world.</p>
-                        <a href="Lakshadweep.html" class="btn btn-outline dest-btn">Explore</a>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="dest-card">
-                    <div class="dest-img-wrap">
-                        <img src="https://placehold.co/400x250/1E40AF/ffffff?text=Rajasthan" alt="Rajasthan">
-                        <div class="dest-overlay"></div>
-                    </div>
-                    <div class="dest-info">
-                        <h3>Rajasthan</h3>
-                        <p class="trip-duration">5 Days / 4 Nights</p>
-                        <p class="desc">Experience the rich culture and stunning architecture of the desert state.</p>
-                        <a href="Rajasthan.html" class="btn btn-outline dest-btn">Explore</a>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="dest-card">
-                    <div class="dest-img-wrap">
-                        <img src="https://www.esikkimtourism.in/wp-content/uploads/2019/04/buddhaprkoctbr.jpg"
-                            alt="Sikkim">
-                        <div class="dest-overlay"></div>
-                    </div>
-                    <div class="dest-info">
-                        <h3>Sikkim</h3>
-                        <p class="trip-duration">5 Days / 4 Nights</p>
-                        <p class="desc">A beautiful blend of nature, monasteries, and rich culture.</p>
-                        <a href="sikkim.html" class="btn btn-outline dest-btn">Explore</a>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="dest-card">
-                    <div class="dest-img-wrap">
-                        <img src="https://placehold.co/400x250/047857/ffffff?text=Arunachal+Pradesh"
-                            alt="Arunachal Pradesh">
-                        <div class="dest-overlay"></div>
-                    </div>
-                    <div class="dest-info">
-                        <h3>Arunachal Pradesh</h3>
-                        <p class="trip-duration">6 Days / 5 Nights</p>
-                        <p class="desc">Explore pristine landscapes, ancient monasteries, and vibrant tribal culture.
-                        </p>
-                        <a href="Arunachal.html" class="btn btn-outline dest-btn">Explore</a>
-                    </div>
-                </div>
-
-                <!-- Card 7 -->
-                <div class="dest-card">
-                    <div class="dest-img-wrap">
-                        <img src="https://placehold.co/400x250/059669/ffffff?text=Meghalaya" alt="Meghalaya">
-                        <div class="dest-overlay"></div>
-                    </div>
-                    <div class="dest-info">
-                        <h3>Meghalaya</h3>
-                        <p class="trip-duration">5 Days / 4 Nights</p>
-                        <p class="desc">Discover the abode of clouds, living root bridges, and stunning waterfalls.</p>
-                        <a href="Meghalaya.html" class="btn btn-outline dest-btn">Explore</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Us -->
-    <section id="about" class="section bg-light">
-        <div class="container about-container">
-
-            <!-- 🔥 PEHLE FOUNDERS -->
-            <div style="display:flex; gap:20px; justify-content:center; margin-bottom:40px; flex-wrap:wrap;">
-
-                <!-- Founder 1 -->
-                <div class="founder-card">
-                    <img src="images/Founder.png" class="founder-img" alt="Aishwarya V">
-                    <h3>Aishwarya V</h3>
-                    <p class="founder-role">Founder</p>
-                    <p>Passionate about travel and making journeys affordable for everyone.</p>
-                </div>
-
-                <!-- Founder 2 -->
-                <div class="founder-card">
-                    <img src="images/Co-Founder.png" class="founder-img" alt="Anuradha V">
-                    <h3>Anuradha V</h3>
-                    <p class="founder-role">Co-Founder</p>
-                    <p>Expert in planning trips and delivering unforgettable experiences.</p>
-                </div>
-
-            </div>
-
-            <!-- 👇 PHIR OUR STORY -->
-            <div class="about-content">
-                <h2>Our Story</h2>
-                <div class="divider"></div>
-
-                <p>Meher Holidays started with a simple belief: <strong>travel should be for everyone</strong>. We
-                    noticed that exploring the beautiful corners of India often felt complicated and expensive. That's
-                    why we set out to change the way people travel.</p>
-
-                <p>Our goal is to help you explore India easily and affordably. We craft unforgettable experiences,
-                    blending local culture, breathtaking sights, and total comfort. Whether you're seeking the thrill of
-                    the mountains or the calm of the beach, we are here to make your dream trip a reality.</p>
-            </div>
-
-        </div>
-        <!-- Gallery: Full Circle Orbit -->
-        <section id="gallery" class="section"
-            style="background: radial-gradient(circle at center, #ffffff 0%, #f5f7fb 100%); padding:100px 0 80px; overflow:hidden;">
-            <div class="container">
-                <div class="section-title" style="margin-bottom:60px;">
-                    <h2 style="color:#1e293b;">Travel Memories</h2>
-                    <p style="color:#64748b;">Glimpses of the beautiful moments we've shared</p>
-                </div>
-            </div>
-
-            <div class="travel-circle">
-
-                <!-- Circle container: center + orbit -->
-                <div class="circle-container">
-
-                    <!-- Center large image -->
-                    <div class="center-image" id="centerImage">
-                        <img id="centerImg" src="images/Bhutan_Banner.jpg" alt="Bhutan">
-                        <div class="center-overlay">
-                            <span id="centerLabel">Bhutan</span>
-                        </div>
-                    </div>
-
-                    <!-- Orbit ring: rotates as a whole -->
-                    <div class="orbit" id="orbitRing">
-                        <div class="orbit-item" data-location="Bhutan" data-src="images/Bhutan_Banner.jpg">
-                            <img src="images/Bhutan_Banner.jpg" alt="Bhutan">
-                        </div>
-                        <div class="orbit-item" data-location="Himachal Pradesh"
-                            data-src="images/Himachal_pradesh_Banner.jpg">
-                            <img src="images/Himachal_pradesh_Banner.jpg" alt="Himachal Pradesh">
-                        </div>
-                        <div class="orbit-item" data-location="Spiti Valley"
-                            data-src="images/SummerSpitiValleyAdventure.jpg">
-                            <img src="images/SummerSpitiValleyAdventure.jpg" alt="Spiti Valley">
-                        </div>
-                        <div class="orbit-item" data-location="Hidden Valleys" data-src="images/slide1.jpg">
-                            <img src="images/slide1.jpg" alt="Hidden Valleys">
-                        </div>
-                        <div class="orbit-item" data-location="Mountain Peaks" data-src="images/slide2.jpg">
-                            <img src="images/slide2.jpg" alt="Mountain Peaks">
-                        </div>
-                        <div class="orbit-item" data-location="Scenic Routes" data-src="images/slide3.jpg">
-                            <img src="images/slide3.jpg" alt="Scenic Routes">
-                        </div>
-                        <div class="orbit-item" data-location="Travel Memory I" data-src="images/TravelGallary1.jpeg">
-                            <img src="images/TravelGallary1.jpeg" alt="Travel Memory I">
-                        </div>
-                        <div class="orbit-item" data-location="Travel Memory II" data-src="images/TravelGallary2.jpeg">
-                            <img src="images/TravelGallary2.jpeg" alt="Travel Memory II">
-                        </div>
-                        <div class="orbit-item" data-location="Group Adventures" data-src="images/GroupTrip.jpg">
-                            <img src="images/GroupTrip.jpg" alt="Group Adventures">
-                        </div>
-                        <div class="orbit-item" data-location="Dreamy Getaway"
-                            data-src="images/DreamyHimachalGetaway.jpg">
-                            <img src="images/DreamyHimachalGetaway.jpg" alt="Dreamy Getaway">
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Arrows -->
-                <div class="orbit-nav">
-                    <button class="orbit-btn" id="orbitPrev" aria-label="Previous">&#8592;</button>
-                    <button class="orbit-btn" id="orbitNext" aria-label="Next">&#8594;</button>
-                </div>
-
-                <!-- Dots -->
-                <div class="orbit-dots" id="orbitDots"></div>
-                <p class="orbit-hint">← swipe, scroll or click to explore →</p>
-            </div>
-
-            <style>
-                /* ── FULL CIRCLE ORBIT GALLERY (LIGHT THEME) ── */
-                .travel-circle {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 50px;
-                }
-
-                .circle-container {
-                    position: relative;
-                    width: 900px;
-                    height: 900px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                /* ── CENTER IMAGE ───────────────────────────── */
-                .center-image {
-                    position: relative;
-                    width: 600px;
-                    height: 600px;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    border: 8px solid #fff;
-                    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12), 0 5px 15px rgba(0, 0, 0, 0.05);
-                    z-index: 10;
-                    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-                }
-
-                .center-image:hover {
-                    transform: scale(1.02);
-                    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.15);
-                }
-
-                .center-image img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    transition: opacity 0.4s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-                }
-
-                .center-overlay {
-                    position: absolute;
-                    inset: 0;
-                    border-radius: 50%;
-                    background: linear-gradient(0deg, rgba(30, 41, 59, 0.6) 0%, transparent 50%);
-                    display: flex;
-                    align-items: flex-end;
-                    justify-content: center;
-                    padding-bottom: 300px;
-                }
-
-                .center-overlay span {
-                    font-size: 1.1rem;
-                    font-weight: 700;
-                    letter-spacing: 2px;
-                    text-transform: uppercase;
-                    color: #fff;
-                    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-                }
-
-                /* ── ORBIT RING ─────────────────────────────── */
-                .orbit {
-                    position: absolute;
-                    inset: 0;
-                    border-radius: 50%;
-                    border: 1.5px dashed rgba(30, 41, 59, 0.08);
-                    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-                }
-
-                /* ── ORBIT ITEMS ────────────────────────────── */
-                .orbit-item {
-                    position: absolute;
-                    width: 90px;
-                    height: 90px;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    border: 4px solid #fff;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                    cursor: pointer;
-                    opacity: 0.65;
-                    filter: saturate(0.8);
-                    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-                }
-
-                .orbit-item img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    pointer-events: none;
-                }
-
-                .orbit-item.active {
-                    opacity: 1;
-                    filter: saturate(1.1);
-                    border-color: #3b82f6;
-                    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
-                    z-index: 5;
-                }
-
-                /* ── NAV ────────────────────────────────────── */
-                .orbit-nav {
-                    display: flex;
-                    gap: 30px;
-                }
-
-                .orbit-btn {
-                    width: 54px;
-                    height: 54px;
-                    border-radius: 50%;
-                    border: 1.5px solid rgba(30, 41, 59, 0.1);
-                    background: #fff;
-                    color: #1e293b;
-                    font-size: 1.3rem;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    transition: all 0.3s ease;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-                }
-
-                .orbit-btn:hover {
-                    background: #3b82f6;
-                    border-color: #3b82f6;
-                    color: #fff;
-                    transform: scale(1.1);
-                    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
-                }
-
-                /* ── DOTS ───────────────────────────────────── */
-                .orbit-dots {
-                    display: flex;
-                    gap: 12px;
-                }
-
-                .orbit-dot {
-                    width: 9px;
-                    height: 9px;
-                    border-radius: 50%;
-                    background: rgba(30, 41, 59, 0.15);
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                }
-
-                .orbit-dot.active {
-                    background: #3b82f6;
-                    transform: scale(1.4);
-                    box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
-                }
-
-                .orbit-hint {
-                    font-size: 0.8rem;
-                    color: #94a3b8;
-                    letter-spacing: 2px;
-                    text-transform: uppercase;
-                    margin-top: -10px;
-                }
-
-                /* ── RESPONSIVE ─────────────────────────────── */
-                @media (max-width: 768px) {
-                    .circle-container {
-                        width: 520px;
-                        height: 520px;
-                    }
-
-                    .center-image {
-                        width: 240px;
-                        height: 240px;
-                    }
-
-                    .orbit-item {
-                        width: 64px;
-                        height: 64px;
-                    }
-                }
-
-                @media (max-width: 640px) {
-                    .circle-container {
-                        width: 400px;
-                        height: 400px;
-                    }
-
-                    .center-image {
-                        width: 160px;
-                        height: 160px;
-                    }
-
-                    .orbit-item {
-                        width: 54px;
-                        height: 54px;
-                    }
-                }
-
-                @media (max-width: 380px) {
-                    .circle-container {
-                        width: 320px;
-                        height: 320px;
-                    }
-
-                    .center-image {
-                        width: 140px;
-                        height: 140px;
-                    }
-
-                    .orbit-item {
-                        width: 48px;
-                        height: 48px;
-                    }
-                }
-            </style>
-
-            <script>
-                (function () {
-                    function initCircle() {
-                        var ring = document.getElementById('orbitRing');
-                        var centerImg = document.getElementById('centerImg');
-                        var centerLabel = document.getElementById('centerLabel');
-                        var dotsWrap = document.getElementById('orbitDots');
-                        if (!ring) return;
-
-                        var items = Array.prototype.slice.call(ring.querySelectorAll('.orbit-item'));
-                        var N = items.length;
-                        var STEP = 360 / N;
-                        var current = 0;
-                        var orbitAngle = 0; // cumulative rotation of the ring
-
-                        /* ── Place items on the orbit ring ── */
-                        function placeItems() {
-                            var container = ring.parentElement; // .circle-container
-                            var R = container.offsetWidth / 2 - items[0].offsetWidth / 2 - 12;
-                            items.forEach(function (el, i) {
-                                var deg = i * STEP; // position angle on ring (0 = top)
-                                var rad = (deg - 90) * Math.PI / 180;
-                                var cx = container.offsetWidth / 2;
-                                var cy = container.offsetHeight / 2;
-                                var hs = el.offsetWidth / 2;
-                                el.style.left = (cx + R * Math.cos(rad) - hs) + 'px';
-                                el.style.top = (cy + R * Math.sin(rad) - hs) + 'px';
-                            });
-                        }
-
-                        /* ── Update center image ── */
-                        function setCenterImage(el) {
-                            var src = el.dataset.src;
-                            var name = el.dataset.location;
-                            centerImg.style.opacity = 0;
-                            centerImg.style.transform = 'scale(1.08)';
-                            setTimeout(function () {
-                                centerImg.src = src;
-                                centerImg.alt = name;
-                                centerLabel.textContent = name;
-                                centerImg.style.opacity = 1;
-                                centerImg.style.transform = 'scale(1)';
-                            }, 250);
-                        }
-
-                        /* ── Update active states ── */
-                        function updateActive() {
-                            items.forEach(function (el, i) { el.classList.toggle('active', i === current); });
-                            document.querySelectorAll('.orbit-dot').forEach(function (d, i) { d.classList.toggle('active', i === current); });
-                            setCenterImage(items[current]);
-                        }
-
-                        /* ── Rotate to index ── */
-                        function rotateTo(index) {
-                            current = ((index % N) + N) % N;
-                            orbitAngle = -(current * STEP);
-                            ring.style.transform = 'rotate(' + orbitAngle + 'deg)';
-                            items.forEach(function (el) {
-                                el.style.transform = 'rotate(' + (-orbitAngle) + 'deg)';
-                            });
-                            items[current].style.transform = 'rotate(' + (-orbitAngle) + 'deg) scale(1.12)';
-                            updateActive();
-                        }
-
-                        /* ── Build dots & click listeners ── */
-                        items.forEach(function (el, i) {
-                            var dot = document.createElement('span');
-                            dot.className = 'orbit-dot';
-                            dot.addEventListener('click', function () { rotateTo(i); });
-                            dotsWrap.appendChild(dot);
-                            el.addEventListener('click', function () { rotateTo(i); });
-                        });
-
-                        document.getElementById('orbitPrev').addEventListener('click', function () { rotateTo(current - 1); });
-                        document.getElementById('orbitNext').addEventListener('click', function () { rotateTo(current + 1); });
-
-                        document.addEventListener('keydown', function (e) {
-                            if (e.key === 'ArrowLeft') rotateTo(current - 1);
-                            if (e.key === 'ArrowRight') rotateTo(current + 1);
-                        });
-
-                        var wLast = 0;
-                        var gallerySection = ring.closest('section');
-                        gallerySection.addEventListener('wheel', function (e) {
-                            if (Math.abs(e.deltaY) < 10) return;
-                            var now = Date.now();
-                            if (now - wLast < 600) return;
-                            wLast = now;
-                            e.preventDefault();
-                            rotateTo(current + (e.deltaY > 0 ? 1 : -1));
-                        }, { passive: false });
-
-                        var tx0 = 0;
-                        gallerySection.addEventListener('touchstart', function (e) { tx0 = e.touches[0].clientX; }, { passive: true });
-                        gallerySection.addEventListener('touchend', function (e) {
-                            var dx = e.changedTouches[0].clientX - tx0;
-                            if (Math.abs(dx) > 40) rotateTo(current + (dx < 0 ? 1 : -1));
-                        });
-
-                        var autoTimer = setInterval(function () { rotateTo(current + 1); }, 4500);
-                        gallerySection.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
-                        gallerySection.addEventListener('mouseleave', function () {
-                            autoTimer = setInterval(function () { rotateTo(current + 1); }, 4500);
-                        });
-
-                        requestAnimationFrame(function () {
-                            placeItems();
-                            rotateTo(0);
-                        });
-
-                        window.addEventListener('resize', function () {
-                            requestAnimationFrame(function () { placeItems(); rotateTo(current); });
-                        });
-                    }
-
-                    if (document.readyState === 'loading') {
-                        document.addEventListener('DOMContentLoaded', initCircle);
-                    } else {
-                        initCircle();
-                    }
-                })();
-            </script>
-        </section>
-
-
-
-        <!-- Contact -->
-        <section id="contact" class="section bg-pastel">
-            <div class="container contact-container">
-                <div class="contact-info">
-                    <h2>Get in Touch</h2>
-                    <p>Ready for your next adventure? Contact us today to plan your trip!</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-phone-alt"></i>
-                            <span>+91 98765 43210</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>holidaysmeher@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>New Delhi, India</span>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i
-                                class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                </div>
-
-                <div class="contact-form-container">
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" placeholder="Your Phone Number" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" rows="4" placeholder="How can we help you plan your trip?"
-                                required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <div class="container footer-content">
-                <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
-            </div>
-        </footer>
-
-        <script src="script.js"></script>
+      </div>
+
+      <div class="contact-form-container">
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="phone" placeholder="Your Phone Number" required>
+          </div>
+          <div class="form-group">
+            <textarea id="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <!-- Travel Background Animation -->
+    <div class="travel-bg-animation">
+        <i class="fas fa-solid fa-cloud cloud c1"></i>
+        <i class="fas fa-solid fa-cloud cloud c2"></i>
+        <i class="fas fa-solid fa-cloud cloud c3"></i>
+        <i class="fas fa-solid fa-plane plane"></i>
+        <i class="fas fa-solid fa-motorcycle bike"></i>
+        <!-- Detailed Shikara Houseboat SVG -->
+        <svg class="houseboat" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z" fill="currentColor"/>
+            <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8"/>
+            <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor"/>
+            <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+        </svg>
+    </div>
 </body>
 
 </html>

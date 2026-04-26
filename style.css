@@ -3,6 +3,14 @@
   Color Palette: White, Beige, Pastel tones
 */
 
+/*
+  MEHER HOLIDAYS - STYLE SYSTEM GUIDE
+  ===================================
+  1. DESIGN TOKENS: Root variables define the palette (Gold #ffd700, Dark #1e293b).
+  2. UTILITIES: Common classes for spacing and typography are at the top.
+  3. COMPONENTS: Styles for Hero, Gallery, and Testimonials are organized in sections.
+  4. RESPONSIVENESS: Media queries at the bottom handle mobile/tablet layouts.
+*/
 :root {
     --primary-color: #1E40AF;
     --primary-hover: #1E3A8A;
@@ -66,18 +74,41 @@ ul {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 10;
 }
 
 .section {
     padding: 80px 0;
+    position: relative;
 }
 
 .bg-light {
+    position: relative;
+    background-color: transparent;
+}
+
+.bg-light::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-color: var(--bg-light);
+    z-index: -2;
+    pointer-events: none;
 }
 
 .bg-pastel {
+    position: relative;
+    background-color: transparent;
+}
+
+.bg-pastel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-color: var(--bg-pastel);
+    z-index: -2;
+    pointer-events: none;
 }
 
 .section-title {
@@ -267,6 +298,7 @@ header {
     backface-visibility: hidden;
     transform: translateZ(0) scale(1);
     will-change: opacity;
+    filter: brightness(1.15);
 }
 
 .slide.active {
@@ -307,8 +339,8 @@ header {
     width: 100%;
     height: 100%;
     background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.62)),
-        radial-gradient(circle at center, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.28));
+        linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45)),
+        radial-gradient(circle at center, rgba(30, 64, 175, 0.08), rgba(0, 0, 0, 0.25));
     z-index: 2;
     pointer-events: none;
 }
@@ -320,12 +352,12 @@ header {
     height: 48px;
     border: none;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(124, 121, 121, 0.16);
     color: white;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    z-index: 3;
+    z-index: 10;
     cursor: pointer;
     pointer-events: auto;
     touch-action: manipulation;
@@ -574,12 +606,13 @@ header {
 }
 
 .promo-title {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 2rem;
+    font-family: 'Satisfy', cursive;
+    color: #ffffff;
+    font-size: 3.2rem;
     margin-bottom: 26px;
-    font-weight: 600;
-    text-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
-    letter-spacing: 0.3px;
+    font-weight: 400;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    letter-spacing: 1px;
 }
 
 .promo-description {
@@ -849,14 +882,7 @@ header {
     border-radius: 10px;
     box-shadow: 0 8px 22px rgba(16, 24, 40, 0.04);
     display: block;
-    opacity: 0;
-    transform: translateY(18px);
-    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), opacity 360ms ease;
-}
-
-.itinerary-day.in-view {
-    opacity: 1;
-    transform: translateY(0);
+    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 360ms ease;
 }
 
 .day-content {
@@ -1216,7 +1242,7 @@ header {
 
     /* hide video on very small devices for performance; fallback to poster/background */
     .bhutan-hero {
-        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('images/Bhutan_Banner.jpg');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('images/Bhutan_Banner.jpg');
         background-size: cover;
         background-position: center;
     }
@@ -1229,7 +1255,7 @@ header {
 /* Mobile fallback: hide video and use background image for devices <= 768px */
 @media (max-width: 768px) {
     .bhutan-hero {
-        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('images/Bhutan_Banner.jpg');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('images/Bhutan_Banner.jpg');
         background-size: cover;
         background-position: center;
     }
@@ -1860,7 +1886,10 @@ footer {
     }
 }
 
+
+
 /* Travel Background Animation */
+/* --- Premium Travel Animations --- */
 .travel-bg-animation {
     position: fixed;
     top: 0;
@@ -1872,70 +1901,87 @@ footer {
     overflow: hidden;
 }
 
-.travel-bg-animation i {
+.travel-bg-animation i,
+.travel-bg-animation svg {
     position: absolute;
-    color: var(--primary-color);
+    color: #76787a;
+    transition: opacity 0.3s ease;
 }
 
+/* Cloud Styling */
 .cloud {
-    opacity: 0.06;
-    animation: floatCloud 40s linear infinite;
-}
-
-.cloud.c1 {
-    top: 15%;
-    left: -20%;
-    font-size: 8rem;
-    animation-duration: 45s;
-}
-
-.cloud.c2 {
-    top: 45%;
-    left: -20%;
-    font-size: 14rem;
-    animation-duration: 60s;
-    animation-delay: -15s;
-}
-
-.cloud.c3 {
-    top: 75%;
-    left: -20%;
-    font-size: 6rem;
-    animation-duration: 50s;
-    animation-delay: -5s;
-}
-
-.plane {
-    font-size: 4rem;
-    top: 25%;
-    left: -10%;
     opacity: 0.08;
-    animation: flyPlane 35s linear infinite;
-    animation-delay: -10s;
+    animation: premiumCloud 60s linear infinite;
 }
 
-@keyframes floatCloud {
-    from {
-        transform: translateX(-20vw);
-    }
+.cloud.c1 { top: 12%; left: -150px; font-size: 8rem; animation-duration: 55s; }
+.cloud.c2 { top: 40%; left: -200px; font-size: 14rem; animation-duration: 80s; animation-delay: -20s; }
+.cloud.c3 { top: 70%; left: -100px; font-size: 6rem; animation-duration: 70s; animation-delay: -10s; }
 
-    to {
-        transform: translateX(120vw);
-    }
+/* Plane: High Altitude, Smooth Flight */
+.plane {
+    font-size: 5rem;
+    top: 22%;
+    left: -150px;
+    opacity: 0.12;
+    animation: premiumPlane 40s linear infinite;
 }
 
-@keyframes flyPlane {
-    0% {
-        transform: translate(-20vw, 10vh) rotate(15deg);
-    }
+/* Bike: Rugged Terrain Bounce */
+.bike {
+    font-size: 3.5rem;
+    bottom: 15%;
+    left: -100px;
+    opacity: 0.1;
+    animation: premiumBike 35s linear infinite;
+}
 
-    50% {
-        transform: translate(60vw, -5vh) rotate(5deg);
-    }
+/* Houseboat: Gentle Water Drift */
+.houseboat {
+    width: 120px;
+    height: auto;
+    bottom: 8%;
+    left: -150px;
+    opacity: 0.12;
+    animation: premiumHouseboat 50s linear infinite;
+}
 
-    100% {
-        transform: translate(120vw, -15vh) rotate(15deg);
-    }
+/* --- Animation Keyframes --- */
+
+@keyframes premiumCloud {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(100vw + 300px)); }
+}
+
+@keyframes premiumPlane {
+    0% { transform: translate(0, 0) rotate(10deg); }
+    25% { transform: translate(30vw, -20px) rotate(8deg); }
+    75% { transform: translate(90vw, 20px) rotate(12deg); }
+    100% { transform: translate(calc(100vw + 200px), 0) rotate(10deg); }
+}
+
+@keyframes premiumBike {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(25vw, -5px) rotate(-2deg); }
+    40% { transform: translate(50vw, 2px) rotate(2deg); }
+    60% { transform: translate(75vw, -3px) rotate(-1deg); }
+    100% { transform: translate(calc(100vw + 150px), 0) rotate(0deg); }
+}
+
+@keyframes premiumHouseboat {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(30vw, 8px) rotate(1.5deg); }
+    50% { transform: translate(60vw, -4px) rotate(-1deg); }
+    75% { transform: translate(90vw, 6px) rotate(1.2deg); }
+    100% { transform: translate(calc(100vw + 200px), 0) rotate(0deg); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .plane { font-size: 3.5rem; top: 15%; }
+    .bike { font-size: 2.8rem; bottom: 12%; }
+    .houseboat { width: 90px; bottom: 6%; }
+    .cloud.c2 { font-size: 9rem; }
 }
 
 /* Drawer Menu Overlay */
@@ -2083,7 +2129,8 @@ footer {
         position: relative;
         height: 100vh;
         overflow: hidden;
-        background-color: #000; /* Prevent flash */
+        background-color: #000;
+        /* Prevent flash */
     }
 
     .bhutan-video {
@@ -2099,6 +2146,8 @@ footer {
         min-height: 100%;
         opacity: 0;
         transition: opacity 1s ease-in-out;
+        animation: none;
+        /* Disable zoom animation on mobile to keep centering */
     }
 
     .bhutan-video.playing {
@@ -2118,8 +2167,6 @@ footer {
         z-index: 2;
         text-align: center;
         color: white;
-        top: 50%;
-        transform: translateY(-50%);
         padding: 0 20px;
         width: 100%;
     }
@@ -2229,5 +2276,223 @@ footer {
 
     .why-section .why-extra {
         padding: 20px;
+    }
+}
+
+/* ── TESTIMONIALS SLIDER ─────────────────────────── */
+.testimonials-section {
+    padding: 100px 0;
+    background: transparent;
+    overflow: hidden;
+    position: relative;
+}
+
+.testimonial-carousel-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 50px auto 0;
+    padding: 0 40px;
+}
+
+.testimonial-track-wrapper {
+    overflow: visible;
+    padding: 40px 0;
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    gap: 30px;
+    cursor: grab;
+}
+
+.testimonial-track:active {
+    cursor: grabbing;
+}
+
+.testimonial-card {
+    flex: 0 0 450px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    user-select: none;
+    opacity: 0.3;
+    filter: blur(4px);
+    transform: scale(0.85);
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+    background: #fff;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.rev-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.rev-user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rev-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.rev-name-wrap h4 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    font-family: var(--font-main);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rev-badge {
+    color: #3b82f6;
+    font-size: 0.9rem;
+}
+
+.rev-google-link {
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.rev-google-link:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rev-google-link img {
+    width: 18px;
+    height: 18px;
+}
+
+.rev-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 15px;
+}
+
+.rev-stars svg {
+    width: 18px;
+    height: 18px;
+    fill: #ffb400;
+}
+
+.rev-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #526071;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-style: italic;
+}
+
+/* Controls */
+.rev-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.rev-nav-btn {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #fff;
+    color: #1e293b;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.rev-nav-btn:hover {
+    background: #1e293b;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.rev-dots {
+    display: flex;
+    gap: 12px;
+}
+
+.rev-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(30, 41, 59, 0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.rev-dot.active {
+    width: 30px;
+    border-radius: 10px;
+    background: #3b82f6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .testimonial-card {
+        flex: 0 0 320px;
+        padding: 30px;
+    }
+
+    .testimonial-card:not(.active) {
+        opacity: 0.1;
+        filter: blur(6px);
+    }
+
+    .testimonial-carousel-container {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-card {
+        flex: 0 0 100%;
+    }
+
+    .testimonial-card:not(.active) {
+        opacity: 0;
+        transform: scale(0.9);
     }
 }
