@@ -29,23 +29,24 @@
 
         .hero-video {
             position: absolute;
-            top: 60%;
+            top: 50%;
             left: 50%;
-            width: 50%;
+            width: 100%;
             height: 100%;
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: 1;
             pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            min-width: 100%;
-            min-height: 100%;
+            /* Smooth fade-in for premium feel */
+            animation: heroVideoFadeIn 1.5s ease-in-out;
         }
 
-        .hero-video.playing {
-            opacity: 1;
+        @keyframes heroVideoFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
+
+
 
         .hero-overlay {
             position: absolute;
@@ -109,42 +110,19 @@
 
     <!-- Destination Hero Section -->
     <section class="hero dest-page-hero Rajasthan-hero" style="background-image: url('images/RajasthanCard.jpg');">
-        <!-- Video Placeholder -->
-        <div class="Rajasthan-video-wrap" data-src="videos/Rajasthan_intro.mp4" data-poster="images/RajasthanCard.jpg">
-        </div>
-
-        <script>
-            (function () {
-                try {
-                    var wrap = document.querySelector('.Rajasthan-video-wrap');
-                    if (!wrap) return;
-                    var src = wrap.getAttribute('data-src');
-                    var poster = wrap.getAttribute('data-poster');
-                    var v = document.createElement('video');
-                    v.className = 'hero-video';
-                    v.autoplay = true;
-                    v.muted = true;
-                    v.loop = true;
-                    v.playsInline = true;
-                    v.setAttribute('playsinline', '');
-                    v.setAttribute('preload', 'auto');
-                    if (poster) v.setAttribute('poster', poster);
-
-                    // Fade in when video is ready to play
-                    v.onplay = function () { v.classList.add('playing'); };
-                    v.oncanplay = function () { v.classList.add('playing'); };
-
-                    var source = document.createElement('source');
-                    source.src = src;
-                    source.type = 'video/mp4';
-                    v.appendChild(source);
-                    wrap.parentNode.insertBefore(v, wrap);
-                    wrap.parentNode.removeChild(wrap);
-                } catch (e) {
-                    console.warn('Video load skipped', e);
-                }
-            })();
-        </script>
+        <!-- Optimized Cloudinary Video Implementation -->
+        <video 
+            class="hero-video" 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            preload="auto" 
+            poster="https://res.cloudinary.com/dfzk4sfkw/video/upload/q_auto,f_auto/v1777167004/Rajasthan_intro_zdupms.jpg">
+            <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/q_auto,f_auto/v1777167004/Rajasthan_intro_zdupms.mp4" type="video/mp4">
+            <!-- Fallback for unsupported browsers -->
+            Your browser does not support the video tag. We recommend exploring Rajasthan in person!
+        </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 style="color:#ffffff; font-size:3.5rem;">

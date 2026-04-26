@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -36,17 +36,16 @@
             transform: translate(-50%, -50%);
             z-index: 1;
             pointer-events: none;
-            opacity: 0;
-            /* Start hidden for fade-in */
-            transition: opacity 0.5 ease-in-out;
-            min-width: 100%;
-            min-height: 100%;
+            /* Smooth fade-in for premium feel */
+            animation: heroVideoFadeIn 1.5s ease-in-out;
         }
 
-        .hero-video.playing {
-            opacity: 1;
-            /* Fade in when playing */
+        @keyframes heroVideoFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
+
+
 
         .hero-overlay {
             position: absolute;
@@ -111,42 +110,19 @@
 
     <!-- Destination Hero Section -->
     <section class="hero dest-page-hero himachal-hero">
-        <!-- Video Placeholder -->
-        <div class="himachal-video-wrap" data-src="videos/Himachal_intro.mp4" data-poster="images/Himachal_Banner.jpg">
-        </div>
-
-        <script>
-            (function () {
-                try {
-                    var wrap = document.querySelector('.himachal-video-wrap');
-                    if (!wrap) return;
-                    var src = wrap.getAttribute('data-src');
-                    var poster = wrap.getAttribute('data-poster');
-                    var v = document.createElement('video');
-                    v.className = 'hero-video';
-                    v.autoplay = true;
-                    v.muted = true;
-                    v.loop = true;
-                    v.playsInline = true;
-                    v.setAttribute('playsinline', '');
-                    v.setAttribute('preload', 'auto');
-                    if (poster) v.setAttribute('poster', poster);
-
-                    // Fade in when video is ready to play
-                    v.onplay = function () { v.classList.add('playing'); };
-                    v.oncanplay = function () { v.classList.add('playing'); };
-
-                    var source = document.createElement('source');
-                    source.src = src;
-                    source.type = 'video/mp4';
-                    v.appendChild(source);
-                    wrap.parentNode.insertBefore(v, wrap);
-                    wrap.parentNode.removeChild(wrap);
-                } catch (e) {
-                    console.warn('Video load skipped', e);
-                }
-            })();
-        </script>
+        <!-- Optimized Cloudinary Video Implementation -->
+        <video 
+            class="hero-video" 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            preload="auto" 
+            poster="https://res.cloudinary.com/dfzk4sfkw/video/upload/q_auto,f_auto/v1777167003/Himachal_intro_uepasv.jpg">
+            <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/q_auto,f_auto/v1777167003/Himachal_intro_uepasv.mp4" type="video/mp4">
+            <!-- Fallback for unsupported browsers -->
+            Your browser does not support the video tag. We recommend exploring Himachal Pradesh in person!
+        </video>
 
         <div class="hero-overlay"></div>
         <div class="hero-content">
