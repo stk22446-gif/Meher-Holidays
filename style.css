@@ -79,7 +79,7 @@ ul {
 }
 
 .section {
-    padding: 80px 0;
+    padding: 90px 0;
     position: relative;
 }
 
@@ -390,7 +390,7 @@ header {
 /* Slider Dots */
 .slider-dots {
     position: absolute;
-    bottom: 30px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -515,8 +515,10 @@ header {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 120px 20px;
-    margin-top: 60px;
+    padding: 100px 20px;
+    /* Reduced for tighter layout */
+    margin-top: 20px;
+    /* Developer: Reduced distance from section above for desktop */
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -695,7 +697,8 @@ header {
 @media (max-width: 768px) {
     .promo-banner {
         padding: 72px 18px;
-        margin-top: 40px;
+        margin-top: 20px;
+        /* Developer: Matched desktop spacing for consistency on mobile */
         background-attachment: scroll;
         background-size: cover;
         min-height: 48vh;
@@ -755,7 +758,107 @@ header {
 
 
 
+
+/* Google Review Badge */
+.google-trust-badge {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 100;
+    margin-top: 50px;
+    /* Centers it in the 100px gap */
+    margin-bottom: -50px;
+}
+
+.badge-content {
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 14px 38px;
+    border-radius: 80px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    cursor: default;
+}
+
+.badge-content:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.google-g {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+
+.badge-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1;
+}
+
+.star-filled {
+    color: #f59e0b;
+    font-size: 1.4rem;
+}
+
+.rating-score {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.review-count {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    margin: 4px 0 0 0;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+@media (max-width: 768px) {
+    .google-trust-badge {
+        margin-top: 40px;
+        margin-bottom: -40px;
+    }
+
+    .badge-content {
+        padding: 12px 28px;
+        gap: 15px;
+    }
+
+    .google-g {
+        width: 40px;
+        height: 40px;
+    }
+
+    .badge-info {
+        align-items: center;
+        text-align: center;
+    }
+
+    .rating-score {
+        font-size: 1.6rem;
+    }
+
+    .review-count {
+        font-size: 0.9rem;
+    }
+}
+
 /* Tour Packages */
+
 .packages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1500,10 +1603,13 @@ header {
     margin-bottom: 40px;
 }
 
-.contact-item {
+.contact-item a {
     display: flex;
     align-items: center;
     gap: 15px;
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
 }
 
 .contact-item i {
@@ -1517,6 +1623,24 @@ header {
     justify-content: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.contact-item a:hover i {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.3);
+}
+
+.contact-item a:hover span {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.contact-item span {
+    transition: var(--transition);
+    display: inline-block;
 }
 
 .social-links {
@@ -1573,75 +1697,138 @@ header {
 }
 
 /* Founder Cards */
-.founder-card {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    width: 300px;
+/* Founders / About Section */
+.about-section {
+    position: relative;
+    padding: 100px 0;
+    background-color: transparent;
+    /* Transparent to show global background animations */
+    overflow: hidden;
+}
+
+/* Scroll Animation Styles */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-header {
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    max-width: 800px;
+    margin: 0 auto 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.about-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    color: #1e293b;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.title-line {
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 0 auto 25px;
+    border-radius: 2px;
+}
+
+.about-header .subtitle {
+    font-size: 1.15rem;
+    color: #64748b;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.founders-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.founder-card {
+    background: #ffffff;
+    padding: 45px 35px;
+    border-radius: 24px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
     border: 1px solid rgba(0, 0, 0, 0.02);
 }
 
 .founder-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    transform: translateY(-12px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+}
+
+.founder-img-wrap {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    padding: 6px;
+    background: linear-gradient(135deg, var(--primary-color), #ffffff);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 .founder-img {
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    margin-bottom: 15px;
-    width: 130px;
-    height: 130px;
     object-fit: cover;
-    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.founder-card:hover .founder-img {
-    transform: scale(1.08);
+    display: block;
 }
 
 .founder-card h3 {
-    transition: color 0.3s ease;
-}
-
-.founder-card:hover h3 {
-    color: var(--primary-color);
+    font-size: 1.6rem;
+    color: #1e293b;
+    margin-bottom: 8px;
+    font-weight: 700;
 }
 
 .founder-role {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    font-weight: 500;
+    color: #3b82f6;
+    /* Premium Blue for Role */
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    display: block;
 }
 
-.founder-socials {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 25px;
+.founder-bio {
+    color: #64748b;
+    font-size: 1.05rem;
+    line-height: 1.6;
 }
 
-.f-social {
-    width: 36px;
-    height: 36px;
-    background-color: var(--bg-pastel);
-    color: var(--text-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    font-size: 1.1rem;
-}
+@media (max-width: 768px) {
+    .about-section {
+        padding: 60px 0;
+    }
 
-.f-social:hover {
-    transform: translateY(-4px);
-    background-color: var(--primary-color);
-    color: white;
-    box-shadow: 0 6px 12px rgba(30, 64, 175, 0.3);
+    .founder-card {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .founders-grid {
+        gap: 30px;
+    }
 }
 
 /* Tour Package List (Destination Pages) */
@@ -1794,6 +1981,83 @@ footer {
     padding: 30px 0;
 }
 
+/* Success Video Scene */
+.success-video-wrap {
+    display: none; /* Hidden by default */
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    /* Removed background and shadow for immersive look */
+    background: transparent;
+    box-shadow: none;
+    animation: slideUpFade 0.6s ease forwards;
+}
+
+.success-video-wrap.active {
+    display: block;
+}
+
+.success-video-wrap video {
+    width: 100%;
+    display: block;
+    filter: brightness(1.1); /* Increased brightness to make it light */
+}
+
+.success-message-overlay {
+    position: absolute;
+    inset: 0;
+    background: transparent; /* Removed background */
+    backdrop-filter: none; /* Removed blur */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #1e293b;
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease 1s;
+}
+
+.success-video-wrap.active .success-message-overlay {
+    opacity: 1;
+}
+
+.success-message-overlay i {
+    font-size: 3.5rem;
+    color: #2ed573;
+    margin-bottom: 15px;
+    filter: none; /* Removed shadow */
+}
+
+.success-message-overlay h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #000000; /* Darker black */
+    font-weight: 700;
+}
+
+.success-message-overlay p {
+    font-size: 1.1rem;
+    color: #1a202c; /* Much darker gray/blue */
+    max-width: 280px;
+    font-weight: 500;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Responsive */
 @media (max-width: 992px) {
     .contact-container {
@@ -1804,6 +2068,16 @@ footer {
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.8rem;
+    }
+
+    .toast {
+        right: 20px;
+        left: 20px;
+        bottom: -100px;
+    }
+    
+    .toast.show {
+        bottom: 20px;
     }
 
     .nav-links {
@@ -1914,9 +2188,28 @@ footer {
     animation: premiumCloud 60s linear infinite;
 }
 
-.cloud.c1 { top: 12%; left: -150px; font-size: 8rem; animation-duration: 55s; }
-.cloud.c2 { top: 40%; left: -200px; font-size: 14rem; animation-duration: 80s; animation-delay: -20s; }
-.cloud.c3 { top: 70%; left: -100px; font-size: 6rem; animation-duration: 70s; animation-delay: -10s; }
+.cloud.c1 {
+    top: 12%;
+    left: -150px;
+    font-size: 8rem;
+    animation-duration: 55s;
+}
+
+.cloud.c2 {
+    top: 40%;
+    left: -200px;
+    font-size: 14rem;
+    animation-duration: 80s;
+    animation-delay: -20s;
+}
+
+.cloud.c3 {
+    top: 70%;
+    left: -100px;
+    font-size: 6rem;
+    animation-duration: 70s;
+    animation-delay: -10s;
+}
 
 /* Plane: High Altitude, Smooth Flight */
 .plane {
@@ -1949,39 +2242,109 @@ footer {
 /* --- Animation Keyframes --- */
 
 @keyframes premiumCloud {
-    from { transform: translateX(0); }
-    to { transform: translateX(calc(100vw + 300px)); }
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(100vw + 300px));
+    }
 }
 
 @keyframes premiumPlane {
-    0% { transform: translate(0, 0) rotate(10deg); }
-    25% { transform: translate(30vw, -20px) rotate(8deg); }
-    75% { transform: translate(90vw, 20px) rotate(12deg); }
-    100% { transform: translate(calc(100vw + 200px), 0) rotate(10deg); }
+    0% {
+        transform: translate(0, 0) rotate(10deg);
+    }
+
+    25% {
+        transform: translate(30vw, -20px) rotate(8deg);
+    }
+
+    75% {
+        transform: translate(90vw, 20px) rotate(12deg);
+    }
+
+    100% {
+        transform: translate(calc(100vw + 200px), 0) rotate(10deg);
+    }
 }
 
 @keyframes premiumBike {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    20% { transform: translate(25vw, -5px) rotate(-2deg); }
-    40% { transform: translate(50vw, 2px) rotate(2deg); }
-    60% { transform: translate(75vw, -3px) rotate(-1deg); }
-    100% { transform: translate(calc(100vw + 150px), 0) rotate(0deg); }
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    20% {
+        transform: translate(25vw, -5px) rotate(-2deg);
+    }
+
+    40% {
+        transform: translate(50vw, 2px) rotate(2deg);
+    }
+
+    60% {
+        transform: translate(75vw, -3px) rotate(-1deg);
+    }
+
+    100% {
+        transform: translate(calc(100vw + 150px), 0) rotate(0deg);
+    }
 }
 
 @keyframes premiumHouseboat {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(30vw, 8px) rotate(1.5deg); }
-    50% { transform: translate(60vw, -4px) rotate(-1deg); }
-    75% { transform: translate(90vw, 6px) rotate(1.2deg); }
-    100% { transform: translate(calc(100vw + 200px), 0) rotate(0deg); }
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(30vw, 8px) rotate(1.5deg);
+    }
+
+    50% {
+        transform: translate(60vw, -4px) rotate(-1deg);
+    }
+
+    75% {
+        transform: translate(90vw, 6px) rotate(1.2deg);
+    }
+
+    100% {
+        transform: translate(calc(100vw + 200px), 0) rotate(0deg);
+    }
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .plane { font-size: 3.5rem; top: 15%; }
-    .bike { font-size: 2.8rem; bottom: 12%; }
-    .houseboat { width: 90px; bottom: 6%; }
-    .cloud.c2 { font-size: 9rem; }
+    .plane {
+        font-size: 2.2rem;
+        top: 10%;
+        opacity: 0.08;
+    }
+
+    .bike {
+        font-size: 1.8rem;
+        bottom: 8%;
+        opacity: 0.06;
+    }
+
+    .houseboat {
+        width: 60px;
+        bottom: 5%;
+        opacity: 0.08;
+    }
+
+    .cloud.c1 {
+        font-size: 4rem;
+    }
+
+    .cloud.c2 {
+        font-size: 6rem;
+        top: 30%;
+    }
+
+    .cloud.c3 {
+        font-size: 3rem;
+    }
 }
 
 /* Drawer Menu Overlay */
@@ -2073,25 +2436,29 @@ footer {
         transform: translateX(0);
     }
 
-    /* Stagger fade in effect for list items */
-    .nav-links.active li:nth-child(2) {
+    /* Stagger fade in effect for all 6 list items */
+    .nav-links.active li:nth-of-type(1) {
         transition-delay: 0.1s;
     }
 
-    .nav-links.active li:nth-child(3) {
+    .nav-links.active li:nth-of-type(2) {
         transition-delay: 0.15s;
     }
 
-    .nav-links.active li:nth-child(4) {
+    .nav-links.active li:nth-of-type(3) {
         transition-delay: 0.2s;
     }
 
-    .nav-links.active li:nth-child(5) {
+    .nav-links.active li:nth-of-type(4) {
         transition-delay: 0.25s;
     }
 
-    .nav-links.active li:nth-child(6) {
+    .nav-links.active li:nth-of-type(5) {
         transition-delay: 0.3s;
+    }
+
+    .nav-links.active li:nth-of-type(6) {
+        transition-delay: 0.35s;
     }
 
     .nav-links a {
@@ -2494,5 +2861,199 @@ footer {
     .testimonial-card:not(.active) {
         opacity: 0;
         transform: scale(0.9);
+    }
+}
+
+/* ── TRUST BADGE CAPSULES ─────────────────────────── */
+.trust-badges-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 10px 20px;
+    margin: 20px 0;
+    /* Developer: Reduced margin to keep Hero and Promo closer on desktop */
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.badge-capsule {
+    background: #ffffff;
+    padding: 16px 36px;
+    /* Increased padding for PC */
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.badge-capsule:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Further increased icon size for PC */
+.badge-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+}
+
+/* Keep Google logo at its original balanced size */
+.badge-icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.badge-icon i {
+    font-size: 2.8rem;
+}
+
+.insta-icon {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fb-icon {
+    color: #1877F2;
+}
+
+.badge-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-label {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.badge-brand {
+    font-size: 1.6rem;
+    /* Increased font size for PC */
+    font-weight: 700;
+    line-height: 1;
+}
+
+.insta-text {
+    font-family: 'Satisfy', cursive;
+    /* Elegant cursive script */
+    color: #d62976;
+    font-weight: 400;
+    /* Ensuring it's not bold or blocky */
+}
+
+.fb-text {
+    color: #1877F2;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+/* Google Review Specifics */
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.star-filled {
+    color: #f59e0b;
+    font-size: 1.2rem;
+}
+
+.rating-score {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.review-count {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin: 2px 0 0 0;
+}
+
+@media (max-width: 768px) {
+    .trust-badges-container {
+        gap: 8px;
+        padding: 10px;
+        margin: 15px 0;
+        /* Developer: Reduced mobile margin for tighter flow between Hero and Promo */
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    .badge-capsule {
+        padding: 6px 10px;
+        gap: 6px;
+        flex-shrink: 1;
+        min-width: 0;
+    }
+
+    .badge-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .badge-icon img {
+        width: 100%;
+        /* Force image to fit mobile container size */
+        height: 100%;
+    }
+
+    .badge-icon i {
+        font-size: 1.4rem;
+    }
+
+    .badge-brand {
+        font-size: 0.85rem;
+    }
+
+    .badge-label {
+        font-size: 0.65rem;
+    }
+
+    .rating-score {
+        font-size: 1rem;
+    }
+
+    .star-filled {
+        font-size: 0.8rem;
+    }
+
+    .review-count {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .trust-badges-container {
+        gap: 4px;
+        padding: 0 5px;
+    }
+
+    .badge-capsule {
+        padding: 5px 6px;
+        gap: 4px;
+    }
+
+    .badge-brand {
+        font-size: 0.75rem;
     }
 }

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
     <style>
         .Arunachal-hero {
             position: relative;
@@ -41,8 +42,13 @@
         }
 
         @keyframes heroVideoFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
 
@@ -87,7 +93,7 @@
 </head>
 
 <body>
-    
+
 
 
     <!-- Header / Nav -->
@@ -111,15 +117,11 @@
     <!-- Destination Hero Section -->
     <section class="hero dest-page-hero Arunachal-hero" style="background-image: url('images/ArunachalCard.jpg');">
         <!-- Optimized Cloudinary Video Implementation -->
-        <video 
-            class="hero-video" 
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            preload="auto" 
+        <video class="hero-video" autoplay muted loop playsinline preload="auto"
             poster="https://res.cloudinary.com/dfzk4sfkw/video/upload/q_auto,f_auto/v1777167011/Arunachal_intro_n1e2y3.jpg">
-            <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/q_auto,f_auto/v1777167011/Arunachal_intro_n1e2y3.mp4" type="video/mp4">
+            <source
+                src="https://res.cloudinary.com/dfzk4sfkw/video/upload/q_auto,f_auto/v1777167011/Arunachal_intro_n1e2y3.mp4"
+                type="video/mp4">
             <!-- Fallback for unsupported browsers -->
             Your browser does not support the video tag. We recommend exploring Arunachal Pradesh in person!
         </video>
@@ -192,7 +194,8 @@
                     <div class="tp-content">
                         <h3>Beyond the Monasteries: Tawang Experience</h3>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Guwahati &#8594; Bhalukpong &#8594; Dirang &#8594; Tawang &#8594; Bomdila &#8594; Guwahati</p>
+                            <p><i class="fas fa-route"></i> Guwahati &#8594; Bhalukpong &#8594; Dirang &#8594; Tawang
+                                &#8594; Bomdila &#8594; Guwahati</p>
                             <p class="trip-duration">8 Days / 7 Nights</p>
                         </div>
                         <div class="tp-footer">
@@ -217,7 +220,8 @@
                     <div class="tp-content">
                         <h3>Offbeat Mechuka Adventure</h3>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Dibrugarh &#8594; Pasighat &#8594; Along &#8594; Mechuka &#8594; Ziro</p>
+                            <p><i class="fas fa-route"></i> Dibrugarh &#8594; Pasighat &#8594; Along &#8594; Mechuka
+                                &#8594; Ziro</p>
                             <p class="trip-duration">9 Days / 8 Nights</p>
                         </div>
                         <div class="tp-footer">
@@ -238,8 +242,8 @@
     </section>
 
     <!-- Footer -->
-    
-  <!-- Get in Touch -->
+
+      <!-- Contact -->
   <section id="contact" class="section bg-pastel">
     <div class="container contact-container">
       <div class="contact-info">
@@ -247,63 +251,85 @@
         <p>Ready for your next adventure? Contact us today to plan your trip!</p>
         <div class="contact-details">
           <div class="contact-item">
-            <i class="fas fa-phone-alt"></i>
-            <span>+91 98765 43210</span>
+            <a href="tel:+917338132315">
+              <i class="fas fa-phone-alt"></i>
+              <span>+91 73381 32315</span>
+            </a>
           </div>
           <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <span>holidaysmeher@gmail.com</span>
+            <a href="mailto:holidaysmeher@gmail.com">
+              <i class="fas fa-envelope"></i>
+              <span>holidaysmeher@gmail.com</span>
+            </a>
           </div>
           <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>New Delhi, India</span>
+            <a href="https://www.google.com/maps/place/Meher+Holidays/@20.8830269,74.1891013,5.61z/data=!4m15!1m8!3m7!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!2sMeher+Holidays!8m2!3d23.760715!4d76.3794754!10e5!16s%2Fg%2F11xgsh1k45!3m5!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!8m2!3d23.760715!4d76.3794754!16s%2Fg%2F11xgsh1k45?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Bengaluru, Karnataka</span>
+            </a>
           </div>
         </div>
         <div class="social-links">
-          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="https://instagram.com/meher_holidays" class="social-icon"><i class="fab fa-instagram"></i></a>
           <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://facebook.com/holidaysmeher" class="social-icon"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
 
       <div class="contact-form-container">
-        <form id="contactForm" class="contact-form">
+        <form action="https://formspree.io/f/mdayvgpd" method="POST" id="contactForm" class="contact-form">
+          <input type="text" name="_gotcha" style="display:none">
           <div class="form-group">
-            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" name="name" placeholder="Your Name" required>
           </div>
           <div class="form-group">
-            <input type="tel" id="phone" placeholder="Your Phone Number" required>
+            <input type="email" name="email" placeholder="Your Email Address" required>
           </div>
           <div class="form-group">
-            <textarea id="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
+            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-full">Send Message</button>
         </form>
+
+        <!-- Success Video Scene (Replaces Form on Submit) -->
+        <div id="success-video-wrap" class="success-video-wrap">
+          <video id="success-video" muted playsinline>
+            <source src="FormFillUp/one.webm" type="video/webm">
+          </video>
+          <div class="success-message-overlay">
+            <h3>Message Sent!</h3>
+            <p>Thank you for your query. We will contact you soon.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
-        </div>
-    </footer>
+    <footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
+    </div>
+  </footer>
 
     <script src="script.js"></script>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
 
     <!-- Travel Background Animation -->
     <div class="travel-bg-animation">
@@ -314,19 +340,23 @@
         <i class="fas fa-solid fa-motorcycle bike"></i>
         <!-- Detailed Shikara Houseboat SVG -->
         <svg class="houseboat" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z" fill="currentColor"/>
-            <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8"/>
-            <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor"/>
-            <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z"
+                fill="currentColor" />
+            <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8" />
+            <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor" />
+            <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
         </svg>
     </div>
 </body>
 
 </html>
+
+
+

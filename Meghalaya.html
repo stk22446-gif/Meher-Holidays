@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
     <style>
         .dest-page-hero {
             position: relative;
@@ -56,29 +57,38 @@
         .Meghalaya-hero .hero-content {
             position: relative;
             z-index: 3;
-            width: 70%;
+            width: 100%; /* Full width for better centering */
             padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-content h1 {
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
             font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
         }
 
         @media (max-width: 768px) {
             .Meghalaya-hero {
                 height: 80vh;
                 min-height: 420px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .Meghalaya-hero .hero-content {
-                padding-top: 120px;
-                padding-left: 20px;
-                padding-right: 20px;
+                padding-top: 0; /* Let flexbox handle vertical centering */
+                width: 100%;
             }
 
-            .Meghalaya-hero .hero-content h1 {
-                font-size: 2.6rem !important;
+            .Meghalaya-hero .hero-content h1,
+            .Meghalaya-hero .hero-content h1 span {
+                font-size: 2.8rem !important; /* Unified and balanced size */
             }
         }
     </style>
@@ -123,9 +133,9 @@
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 style="color:#ffffff; font-size:3.5rem;">
+            <h1 style="color:#ffffff;">
                 Discover <br>
-                <span style="color:#ffd700; font-size:3.5rem;">
+                <span style="color:#ffd700;">
                     Meghalaya
                 </span>
             </h1>
@@ -261,7 +271,7 @@
 
     <!-- Footer -->
     
-  <!-- Get in Touch -->
+    <!-- Contact -->
   <section id="contact" class="section bg-pastel">
     <div class="container contact-container">
       <div class="contact-info">
@@ -269,47 +279,69 @@
         <p>Ready for your next adventure? Contact us today to plan your trip!</p>
         <div class="contact-details">
           <div class="contact-item">
-            <i class="fas fa-phone-alt"></i>
-            <span>+91 98765 43210</span>
+            <a href="tel:+917338132315">
+              <i class="fas fa-phone-alt"></i>
+              <span>+91 73381 32315</span>
+            </a>
           </div>
           <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <span>holidaysmeher@gmail.com</span>
+            <a href="mailto:holidaysmeher@gmail.com">
+              <i class="fas fa-envelope"></i>
+              <span>holidaysmeher@gmail.com</span>
+            </a>
           </div>
           <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>New Delhi, India</span>
+            <a href="https://www.google.com/maps/place/Meher+Holidays/@20.8830269,74.1891013,5.61z/data=!4m15!1m8!3m7!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!2sMeher+Holidays!8m2!3d23.760715!4d76.3794754!10e5!16s%2Fg%2F11xgsh1k45!3m5!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!8m2!3d23.760715!4d76.3794754!16s%2Fg%2F11xgsh1k45?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Bengaluru, Karnataka</span>
+            </a>
           </div>
         </div>
         <div class="social-links">
-          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="https://instagram.com/meher_holidays" class="social-icon"><i class="fab fa-instagram"></i></a>
           <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://facebook.com/holidaysmeher" class="social-icon"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
 
       <div class="contact-form-container">
-        <form id="contactForm" class="contact-form">
+        <form action="https://formspree.io/f/mdayvgpd" method="POST" id="contactForm" class="contact-form">
+          <input type="text" name="_gotcha" style="display:none">
           <div class="form-group">
-            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" name="name" placeholder="Your Name" required>
           </div>
           <div class="form-group">
-            <input type="tel" id="phone" placeholder="Your Phone Number" required>
+            <input type="email" name="email" placeholder="Your Email Address" required>
           </div>
           <div class="form-group">
-            <textarea id="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
+            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-full">Send Message</button>
         </form>
+
+        <!-- Success Video Scene (Replaces Form on Submit) -->
+        <div id="success-video-wrap" class="success-video-wrap">
+          <video id="success-video" muted playsinline>
+            <source src="FormFillUp/one.webm" type="video/webm">
+          </video>
+          <div class="success-message-overlay">
+            <h3>Message Sent!</h3>
+            <p>Thank you for your query. We will contact you soon.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
-        </div>
-    </footer>
+    <div class="container footer-content">
+      <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
+    </div>
+  </footer>
 
     <script src="script.js"></script>
 
@@ -352,3 +384,12 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+

@@ -28,6 +28,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="footer.css">
 </head>
 
 <body class="bg-light">
@@ -47,7 +49,6 @@
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#reviews">Reviews</a></li>
           <li><a href="#contact">Contact</a></li>
-
         </ul>
       </nav>
       <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
@@ -97,7 +98,49 @@
 
   </section>
 
+
+  <!-- Trust Badges Section -->
+  <div class="trust-badges-container">
+    <!-- Instagram Capsule -->
+    <a href="https://instagram.com/meher_holidays" class="badge-capsule">
+      <div class="badge-icon">
+        <i class="fab fa-instagram insta-icon"></i>
+      </div>
+      <div class="badge-info">
+        <p class="badge-label">Follow us on</p>
+        <span class="badge-brand insta-text">Instagram</span>
+      </div>
+    </a>
+
+    <!-- Google Reviews Capsule -->
+    <a href="https://www.google.com/search?q=meherholidays&ie=UTF-8#lrd=0x4c7f36915957e1d7:0x7ef67250d68600d2,1,,,,"
+      target="_blank" rel="noopener noreferrer" class="badge-capsule">
+      <div class="badge-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google">
+      </div>
+      <div class="badge-info">
+        <div class="rating-row">
+          <i class="fas fa-star star-filled"></i>
+          <span class="rating-score">5.0</span>
+        </div>
+        <p class="review-count">(30 reviews)</p>
+      </div>
+    </a>
+
+    <!-- Facebook Capsule -->
+    <a href="https://facebook.com/holidaysmeher" class="badge-capsule">
+      <div class="badge-icon">
+        <i class="fab fa-facebook fb-icon"></i>
+      </div>
+      <div class="badge-info">
+        <p class="badge-label">Follow us on</p>
+        <span class="badge-brand fb-text">facebook</span>
+      </div>
+    </a>
+  </div>
+
   <!-- Promotional Banner - First International Trip -->
+
   <section class="promo-banner">
     <div class="promo-content">
       <div class="promo-text">
@@ -278,7 +321,7 @@
           </div>
           <div class="dest-info">
             <h3>Lakshadweep</h3>
-            <p class="desc">Find peace and adventure in the Yoga capital of the world.</p>
+            <p class="desc">Discover untouched coral reefs and pristine turquoise waters.</p>
             <a href="Lakshadweep.html" class="btn btn-outline dest-btn">Explore</a>
           </div>
         </div>
@@ -339,453 +382,462 @@
     </div>
   </section>
 
-  <!-- About Us -->
-  <section id="about" class="section bg-light">
-    <div class="container about-container">
+  <!-- Founders / About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-header">
+        <h2 class="reveal">Crafting Your Travel Experiences</h2>
+        <div class="title-line reveal"></div>
+        <p class="subtitle reveal">The visionaries behind Meher Holidays, dedicated to creating unforgettable travel
+          experiences.</p>
+      </div>
 
-      <!-- 🔥 PEHLE FOUNDERS -->
-      <!-- 
-        EXAMPLE: ADDING A NEW TEAM MEMBER
-        <div class="founder-card">
-          <img src="images/Member.png" class="founder-img" alt="Name">
-          <h3>Name</h3>
-          <p class="founder-role">Role</p>
-          <p>Short bio here.</p>
-        </div>
-      -->
-      <div style="display:flex; gap:20px; justify-content:center; margin-bottom:40px; flex-wrap:wrap;">
-
+      <div class="founders-grid">
         <!-- Founder 1 -->
-        <div class="founder-card">
-          <img src="images/Founder.png" class="founder-img" alt="Aishwarya V">
+        <div class="founder-card reveal">
+          <div class="founder-img-wrap">
+            <img src="images/Founder.png" class="founder-img" alt="Aishwarya V">
+          </div>
           <h3>Aishwarya V</h3>
-          <p class="founder-role">Founder</p>
-          <p>Passionate about travel and making journeys affordable for everyone.</p>
+          <span class="founder-role">Founder</span>
+          <p class="founder-bio">Passionate about travel and making journeys affordable for everyone. Dedicated to
+            ensuring every traveler finds their perfect escape.</p>
         </div>
 
         <!-- Founder 2 -->
-        <div class="founder-card">
-          <img src="images/Co-Founder.png" class="founder-img" alt="Anuradha V">
+        <div class="founder-card reveal">
+          <div class="founder-img-wrap">
+            <img src="images/Co-Founder.png" class="founder-img" alt="Anuradha V">
+          </div>
           <h3>Anuradha V</h3>
-          <p class="founder-role">Co-Founder</p>
-          <p>Expert in planning trips and delivering unforgettable experiences.</p>
+          <span class="founder-role">Co-Founder</span>
+          <p class="founder-bio">Expert in planning trips and delivering unforgettable experiences. Focused on quality
+            and customer satisfaction above all else.</p>
         </div>
-
       </div>
 
-      <!-- 👇 PHIR OUR STORY -->
-      <div class="about-content">
-        <h2>Our Story</h2>
-        <div class="divider"></div>
-
-        <p>Meher Holidays started with a simple belief: <strong>travel should be for everyone</strong>. We
-          noticed that exploring the beautiful corners of India often felt complicated and expensive. That's
-          why we set out to change the way people travel.</p>
-
-        <p>Our goal is to help you explore India easily and affordably. We craft unforgettable experiences,
-          blending local culture, breathtaking sights, and total comfort. Whether you're seeking the thrill of
-          the mountains or the calm of the beach, we are here to make your dream trip a reality.</p>
+      <!-- Optional Story Summary -->
+      <div class="about-content reveal"
+        style="margin-top: 80px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <h2 style="font-family: 'Playfair Display', serif; color: #1e293b; margin-bottom: 20px;">Our Story</h2>
+        <p style="color: #64748b; line-height: 1.8; font-size: 1.1rem;">Meher Holidays started with a simple belief:
+          <strong>travel should be for everyone</strong>. We craft unforgettable experiences, blending local culture,
+          breathtaking sights, and total comfort. Whether you're seeking the thrill of the mountains or the calm of the
+          beach, we are here to make your dream trip a reality.
+        </p>
       </div>
-
     </div>
+  </section>
 
-    <!-- Premium Travel Memories: Circular Orbit Gallery -->
-    <section id="gallery" class="orbit-gallery-section">
+  <!-- Premium Travel Memories: Circular Orbit Gallery -->
+  <section id="gallery" class="orbit-gallery-section">
+
+    <!-- DESKTOP VERSION -->
+    <div class="gallery-desktop-view desktop-only">
       <div class="container">
         <div class="section-title">
-          <h2 id="galleryGroupName">Travel Memories</h2>
-          <p id="galleryGroupSubtitle">Glimpses of our recent expeditions</p>
+          <h2 id="galleryGroupNameDesktop">Travel Memories</h2>
+          <p id="galleryGroupSubtitleDesktop">Glimpses of our recent expeditions</p>
         </div>
-
         <div class="orbit-viewport">
-          <div class="orbit-track" id="orbitTrack">
-            <!-- Groups will be injected here -->
-          </div>
-
-          <!-- Controls -->
+          <div class="orbit-track" id="orbitTrackDesktop"></div>
           <div class="orbit-nav">
-            <button id="orbitPrev" class="nav-circle"><i class="fas fa-chevron-left"></i></button>
-            <button id="orbitNext" class="nav-circle"><i class="fas fa-chevron-right"></i></button>
+            <button id="orbitPrevDesktop" class="nav-circle"><i class="fas fa-chevron-left"></i></button>
+            <button id="orbitNextDesktop" class="nav-circle"><i class="fas fa-chevron-right"></i></button>
           </div>
         </div>
-
-        <!-- Group Progress Dots -->
-        <div class="orbit-group-indicator" id="orbitGroupDots">
-          <!-- Group dots injected here -->
-        </div>
+        <div class="orbit-group-indicator" id="orbitGroupDotsDesktop"></div>
       </div>
+    </div>
 
-      <style>
-        .orbit-gallery-section {
-          padding: 100px 0;
-          background: transparent;
-          overflow: hidden;
+    <!-- MOBILE VERSION -->
+    <div class="gallery-mobile-view mobile-only">
+      <div class="container">
+        <div class="section-title">
+          <h2 id="galleryGroupNameMobile">Travel Memories</h2>
+          <p id="galleryGroupSubtitleMobile">Glimpses of our recent expeditions</p>
+        </div>
+        <div class="orbit-viewport">
+          <div class="orbit-track" id="orbitTrackMobile"></div>
+          <div class="orbit-nav">
+            <button id="orbitPrevMobile" class="nav-circle"><i class="fas fa-chevron-left"></i></button>
+            <button id="orbitNextMobile" class="nav-circle"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+        <div class="orbit-group-indicator" id="orbitGroupDotsMobile"></div>
+      </div>
+    </div>
+
+    <style>
+      /* Shared Styles */
+      .orbit-gallery-section {
+        padding: 100px 0;
+        background: transparent;
+        overflow: hidden;
+      }
+
+      .orbit-viewport {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 1200px;
+      }
+
+      .orbit-track {
+        position: relative;
+        transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-style: preserve-3d;
+      }
+
+      .orbit-group {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: center center;
+        pointer-events: none;
+      }
+
+      .orbit-group.active {
+        transform: translateX(0) scale(1) rotateY(0);
+        opacity: 1;
+        filter: blur(0);
+        pointer-events: auto;
+        z-index: 10;
+      }
+
+      .orbit-group.hidden {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      .orbit-path-svg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .center-img-wrapper {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 8px solid #fff;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        position: relative;
+      }
+
+      .center-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease, opacity 0.5s ease;
+      }
+
+      .center-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        color: #fff;
+        text-align: center;
+      }
+
+      .orbit-items-wrap {
+        position: absolute;
+        inset: 0;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .orbit-item {
+        position: absolute;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        z-index: 5;
+      }
+
+      .orbit-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .orbit-item.active {
+        border-color: #3b82f6;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        transform: scale(1.1) !important;
+      }
+
+      .nav-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #fff;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        pointer-events: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .nav-circle:hover {
+        background: #1e293b;
+        color: #fff;
+        transform: scale(1.1);
+      }
+
+      .orbit-group-indicator {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 40px;
+      }
+
+      .group-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(30, 41, 59, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .group-dot.active {
+        background: #3b82f6;
+        transform: scale(1.3);
+      }
+
+      /* PC View Specifics */
+      .desktop-only {
+        display: block;
+      }
+
+      .mobile-only {
+        display: none;
+      }
+
+      .gallery-desktop-view .orbit-viewport {
+        height: 800px;
+      }
+
+      .gallery-desktop-view .orbit-track {
+        width: 700px;
+        height: 700px;
+      }
+
+      .gallery-desktop-view .orbit-center {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        z-index: 5;
+      }
+
+      .gallery-desktop-view .center-info {
+        padding: 40px 20px 20px;
+      }
+
+      .gallery-desktop-view .center-info h3 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .gallery-desktop-view .orbit-item {
+        width: 70px;
+        height: 70px;
+        margin-left: -35px;
+        margin-top: -35px;
+      }
+
+      .gallery-desktop-view .orbit-nav {
+        position: absolute;
+        width: 100%;
+        max-width: 900px;
+        display: flex;
+        justify-content: space-between;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        z-index: 100;
+      }
+
+      .gallery-desktop-view .orbit-group.prev {
+        transform: translateX(-750px) scale(0.7) rotateY(25deg);
+        opacity: 0.4;
+      }
+
+      .gallery-desktop-view .orbit-group.next {
+        transform: translateX(750px) scale(0.7) rotateY(-25deg);
+        opacity: 0.4;
+      }
+
+      /* Mobile View Specifics */
+      @media (max-width: 768px) {
+        .desktop-only {
+          display: none;
         }
 
-        .orbit-viewport {
+        .mobile-only {
+          display: block;
+        }
+
+        .gallery-mobile-view .orbit-viewport {
+          height: 450px;
+        }
+
+        .gallery-mobile-view .orbit-track {
+          width: 280px;
+          height: 280px;
+        }
+
+        .gallery-mobile-view .orbit-center {
           position: relative;
-          width: 100%;
-          height: 800px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          perspective: 1200px;
-        }
-
-        .orbit-track {
-          position: relative;
-          width: 700px;
-          height: 700px;
-          transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-          transform-style: preserve-3d;
-        }
-
-        .orbit-group {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-          transform-origin: center center;
-          pointer-events: none;
-        }
-
-        /* Positioning Groups */
-        .orbit-group.prev {
-          transform: translateX(-750px) scale(0.7) rotateY(25deg);
-          opacity: 0.4;
-          filter: blur(1px);
-        }
-
-        .orbit-group.active {
-          transform: translateX(0) scale(1) rotateY(0);
-          opacity: 1;
-          filter: blur(0);
-          pointer-events: auto;
-          z-index: 10;
-        }
-
-        .orbit-group.next {
-          transform: translateX(750px) scale(0.7) rotateY(-25deg);
-          opacity: 0.4;
-          filter: blur(1px);
-        }
-
-        .orbit-group.hidden {
-          opacity: 0;
-          transform: scale(0.5);
-        }
-
-        /* Orbit Elements */
-        .orbit-path-svg {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          pointer-events: none;
-          animation: none;
-        }
-
-        @keyframes rotatePath {
-          from {
-            transform: rotate(0deg);
-          }
-
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        .orbit-center {
-          position: relative;
-          width: 500px;
-          height: 500px;
+          width: 180px;
+          height: 180px;
           z-index: 5;
         }
 
-        .center-img-wrapper {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          overflow: hidden;
-          border: 8px solid #fff;
-          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-          position: relative;
+        .gallery-mobile-view .center-info {
+          padding: 25px 10px 15px;
         }
 
-        .center-img-wrapper img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.8s ease, opacity 0.5s ease;
-        }
-
-        .center-info {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-          padding: 40px 20px 20px;
-          text-align: center;
-          color: #fff;
-        }
-
-        .center-info h3 {
-          margin: 0;
-          font-size: 1.8rem;
+        .gallery-mobile-view .center-info h3 {
+          font-size: 1rem;
           font-weight: 600;
+          margin: 0;
         }
 
-        .orbit-items-wrap {
-          position: absolute;
-          inset: 0;
-          transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        .gallery-mobile-view .orbit-item {
+          width: 44px;
+          height: 44px;
+          margin-left: -22px;
+          margin-top: -22px;
         }
 
-        .orbit-item {
-          position: absolute;
-          width: 70px;
-          height: 70px;
-          margin-left: -35px;
-          margin-top: -35px;
-          border-radius: 50%;
-          overflow: hidden;
-          border: 3px solid #fff;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-          cursor: pointer;
-          transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-          z-index: 5;
-        }
-
-        .orbit-item:hover {
-          transform: scale(1.2) !important;
-          z-index: 15;
-        }
-
-        .orbit-item.active {
-          border-color: #3b82f6;
-          box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
-          transform: scale(1.1) !important;
-        }
-
-        .orbit-item img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          filter: grayscale(20%);
-        }
-
-        .orbit-nav {
+        .gallery-mobile-view .orbit-nav {
           position: absolute;
           width: 100%;
-          max-width: 900px;
           display: flex;
           justify-content: space-between;
           top: 50%;
           transform: translateY(-50%);
           pointer-events: none;
           z-index: 100;
+          padding: 0 10px;
         }
 
-        .nav-circle {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          background: #fff;
-          border: none;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          cursor: pointer;
-          pointer-events: auto;
-          transition: all 0.3s ease;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #1e293b;
+        .gallery-mobile-view .nav-circle {
+          width: 44px;
+          height: 44px;
+          background: rgba(255, 255, 255, 0.9);
         }
 
-        .nav-circle:hover {
-          background: #1e293b;
-          color: #fff;
-          transform: scale(1.1);
+        .gallery-mobile-view .orbit-group.prev {
+          transform: translateX(-120vw) scale(0.5);
+          opacity: 0;
         }
 
-        .orbit-group-indicator {
-          display: flex;
-          justify-content: center;
-          gap: 15px;
-          margin-top: 40px;
+        .gallery-mobile-view .orbit-group.next {
+          transform: translateX(120vw) scale(0.5);
+          opacity: 0;
         }
 
-        .group-dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          background: rgba(30, 41, 59, 0.1);
-          cursor: pointer;
-          transition: all 0.3s ease;
+        .orbit-gallery-section {
+          padding: 60px 0;
         }
+      }
+    </style>
 
-        .group-dot.active {
-          background: #3b82f6;
-          transform: scale(1.3);
-        }
+    <script>
+      (function () {
+        const groupsData = [
+          {
+            name: "Expedition: The North",
+            subtitle: "Mountains, Monasteries & Mystique",
+            images: [
+              { src: "images/Bhutan_Banner.jpg", title: "Tiger's Nest, Bhutan" },
+              { src: "images/Himachal_pradesh_Banner.jpg", title: "Manali, Himachal" },
+              { src: "images/SummerSpitiValleyAdventure.jpg", title: "Kaza, Spiti Valley" },
+              { src: "images/LadakhCard.jpg", title: "Leh, Ladakh" },
+              { src: "images/KashmirCard.jpg", title: "Gulmarg, Kashmir" },
+              { src: "images/SikkimCard.jpg", title: "Gangtok, Sikkim" },
+              { src: "images/Himachal_pradesh_Card.jpg", title: "Rohtang Pass, Himachal" },
+              { src: "images/WhyVisitBhutan.jpg", title: "Punakha Dzong, Bhutan" },
+              { src: "images/slide1.jpg", title: "Northern Valleys" },
+              { src: "images/slide2.jpg", title: "Mountain Peaks" }
+            ]
+          },
+          /*{
+            name: "Discover",
+            subtitle: "Majestic Mountains & Serene Landscapes",
+            images: [
+              { src: "images/Bhutan_Banner.jpg", title: "Tiger's Nest, Bhutan" },
+              { src: "images/Himachal_pradesh_Banner.jpg", title: "Manali, Himachal" },
+              { src: "images/SummerSpitiValleyAdventure.jpg", title: "Kaza, Spiti Valley" },
+              { src: "images/LadakhCard.jpg", title: "Leh, Ladakh" },
+              { src: "images/KashmirCard.jpg", title: "Gulmarg, Kashmir" },
+              { src: "images/SikkimCard.jpg", title: "Gangtok, Sikkim" },
+              { src: "images/Himachal_pradesh_Card.jpg", title: "Rohtang Pass, Himachal" },
+              { src: "images/WhyVisitBhutan.jpg", title: "Punakha Dzong, Bhutan" },
+              { src: "images/slide1.jpg", title: "Northern Valleys" },
+              { src: "images/slide2.jpg", title: "Mountain Peaks" }
+            ]
+          },*/
+        ];
 
-        @media (max-width: 1300px) {
-          .orbit-group.prev {
-            transform: translateX(-400px) scale(0.6);
-          }
+        function createGallery(isMobile) {
+          const suffix = isMobile ? 'Mobile' : 'Desktop';
+          const radius = isMobile ? 140 : 350;
+          const offset = isMobile ? 140 : 350;
 
-          .orbit-group.next {
-            transform: translateX(400px) scale(0.6);
-          }
-        }
+          const track = document.getElementById('orbitTrack' + suffix);
+          const groupDots = document.getElementById('orbitGroupDots' + suffix);
+          const titleElem = document.getElementById('galleryGroupName' + suffix);
+          const subtitleElem = document.getElementById('galleryGroupSubtitle' + suffix);
+          const btnNext = document.getElementById('orbitNext' + suffix);
+          const btnPrev = document.getElementById('orbitPrev' + suffix);
 
-        @media (max-width: 768px) {
-          .orbit-viewport {
-            height: 500px;
-          }
-
-          .orbit-track {
-            width: 350px;
-            height: 350px;
-          }
-
-          .orbit-center {
-            width: 250px;
-            height: 250px;
-          }
-
-          .center-info h3 {
-            font-size: 1.2rem;
-          }
-
-          .orbit-item {
-            width: 50px;
-            height: 50px;
-            margin-left: -25px;
-            margin-top: -25px;
-          }
-
-          .orbit-group.prev {
-            transform: translateX(-120vw) scale(0.5);
-            opacity: 0;
-          }
-
-          .orbit-group.next {
-            transform: translateX(120vw) scale(0.5);
-            opacity: 0;
-          }
-
-          .orbit-nav {
-            padding: 0 10px;
-            max-width: 100%;
-          }
-
-          .nav-circle {
-            width: 44px;
-            height: 44px;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-          }
-        }
-      </style>
-
-      <script>
-        (function () {
-          /* 
-           * CONFIGURATION GUIDE FOR DEVELOPERS:
-           * To update the gallery, simply modify the 'groupsData' array below.
-           * - name: The main title of the memory group.
-           * - subtitle: The secondary description.
-           * - images: Array of 10 images. Each needs a 'src' (path) and 'title' (for the center display).
-           * Note: The system automatically calculates positions for any number of images.
-           */
-          const groupsData = [
-            {
-              name: "Expedition: The North",
-              subtitle: "Mountains, Monasteries & Mystique",
-              images: [
-                { src: "images/Bhutan_Banner.jpg", title: "Tiger's Nest, Bhutan" },
-                { src: "images/Himachal_pradesh_Banner.jpg", title: "Manali, Himachal" },
-                { src: "images/SummerSpitiValleyAdventure.jpg", title: "Kaza, Spiti Valley" },
-                { src: "images/LadakhCard.jpg", title: "Leh, Ladakh" },
-                { src: "images/KashmirCard.jpg", title: "Gulmarg, Kashmir" },
-                { src: "images/SikkimCard.jpg", title: "Gangtok, Sikkim" },
-                { src: "images/Himachal_pradesh_Card.jpg", title: "Rohtang Pass, Himachal" },
-                { src: "images/WhyVisitBhutan.jpg", title: "Punakha Dzong, Bhutan" },
-                { src: "images/slide1.jpg", title: "Northern Valleys" },
-                { src: "images/slide2.jpg", title: "Mountain Peaks" }
-              ]
-            },
-            {
-              name: "The Royal Heritage",
-              subtitle: "Palaces, Culture & Deserts",
-              images: [
-                { src: "images/RajasthanCard.jpg", title: "Jaipur, Rajasthan" },
-                { src: "images/TravelGallary1.jpeg", title: "Ancient Architecture" },
-                { src: "images/TravelGallary2.jpeg", title: "Local Markets" },
-                { src: "images/ArunachalCard.jpg", title: "Tawang, Arunachal" },
-                { src: "images/DreamyHimachalGetaway.jpg", title: "Shimla, Himachal" },
-                { src: "images/MeghalayaCard.jpg", title: "Shillong, Meghalaya" },
-                { src: "images/slide3.jpg", title: "Cultural Heritage" },
-                { src: "images/TravelGallary1.jpeg", title: "Traditional Festivals" },
-                { src: "images/TravelGallary2.jpeg", title: "Artisan Crafts" },
-                { src: "images/RajasthanCard.jpg", title: "Desert Safaris" }
-              ]
-            },
-            {
-              name: "Tropical Serenity",
-              subtitle: "Beaches, Backwaters & Bliss",
-              images: [
-                { src: "images/KeralaCard.jpg", title: "Alleppey, Kerala" },
-                { src: "images/LakshadweepCard.jpg", title: "Agatti Island" },
-                { src: "images/GroupTrip.jpg", title: "Coastal Adventures" },
-                { src: "images/slide1.jpg", title: "Ocean Sunsets" },
-                { src: "images/slide2.jpg", title: "Tropical Palms" },
-                { src: "images/slide3.jpg", title: "Private Retreats" },
-                { src: "images/family.jpg", title: "Family Getaways" },
-                { src: "images/honeymoon.jpg", title: "Honeymoon Bliss" },
-                { src: "images/KeralaCard.jpg", title: "Munnar Tea Gardens" },
-                { src: "images/LakshadweepCard.jpg", title: "Coral Reefs" }
-              ]
-            }
-          ];
+          if (!track) return null;
 
           let currentGroupIndex = 0;
           let currentIndexInGroup = 0;
           let autoPlayTimer;
 
-          const track = document.getElementById('orbitTrack');
-          const groupDots = document.getElementById('orbitGroupDots');
-          const titleElem = document.getElementById('galleryGroupName');
-          const subtitleElem = document.getElementById('galleryGroupSubtitle');
-
-          // Initialize Groups
           const groups = groupsData.map((data, gIdx) => {
             const groupEl = document.createElement('div');
             groupEl.className = 'orbit-group';
             groupEl.innerHTML = `
-              <svg class="orbit-path-svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="0.3" stroke-dasharray="2 2" /></svg>
-              <div class="orbit-center">
-                <div class="center-img-wrapper">
-                  <img src="${data.images[0].src}" alt="">
-                  <div class="center-info"><h3>${data.images[0].title}</h3></div>
+                <svg class="orbit-path-svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="0.3" stroke-dasharray="2 2" /></svg>
+                <div class="orbit-center">
+                  <div class="center-img-wrapper">
+                    <img src="${data.images[0].src}" alt="">
+                    <div class="center-info"><h3>${data.images[0].title}</h3></div>
+                  </div>
                 </div>
-              </div>
-              <div class="orbit-items-wrap"></div>
-            `;
+                <div class="orbit-items-wrap"></div>
+              `;
 
             const wrap = groupEl.querySelector('.orbit-items-wrap');
-            const radius = window.innerWidth < 768 ? 175 : 350;
-
             data.images.forEach((img, i) => {
               const item = document.createElement('div');
               item.className = 'orbit-item';
               item.innerHTML = `<img src="${img.src}" alt="">`;
               const angle = (i / data.images.length) * 2 * Math.PI - Math.PI / 2;
-              const x = Math.cos(angle) * radius + (window.innerWidth < 768 ? 175 : 350);
-              const y = Math.sin(angle) * radius + (window.innerWidth < 768 ? 175 : 350);
+              const x = Math.cos(angle) * radius + offset;
+              const y = Math.sin(angle) * radius + offset;
               item.style.left = `${x}px`;
               item.style.top = `${y}px`;
               item.onclick = (e) => {
@@ -796,8 +848,6 @@
             });
 
             track.appendChild(groupEl);
-
-            // Dot
             const dot = document.createElement('div');
             dot.className = 'group-dot';
             dot.onclick = () => switchGroup(gIdx);
@@ -814,41 +864,31 @@
               else if (i === (currentGroupIndex + 1) % groups.length) group.el.classList.add('next');
               else group.el.classList.add('hidden');
             });
-
             Array.from(groupDots.children).forEach((dot, i) => {
               dot.classList.toggle('active', i === currentGroupIndex);
             });
-
-            const activeData = groupsData[currentGroupIndex];
-            titleElem.textContent = activeData.name;
-            subtitleElem.textContent = activeData.subtitle;
+            titleElem.textContent = groupsData[currentGroupIndex].name;
+            subtitleElem.textContent = groupsData[currentGroupIndex].subtitle;
           }
 
           function goToItem(index) {
             currentIndexInGroup = index;
             const group = groups[currentGroupIndex];
             const rotation = -(index / group.data.images.length) * 360;
-
             group.wrap.style.transform = `rotate(${rotation}deg)`;
-
-            // Counter rotate items
             const items = group.wrap.querySelectorAll('.orbit-item');
             items.forEach((item, i) => {
               item.style.transform = `rotate(${-rotation}deg)`;
               item.classList.toggle('active', i === index);
             });
-
-            // Update center
             const center = group.el.querySelector('.center-img-wrapper img');
             const centerTitle = group.el.querySelector('.center-info h3');
-
             center.style.opacity = '0';
             setTimeout(() => {
               center.src = group.data.images[index].src;
               centerTitle.textContent = group.data.images[index].title;
               center.style.opacity = '1';
             }, 300);
-
             resetAutoPlay();
           }
 
@@ -861,11 +901,8 @@
 
           function nextItem() {
             const currentGroup = groupsData[currentGroupIndex];
-            if (currentIndexInGroup < currentGroup.images.length - 1) {
-              goToItem(currentIndexInGroup + 1);
-            } else {
-              switchGroup(currentGroupIndex + 1);
-            }
+            if (currentIndexInGroup < currentGroup.images.length - 1) goToItem(currentIndexInGroup + 1);
+            else switchGroup(currentGroupIndex + 1);
           }
 
           function resetAutoPlay() {
@@ -873,37 +910,23 @@
             autoPlayTimer = setInterval(nextItem, 5000);
           }
 
-          const btnNext = document.getElementById('orbitNext');
-          const btnPrev = document.getElementById('orbitPrev');
-
           btnNext.onclick = nextItem;
           btnNext.ontouchstart = (e) => { e.preventDefault(); nextItem(); };
-
           btnPrev.onclick = () => {
-            if (currentIndexInGroup > 0) {
-              goToItem(currentIndexInGroup - 1);
-            } else {
-              switchGroup(currentGroupIndex - 1);
-              goToItem(groupsData[currentGroupIndex].images.length - 1);
-            }
-          };
-          btnPrev.ontouchstart = (e) => {
-            e.preventDefault();
-            if (currentIndexInGroup > 0) {
-              goToItem(currentIndexInGroup - 1);
-            } else {
-              switchGroup(currentGroupIndex - 1);
-              goToItem(groupsData[currentGroupIndex].images.length - 1);
-            }
+            if (currentIndexInGroup > 0) goToItem(currentIndexInGroup - 1);
+            else { switchGroup(currentGroupIndex - 1); goToItem(groupsData[currentGroupIndex].images.length - 1); }
           };
 
-          // Initial
           updateDisplay();
           goToItem(0);
+        }
 
-        })();
-      </script>
-    </section>
+        // Initialize both versions
+        createGallery(false); // Desktop
+        createGallery(true);  // Mobile
+      })();
+    </script>
+  </section>
   </section>
 
 
@@ -964,7 +987,8 @@
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
               </svg>
             </div>
-            <p class="rev-text">"Amazing experience in Himachal Pradesh! The itinerary was perfectly planned, and the
+            <p class="rev-text">"Amazing experience in Himachal Pradesh! The itinerary was perfectly planned, and
+              the
               local guides were incredibly knowledgeable. Highly recommend!"</p>
           </div>
 
@@ -1034,7 +1058,8 @@
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
               </svg>
             </div>
-            <p class="rev-text">"Ladakh adventure was breathtaking! Everything was perfect. Special thanks to the team
+            <p class="rev-text">"Ladakh adventure was breathtaking! Everything was perfect. Special thanks to the
+              team
               for making it so memorable and safe!"</p>
           </div>
 
@@ -1246,47 +1271,67 @@
         <p>Ready for your next adventure? Contact us today to plan your trip!</p>
         <div class="contact-details">
           <div class="contact-item">
-            <i class="fas fa-phone-alt"></i>
-            <span>+91 98765 43210</span>
+            <a href="tel:+917338132315">
+              <i class="fas fa-phone-alt"></i>
+              <span>+91 73381 32315</span>
+            </a>
           </div>
           <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <span>holidaysmeher@gmail.com</span>
+            <a href="mailto:holidaysmeher@gmail.com">
+              <i class="fas fa-envelope"></i>
+              <span>holidaysmeher@gmail.com</span>
+            </a>
           </div>
           <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>New Delhi, India</span>
+            <a href="https://www.google.com/maps/place/Meher+Holidays/@20.8830269,74.1891013,5.61z/data=!4m15!1m8!3m7!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!2sMeher+Holidays!8m2!3d23.760715!4d76.3794754!10e5!16s%2Fg%2F11xgsh1k45!3m5!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!8m2!3d23.760715!4d76.3794754!16s%2Fg%2F11xgsh1k45?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Bengaluru, Karnataka</span>
+            </a>
           </div>
         </div>
         <div class="social-links">
-          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="https://instagram.com/meher_holidays" class="social-icon"><i class="fab fa-instagram"></i></a>
           <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://facebook.com/holidaysmeher" class="social-icon"><i class="fab fa-facebook-f"></i></a>
         </div>
       </div>
 
       <div class="contact-form-container">
-        <form id="contactForm" class="contact-form">
+        <form action="https://formspree.io/f/mdayvgpd" method="POST" id="contactForm" class="contact-form">
+          <input type="text" name="_gotcha" style="display:none">
           <div class="form-group">
-            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" name="name" placeholder="Your Name" required>
           </div>
           <div class="form-group">
-            <input type="tel" id="phone" placeholder="Your Phone Number" required>
+            <input type="email" name="email" placeholder="Your Email Address" required>
           </div>
           <div class="form-group">
-            <textarea id="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
+            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-full">Send Message</button>
         </form>
+
+        <!-- Success Video Scene (Replaces Form on Submit) -->
+        <div id="success-video-wrap" class="success-video-wrap">
+          <video id="success-video" muted playsinline>
+            <source src="FormFillUp/one.webm" type="video/webm">
+          </video>
+          <div class="success-message-overlay">
+            <h3>Message Sent!</h3>
+            <p>Thank you for your query. We will contact you soon.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
-    </div>
+  <footer class="main-footer">
+    <div class="footer-skyline"></div>
   </footer>
 
   <script src="script.js"></script>

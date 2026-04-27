@@ -51,22 +51,74 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Form submission
+    // AJAX Form Submission for Formspree with Success Video
     const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Just simulate a successful submission for now
-            const btn = contactForm.querySelector('button');
-            const originalText = btn.innerText;
-            btn.innerText = 'Sent successfully!';
-            btn.style.backgroundColor = '#4caf50'; // green success
+    const successWrap = document.getElementById('success-video-wrap');
+    const successVideo = document.getElementById('success-video');
 
-            setTimeout(() => {
-                contactForm.reset();
-                btn.innerText = originalText;
-                btn.style.backgroundColor = ''; // reset to default
-            }, 3000);
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Show loading state on button
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: contactForm.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success! 
+                    // 1. Hide form smoothly
+                    contactForm.style.transition = 'opacity 0.4s ease';
+                    contactForm.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        contactForm.style.display = 'none';
+                        
+                        // 2. Show Video Scene
+                        if (successWrap) {
+                            successWrap.classList.add('active');
+                            if (successVideo) {
+                                successVideo.currentTime = 0;
+                                successVideo.play();
+                            }
+
+                            // 3. Reset back to form after 5 seconds
+                            setTimeout(() => {
+                                successWrap.classList.remove('active');
+                                contactForm.style.display = 'block';
+                                setTimeout(() => {
+                                    contactForm.style.opacity = '1';
+                                }, 50);
+                            }, 5000); // 5 seconds (allows video to finish)
+                        }
+                    }, 400);
+
+                    contactForm.reset();
+                } else {
+                    console.error("Form submission failed");
+                }
+            } catch (error) {
+                console.error("Network error during form submission", error);
+            } finally {
+                // We don't reset button state here because the form is hidden on success
+                // but we keep it for error cases
+                if (!contactForm.style.display || contactForm.style.display !== 'none') {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
+            }
         });
     }
 
@@ -271,6 +323,50 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.insertBefore(bgContainer, document.body.firstChild);
     };
 
+    // Scroll Reveal Animation (Intersection Observer)
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Optional: stop observing after reveal
+                // revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15, // Trigger when 15% of element is visible
+        rootMargin: "0px 0px -50px 0px" // Slight offset for better feel
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
     // Add background animation
     addTravelBackground();
+
+    // Inject a reusable, responsive footer across all pages.
+    (function createFooter() {
+        try {
+            const year = new Date().getFullYear();
+            const footerHTML = `
+<footer class="site-footer">
+  <div class="skyline"></div>
+  <div class="container">
+    <p>© ${year} Meher Holidays. All rights reserved.</p>
+  </div>
+</footer>`;
+
+            const existingFooter = document.querySelector('footer');
+            if (existingFooter) {
+                // Replace the existing footer with the new consistent one
+                existingFooter.outerHTML = footerHTML;
+            } else {
+                // Append at end of body
+                document.body.insertAdjacentHTML('beforeend', footerHTML);
+            }
+        } catch (e) {
+            // Non-fatal: don't break the rest of the site
+            console.error('Footer injection failed', e);
+        }
+    })();
 });
