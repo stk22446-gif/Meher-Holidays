@@ -990,6 +990,8 @@
             <p class="rev-text">"Amazing experience in Himachal Pradesh! The itinerary was perfectly planned, and
               the
               local guides were incredibly knowledgeable. Highly recommend!"</p>
+            <div class="read-more-btn" onclick="openReviewModal(this)">Read More <i class="fas fa-arrow-right"></i>
+            </div>
           </div>
 
           <!-- Review 2 -->
@@ -1024,7 +1026,15 @@
               </svg>
             </div>
             <p class="rev-text">"Kerala backwaters tour was unforgettable! Professional team, comfortable
+              accommodations. Worth every penny for the memories we made.Kerala backwaters tour was unforgettable!
+              Professional team, comfortable
+              accommodations. Worth every penny for the memories we made.Kerala backwaters tour was unforgettable!
+              Professional team, comfortable
+              accommodations. Worth every penny for the memories we made.Kerala backwaters tour was unforgettable!
+              Professional team, comfortable
               accommodations. Worth every penny for the memories we made."</p>
+            <div class="read-more-btn" onclick="openReviewModal(this)">Read More <i class="fas fa-arrow-right"></i>
+            </div>
           </div>
 
           <!-- Review 3 -->
@@ -1061,6 +1071,8 @@
             <p class="rev-text">"Ladakh adventure was breathtaking! Everything was perfect. Special thanks to the
               team
               for making it so memorable and safe!"</p>
+            <div class="read-more-btn" onclick="openReviewModal(this)">Read More <i class="fas fa-arrow-right"></i>
+            </div>
           </div>
 
           <!-- Review 4 -->
@@ -1096,6 +1108,8 @@
             </div>
             <p class="rev-text">"The Bhutan trip was planned to perfection. From the monasteries to the local food,
               every detail was covered by Meher Holidays."</p>
+            <div class="read-more-btn" onclick="openReviewModal(this)">Read More <i class="fas fa-arrow-right"></i>
+            </div>
           </div>
 
           <!-- Review 5 -->
@@ -1130,7 +1144,17 @@
               </svg>
             </div>
             <p class="rev-text">"Best budget travel agency! Everything from hotels to travel was top-notch. Will
+              definitely book my next trip with them again!Best budget travel agency! Everything from hotels to travel
+              was top-notch. Will
+              definitely book my next trip with them again!Best budget travel agency! Everything from hotels to travel
+              was top-notch. Will
+              definitely book my next trip with them again!Best budget travel agency! Everything from hotels to travel
+              was top-notch. Will
+              definitely book my next trip with them again!Best budget travel agency! Everything from hotels to travel
+              was top-notch. Will
               definitely book my next trip with them again!"</p>
+            <div class="read-more-btn" onclick="openReviewModal(this)">Read More <i class="fas fa-arrow-right"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -1258,8 +1282,58 @@
         window.addEventListener('resize', updateCarousel);
 
         // Initial update
-        setTimeout(updateCarousel, 100);
+        setTimeout(() => {
+          updateCarousel();
+          checkTruncation();
+        }, 100);
+
+        function checkTruncation() {
+          const cards = document.querySelectorAll('.testimonial-card');
+          cards.forEach(card => {
+            const text = card.querySelector('.rev-text');
+            const btn = card.querySelector('.read-more-btn');
+            if (text && btn) {
+              const isTruncated = text.scrollHeight > text.clientHeight;
+              btn.style.display = isTruncated ? 'flex' : 'none';
+            }
+          });
+        }
+
+        window.addEventListener('resize', checkTruncation);
       })();
+
+      function openReviewModal(btn) {
+        const card = btn.closest('.testimonial-card');
+        const modal = document.getElementById('reviewModal');
+        const modalContent = document.getElementById('modalContent');
+
+        // Clone header, stars and text
+        const header = card.querySelector('.rev-header').cloneNode(true);
+        const stars = card.querySelector('.rev-stars').cloneNode(true);
+        const text = card.querySelector('.rev-text').cloneNode(true);
+
+        modalContent.innerHTML = '';
+        modalContent.appendChild(header);
+        modalContent.appendChild(stars);
+        modalContent.appendChild(text);
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scroll
+      }
+
+      function closeReviewModal() {
+        const modal = document.getElementById('reviewModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scroll
+      }
+
+      // Close on clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById('reviewModal');
+        if (event.target == modal) {
+          closeReviewModal();
+        }
+      }
     </script>
   </section>
 
@@ -1373,6 +1447,17 @@
       <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
       <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
     </svg>
+  </div>
+  </div>
+
+  <!-- Review Modal -->
+  <div id="reviewModal" class="rev-modal">
+    <div class="rev-modal-content">
+      <div class="rev-modal-close" onclick="closeReviewModal()"><i class="fas fa-times"></i></div>
+      <div id="modalContent">
+        <!-- Content will be injected here -->
+      </div>
+    </div>
   </div>
 </body>
 
