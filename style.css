@@ -3057,3 +3057,227 @@ footer {
         font-size: 0.75rem;
     }
 }
+/* ====== FLOATING ACTION BUTTONS ====== */
+.floating-btns {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 9999;
+    transform: translateX(120px);
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.floating-btns.visible {
+    transform: translateX(0);
+}
+
+.floating-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.floating-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-btn {
+    background: #3b82f6;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.scroll-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.whatsapp-btn {
+    background: #25d366;
+    width: 65px;
+    height: 65px;
+    font-size: 32px;
+    animation: whatsapp-pulse 2s infinite;
+}
+
+@keyframes whatsapp-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .floating-btns {
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+    .floating-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+    }
+}
+
+
+/* ====== WHATSAPP POPUP MENU ====== */
+.wa-popup {
+    position: absolute;
+    bottom: 85px;
+    right: 0;
+    width: 320px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10001;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.9);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: bottom right;
+}
+
+.wa-popup.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.wa-header {
+    margin-bottom: 5px;
+}
+
+.wa-header p {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+    margin: 0;
+}
+
+.wa-close-btn {
+    position: absolute;
+    top: -15px;
+    right: -5px;
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #1e293b;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.wa-close-btn:hover {
+    background: #f1f5f9;
+    transform: rotate(90deg);
+}
+
+.wa-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.wa-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #f1f5f9;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.wa-option:hover {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    transform: translateX(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.wa-opt-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #fff;
+}
+
+.wa-opt-icon.call {
+    background: #3b82f6;
+}
+
+.wa-opt-icon.chat {
+    background: #25d366;
+}
+
+@media (max-width: 768px) {
+    .wa-popup {
+        width: 280px;
+        bottom: 75px;
+        right: -10px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .scroll-btn {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .whatsapp-btn {
+        width: 55px !important;
+        height: 55px !important;
+        font-size: 26px !important;
+    }
+}

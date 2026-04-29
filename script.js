@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             // Show loading state on button
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.textContent;
@@ -82,10 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     // 1. Hide form smoothly
                     contactForm.style.transition = 'opacity 0.4s ease';
                     contactForm.style.opacity = '0';
-                    
+
                     setTimeout(() => {
                         contactForm.style.display = 'none';
-                        
+
                         // 2. Show Video Scene
                         if (successWrap) {
                             successWrap.classList.add('active');
@@ -343,6 +343,96 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add background animation
     addTravelBackground();
+
+    // Inject Floating Action Buttons (WhatsApp & Scroll to Top)
+    (function injectFloatingBtns() {
+        const btnsHTML = `
+            <div class="floating-btns">
+                <!-- Popup Menu -->
+                <div id="whatsappMenu" class="wa-popup">
+                    <button class="wa-close-btn" id="waClose"><i class="fas fa-times"></i></button>
+                    <div class="wa-header">
+                        <p>How can we help you?</p>
+                    </div>
+                    <div class="wa-options">
+                        <a href="tel:+917338132315" class="wa-option">
+                            <div class="wa-opt-icon call"><i class="fas fa-phone-alt"></i></div>
+                            <span>Call Us For Trip Inquiry</span>
+                        </a>
+                        <a href="https://wa.me/917338132315?text=Hi Meher Holidays, I am interested in a trip." class="wa-option" target="_blank">
+                            <div class="wa-opt-icon chat"><i class="fab fa-whatsapp"></i></div>
+                            <span>Chat With Our Executive</span>
+                        </a>
+                    </div>
+                </div>
+
+                <button id="scrollToTop" class="floating-btn scroll-btn" aria-label="Scroll to top">
+                    <i class="fas fa-chevron-up"></i>
+                </button>
+                <button id="waToggle" class="floating-btn whatsapp-btn" aria-label="Open WhatsApp Menu">
+                    <i class="fab fa-whatsapp"></i>
+                </button>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', btnsHTML);
+
+        const scrollBtn = document.getElementById('scrollToTop');
+        const waToggle = document.getElementById('waToggle');
+        const waMenu = document.getElementById('whatsappMenu');
+        const waClose = document.getElementById('waClose');
+
+        const container = document.querySelector('.floating-btns');
+        let scrollTimeout;
+
+        // Scroll Logic
+        if (scrollBtn && container) {
+            window.addEventListener('scroll', () => {
+                // Show container while scrolling
+                container.classList.add('visible');
+
+                // Toggle scroll-to-top button visibility
+                if (window.pageYOffset > 300) {
+                    scrollBtn.classList.add('show');
+                } else {
+                    scrollBtn.classList.remove('show');
+                }
+
+                // Hide after 2 seconds of inactivity
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    // Only hide if the WhatsApp menu is NOT open
+                    if (waMenu && !waMenu.classList.contains('active')) {
+                        container.classList.remove('visible');
+                    }
+                }, 2000);
+            });
+
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // WhatsApp Menu Logic
+        if (waToggle && waMenu) {
+            waToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                waMenu.classList.toggle('active');
+            });
+
+            if (waClose) {
+                waClose.addEventListener('click', () => {
+                    waMenu.classList.remove('active');
+                });
+            }
+
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!waMenu.contains(e.target) && e.target !== waToggle) {
+                    waMenu.classList.remove('active');
+                }
+            });
+        }
+    })();
 
     // Inject a reusable, responsive footer across all pages.
     (function createFooter() {
