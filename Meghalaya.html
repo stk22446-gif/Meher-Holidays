@@ -43,8 +43,13 @@
         }
 
         @keyframes heroVideoFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
 
@@ -59,7 +64,8 @@
         .Meghalaya-hero .hero-content {
             position: relative;
             z-index: 3;
-            width: 100%; /* Full width for better centering */
+            width: 100%;
+            /* Full width for better centering */
             padding: 0 20px;
             display: flex;
             flex-direction: column;
@@ -84,20 +90,305 @@
             }
 
             .Meghalaya-hero .hero-content {
-                padding-top: 0; /* Let flexbox handle vertical centering */
+                padding-top: 0;
+                /* Let flexbox handle vertical centering */
                 width: 100%;
             }
 
             .Meghalaya-hero .hero-content h1,
             .Meghalaya-hero .hero-content h1 span {
-                font-size: 2.8rem !important; /* Unified and balanced size */
+                font-size: 2.8rem !important;
+                /* Unified and balanced size */
             }
+        }
+        /* Journey in Frames Gallery */
+        .gallery-section {
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .gallery-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1f2937;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .gallery-header p {
+            font-size: 18px;
+            color: #9ca3af;
+            font-weight: 400;
+        }
+
+        .gallery-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .gallery-slider-wrapper {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            cursor: grab;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+        }
+
+        .gallery-slider-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-slider-wrapper:active {
+            cursor: grabbing;
+        }
+
+        .gallery-slider {
+            display: flex;
+            gap: 25px;
+            padding: 20px 50px;
+            width: max-content;
+        }
+
+        .gallery-item {
+            flex: 0 0 280px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            aspect-ratio: 1/1.2;
+            scroll-snap-align: center;
+        }
+
+        .gallery-item:nth-child(odd) {
+            transform: rotate(-2deg);
+        }
+
+        .gallery-item:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+            filter: brightness(0.9);
+        }
+
+        .gallery-item:hover {
+            transform: rotate(0) scale(1.05);
+            z-index: 10;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(1.1);
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            right: 10px;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            background-color: #0ea5e9;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: auto;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-btn i {
+            font-size: 20px;
+        }
+
+        /* FAQ Section Styles */
+        .faq-section {
+            padding: 80px 0;
+            background-color: transparent;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .faq-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-dark);
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .faq-header p {
+            font-size: 18px;
+            color: var(--primary-color);
+            font-family: var(--font-main);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .yellow-underline {
+            width: 80px;
+            height: 4px;
+            background-color: #ffd700; /* Theme Gold */
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .faq-card {
+            background-color: var(--bg-white);
+            border: 1.5px solid #e2e8f0; /* Subtle slate border */
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.03);
+        }
+
+        .faq-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.12);
+            transform: translateY(-2px);
+            background-color: #f8fafc; /* Slight highlight on hover */
+        }
+
+        .faq-question {
+            padding: 22px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(30, 64, 175, 0.02);
+        }
+
+        .faq-question h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 0;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+
+        .faq-card:hover .faq-question h3 {
+            color: var(--primary-color);
+        }
+
+        .faq-arrow {
+            font-size: 16px;
+            color: #94a3b8;
+            transition: all 0.3s ease;
+        }
+
+        .faq-card.active .faq-arrow {
+            color: var(--primary-color);
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: var(--bg-light);
+        }
+
+        .faq-answer-content {
+            padding: 25px 28px;
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 16px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .faq-card.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 35px rgba(30, 64, 175, 0.12);
+        }
+
+        .faq-card.active .faq-question h3 {
+            color: var(--primary-color);
+        }
+
+        .faq-card.active .faq-answer {
+            max-height: 1000px; /* High enough to contain content */
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-item {
+                flex: 0 0 240px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .gallery-item {
+                flex: 0 0 260px;
+            }
+
+            .gallery-slider {
+                padding: 20px 30px;
+                gap: 20px;
+            }
+
+            .gallery-container {
+                padding: 0;
+            }
+
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                background-color: rgba(14, 165, 233, 0.9);
+            }
+            
+            .faq-header h2 { font-size: 26px; }
+            .faq-question h3 { font-size: 16px; }
         }
     </style>
 </head>
 
 <body>
-    
+
 
 
     <!-- Header / Nav -->
@@ -121,15 +412,11 @@
     <!-- Destination Hero Section -->
     <section class="hero dest-page-hero Meghalaya-hero">
         <!-- Optimized Cloudinary Video Implementation -->
-        <video 
-            class="hero-video" 
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            preload="auto" 
+        <video class="hero-video" autoplay muted loop playsinline preload="auto"
             poster="https://res.cloudinary.com/dfzk4sfkw/video/upload/q_auto,f_auto/v1777167006/Meghalaya_intro_abktuv.jpg">
-            <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/q_auto,f_auto/v1777167006/Meghalaya_intro_abktuv.mp4" type="video/mp4">
+            <source
+                src="https://res.cloudinary.com/dfzk4sfkw/video/upload/q_auto,f_auto/v1777167006/Meghalaya_intro_abktuv.mp4"
+                type="video/mp4">
             <!-- Fallback for unsupported browsers -->
             Your browser does not support the video tag. We recommend exploring Meghalaya in person!
         </video>
@@ -200,7 +487,8 @@
                     <div class="tp-content">
                         <h3>Meghalaya Essential Tour</h3>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Shillong &#8594; Cherrapunji &#8594; Dawki &#8594; Mawlynnong &#8594; Shillong</p>
+                            <p><i class="fas fa-route"></i> Shillong &#8594; Cherrapunji &#8594; Dawki &#8594;
+                                Mawlynnong &#8594; Shillong</p>
                             <p class="trip-duration">6 Days / 5 Nights</p>
                         </div>
                         <div class="tp-footer">
@@ -211,13 +499,13 @@
                             <div class="tp-actions">
                                 <a href="https://wa.me/917338132315?text=I'm interested in the Meghalaya Essential Tour"
                                     class="btn btn-outline" target="_blank">Contact Us</a>
-                                <a href="#" class="btn btn-primary">View Details</a>
+                                <a href="packages/Meghalaya-Pakage-1.html" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
+                <!-- Card 2
                 <div class="tour-package-card">
                     <div class="tp-img-wrap">
                         <img src="images/slide1.jpg" alt="Ultimate Meghalaya Adventure">
@@ -225,7 +513,8 @@
                     <div class="tp-content">
                         <h3>Ultimate Meghalaya Adventure</h3>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Guwahati &#8594; Shillong &#8594; Jowai &#8594; Krang Suri &#8594; Guwahati</p>
+                            <p><i class="fas fa-route"></i> Guwahati &#8594; Shillong &#8594; Jowai &#8594; Krang Suri
+                                &#8594; Guwahati</p>
                             <p class="trip-duration">5 Days / 4 Nights</p>
                         </div>
                         <div class="tp-footer">
@@ -236,13 +525,13 @@
                             <div class="tp-actions">
                                 <a href="https://wa.me/917338132315?text=I'm interested in the Ultimate Meghalaya Adventure"
                                     class="btn btn-outline" target="_blank">Contact Us</a>
-                                <a href="#" class="btn btn-primary">View Details</a>
+                                <a href="" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>  -->
 
-                <!-- Card 3 -->
+                <!-- Card 3 
                 <div class="tour-package-card">
                     <div class="tp-img-wrap">
                         <img src="images/slide1.jpg" alt="Package 3">
@@ -268,98 +557,285 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+    </section>
+
+    <!-- SECTION: JOURNEY IN FRAMES GALLERY -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-header">
+            <h2>Journey in Frames</h2>
+            <p>Pictures Perfect Moments</p>
+        </div>
+
+        <div class="gallery-container">
+            <div class="gallery-nav">
+                <button class="nav-btn prev" id="galleryPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-btn next" id="galleryNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="gallery-slider-wrapper" id="galleryWrapper">
+                <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1596402184320-417d7178b2cd?auto=format&fit=crop&q=80&w=600" alt="Living Root Bridge">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1626244439002-3f6291a92440?auto=format&fit=crop&q=80&w=600" alt="Nohkalikai Falls">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1614713568397-b32b97e460b5?auto=format&fit=crop&q=80&w=600" alt="Green Valley">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1624396115160-2f218170d14b?auto=format&fit=crop&q=80&w=600" alt="Boating in Shnongpdeng">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=600" alt="River Sunset">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&q=80&w=600" alt="Meghalaya Hills">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" id="faq">
+        <div class="faq-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Your right to Know!</p>
+            <div class="yellow-underline"></div>
+        </div>
+        <div class="faq-grid" id="faq-grid">
+            <!-- Dynamic Content via JS -->
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section bg-pastel">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>Ready for your next adventure? Contact us today to plan your trip!</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <a href="tel:+917338132315">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 73381 32315</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="mailto:holidaysmeher@gmail.com">
+                            <i class="fas fa-envelope"></i>
+                            <span>holidaysmeher@gmail.com</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://www.google.com/maps/place/Meher+Holidays/@20.8830269,74.1891013,5.61z/data=!4m15!1m8!3m7!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!2sMeher+Holidays!8m2!3d23.760715!4d76.3794754!10e5!16s%2Fg%2F11xgsh1k45!3m5!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!8m2!3d23.760715!4d76.3794754!16s%2Fg%2F11xgsh1k45?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+                            target="_blank">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bengaluru, Karnataka</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://instagram.com/meher_holidays" class="social-icon"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i
+                            class="fab fa-whatsapp"></i></a>
+                    <a href="https://facebook.com/holidaysmeher" class="social-icon"><i
+                            class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <form action="https://formspree.io/f/xqewjokd" method="POST" id="contactForm" class="contact-form">
+                    <input type="text" name="_gotcha" style="display:none">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="4" placeholder="How can we help you plan your trip?"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                </form>
+
+                <!-- Success Video Scene (Replaces Form on Submit) -->
+                <div id="success-video-wrap" class="success-video-wrap">
+                    <video id="success-video" muted playsinline>
+                        <source src="FormFillUp/one.webm" type="video/webm">
+                    </video>
+                    <div class="success-message-overlay">
+                        <h3>Message Sent!</h3>
+                        <p>Thank you for your query. We will contact you soon.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    
-    <!-- Contact -->
-  <section id="contact" class="section bg-pastel">
-    <div class="container contact-container">
-      <div class="contact-info">
-        <h2>Get in Touch</h2>
-        <p>Ready for your next adventure? Contact us today to plan your trip!</p>
-        <div class="contact-details">
-          <div class="contact-item">
-            <a href="tel:+917338132315">
-              <i class="fas fa-phone-alt"></i>
-              <span>+91 73381 32315</span>
-            </a>
-          </div>
-          <div class="contact-item">
-            <a href="mailto:holidaysmeher@gmail.com">
-              <i class="fas fa-envelope"></i>
-              <span>holidaysmeher@gmail.com</span>
-            </a>
-          </div>
-          <div class="contact-item">
-            <a href="https://www.google.com/maps/place/Meher+Holidays/@20.8830269,74.1891013,5.61z/data=!4m15!1m8!3m7!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!2sMeher+Holidays!8m2!3d23.760715!4d76.3794754!10e5!16s%2Fg%2F11xgsh1k45!3m5!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!8m2!3d23.760715!4d76.3794754!16s%2Fg%2F11xgsh1k45?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>Bengaluru, Karnataka</span>
-            </a>
-          </div>
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
         </div>
-        <div class="social-links">
-          <a href="https://instagram.com/meher_holidays" class="social-icon"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://facebook.com/holidaysmeher" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-        </div>
-      </div>
+    </footer>
 
-      <div class="contact-form-container">
-        <form action="https://formspree.io/f/xqewjokd" method="POST" id="contactForm" class="contact-form">
-          <input type="text" name="_gotcha" style="display:none">
-          <div class="form-group">
-            <input type="text" name="name" placeholder="Your Name" required>
-          </div>
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Your Email Address" required>
-          </div>
-          <div class="form-group">
-            <input type="tel" name="phone" placeholder="Your Phone Number" required>
-          </div>
-          <div class="form-group">
-            <textarea name="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-        </form>
+    <script>
+        // FAQ Data
+        const faqs = [
+            {
+                question: "How much does a Meghalaya trip cost?",
+                answer: "Meghalaya trip costs vary based on travel style. Budget trips (4-5 days) with homestays and shared taxis cost around ₹22,000 per person (excluding flights), while mid-range or luxury Meghalaya packages can range from ₹30,000–₹40,000+."
+            },
+            {
+                question: "How to plan a Meghalaya trip for 5 days?",
+                answer: "For a 5-day Meghalaya tour plan, spend 2 nights in Shillong, 2 in Cherrapunjee, and 1 exploring Mawlynnong and Dawki before heading back to Guwahati."
+            },
+            {
+                question: "Is Meghalaya cheap or expensive?",
+                answer: "Meghalaya is moderately priced. It can be budget-friendly with homestays and shared taxis, or slightly expensive with private vehicles and premium stays. Great for all types of travelers!"
+            },
+            {
+                question: "Is Meghalaya safe for solo travellers?",
+                answer: "Yes, Meghalaya is quite safe for solo and female travelers. Locals are friendly, crime is low, and it's ideal for a peaceful solo getaway with scenic beauty."
+            },
+            {
+                question: "What should I pack for my visit to Meghalaya?",
+                answer: "Carry light layers, a rain jacket, sturdy walking shoes, quick-dry clothes, insect repellent, basic medicines, a power bank, toiletries, a reusable bottle, and waterproof bags. Meghalaya’s weather can change quickly."
+            }
+        ];
 
-        <!-- Success Video Scene (Replaces Form on Submit) -->
-        <div id="success-video-wrap" class="success-video-wrap">
-          <video id="success-video" muted playsinline>
-            <source src="FormFillUp/one.webm" type="video/webm">
-          </video>
-          <div class="success-message-overlay">
-            <h3>Message Sent!</h3>
-            <p>Thank you for your query. We will contact you soon.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        // Dynamic FAQ Rendering
+        function renderFAQs() {
+            const faqGrid = document.getElementById('faq-grid');
+            if (!faqGrid) return;
 
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
-    </div>
-  </footer>
+            faqGrid.innerHTML = faqs.map((faq, index) => `
+                <div class="faq-card" id="faq-${index}">
+                    <div class="faq-question" onclick="toggleFAQ(${index}, true)">
+                        <h3>Q: ${faq.question}</h3>
+                        <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            A: ${faq.answer}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
 
-    <script src="script.js"></script>
+            // Add Hover Listeners
+            const cards = faqGrid.querySelectorAll('.faq-card');
+            cards.forEach((card, index) => {
+                card.addEventListener('mouseenter', () => toggleFAQ(index, false, true));
+                card.addEventListener('mouseleave', () => toggleFAQ(index, false, false));
+            });
+        }
 
-    
+        // Accordion Logic
+        function toggleFAQ(index, isClick = false, isHoverOpen = null) {
+            const cards = document.querySelectorAll('.faq-card');
+            const targetCard = document.getElementById(`faq-${index}`);
+            
+            if (isHoverOpen !== null) {
+                // Hover behavior
+                if (isHoverOpen) {
+                    cards.forEach((card, i) => {
+                        if (i === index) card.classList.add('active');
+                        else card.classList.remove('active');
+                    });
+                } else {
+                    targetCard.classList.remove('active');
+                }
+                return;
+            }
 
-    
+            // Click behavior
+            const isActive = targetCard.classList.contains('active');
+            cards.forEach((card, i) => {
+                if (i === index) {
+                    if (isActive && isClick) card.classList.remove('active');
+                    else card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+        }
 
-    
+        // Journey in Frames Slider Logic
+        (function() {
+            const initGallery = () => {
+                const sliderWrapper = document.getElementById('galleryWrapper');
+                const prevBtn = document.getElementById('galleryPrev');
+                const nextBtn = document.getElementById('galleryNext');
 
-    
+                if (sliderWrapper && prevBtn && nextBtn) {
+                    const getScrollAmount = () => sliderWrapper.clientWidth * 0.8;
 
-    
+                    nextBtn.onclick = (e) => {
+                        e.preventDefault();
+                        const isAtEnd = sliderWrapper.scrollLeft + sliderWrapper.clientWidth >= sliderWrapper.scrollWidth - 10;
+                        if (isAtEnd) {
+                            sliderWrapper.scrollTo({ left: 0, behavior: 'smooth' });
+                        } else {
+                            sliderWrapper.scrollBy({
+                                left: getScrollAmount(),
+                                behavior: 'smooth'
+                            });
+                        }
+                    };
 
-    
+                    prevBtn.onclick = (e) => {
+                        e.preventDefault();
+                        const isAtStart = sliderWrapper.scrollLeft <= 10;
+                        if (isAtStart) {
+                            sliderWrapper.scrollTo({ left: sliderWrapper.scrollWidth, behavior: 'smooth' });
+                        } else {
+                            sliderWrapper.scrollBy({
+                                left: -getScrollAmount(),
+                                behavior: 'smooth'
+                            });
+                        }
+                    };
+                }
+            };
 
-    
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    renderFAQs();
+                    initGallery();
+                });
+            } else {
+                renderFAQs();
+                initGallery();
+            }
+        })();
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Travel Background Animation -->
     <div class="travel-bg-animation">
@@ -370,30 +846,20 @@
         <i class="fas fa-solid fa-motorcycle bike"></i>
         <!-- Detailed Shikara Houseboat SVG -->
         <svg class="houseboat" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z" fill="currentColor"/>
-            <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8"/>
-            <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor"/>
-            <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z"
+                fill="currentColor" />
+            <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8" />
+            <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor" />
+            <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
         </svg>
     </div>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-

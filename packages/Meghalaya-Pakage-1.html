@@ -4,11 +4,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dreamy Himachal Getaway | Meher Holidays</title>
+    <title>Meghalaya Package 1 | Meher Holidays</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../footer.css">
     <style>
+        :root {
+            --primary-green: #22c55e;
+            --bg-green: #f0fdf4;
+            --primary-red: #ef4444;
+            --bg-red: #fef2f2;
+            --primary-gray: #6b7280;
+            --bg-gray: #f9fafb;
+            --border-gray: #e5e7eb;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --radius: 12px;
+        }
+
+        /* Section Cards */
+        .package-section {
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid transparent;
+            margin-bottom: 32px;
+        }
+
+        .package-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
+        /* Specific Themes */
+        .inclusions {
+            background-color: var(--bg-green);
+            border-color: #dcfce7;
+        }
+
+        .exclusions {
+            background-color: var(--bg-red);
+            border-color: #fee2e2;
+        }
+
+        .other-info {
+            background-color: var(--bg-gray);
+            border-color: var(--border-gray);
+        }
+
+        /* Headings */
+        .section-header {
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            padding-left: 16px;
+            border-left: 5px solid transparent;
+            line-height: 1;
+            margin: 0;
+        }
+
+        .inclusions .section-title {
+            border-color: var(--primary-green);
+            color: #166534;
+        }
+
+        .exclusions .section-title {
+            border-color: var(--primary-red);
+            color: #991b1b;
+        }
+
+        .other-info .section-title {
+            border-color: #0ea5e9;
+            color: #0c4a6e;
+        }
+
+        /* List Styling */
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            padding: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        .package-section .icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1.5px solid currentColor;
+            padding: 3px;
+        }
+
+        /* Other Info Subsections */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .info-subsection {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 24px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .subsection-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0369a1;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #e0f2fe;
+            padding-bottom: 8px;
+            display: block;
+        }
+
+        .nested-list {
+            list-style: none;
+            padding-left: 0;
+            color: var(--text-muted);
+        }
+
+        .nested-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .nested-list li::before {
+            content: "•";
+            color: #0ea5e9;
+            font-weight: bold;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        .category-label {
+            display: block;
+            font-weight: 700;
+            color: #0c4a6e;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: #e0f2fe;
+            padding: 4px 8px;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        /* Custom SVG Icons */
+        .check-icon {
+            color: var(--primary-green);
+            background-color: #f0fdf4;
+        }
+
+        .cross-icon {
+            color: var(--primary-red);
+            background-color: #fef2f2;
+        }
+
+        @media (max-width: 768px) {
+            .package-section {
+                padding: 24px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Read More Functionality */
+        .info-subsection {
+            position: relative;
+            padding-bottom: 50px !important;
+            /* Space for the button */
+        }
+
+        .expandable-content {
+            max-height: 120px;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            position: relative;
+        }
+
+        .expandable-content.expanded {
+            max-height: 2000px;
+            /* Large enough to fit content */
+        }
+
+        .expandable-content:not(.expanded):not(.no-fade)::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.8));
+            pointer-events: none;
+        }
+
+        .read-more-btn {
+            position: absolute;
+            bottom: 16px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #0ea5e9;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+
+        .read-more-btn:hover {
+            color: #0369a1;
+            text-decoration: underline;
+        }
+
+        .read-more-btn::after {
+            content: "Read More";
+        }
+
+        .expandable-content.expanded+.read-more-btn::after {
+            content: "Read Less";
+        }
+
         /* Journey in Frames Gallery */
         .gallery-section {
             padding: 80px 0;
@@ -49,10 +298,12 @@
             scrollbar-width: none;
             -ms-overflow-style: none;
             scroll-snap-type: x mandatory;
+            /* Snap to images */
         }
 
         .gallery-slider-wrapper::-webkit-scrollbar {
             display: none;
+            /* Hide scrollbar Chrome/Safari */
         }
 
         .gallery-slider-wrapper:active {
@@ -63,6 +314,7 @@
             display: flex;
             gap: 25px;
             padding: 20px 50px;
+            /* Side padding to allow first/last item to center */
             width: max-content;
         }
 
@@ -75,8 +327,10 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             aspect-ratio: 1/1.2;
             scroll-snap-align: center;
+            /* Snap this item to center */
         }
 
+        /* Tilt Effect */
         .gallery-item:nth-child(odd) {
             transform: rotate(-2deg);
         }
@@ -103,6 +357,7 @@
             filter: brightness(1.1);
         }
 
+        /* Navigation Arrows */
         .gallery-nav {
             position: absolute;
             top: 50%;
@@ -138,16 +393,19 @@
         @media (max-width: 1024px) {
             .gallery-item {
                 flex: 0 0 240px;
+                /* Slightly smaller on tablet */
             }
         }
 
         @media (max-width: 640px) {
             .gallery-item {
                 flex: 0 0 260px;
+                /* Slightly larger than 200 to look better when centered */
             }
 
             .gallery-slider {
                 padding: 20px 30px;
+                /* Adjust padding for mobile centering */
                 gap: 20px;
             }
 
@@ -159,7 +417,9 @@
                 width: 40px;
                 height: 40px;
                 background-color: rgba(14, 165, 233, 0.9);
+                /* More opaque on mobile */
             }
+        }
         }
     </style>
 </head>
@@ -188,23 +448,23 @@
 
     <!-- CONTENT -->
     <section class="why-section section" data-animated-bg="true"
-        style="background-image: url('../images/DreamyHimachalGetaway.jpg');">
+        style="background-image: url('../images/MeghalayaCard.jpg');">
         <div class="container">
-            <h2 style="color: #ffd700;" class="spiti-heading">Why Dreamy Himachal Getaway?</h2>
+            <h2 style="color: #ffd700;" class="spiti-heading">Why Meghalaya?</h2>
             <p>
-                The Dreamy Himachal Getaway is a thrilling journey through one of the most stunning
-                landscapes in the Indian Himalayas. Experience cold deserts, ancient monasteries, and breathtaking
-                mountain views.
+                Meghalaya, the "Abode of Clouds," is a mystical land of rolling hills, deep valleys, and breathtaking
+                waterfalls.
+                Experience the raw beauty of the North-East with our specially curated 6-night journey.
                 Join Meher Holidays for an unforgettable adventure.
             </p>
-            <p class="why-extra">Discover the magic of Spiti Valley on this specially curated tour.</p>
+            <p class="why-extra">Discover the magic of Meghalaya on this premium tour.</p>
         </div>
     </section>
 
     <!-- ITINERARY -->
     <section id="itinerary" class="itinerary-section section" data-animated-bg="true">
         <div class="container">
-            <h2>Summer Spiti Valley Adventure Itinerary</h2>
+            <h2>Meghalaya Package 1 Itinerary</h2>
             <p class="itinerary-price">Cost Per Person - INR 20,999/- including GST</p>
             <h3 class="itinerary-header">ITINERARY (5 Nights / 6 Days)</h3>
 
@@ -400,32 +660,324 @@
                 </article>
 
             </div>
+
+            <!-- SECTION 1: INCLUSIONS -->
+            <section class="package-section inclusions" id="inclusions">
+                <div class="section-header">
+                    <h2 class="section-title">Inclusions</h2>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Entire travel as per the itinerary by tempo traveler.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        6 nights accommodation – 1 Night in Hotel in Jowai, 2 Nights in Hotel at Cherrapunjee, 1 Night
+                        in Camps at Shnongpdeng & 1 Night in Hotel at Shillong on double/triple sharing basis.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        6 meals – Breakfast on Day 2, Day 3, Day 4, Day 5, Day 6 + Dinner on Day 2.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Entry fees to the sightseeing places mentioned in the itinerary.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Guided trek to various points.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Team Captain throughout the trip.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Medical Kit to handle emergency conditions.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Driver night charges, toll & parking charges.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        All inner line permits.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Barbeque at Shnongpdeng (If Weather permits).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Bonfire at Shnongpdeng (If Weather permits).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Boating, Cliff jumping and Snorkeling in Shnongpdeng (If Weather permits).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Boating, Guide, 4X4 Vehicle for Krem Chympe Caves.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SECTION 2: EXCLUSIONS -->
+            <section class="package-section exclusions" id="exclusions">
+                <div class="section-header">
+                    <h2 class="section-title">Exclusions</h2>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        GST (5%) is applicable extra.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other food or beverage charges that are not included in the package.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other costing involved due to any kind of natural calamity, forced circumstances, which are
+                        out of our control.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other expense not mentioned in the inclusions.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SECTION 3: OTHER INFORMATION -->
+            <section class="package-section other-info" id="other-info">
+                <div class="section-header">
+                    <h2 class="section-title">Other Information</h2>
+                </div>
+
+                <div class="info-grid">
+                    <!-- Subsection: Must Carry -->
+                    <div class="info-subsection">
+                        <h3 class="subsection-title">Must Carry</h3>
+                        <div class="expandable-content">
+                            <ul class="nested-list">
+                                <li>Authentic Government ID Card</li>
+                                <li>Comfortable warm clothing like woolen socks, cap, fleece jackets or warmers, down
+                                    jacket, toiletries</li>
+                                <li>Sunscreen & lip balm, Good UV protection sunglasses</li>
+                                <li>Personal Medicines (if any)</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn"></button>
+                    </div>
+
+                    <!-- Subsection: Travel Essentials -->
+                    <div class="info-subsection">
+                        <h3 class="subsection-title">Travel Essentials</h3>
+
+                        <div class="expandable-content">
+                            <span class="category-label">Gears:</span>
+                            <ul class="nested-list">
+                                <li>A rucksack bag and a day pack</li>
+                                <li>3-litre water bladder or water bottle</li>
+                            </ul>
+
+                            <span class="category-label">Clothes:</span>
+                            <ul class="nested-list">
+                                <li>A sun cap and a woolen cap</li>
+                                <li>UV protected sunglasses</li>
+                                <li>One cotton long sleeves and 2 short sleeve t-shirt</li>
+                                <li>1 fleece jacket</li>
+                                <li>1 heavy thick jacket/down jacket</li>
+                                <li>1 pair of gloves</li>
+                                <li>At least 2 long pants (trek pants and cargo pants are favourable)</li>
+                                <li>4 sets of undergarments</li>
+                                <li>2 pair of socks</li>
+                                <li>A small towel</li>
+                                <li>A rain jacket or a poncho</li>
+                            </ul>
+
+                            <span class="category-label">Footwear:</span>
+                            <ul class="nested-list">
+                                <li>Above-the-ankle waterproof and breathable hiking boots with good grip</li>
+                                <li>Flip flops/sandals</li>
+                            </ul>
+
+                            <span class="category-label">Medication:</span>
+                            <ul class="nested-list">
+                                <li>Glucose powder</li>
+                                <li>Medicines for headaches, diarrhoea, motion sickness</li>
+                                <li>Dettol</li>
+                                <li>Bandages</li>
+                                <li>Cotton</li>
+                            </ul>
+
+                            <span class="category-label">Personal Accessories:</span>
+                            <ul class="nested-list">
+                                <li>Toothpaste, toothbrush</li>
+                                <li>Paper soap, or sanitizer</li>
+                                <li>Sunscreen minimum of spf40, lip balm, cold creams</li>
+                                <li>Body spray</li>
+                                <li>LED torch light</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn"></button>
+                    </div>
+                </div>
+            </section>
         </div>
     </section>
 
+
     <script>
-        // IntersectionObserver to reveal itinerary days on scroll
-        (function () {
-            if (!('IntersectionObserver' in window)) {
-                // fallback: reveal all
-                document.querySelectorAll('.itinerary-day').forEach(function (el) { el.classList.add('in-view'); });
-                return;
+        // Read More / Less Toggle for Other Info
+        document.querySelectorAll('.info-subsection').forEach(subsection => {
+            const content = subsection.querySelector('.expandable-content');
+            const button = subsection.querySelector('.read-more-btn');
+
+            if (content && button) {
+                // Only show button if content exceeds truncation height (120px)
+                if (content.scrollHeight <= 120) {
+                    button.style.display = 'none';
+                    content.style.maxHeight = 'none';
+                    content.classList.add('no-fade');
+                } else {
+                    button.addEventListener('click', () => {
+                        content.classList.toggle('expanded');
+                    });
+                }
             }
+        });
 
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12 });
+        // Journey in Frames Slider Logic
+        (function () {
+            const initGallery = () => {
+                const sliderWrapper = document.getElementById('galleryWrapper');
+                const prevBtn = document.getElementById('galleryPrev');
+                const nextBtn = document.getElementById('galleryNext');
 
-            document.querySelectorAll('.itinerary-day').forEach(function (el) { observer.observe(el); });
+                if (sliderWrapper && prevBtn && nextBtn) {
+                    const getScrollAmount = () => sliderWrapper.clientWidth * 0.8;
+
+                    nextBtn.onclick = (e) => {
+                        e.preventDefault();
+                        const isAtEnd = sliderWrapper.scrollLeft + sliderWrapper.clientWidth >= sliderWrapper.scrollWidth - 10;
+                        if (isAtEnd) {
+                            sliderWrapper.scrollTo({ left: 0, behavior: 'smooth' });
+                        } else {
+                            sliderWrapper.scrollBy({
+                                left: getScrollAmount(),
+                                behavior: 'smooth'
+                            });
+                        }
+                    };
+
+                    prevBtn.onclick = (e) => {
+                        e.preventDefault();
+                        const isAtStart = sliderWrapper.scrollLeft <= 10;
+                        if (isAtStart) {
+                            sliderWrapper.scrollTo({ left: sliderWrapper.scrollWidth, behavior: 'smooth' });
+                        } else {
+                            sliderWrapper.scrollBy({
+                                left: -getScrollAmount(),
+                                behavior: 'smooth'
+                            });
+                        }
+                    };
+                }
+            };
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initGallery);
+            } else {
+                initGallery();
+            }
         })();
-    </script>
-
-    <script>
         // Page-scoped smooth scroll for "View Itinerary" on Bhutan page only
         (function () {
             function initSmoothScroll() {
@@ -448,6 +1000,25 @@
             } else {
                 initSmoothScroll();
             }
+        })();
+        // IntersectionObserver to reveal itinerary days on scroll
+        (function () {
+            if (!('IntersectionObserver' in window)) {
+                // fallback: reveal all
+                document.querySelectorAll('.itinerary-day').forEach(function (el) { el.classList.add('in-view'); });
+                return;
+            }
+
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            document.querySelectorAll('.itinerary-day').forEach(function (el) { observer.observe(el); });
         })();
     </script>
 
@@ -583,28 +1154,56 @@
         <div class="gallery-slider-wrapper" id="galleryWrapper">
             <div class="gallery-slider" id="gallerySlider">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1610631627850-2d8816c7017c?auto=format&fit=crop&q=80&w=600"
-                        alt="Sikkim Mountains">
+                    <img src="https://images.unsplash.com/photo-1596402184320-417d7178b2cd?auto=format&fit=crop&q=80&w=600"
+                        alt="Living Root Bridge">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1589136777351-fdc9c9ca0d3a?auto=format&fit=crop&q=80&w=600"
-                        alt="Gurudongmar Lake">
+                    <img src="https://images.unsplash.com/photo-1626244439002-3f6291a92440?auto=format&fit=crop&q=80&w=600"
+                        alt="Nohkalikai Falls">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1626640618440-552048d226ca?auto=format&fit=crop&q=80&w=600"
-                        alt="Gangtok City">
+                    <img src="https://images.unsplash.com/photo-1614713568397-b32b97e460b5?auto=format&fit=crop&q=80&w=600"
+                        alt="Green Valley">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1604434771765-b1a37c3c0f46?auto=format&fit=crop&q=80&w=600"
-                        alt="Yumthang Valley">
+                    <img src="https://images.unsplash.com/photo-1624396115160-2f218170d14b?auto=format&fit=crop&q=80&w=600"
+                        alt="Boating in Shnongpdeng">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1589136777351-fdc9c9ca0d3a?auto=format&fit=crop&q=80&w=600"
-                        alt="Sikkim Nature">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=600"
+                        alt="River Sunset">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1610631627850-2d8816c7017c?auto=format&fit=crop&q=80&w=600"
-                        alt="Himalayan View">
+                    <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&q=80&w=600"
+                        alt="Meghalaya Hills">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1605333396915-47ed6b68a00e?auto=format&fit=crop&q=80&w=600"
+                        alt="Waterfall Mist">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=600"
+                        alt="Lush Green Forest">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=600"
+                        alt="Lush Green Forest">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=600"
+                        alt="Lush Green Forest">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=600"
+                        alt="Lush Green Forest">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=600"
+                        alt="Lush Green Forest">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=600"
+                        alt="Lush Green Forest">
                 </div>
             </div>
         </div>

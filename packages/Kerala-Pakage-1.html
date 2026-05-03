@@ -8,10 +8,164 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../footer.css">
+    <style>
+        /* Journey in Frames Gallery */
+        .gallery-section {
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .gallery-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1f2937;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .gallery-header p {
+            font-size: 18px;
+            color: #9ca3af;
+            font-weight: 400;
+        }
+
+        .gallery-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .gallery-slider-wrapper {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            cursor: grab;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+        }
+
+        .gallery-slider-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-slider-wrapper:active {
+            cursor: grabbing;
+        }
+
+        .gallery-slider {
+            display: flex;
+            gap: 25px;
+            padding: 20px 50px;
+            width: max-content;
+        }
+
+        .gallery-item {
+            flex: 0 0 280px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            aspect-ratio: 1/1.2;
+            scroll-snap-align: center;
+        }
+
+        .gallery-item:nth-child(odd) {
+            transform: rotate(-2deg);
+        }
+
+        .gallery-item:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+            filter: brightness(0.9);
+        }
+
+        .gallery-item:hover {
+            transform: rotate(0) scale(1.05);
+            z-index: 10;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(1.1);
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            right: 10px;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            background-color: #0ea5e9;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: auto;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-btn i {
+            font-size: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-item {
+                flex: 0 0 240px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .gallery-item {
+                flex: 0 0 260px;
+            }
+
+            .gallery-slider {
+                padding: 20px 30px;
+                gap: 20px;
+            }
+
+            .gallery-container {
+                padding: 0;
+            }
+
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                background-color: rgba(14, 165, 233, 0.9);
+            }
+        }
+    </style>
 </head>
 
 <body>
-    
+
 
 
     <!-- Header / Nav -->
@@ -33,7 +187,8 @@
     </header>
 
     <!-- CONTENT -->
-    <section class="why-section section" data-animated-bg="true" style="background-image: url('../images/DreamyHimachalGetaway.jpg');">
+    <section class="why-section section" data-animated-bg="true"
+        style="background-image: url('../images/DreamyHimachalGetaway.jpg');">
         <div class="container">
             <h2 style="color: #ffd700;" class="spiti-heading">Why Dreamy Himachal Getaway?</h2>
             <p>
@@ -297,19 +452,19 @@
     </script>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
 
     <!-- Travel Background Animation -->
     <div class="travel-bg-animation">
@@ -320,19 +475,66 @@
         <i class="fas fa-solid fa-motorcycle bike"></i>
         <!-- Detailed Shikara Houseboat SVG -->
         <svg class="houseboat" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z" fill="currentColor"/>
-            <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8"/>
-            <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor"/>
-            <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
+            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z"
+                fill="currentColor" />
+            <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8" />
+            <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor" />
+            <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
         </svg>
     </div>
+    <script>
+        // Journey in Frames Slider Logic
+        (function () {
+            const initGallery = () => {
+                const sliderWrapper = document.getElementById('galleryWrapper');
+                const prevBtn = document.getElementById('galleryPrev');
+                const nextBtn = document.getElementById('galleryNext');
+
+                if (sliderWrapper && prevBtn && nextBtn) {
+                    const getScrollAmount = () => sliderWrapper.clientWidth * 0.8;
+
+                    nextBtn.onclick = (e) => {
+                        e.preventDefault();
+                        const isAtEnd = sliderWrapper.scrollLeft + sliderWrapper.clientWidth >= sliderWrapper.scrollWidth - 10;
+                        if (isAtEnd) {
+                            sliderWrapper.scrollTo({ left: 0, behavior: 'smooth' });
+                        } else {
+                            sliderWrapper.scrollBy({
+                                left: getScrollAmount(),
+                                behavior: 'smooth'
+                            });
+                        }
+                    };
+
+                    prevBtn.onclick = (e) => {
+                        e.preventDefault();
+                        const isAtStart = sliderWrapper.scrollLeft <= 10;
+                        if (isAtStart) {
+                            sliderWrapper.scrollTo({ left: sliderWrapper.scrollWidth, behavior: 'smooth' });
+                        } else {
+                            sliderWrapper.scrollBy({
+                                left: -getScrollAmount(),
+                                behavior: 'smooth'
+                            });
+                        }
+                    };
+                }
+            };
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initGallery);
+            } else {
+                initGallery();
+            }
+        })();
+    </script>
 </body>
 
 </html>
@@ -422,127 +624,208 @@
     })();
 </script>
 
-<!-- Footer -->
+<!-- SECTION: JOURNEY IN FRAMES GALLERY -->
+<section class="gallery-section" id="gallery">
+    <div class="gallery-header">
+        <h2>Journey in Frames</h2>
+        <p>Pictures Perfect Moments</p>
+    </div>
 
-    <!-- Contact -->
-  <section id="contact" class="section bg-pastel">
+    <div class="gallery-container">
+        <div class="gallery-nav">
+            <button class="nav-btn prev" id="galleryPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="nav-btn next" id="galleryNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="gallery-slider-wrapper" id="galleryWrapper">
+            <div class="gallery-slider" id="gallerySlider">
+                <div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&q=80&w=600"
+                        alt="Travel 1"></div>
+                <div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=600"
+                        alt="Travel 2"></div>
+                <div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=600"
+                        alt="Travel 3"></div>
+                <div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=600"
+                        alt="Travel 4"></div>
+                <div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=600"
+                        alt="Travel 5"></div>
+                <div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1530789253588-583c8241a6e0?auto=format&fit=crop&q=80&w=600"
+                        alt="Travel 6"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section bg-pastel">
     <div class="container contact-container">
-      <div class="contact-info">
-        <h2>Get in Touch</h2>
-        <p>Ready for your next adventure? Contact us today to plan your trip!</p>
-        <div class="contact-details">
-          <div class="contact-item">
-            <a href="tel:+917338132315">
-              <i class="fas fa-phone-alt"></i>
-              <span>+91 73381 32315</span>
-            </a>
-          </div>
-          <div class="contact-item">
-            <a href="mailto:holidaysmeher@gmail.com">
-              <i class="fas fa-envelope"></i>
-              <span>holidaysmeher@gmail.com</span>
-            </a>
-          </div>
-          <div class="contact-item">
-            <a href="https://www.google.com/maps/place/Meher+Holidays/@20.8830269,74.1891013,5.61z/data=!4m15!1m8!3m7!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!2sMeher+Holidays!8m2!3d23.760715!4d76.3794754!10e5!16s%2Fg%2F11xgsh1k45!3m5!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!8m2!3d23.760715!4d76.3794754!16s%2Fg%2F11xgsh1k45?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>Bengaluru, Karnataka</span>
-            </a>
-          </div>
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>Ready for your next adventure? Contact us today to plan your trip!</p>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <a href="tel:+917338132315">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 73381 32315</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="mailto:holidaysmeher@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                        <span>holidaysmeher@gmail.com</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://www.google.com/maps/place/Meher+Holidays/@20.8830269,74.1891013,5.61z/data=!4m15!1m8!3m7!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!2sMeher+Holidays!8m2!3d23.760715!4d76.3794754!10e5!16s%2Fg%2F11xgsh1k45!3m5!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!8m2!3d23.760715!4d76.3794754!16s%2Fg%2F11xgsh1k45?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Bengaluru, Karnataka</span>
+                    </a>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://instagram.com/meher_holidays" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i
+                        class="fab fa-whatsapp"></i></a>
+                <a href="https://facebook.com/holidaysmeher" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            </div>
         </div>
-        <div class="social-links">
-          <a href="https://instagram.com/meher_holidays" class="social-icon"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://facebook.com/holidaysmeher" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-        </div>
-      </div>
 
-      <div class="contact-form-container">
-        <form action="https://formspree.io/f/xqewjokd" method="POST" id="contactForm" class="contact-form">
-          <input type="text" name="_gotcha" style="display:none">
-          <div class="form-group">
-            <input type="text" name="name" placeholder="Your Name" required>
-          </div>
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Your Email Address" required>
-          </div>
-          <div class="form-group">
-            <input type="tel" name="phone" placeholder="Your Phone Number" required>
-          </div>
-          <div class="form-group">
-            <textarea name="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-        </form>
+        <div class="contact-form-container">
+            <form action="https://formspree.io/f/xqewjokd" method="POST" id="contactForm" class="contact-form">
+                <input type="text" name="_gotcha" style="display:none">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Your Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="4" placeholder="How can we help you plan your trip?"
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+            </form>
 
-        <!-- Success Video Scene (Replaces Form on Submit) -->
-        <div id="success-video-wrap" class="success-video-wrap">
-          <video id="success-video" muted playsinline>
-            <source src="../FormFillUp/one.webm" type="video/webm">
-          </video>
-          <div class="success-message-overlay">
-            <h3>Message Sent!</h3>
-            <p>Thank you for your query. We will contact you soon.</p>
-          </div>
+            <!-- Success Video Scene (Replaces Form on Submit) -->
+            <div id="success-video-wrap" class="success-video-wrap">
+                <video id="success-video" muted playsinline>
+                    <source src="../FormFillUp/one.webm" type="video/webm">
+                </video>
+                <div class="success-message-overlay">
+                    <h3>Message Sent!</h3>
+                    <p>Thank you for your query. We will contact you soon.</p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <footer>
+<!-- Footer -->
+<footer>
     <div class="container footer-content">
-      <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
+        <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
     </div>
-  </footer>
+</footer>
 
 <script src="../script.js"></script>
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    <!-- Travel Background Animation -->
-    <div class="travel-bg-animation">
-        <i class="fas fa-solid fa-cloud cloud c1"></i>
-        <i class="fas fa-solid fa-cloud cloud c2"></i>
-        <i class="fas fa-solid fa-cloud cloud c3"></i>
-        <i class="fas fa-solid fa-plane plane"></i>
-        <i class="fas fa-solid fa-motorcycle bike"></i>
-        <!-- Detailed Shikara Houseboat SVG -->
-        <svg class="houseboat" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z" fill="currentColor"/>
-            <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8"/>
-            <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor"/>
-            <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-        </svg>
-    </div>
+
+
+
+
+
+
+
+<!-- Travel Background Animation -->
+<div class="travel-bg-animation">
+    <i class="fas fa-solid fa-cloud cloud c1"></i>
+    <i class="fas fa-solid fa-cloud cloud c2"></i>
+    <i class="fas fa-solid fa-cloud cloud c3"></i>
+    <i class="fas fa-solid fa-plane plane"></i>
+    <i class="fas fa-solid fa-motorcycle bike"></i>
+    <!-- Detailed Shikara Houseboat SVG -->
+    <svg class="houseboat" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z"
+            fill="currentColor" />
+        <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8" />
+        <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor" />
+        <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+        <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+        <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+        <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+        <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+        <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+        <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+        <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+    </svg>
+</div>
+<script>
+    // Journey in Frames Slider Logic
+    (function () {
+        const initGallery = () => {
+            const sliderWrapper = document.getElementById('galleryWrapper');
+            const prevBtn = document.getElementById('galleryPrev');
+            const nextBtn = document.getElementById('galleryNext');
+
+            if (sliderWrapper && prevBtn && nextBtn) {
+                const getScrollAmount = () => sliderWrapper.clientWidth * 0.8;
+
+                nextBtn.onclick = (e) => {
+                    e.preventDefault();
+                    const isAtEnd = sliderWrapper.scrollLeft + sliderWrapper.clientWidth >= sliderWrapper.scrollWidth - 10;
+                    if (isAtEnd) {
+                        sliderWrapper.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        sliderWrapper.scrollBy({
+                            left: getScrollAmount(),
+                            behavior: 'smooth'
+                        });
+                    }
+                };
+
+                prevBtn.onclick = (e) => {
+                    e.preventDefault();
+                    const isAtStart = sliderWrapper.scrollLeft <= 10;
+                    if (isAtStart) {
+                        sliderWrapper.scrollTo({ left: sliderWrapper.scrollWidth, behavior: 'smooth' });
+                    } else {
+                        sliderWrapper.scrollBy({
+                            left: -getScrollAmount(),
+                            behavior: 'smooth'
+                        });
+                    }
+                };
+            }
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initGallery);
+        } else {
+            initGallery();
+        }
+    })();
+</script>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
