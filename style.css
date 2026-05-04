@@ -11,7 +11,24 @@
   3. COMPONENTS: Styles for Hero, Gallery, and Testimonials are organized in sections.
   4. RESPONSIVENESS: Media queries at the bottom handle mobile/tablet layouts.
 */
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: #ffd700;
+    margin-left: 2px;
+    vertical-align: middle;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
 :root {
+
+
     --primary-color: #1E40AF;
     --primary-hover: #1E3A8A;
     --secondary-color: #3B82F6;

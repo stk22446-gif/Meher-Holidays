@@ -1482,104 +1482,104 @@
 
   <script src="script.js"></script>
   <script>
-    /**
-     * Mobile Stacked Swipe Card Logic
-     * Applies only to screens <= 768px
-     */
-    (function() {
-      const initStacks = () => {
-        if (window.innerWidth > 768) return;
+      /**
+       * Mobile Stacked Swipe Card Logic
+       * Applies only to screens <= 768px
+       */
+      (function () {
+        const initStacks = () => {
+          if (window.innerWidth > 768) return;
 
-        const containers = document.querySelectorAll('.card-container');
-        containers.forEach(container => {
-          const cards = Array.from(container.querySelectorAll('.card'));
-          if (cards.length === 0) return;
+          const containers = document.querySelectorAll('.card-container');
+          containers.forEach(container => {
+            const cards = Array.from(container.querySelectorAll('.card'));
+            if (cards.length === 0) return;
 
-          let currentIndex = 0;
-          let startX = 0;
-          let startY = 0;
-          let isSwiping = false;
+            let currentIndex = 0;
+            let startX = 0;
+            let startY = 0;
+            let isSwiping = false;
 
-          const updateClasses = () => {
-            const len = cards.length;
-            cards.forEach((card, index) => {
-              card.classList.remove('active', 'next', 'prev', 'far-next', 'far-prev');
-              
-              if (index === currentIndex) {
-                card.classList.add('active');
-              } else if (index === (currentIndex + 1) % len) {
-                card.classList.add('next');
-              } else if (index === (currentIndex - 1 + len) % len) {
-                card.classList.add('prev');
-              } else if (len > 4 && index === (currentIndex + 2) % len) {
-                card.classList.add('far-next');
-              } else if (len > 4 && index === (currentIndex - 2 + len) % len) {
-                card.classList.add('far-prev');
+            const updateClasses = () => {
+              const len = cards.length;
+              cards.forEach((card, index) => {
+                card.classList.remove('active', 'next', 'prev', 'far-next', 'far-prev');
+
+                if (index === currentIndex) {
+                  card.classList.add('active');
+                } else if (index === (currentIndex + 1) % len) {
+                  card.classList.add('next');
+                } else if (index === (currentIndex - 1 + len) % len) {
+                  card.classList.add('prev');
+                } else if (len > 4 && index === (currentIndex + 2) % len) {
+                  card.classList.add('far-next');
+                } else if (len > 4 && index === (currentIndex - 2 + len) % len) {
+                  card.classList.add('far-prev');
+                }
+              });
+            };
+
+            container.addEventListener('touchstart', e => {
+              startX = e.touches[0].clientX;
+              startY = e.touches[0].clientY;
+              isSwiping = true;
+            }, { passive: true });
+
+            container.addEventListener('touchmove', e => {
+              if (!isSwiping) return;
+              const deltaX = e.touches[0].clientX - startX;
+              const deltaY = e.touches[0].clientY - startY;
+
+              const activeCard = container.querySelector('.card.active');
+              if (activeCard) {
+                // Visual feedback based on dominant swipe direction
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                  activeCard.style.transform = `scale(1) translateX(${deltaX * 0.4}px) rotate(${deltaX * 0.1}deg)`;
+                } else if (Math.abs(deltaY) > 10) {
+                  activeCard.style.transform = `scale(1) translateY(${deltaY * 0.3}px) rotate(${deltaX * 0.05}deg)`;
+                }
               }
-            });
-          };
+            }, { passive: true });
 
-          container.addEventListener('touchstart', e => {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            isSwiping = true;
-          }, { passive: true });
+            container.addEventListener('touchend', e => {
+              if (!isSwiping) return;
+              isSwiping = false;
 
-          container.addEventListener('touchmove', e => {
-            if (!isSwiping) return;
-            const deltaX = e.touches[0].clientX - startX;
-            const deltaY = e.touches[0].clientY - startY;
+              const endX = e.changedTouches[0].clientX;
+              const endY = e.changedTouches[0].clientY;
+              const deltaX = endX - startX;
+              const deltaY = endY - startY;
+              const activeCard = container.querySelector('.card.active');
 
-            const activeCard = container.querySelector('.card.active');
-            if (activeCard) {
-              // Visual feedback based on dominant swipe direction
-              if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                activeCard.style.transform = `scale(1) translateX(${deltaX * 0.4}px) rotate(${deltaX * 0.1}deg)`;
-              } else if (Math.abs(deltaY) > 10) {
-                activeCard.style.transform = `scale(1) translateY(${deltaY * 0.3}px) rotate(${deltaX * 0.05}deg)`;
+              if (activeCard) activeCard.style.transform = '';
+
+              // Horizontal Swipe (Bi-directional)
+              if (Math.abs(deltaX) > 50) {
+                if (deltaX < 0) {
+                  // Swipe Left -> Next
+                  currentIndex = (currentIndex + 1) % cards.length;
+                } else {
+                  // Swipe Right -> Previous
+                  currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                }
+                updateClasses();
               }
-            }
-          }, { passive: true });
-
-          container.addEventListener('touchend', e => {
-            if (!isSwiping) return;
-            isSwiping = false;
-            
-            const endX = e.changedTouches[0].clientX;
-            const endY = e.changedTouches[0].clientY;
-            const deltaX = endX - startX;
-            const deltaY = endY - startY;
-            const activeCard = container.querySelector('.card.active');
-            
-            if (activeCard) activeCard.style.transform = '';
-
-            // Horizontal Swipe (Bi-directional)
-            if (Math.abs(deltaX) > 50) {
-              if (deltaX < 0) {
-                // Swipe Left -> Next
+              // Vertical Swipe (Next only)
+              else if (Math.abs(deltaY) > 60) {
                 currentIndex = (currentIndex + 1) % cards.length;
-              } else {
-                // Swipe Right -> Previous
-                currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+                updateClasses();
               }
-              updateClasses();
-            } 
-            // Vertical Swipe (Next only)
-            else if (Math.abs(deltaY) > 60) {
-              currentIndex = (currentIndex + 1) % cards.length;
-              updateClasses();
-            }
-          }, { passive: true });
+            }, { passive: true });
 
-          // Initial setup
-          updateClasses();
-        });
-      };
+            // Initial setup
+            updateClasses();
+          });
+        };
 
-      // Run on load and resize
-      window.addEventListener('load', initStacks);
-      window.addEventListener('resize', initStacks);
-    })();
+        // Run on load and resize
+        window.addEventListener('load', initStacks);
+        window.addEventListener('resize', initStacks);
+      })();
   </script>
 
   <!-- Travel Background Animation -->

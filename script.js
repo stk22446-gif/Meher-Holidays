@@ -310,6 +310,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Travel Theme Background Animation
     const addTravelBackground = () => {
+        if (document.querySelector('.travel-bg-animation')) return;
+        
         const bgContainer = document.createElement('div');
         bgContainer.className = 'travel-bg-animation';
 
@@ -318,6 +320,20 @@ document.addEventListener('DOMContentLoaded', () => {
             <i class="fas fa-cloud cloud c2"></i>
             <i class="fas fa-cloud cloud c3"></i>
             <i class="fas fa-plane plane"></i>
+            <i class="fas fa-motorcycle bike"></i>
+            <svg class="houseboat" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z" fill="currentColor" />
+                <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8" />
+                <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor" />
+                <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+                <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+                <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+                <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+                <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+                <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+                <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+                <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
+            </svg>
         `;
         // Append as first child to stay under content
         document.body.insertBefore(bgContainer, document.body.firstChild);
