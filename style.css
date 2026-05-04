@@ -1448,7 +1448,7 @@ header {
 }
 
 .dest-btn {
-    align-self: flex-start;
+    align-self: center;
     padding: 8px 24px;
     font-size: 0.9rem;
 }

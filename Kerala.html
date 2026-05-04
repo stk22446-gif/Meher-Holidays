@@ -17,6 +17,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="faq.css">
     <style>
         .dest-page-hero {
             position: relative;
@@ -38,16 +39,18 @@
             transform: translate(-50%, -50%);
             z-index: 1;
             pointer-events: none;
-            /* Smooth fade-in for premium feel */
             animation: heroVideoFadeIn 1.5s ease-in-out;
         }
 
         @keyframes heroVideoFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
-
-
 
         .hero-overlay {
             position: absolute;
@@ -84,244 +87,12 @@
                 font-size: 2.6rem !important;
             }
         }
-    </style>
-    <style>
-        /* Journey in Frames Gallery */
-        .gallery-section {
-            padding: 80px 0;
-            overflow: hidden;
-            background-color: transparent;
-        }
 
-        .gallery-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
 
-        .gallery-header h2 {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--text-dark);
-            font-family: var(--font-heading);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .gallery-header p {
-            font-size: 18px;
-            color: var(--text-light);
-            font-family: var(--font-main);
-            font-weight: 400;
-        }
-
-        .gallery-container {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        .gallery-slider-wrapper {
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            cursor: grab;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            scroll-snap-type: x mandatory;
-        }
-
-        .gallery-slider-wrapper::-webkit-scrollbar {
-            display: none;
-        }
-
-        .gallery-slider {
-            display: flex;
-            gap: 25px;
-            padding: 20px 50px;
-            width: max-content;
-        }
-
-        .gallery-item {
-            flex: 0 0 280px;
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            aspect-ratio: 1/1.2;
-            scroll-snap-align: center;
-        }
-
-        .gallery-item:nth-child(odd) { transform: rotate(-2deg); }
-        .gallery-item:nth-child(even) { transform: rotate(2deg); }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.4s ease;
-            filter: brightness(0.9);
-        }
-
-        .gallery-item:hover {
-            transform: rotate(0) scale(1.05);
-            z-index: 10;
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .gallery-item:hover img { filter: brightness(1.1); }
-
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            left: 10px;
-            right: 10px;
-            transform: translateY(-50%);
-            display: flex;
-            justify-content: space-between;
-            pointer-events: none;
-            z-index: 100;
-        }
-
-        .nav-btn {
-            width: 50px;
-            height: 50px;
-            background-color: var(--secondary-color);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            pointer-events: auto;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* FAQ Section Styles */
-        .faq-section {
-            padding: 80px 0;
-            background-color: transparent;
-        }
-
-        .faq-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .faq-header h2 {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--text-dark);
-            font-family: var(--font-heading);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .faq-header p {
-            font-size: 18px;
-            color: var(--primary-color);
-            font-family: var(--font-main);
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        .yellow-underline {
-            width: 80px;
-            height: 4px;
-            background-color: #ffd700;
-            margin: 0 auto;
-            border-radius: 2px;
-        }
-
-        .faq-grid {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            padding: 0 20px;
-        }
-
-        .faq-item {
-            background-color: var(--bg-white);
-            border: 1.5px solid #e2e8f0;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.03);
-            margin-bottom: 20px;
-        }
-
-        .faq-item:hover {
-            border-color: var(--secondary-color);
-            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.08);
-            transform: translateY(-2px);
-        }
-
-        .faq-question {
-            padding: 22px 28px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .faq-question h3 {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin: 0;
-            line-height: 1.4;
-            transition: color 0.3s ease;
-        }
-
-        .faq-item:hover .faq-question h3 { color: var(--primary-color); }
-
-        .arrow {
-            font-size: 18px;
-            color: #94a3b8;
-            transition: transform 0.3s ease;
-            font-weight: bold;
-        }
-
-        .faq-item.active .arrow {
-            color: var(--primary-color);
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            background-color: var(--bg-light);
-        }
-
-        .faq-answer-content {
-            padding: 25px 28px;
-            color: var(--text-light);
-            line-height: 1.7;
-            font-size: 16px;
-            border-top: 1px solid #f1f5f9;
-        }
-
-        .faq-item.active {
-            border-color: var(--primary-color);
-            box-shadow: 0 15px 35px rgba(30, 64, 175, 0.12);
-        }
-
-        .faq-item.active .faq-question h3 { color: var(--primary-color); }
     </style>
 </head>
 
 <body>
-    
-
-
     <!-- Header / Nav -->
     <header id="header">
         <div class="container nav-container">
@@ -341,21 +112,11 @@
     </header>
 
     <!-- Destination Hero Section -->
-    <section class="hero dest-page-hero Kerala-hero" style="background-image: url('images/KeralaCard.jpg');">
-        <!-- Optimized Cloudinary Video Implementation -->
-        <video 
-            class="hero-video" 
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            preload="auto" 
-            poster="https://res.cloudinary.com/dfzk4sfkw/video/upload/f_auto,q_auto/v1777167012/Kerala_am8ruc.jpg">
-            <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/f_auto,q_auto/v1777167012/Kerala_am8ruc.mp4" type="video/mp4">
-            <!-- Fallback for unsupported browsers -->
-            Your browser does not support the video tag. We recommend exploring Kerala in person!
+    <section class="hero dest-page-hero Kerala-hero">
+        <video class="hero-video" autoplay muted loop playsinline poster="images/KeralaCard.jpg">
+            <source src="videos/Kerala.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
-
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 style="color:#ffffff; font-size:3.5rem;">
@@ -367,36 +128,31 @@
         </div>
     </section>
 
-
     <!-- Destination Details -->
     <section class="section bg-light">
         <div class="container about-container" style="align-items: flex-start; text-align: left; max-width: 900px;">
             <div class="about-content" style="padding: 40px; width: 100%; text-align: left;">
                 <h2 style="margin-bottom: 20px;">About Kerala</h2>
                 <div class="divider" style="margin: 0 0 30px 0;"></div>
-
-                <p>Welcome to Kerala, one of the most mesmerizing destinations in India. From its breathtaking
-                    landscapes to its vibrant culture, Kerala offers an unforgettable experience for every traveler.
-                    Whether you're seeking adventure, relaxation, or spiritual awakening, this destination has something
-                    special for you.</p>
+                <p>Welcome to Kerala, "God's Own Country". From its serene backwaters and lush tea plantations to its
+                    pristine beaches, Kerala offers a tranquil escape into nature.</p>
                 <p>Join Meher Holidays as we take you on a carefully curated journey through the best spots, hidden
                     gems, and local experiences that Kerala has to offer.</p>
-
 
                 <h3 style="margin-top: 40px; margin-bottom: 20px;">Travel Highlights</h3>
                 <ul class="highlights-list">
                     <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
-                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Scenic sightseeing and
-                        photography spots</li>
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Houseboat cruise in
+                        Alleppey backwaters</li>
                     <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
-                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Comfortable premium
-                        accommodations</li>
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Tea Garden tours in
+                        Munnar</li>
                     <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
-                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Local culinary
-                        experiences</li>
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Wildlife safari in
+                        Periyar</li>
                     <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
-                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Guided tours with
-                        expert local guides</li>
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Traditional Kathakali
+                        performances</li>
                 </ul>
 
                 <div style="margin-top: 50px; text-align: center;">
@@ -425,45 +181,17 @@
                     <div class="tp-content">
                         <h3>Kerala Essential Tour</h3>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Kochi &#8594; Munnar &#8594; Thekkady &#8594; Alleppey
-                                &#8594; Kochi</p>
+                            <p><i class="fas fa-route"></i> Kochi &#8594; Munnar &#8594; Thekkady &#8594; Alleppey &#8594; Kochi</p>
                             <p class="trip-duration">6 Days / 5 Nights</p>
                         </div>
                         <div class="tp-footer">
                             <div class="tp-price">
-                                <span>Starting from</span>
+                                <span>Starting Price Per Adult</span>
                                 <h4>INR 21,500/-</h4>
                             </div>
                             <div class="tp-actions">
-                                <a href="https://wa.me/917338132315?text=I'm interested in the Kerala Essential Tour"
-                                    class="btn btn-outline" target="_blank">Contact Us</a>
-                                <a href="Kerala.html" class="btn btn-primary">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="tour-package-card">
-                    <div class="tp-img-wrap">
-                        <img src="images/slide3.jpg" alt="Ultimate Kerala Adventure">
-                    </div>
-                    <div class="tp-content">
-                        <h3>Ultimate Kerala Adventure</h3>
-                        <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Kochi &#8594; Munnar &#8594; Thekkady &#8594; Kumarakom
-                                &#8594; Kovalam &#8594; Trivandrum</p>
-                            <p class="trip-duration">8 Days / 7 Nights</p>
-                        </div>
-                        <div class="tp-footer">
-                            <div class="tp-price">
-                                <span>Starting from</span>
-                                <h4>INR 28,000/-</h4>
-                            </div>
-                            <div class="tp-actions">
-                                <a href="https://wa.me/917338132315?text=I'm interested in the Ultimate Kerala Adventure"
-                                    class="btn btn-outline" target="_blank">Contact Us</a>
-                                <a href="Kerala.html" class="btn btn-primary">View Details</a>
+                                <a href="https://wa.me/917338132315?text=I'm interested in the Kerala Essential Tour" class="btn btn-outline" target="_blank">Contact Us</a>
+                                <a href="packages/Kerala-Pakage-1.html" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -472,118 +200,85 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    
+    <!-- FAQ SECTION -->
+    <section class="faq-section" id="faq">
+        <div class="faq-header">
+            <h2>Frequently Asked Questions</h2>
+            <p class="faq-subtitle">Your right to Know!</p>
+            <div class="yellow-underline"></div>
+        </div>
+        <div class="faq-container">
+            <!-- Dynamic Content via JS -->
+        </div>
+    </section>
+
     <!-- Contact -->
-  <section id="contact" class="section bg-pastel">
-    <div class="container contact-container">
-      <div class="contact-info">
-        <h2>Get in Touch</h2>
-        <p>Ready for your next adventure? Contact us today to plan your trip!</p>
-        <div class="contact-details">
-          <div class="contact-item">
-            <a href="tel:+917338132315">
-              <i class="fas fa-phone-alt"></i>
-              <span>+91 73381 32315</span>
-            </a>
-          </div>
-          <div class="contact-item">
-            <a href="mailto:holidaysmeher@gmail.com">
-              <i class="fas fa-envelope"></i>
-              <span>holidaysmeher@gmail.com</span>
-            </a>
-          </div>
-          <div class="contact-item">
-            <a href="https://www.google.com/maps/place/Meher+Holidays/@20.8830269,74.1891013,5.61z/data=!4m15!1m8!3m7!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!2sMeher+Holidays!8m2!3d23.760715!4d76.3794754!10e5!16s%2Fg%2F11xgsh1k45!3m5!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!8m2!3d23.760715!4d76.3794754!16s%2Fg%2F11xgsh1k45?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>Bengaluru, Karnataka</span>
-            </a>
-          </div>
+    <section id="contact" class="section bg-pastel">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>Ready for your next adventure? Contact us today to plan your trip!</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <a href="tel:+917338132315">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 73381 32315</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="mailto:holidaysmeher@gmail.com">
+                            <i class="fas fa-envelope"></i>
+                            <span>holidaysmeher@gmail.com</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://www.google.com/maps/place/Meher+Holidays" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bengaluru, Karnataka</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-container">
+                <form action="https://formspree.io/f/xqewjokd" method="POST" id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="4" placeholder="How can we help you plan your trip?"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                </form>
+            </div>
         </div>
-        <div class="social-links">
-          <a href="https://instagram.com/meher_holidays" class="social-icon"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://facebook.com/holidaysmeher" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
         </div>
-      </div>
-
-      <div class="contact-form-container">
-        <form action="https://formspree.io/f/xqewjokd" method="POST" id="contactForm" class="contact-form">
-          <input type="text" name="_gotcha" style="display:none">
-          <div class="form-group">
-            <input type="text" name="name" placeholder="Your Name" required>
-          </div>
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Your Email Address" required>
-          </div>
-          <div class="form-group">
-            <input type="tel" name="phone" placeholder="Your Phone Number" required>
-          </div>
-          <div class="form-group">
-            <textarea name="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-        </form>
-
-        <!-- Success Video Scene (Replaces Form on Submit) -->
-        <div id="success-video-wrap" class="success-video-wrap">
-          <video id="success-video" muted playsinline>
-            <source src="FormFillUp/one.webm" type="video/webm">
-          </video>
-          <div class="success-message-overlay">
-            <h3>Message Sent!</h3>
-            <p>Thank you for your query. We will contact you soon.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container footer-content">
-      <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
-    </div>
-  </footer>
+    </footer>
 
     <script src="script.js"></script>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <!-- Travel Background Animation -->
-    <div class="travel-bg-animation">
-        <i class="fas fa-solid fa-cloud cloud c1"></i>
-        <i class="fas fa-solid fa-cloud cloud c2"></i>
-        <i class="fas fa-solid fa-cloud cloud c3"></i>
-        <i class="fas fa-solid fa-plane plane"></i>
-        <i class="fas fa-solid fa-motorcycle bike"></i>
-        <!-- Detailed Shikara Houseboat SVG -->
-        <svg class="houseboat" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z" fill="currentColor"/>
-            <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8"/>
-            <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor"/>
-            <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-            <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3"/>
-        </svg>
-    </div>
+    <script>
+        // Image to Video Transition Logic
+        document.querySelectorAll('.tour-package-card').forEach(card => {
+            card.addEventListener('click', function () {
+                const video = this.querySelector('.video-player');
+                if (video) {
+                    this.classList.add('play-video');
+                    setTimeout(() => {
+                        video.play();
+                    }, 300);
+                }
+            });
+        });
+    </script>
     <script>
         const faqs = [
             {
@@ -603,61 +298,11 @@
                 answer: "Kerala is one of the most family-friendly destinations in India, offering something for all age groups."
             }
         ];
-
-        function renderFAQs() {
-            const faqGrid = document.getElementById('faq-grid');
-            if (!faqGrid) return;
-            faqGrid.innerHTML = faqs.map((faq, index) => `
-                <div class="faq-card" id="faq-${index}">
-                    <div class="faq-question" onclick="toggleFAQ(${index}, true)">
-                        <h3>Q: ${faq.question}</h3>
-                        <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">A: ${faq.answer}</div>
-                    </div>
-                </div>
-            `).join('');
-
-            // Add Hover Listeners
-            const cards = faqGrid.querySelectorAll('.faq-card');
-            cards.forEach((card, index) => {
-                card.addEventListener('mouseenter', () => toggleFAQ(index, false, true));
-                card.addEventListener('mouseleave', () => toggleFAQ(index, false, false));
-            });
-        }
-
-        window.toggleFAQ = function(index, isClick = false, isHoverOpen = null) {
-            const cards = document.querySelectorAll('.faq-card');
-            const targetCard = document.getElementById(`faq-${index}`);
-            if (!targetCard) return;
-
-            if (isHoverOpen !== null) {
-                if (isHoverOpen) {
-                    cards.forEach((card, i) => {
-                        if (i === index) card.classList.add('active');
-                        else card.classList.remove('active');
-                    });
-                } else {
-                    targetCard.classList.remove('active');
-                }
-                return;
-            }
-
-            const isActive = targetCard.classList.contains('active');
-            cards.forEach((card, i) => {
-                if (i === index) {
-                    if (isActive && isClick) card.classList.remove('active');
-                    else card.classList.add('active');
-                } else {
-                    card.classList.remove('active');
-                }
-            });
-        }
-
-        (function() {
+    </script>
+    <script src="faq.js"></script>
+    <script>
+        (function () {
             const init = () => {
-                renderFAQs();
                 const slider = document.getElementById('galleryWrapper');
                 const prev = document.getElementById('galleryPrev');
                 const next = document.getElementById('galleryNext');
@@ -671,4 +316,5 @@
         })();
     </script>
 </body>
+
 </html>

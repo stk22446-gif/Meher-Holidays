@@ -27,7 +27,7 @@
         /* Section Cards */
         .package-section {
             border-radius: var(--radius);
-            padding: 32px;
+            padding: 24px;
             box-shadow: var(--shadow);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             border: 1px solid transparent;
@@ -125,7 +125,7 @@
 
         .info-subsection {
             background: rgba(255, 255, 255, 0.6);
-            padding: 24px;
+            padding: 20px;
             border-radius: 10px;
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
@@ -189,7 +189,7 @@
 
         @media (max-width: 768px) {
             .package-section {
-                padding: 24px;
+                padding: 20px;
             }
 
             .info-grid {
@@ -319,13 +319,13 @@
         }
 
         .gallery-item {
-            flex: 0 0 280px;
+            flex: 0 0 250px;
             position: relative;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            aspect-ratio: 1/1.2;
+            aspect-ratio: 1/1;
             scroll-snap-align: center;
             /* Snap this item to center */
         }
@@ -399,7 +399,7 @@
 
         @media (max-width: 640px) {
             .gallery-item {
-                flex: 0 0 260px;
+                flex: 0 0 220px;
                 /* Slightly larger than 200 to look better when centered */
             }
 
@@ -419,7 +419,6 @@
                 background-color: rgba(14, 165, 233, 0.9);
                 /* More opaque on mobile */
             }
-        }
         }
     </style>
 </head>
