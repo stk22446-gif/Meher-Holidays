@@ -167,18 +167,53 @@
         font-size: 0.85rem !important;
       }
 
-      /* Trust Badges Wrap */
+      /* Trust Badges - Enhanced Responsive Layout */
       .trust-badges-container {
+        display: flex !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
-        gap: 12px !important;
-        padding: 15px !important;
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 15px 5px !important;
+        width: 100% !important;
+        margin: 10px 0 !important;
       }
 
       .badge-capsule {
-        padding: 8px 12px !important;
-        min-width: 120px;
+        flex: 0 1 auto !important;
+        min-width: 135px !important;
+        height: 48px !important; /* Standardized height for balance */
+        padding: 6px 14px !important;
+        background: #ffffff !important;
+        border-radius: 50px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 10px !important;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05) !important;
+        border: 1px solid rgba(0,0,0,0.03) !important;
       }
+
+      .badge-icon {
+        width: 28px !important;
+        height: 28px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+      }
+
+      .badge-icon i { font-size: 1.3rem !important; }
+      .badge-icon img { width: 100% !important; height: auto !important; }
+
+      .badge-info { text-align: left !important; }
+      .badge-label { font-size: 0.65rem !important; margin: 0 !important; line-height: 1 !important; }
+      .badge-brand { font-size: 0.85rem !important; font-weight: 700 !important; }
+      
+      .rating-row { gap: 4px !important; }
+      .rating-score { font-size: 1rem !important; font-weight: 800 !important; }
+      .star-filled { font-size: 0.8rem !important; }
+      .review-count { font-size: 0.7rem !important; margin-top: -2px !important; }
 
       /* Flexible Grids */
       .packages-grid, .services-grid, .founders-grid {

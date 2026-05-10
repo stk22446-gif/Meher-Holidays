@@ -873,7 +873,7 @@ header {
 
 .packages-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Fixed 3 columns for 3x3 layout on desktop */
     gap: 30px;
 }
 
@@ -1232,7 +1232,7 @@ header {
 /* Other Destinations Section */
 .destinations-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Fixed 3 columns for 3x3 layout on desktop */
     gap: 30px;
 }
 
@@ -1355,11 +1355,8 @@ header {
 
 @media (max-width: 480px) {
 
-    /* hide video on very small devices for performance; fallback to poster/background */
     .bhutan-hero {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('images/Bhutan_Banner.jpg');
-        background-size: cover;
-        background-position: center;
+        background-color: #000; /* Use solid background as fallback while video loads */
     }
 
     .bhutan-title {
@@ -1367,14 +1364,9 @@ header {
     }
 }
 
-/* Mobile fallback: hide video and use background image for devices <= 768px */
-@media (max-width: 768px) {
     .bhutan-hero {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('images/Bhutan_Banner.jpg');
-        background-size: cover;
-        background-position: center;
+        background-color: #000;
     }
-}
 
 .hidden-dest {
     display: none;
@@ -3416,6 +3408,19 @@ footer {
 img, video {
     max-width: 100%;
     height: auto;
+    object-fit: cover;
+}
+
+/* Ensure background videos fill their containers properly */
+.hero-video, .dest-page-hero video {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
 }
 
 /* 2. Breakpoint: Tablets (1024px) */
@@ -3423,7 +3428,7 @@ img, video {
     h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); }
     h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
     
-    .packages-grid, .services-grid, .founders-grid {
+    .packages-grid, .services-grid, .founders-grid, .destinations-grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
         gap: 20px !important;
     }
@@ -3440,7 +3445,7 @@ img, video {
     }
 
     /* Fix for grid overflow on small devices */
-    .packages-grid, .services-grid, .founders-grid {
+    .packages-grid, .services-grid, .founders-grid, .destinations-grid {
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
     }
     
@@ -3475,5 +3480,117 @@ img, video {
     /* Section padding reduction */
     .section {
         padding: 50px 0;
+    }
+}
+
+/* --- UNIVERSAL HERO SECTION FIXES FOR MOBILE (Package & Destination Pages) --- */
+@media (max-width: 768px) {
+    /* 1. Detail Package Pages (why-section) */
+    .why-section {
+        padding: 140px 20px 80px !important; /* Safety padding for fixed navbar (80px) */
+        min-height: 480px !important; /* Ensure enough background is visible */
+        height: auto !important;
+        background-attachment: scroll !important; /* Better performance on mobile */
+        background-position: center 25% !important; /* Focus on the upper-middle subject */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    .why-section .container {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+        width: 100% !important;
+    }
+
+    .why-section h2, 
+    .why-section .spiti-heading {
+        font-size: clamp(1.8rem, 7vw, 2.8rem) !important;
+        line-height: 1.2 !important;
+        margin-bottom: 20px !important;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.6) !important;
+        color: #ffd700 !important; /* Premium Yellow */
+    }
+
+    .why-section p {
+        font-size: 1.1rem !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    /* 2. Main Destination Pages (dest-page-hero and variations) */
+    .dest-page-hero,
+    .bhutan-hero,
+    .Kashmir-hero,
+    .Kerala-hero,
+    .Ladakh-hero,
+    .Arunachal-hero,
+    .Sikkim-hero,
+    .Rajasthan-hero,
+    .Meghalaya-hero {
+        height: 70vh !important;
+        min-height: 450px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding-top: 80px !important; /* Account for navbar */
+        overflow: hidden !important;
+    }
+
+    .dest-page-hero .hero-content,
+    .bhutan-content,
+    .Kashmir-hero .hero-content,
+    .Kerala-hero .hero-content {
+        width: 100% !important;
+        padding: 0 25px !important;
+        text-align: center !important;
+        position: relative !important;
+        z-index: 10 !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    .dest-page-hero h1,
+    .hero-content h1,
+    .bhutan-content h1 {
+        font-size: clamp(2.4rem, 9vw, 3.2rem) !important;
+        line-height: 1.1 !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .dest-page-hero h1 span,
+    .hero-content h1 span,
+    .bhutan-content h1 span {
+        font-size: 0.9em !important; 
+        display: block !important;
+        margin-top: 10px !important;
+    }
+
+    /* 3. Global Hero Media (Video/Image) Optimization */
+    .hero-video, 
+    .dest-page-hero video,
+    .why-section[style*="background-image"] {
+        object-fit: cover !important;
+        object-position: center 30% !important; /* Shift focus slightly up for mobile aspect ratios */
+    }
+}
+
+/* 4. Small Mobile Refinements (480px) */
+@media (max-width: 480px) {
+    .why-section {
+        padding-top: 120px !important;
+        min-height: 420px !important;
+    }
+
+    .dest-page-hero {
+        height: 60vh !important;
+        min-height: 400px !important;
+    }
+
+    .dest-page-hero h1,
+    .why-section h2 {
+        font-size: 2.1rem !important;
     }
 }

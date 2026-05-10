@@ -475,4 +475,41 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Footer injection failed', e);
         }
     })();
+
+    // Global Mobile Video Autoplay Fix
+    const initVideoFix = () => {
+        const videos = document.querySelectorAll('video');
+        
+        const attemptPlay = (video) => {
+            // Force essential mobile attributes
+            video.setAttribute('playsinline', '');
+            video.setAttribute('webkit-playsinline', '');
+            video.muted = true;
+            
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // Autoplay was prevented by browser policy
+                    // Try playing on first user interaction
+                    const playOnUserAction = () => {
+                        video.play();
+                        window.removeEventListener('touchstart', playOnUserAction);
+                        window.removeEventListener('click', playOnUserAction);
+                    };
+                    window.addEventListener('touchstart', playOnUserAction, { passive: true });
+                    window.addEventListener('click', playOnUserAction, { passive: true });
+                });
+            }
+        };
+
+        videos.forEach(video => {
+            attemptPlay(video);
+            // Re-attempt if the video element is updated/added
+            video.addEventListener('loadedmetadata', () => attemptPlay(video));
+        });
+    };
+
+    // Run immediately and on window load
+    initVideoFix();
+    window.addEventListener('load', initVideoFix);
 });
