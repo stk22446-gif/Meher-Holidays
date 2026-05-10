@@ -1355,8 +1355,11 @@ header {
 
 @media (max-width: 480px) {
 
+    /* hide video on very small devices for performance; fallback to poster/background */
     .bhutan-hero {
-        background-color: #000; /* Use solid background as fallback while video loads */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('images/Bhutan_Banner.jpg');
+        background-size: cover;
+        background-position: center;
     }
 
     .bhutan-title {
@@ -1364,9 +1367,14 @@ header {
     }
 }
 
+/* Mobile fallback: hide video and use background image for devices <= 768px */
+@media (max-width: 768px) {
     .bhutan-hero {
-        background-color: #000;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('images/Bhutan_Banner.jpg');
+        background-size: cover;
+        background-position: center;
     }
+}
 
 .hidden-dest {
     display: none;
@@ -2631,24 +2639,7 @@ footer {
     font-weight: 300;
 }
 
-@media (max-width: 768px) {
-    .why-section {
-        padding: 80px 20px;
-        min-height: auto;
-    }
-
-    .why-section h2 {
-        font-size: clamp(50px, 4vw, 40px);
-    }
-
-    .why-section p {
-        font-size: clamp(16px, 3vw, 18px);
-    }
-
-    .why-section .why-extra {
-        padding: 20px;
-    }
-}
+/* Note: .why-section mobile styles are handled in the Universal Hero Fix block near the end of this file */
 
 /* ── TESTIMONIALS SLIDER ─────────────────────────── */
 .testimonials-section {
@@ -3405,22 +3396,20 @@ footer {
 /* ====== GLOBAL RESPONSIVE SYSTEM (Added) ====== */
 
 /* 1. Global Responsive Image & Video Rule */
-img, video {
+/* Exclude hero-video: it uses height:100% to fill its absolute container */
+img {
     max-width: 100%;
     height: auto;
-    object-fit: cover;
 }
-
-/* Ensure background videos fill their containers properly */
-.hero-video, .dest-page-hero video {
-    width: 100% !important;
+video:not(.hero-video) {
+    max-width: 100%;
+    height: auto;
+}
+/* Restore hero-video height which is overridden by global rules */
+.hero-video {
     height: 100% !important;
-    position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    z-index: 1 !important;
-    pointer-events: none !important;
+    width: 100% !important;
+    object-fit: cover !important;
 }
 
 /* 2. Breakpoint: Tablets (1024px) */
@@ -3485,38 +3474,51 @@ img, video {
 
 /* --- UNIVERSAL HERO SECTION FIXES FOR MOBILE (Package & Destination Pages) --- */
 @media (max-width: 768px) {
-    /* 1. Detail Package Pages (why-section) */
+    /* 1. Detail Package Pages (the "Why Visit" sections) */
     .why-section {
-        padding: 140px 20px 80px !important; /* Safety padding for fixed navbar (80px) */
-        min-height: 480px !important; /* Ensure enough background is visible */
+        padding: 120px 20px 60px !important;
+        min-height: 420px !important;
         height: auto !important;
-        background-attachment: scroll !important; /* Better performance on mobile */
-        background-position: center 25% !important; /* Focus on the upper-middle subject */
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center 20% !important;
         display: flex !important;
+        flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
         text-align: center !important;
+        overflow: hidden !important;
     }
 
     .why-section .container {
-        padding-top: 0 !important;
-        margin-top: 0 !important;
+        position: relative !important;
+        z-index: 2 !important;       /* Must stay above the ::before overlay */
+        padding: 0 20px !important;
         width: 100% !important;
+        max-width: 800px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     .why-section h2, 
     .why-section .spiti-heading {
-        font-size: clamp(1.8rem, 7vw, 2.8rem) !important;
+        font-size: clamp(1.8rem, 8vw, 2.6rem) !important;
         line-height: 1.2 !important;
-        margin-bottom: 20px !important;
-        text-shadow: 0 2px 12px rgba(0,0,0,0.6) !important;
-        color: #ffd700 !important; /* Premium Yellow */
+        margin-bottom: 15px !important;
+        text-shadow: 0 3px 15px rgba(0,0,0,0.7) !important;
+        color: #ffd700 !important;
+        width: 100% !important;
+        padding: 0 10px !important;
     }
 
     .why-section p {
-        font-size: 1.1rem !important;
-        max-width: 100% !important;
+        font-size: 1.05rem !important;
+        max-width: 90% !important;
         margin: 0 auto !important;
+        line-height: 1.4 !important;
+        color: #ffffff !important;
     }
 
     /* 2. Main Destination Pages (dest-page-hero and variations) */
