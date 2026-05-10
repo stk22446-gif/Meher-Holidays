@@ -1367,12 +1367,14 @@ header {
     }
 }
 
-/* Mobile fallback: hide video and use background image for devices <= 768px */
-@media (max-width: 768px) {
-    .bhutan-hero {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('images/Bhutan_Banner.jpg');
-        background-size: cover;
-        background-position: center;
+/* REMOVED: The broad mobile fallback below was hiding the video on ALL mobile screens,
+   replacing it with a static image even when the video was loading fine.
+   The <video> tag's poster attribute already handles the fallback gracefully.
+   Only fall back on very small devices for performance. */
+@media (max-width: 480px) {
+    .bhutan-hero .hero-video {
+        /* On very small phones keep video but reduce zoom animation */
+        animation: none;
     }
 }
 
@@ -2523,10 +2525,11 @@ footer {
         pointer-events: none;
         min-width: 100%;
         min-height: 100%;
-        opacity: 0;
+        /* FIX: Was opacity:0 — video rendered invisible unless JS added .playing class.
+           Now always visible; the poster attribute handles the blank-screen flash. */
+        opacity: 1;
         transition: opacity 1s ease-in-out;
         animation: none;
-        /* Disable zoom animation on mobile to keep centering */
     }
 
     .bhutan-video.playing {

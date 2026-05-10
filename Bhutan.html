@@ -314,8 +314,10 @@
 
     <!-- HERO -->
     <section class="bhutan-hero" aria-label="Bhutan hero section">
-        <!-- Optimized Cloudinary Video Implementation -->
-        <video class="hero-video" autoplay muted loop playsinline poster="images/Bhutan_Banner.jpg">
+        <!-- FIX: Added 'bhutan-video' class (required for CSS positioning),
+             'webkit-playsinline' (required for iOS inline playback),
+             and preload="auto" (starts buffering immediately on page load) -->
+        <video class="hero-video bhutan-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="images/Bhutan_Banner.jpg">
             <source src="videos/Bhutan_intro.mp4" type="video/mp4">
             Your browser does not support the video tag. We recommend exploring Bhutan in person!
         </video>
