@@ -27,8 +27,6 @@
 }
 
 :root {
-
-
     --primary-color: #1E40AF;
     --primary-hover: #1E3A8A;
     --secondary-color: #3B82F6;
@@ -46,6 +44,10 @@
     --shadow: 0 10px 30px rgba(30, 64, 175, 0.05);
     --shadow-hover: 0 15px 40px rgba(30, 64, 175, 0.1);
     --border-radius: 12px;
+
+    /* Responsive Tokens */
+    --container-padding: clamp(15px, 5vw, 40px);
+    --section-spacing: clamp(60px, 8vh, 100px);
 }
 
 * {
@@ -57,6 +59,9 @@
 html {
     scroll-behavior: smooth;
     background-color: var(--bg-white);
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -88,15 +93,17 @@ ul {
 }
 
 .container {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1300px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
     position: relative;
     z-index: 10;
 }
 
 .section {
-    padding: 90px 0;
+    padding: var(--section-spacing) 0;
     position: relative;
 }
 
@@ -588,18 +595,6 @@ header {
     animation: slideUpFade 1.2s ease-out;
     transform-style: preserve-3d;
     padding: 0 18px;
-}
-
-@keyframes slideUpFade {
-    from {
-        opacity: 0;
-        transform: translateY(40px) scale(0.95);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
 }
 
 @keyframes slideUpFade {
@@ -3412,5 +3407,73 @@ footer {
         width: 36px;
         height: 36px;
         font-size: 1rem;
+    }
+}
+
+/* ====== GLOBAL RESPONSIVE SYSTEM (Added) ====== */
+
+/* 1. Global Responsive Image & Video Rule */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 2. Breakpoint: Tablets (1024px) */
+@media (max-width: 1024px) {
+    h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); }
+    h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+    
+    .packages-grid, .services-grid, .founders-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: 20px !important;
+    }
+}
+
+/* 3. Breakpoint: Standard Phones (768px) */
+@media (max-width: 768px) {
+    :root {
+        --section-spacing: 60px;
+    }
+    
+    .section-title {
+        margin-bottom: 30px;
+    }
+
+    /* Fix for grid overflow on small devices */
+    .packages-grid, .services-grid, .founders-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+    }
+    
+    /* Ensure flex containers stack where appropriate */
+    .itinerary-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* 4. Breakpoint: Small Phones (480px) */
+@media (max-width: 480px) {
+    :root {
+        --container-padding: 15px;
+    }
+
+    h1 { font-size: 2.2rem !important; }
+    h2 { font-size: 1.7rem !important; }
+
+    /* Button scaling */
+    .btn, .btn-promo {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px;
+    }
+    
+    /* Section padding reduction */
+    .section {
+        padding: 50px 0;
     }
 }

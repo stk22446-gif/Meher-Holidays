@@ -30,88 +30,78 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="footer.css">
   <style>
-    /* GLOBAL MOBILE OVERFLOW FIXES */
+    /* --- COMPREHENSIVE RESPONSIVE SYSTEM --- */
+    
+    /* 1. Global Reset & Overflow Protection */
     html, body {
       width: 100%;
       max-width: 100%;
       overflow-x: hidden !important;
       position: relative;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
     }
 
     * {
       box-sizing: border-box !important;
     }
 
-    /* Stacked Swipe Card Layout (Mobile Only) */
-    @media (max-width: 768px) {
-      .section .container {
-        /* FIX: Changed from visible to hidden to prevent translated cards from causing horizontal scroll */
-        overflow: hidden !important;
-        width: 100%;
-        max-width: 100vw;
-        padding-left: 15px;
-        padding-right: 15px;
-      }
+    /* 2. Fluid Typography & Spacing System */
+    :root {
+      --container-padding: clamp(15px, 5vw, 40px);
+      --section-spacing: clamp(60px, 8vh, 100px);
+    }
 
-      /* FIX: Ensure trust badges wrap instead of pushing width */
-      .trust-badges-container {
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 10px !important;
-        width: 100% !important;
-        box-sizing: border-box;
-      }
+    .section {
+      padding: var(--section-spacing) 0;
+    }
 
-      .badge-capsule {
-        flex: 0 1 auto;
-        min-width: 110px; /* Prevent shrinking too much */
-      }
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: var(--container-padding);
+      padding-right: var(--container-padding);
+    }
 
-      /* FIX: Ensure grids don't overflow on small screens */
-      .packages-grid, .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    /* 3. Global Responsive Elements */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 4. BREAKPOINT: TABLETS & SMALL LAPTOPS (1024px) */
+    @media (max-width: 1024px) {
+      .hero-content h1 {
+        font-size: clamp(2.5rem, 6vw, 3.5rem);
+      }
+      
+      .packages-grid, .services-grid, .founders-grid {
         gap: 20px !important;
-        width: 100% !important;
+      }
+    }
+
+    /* 5. BREAKPOINT: MOBILE PHONES & SMALL TABLETS (768px) */
+    @media (max-width: 768px) {
+      :root {
+        --section-spacing: 60px;
+      }
+
+      /* Fix: Stacked Swipe Card Layout Optimization */
+      .section .container {
+        overflow: hidden !important;
       }
 
       .card-container {
         display: block !important;
         position: relative;
-        height: 520px;
-        margin: 40px auto 0;
+        height: 480px; /* Balanced height */
+        margin: 30px auto 0;
         width: 100%;
-        max-width: 300px; /* Reduced slightly for safety */
+        max-width: 290px;
         perspective: 1000px;
-      }
-
-      /* Compact styling for "Other Popular Destinations" cards on mobile */
-      #destinations .card-container {
-        height: 400px !important; /* Reduced overall height */
-        margin-top: 20px !important;
-      }
-
-      .dest-card .dest-img-wrap {
-        height: 160px !important; /* Reduced image height */
-      }
-
-      .dest-card .dest-info {
-        padding: 12px 15px !important; /* Reduced padding */
-      }
-
-      .dest-card .dest-info h3 {
-        font-size: 1.1rem !important; /* Smaller title */
-        margin-bottom: 5px !important;
-      }
-
-      .dest-card .dest-info .desc {
-        font-size: 0.85rem !important; /* Smaller description */
-        margin-bottom: 12px !important;
-        line-height: 1.4 !important;
-      }
-
-      .dest-card .dest-btn {
-        padding: 6px 15px !important; /* Compact button */
-        font-size: 0.85rem !important;
       }
 
       .card {
@@ -129,7 +119,6 @@
         backface-visibility: hidden;
       }
 
-      /* Active Front Card (Center) */
       .card.active {
         opacity: 1 !important;
         z-index: 10;
@@ -137,36 +126,131 @@
         pointer-events: auto;
       }
 
-      /* Next Card (Right) */
       .card.next {
         opacity: 0.8 !important;
         z-index: 5;
-        transform: scale(0.9) translateX(60px) rotateY(15deg); /* Reduced translateX */
-        pointer-events: none;
+        transform: scale(0.9) translateX(50px) rotateY(10deg);
       }
 
-      /* Previous Card (Left) */
       .card.prev {
         opacity: 0.8 !important;
         z-index: 5;
-        transform: scale(0.9) translateX(-60px) rotateY(-15deg); /* Reduced translateX */
-        pointer-events: none;
+        transform: scale(0.9) translateX(-50px) rotateY(-10deg);
       }
 
-      /* Far Next Card (Further Right) */
-      .card.far-next {
-        opacity: 0.4 !important;
-        z-index: 2;
-        transform: scale(0.8) translateX(100px) rotateY(25deg); /* Reduced translateX */
-        display: block !important;
+      /* "Other Destinations" Card Specifics - Compact View */
+      #destinations .card-container {
+        height: 390px !important;
       }
 
-      /* Far Previous Card (Further Left) */
-      .card.far-prev {
-        opacity: 0.4 !important;
-        z-index: 2;
-        transform: scale(0.8) translateX(-100px) rotateY(-25deg); /* Reduced translateX */
-        display: block !important;
+      .dest-card .dest-img-wrap {
+        height: 150px !important;
+      }
+
+      .dest-card .dest-info {
+        padding: 12px 15px !important;
+      }
+
+      .dest-card .dest-info h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 4px !important;
+      }
+
+      .dest-card .dest-info .desc {
+        font-size: 0.85rem !important;
+        margin-bottom: 10px !important;
+        line-height: 1.4 !important;
+      }
+
+      .dest-card .dest-btn {
+        padding: 6px 12px !important;
+        font-size: 0.85rem !important;
+      }
+
+      /* Trust Badges Wrap */
+      .trust-badges-container {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 12px !important;
+        padding: 15px !important;
+      }
+
+      .badge-capsule {
+        padding: 8px 12px !important;
+        min-width: 120px;
+      }
+
+      /* Flexible Grids */
+      .packages-grid, .services-grid, .founders-grid {
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)) !important;
+        width: 100% !important;
+      }
+
+      /* Hero Adjustments */
+      .hero-content {
+        padding: 0 20px;
+        width: 100%;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem !important;
+        max-width: 90% !important;
+        margin: 0 auto 25px !important;
+      }
+
+      /* Orbit Gallery Mobile Fixes */
+      .gallery-mobile-view .orbit-group.prev {
+        transform: translateX(-100%) scale(0.5) !important;
+        opacity: 0 !important;
+      }
+      .gallery-mobile-view .orbit-group.next {
+        transform: translateX(100%) scale(0.5) !important;
+        opacity: 0 !important;
+      }
+    }
+
+    /* 6. BREAKPOINT: SMALL PHONES (480px) */
+    @media (max-width: 480px) {
+      :root {
+        --container-padding: 15px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.2rem !important;
+        line-height: 1.2 !important;
+      }
+
+      .section-title h2 {
+        font-size: 1.7rem !important;
+      }
+
+      /* Stack buttons for better tap targets on small screens */
+      .promo-buttons, .bhutan-ctas {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+      }
+
+      .promo-buttons .btn, .bhutan-ctas .btn {
+        width: 100% !important;
+        max-width: 280px;
+      }
+
+      /* Testimonial adjustments */
+      .testimonial-card {
+        padding: 20px !important;
+        min-height: auto !important;
+      }
+
+      /* Orbit Gallery scaling for tiny screens */
+      .gallery-mobile-view .orbit-track {
+        width: 240px !important;
+        height: 240px !important;
+      }
+      
+      .gallery-mobile-view .orbit-center {
+        width: 150px !important;
+        height: 150px !important;
       }
     }
   </style>
