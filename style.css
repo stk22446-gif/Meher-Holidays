@@ -3153,6 +3153,7 @@ footer {
     }
 }
 /* ====== FLOATING ACTION BUTTONS ====== */
+/* max-width prevents the off-screen translateX(120px) from adding horizontal scroll */
 .floating-btns {
     position: fixed;
     bottom: 30px;
@@ -3164,6 +3165,7 @@ footer {
     z-index: 9999;
     transform: translateX(120px);
     transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    max-width: calc(100vw - 20px);
 }
 
 .floating-btns.visible {
@@ -3354,9 +3356,10 @@ footer {
 
 @media (max-width: 768px) {
     .wa-popup {
-        width: 280px;
+        /* Prevent popup from overflowing beyond the right edge on small phones */
+        width: min(280px, calc(100vw - 40px));
         bottom: 75px;
-        right: -10px;
+        right: 0;  /* Align to right edge of floating-btns container */
     }
 }
 
@@ -3433,9 +3436,9 @@ video:not(.hero-video) {
         margin-bottom: 30px;
     }
 
-    /* Fix for grid overflow on small devices */
+    /* Fix for grid overflow on small devices — 240px fits on 320px-wide phones */
     .packages-grid, .services-grid, .founders-grid, .destinations-grid {
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
     }
     
     /* Ensure flex containers stack where appropriate */
@@ -3450,14 +3453,18 @@ video:not(.hero-video) {
     }
 }
 
-/* 4. Breakpoint: Small Phones (480px) */
 @media (max-width: 480px) {
     :root {
         --container-padding: 15px;
     }
 
-    h1 { font-size: 2.2rem !important; }
-    h2 { font-size: 1.7rem !important; }
+    /* Scope heading override to avoid stomping on hero/banner titles */
+    .section-title h2,
+    .about-header h2,
+    .contact-info h2,
+    .gallery-header h2 {
+        font-size: 1.7rem !important;
+    }
 
     /* Button scaling */
     .btn, .btn-promo {
@@ -3469,6 +3476,17 @@ video:not(.hero-video) {
     /* Section padding reduction */
     .section {
         padding: 50px 0;
+    }
+
+    /* Reduce card image heights so cards aren't too tall on small phones */
+    .package-img {
+        height: 180px;
+    }
+    .dest-img-wrap {
+        height: 170px;
+    }
+    .package-info {
+        padding: 20px;
     }
 }
 
