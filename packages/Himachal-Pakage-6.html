@@ -9,6 +9,254 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../footer.css">
     <style>
+        :root {
+            --primary-green: #22c55e;
+            --bg-green: #f0fdf4;
+            --primary-red: #ef4444;
+            --bg-red: #fef2f2;
+            --primary-gray: #6b7280;
+            --bg-gray: #f9fafb;
+            --border-gray: #e5e7eb;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --radius: 12px;
+        }
+
+        /* Section Cards */
+        .package-section {
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid transparent;
+            margin-bottom: 32px;
+        }
+
+        .package-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
+        /* Specific Themes */
+        .inclusions {
+            background-color: var(--bg-green);
+            border-color: #dcfce7;
+        }
+
+        .exclusions {
+            background-color: var(--bg-red);
+            border-color: #fee2e2;
+        }
+
+        .other-info {
+            background-color: var(--bg-gray);
+            border-color: var(--border-gray);
+        }
+
+        /* Headings */
+        .section-header {
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            padding-left: 16px;
+            border-left: 5px solid transparent;
+            line-height: 1;
+            margin: 0;
+        }
+
+        .inclusions .section-title {
+            border-color: var(--primary-green);
+            color: #166534;
+        }
+
+        .exclusions .section-title {
+            border-color: var(--primary-red);
+            color: #991b1b;
+        }
+
+        .other-info .section-title {
+            border-color: #0ea5e9;
+            color: #0c4a6e;
+        }
+
+        /* List Styling */
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            padding: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        .package-section .icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1.5px solid currentColor;
+            padding: 3px;
+        }
+
+        /* Other Info Subsections */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .info-subsection {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .subsection-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0369a1;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #e0f2fe;
+            padding-bottom: 8px;
+            display: block;
+        }
+
+        .nested-list {
+            list-style: none;
+            padding-left: 0;
+            color: var(--text-muted);
+        }
+
+        .nested-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .nested-list li::before {
+            content: "•";
+            color: #0ea5e9;
+            font-weight: bold;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        .category-label {
+            display: block;
+            font-weight: 700;
+            color: #0c4a6e;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: #e0f2fe;
+            padding: 4px 8px;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        /* Custom SVG Icons */
+        .check-icon {
+            color: var(--primary-green);
+            background-color: #f0fdf4;
+        }
+
+        .cross-icon {
+            color: var(--primary-red);
+            background-color: #fef2f2;
+        }
+
+        @media (max-width: 768px) {
+            .package-section {
+                padding: 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Read More Functionality */
+        .info-subsection {
+            position: relative;
+            padding-bottom: 50px !important;
+            /* Space for the button */
+        }
+
+        .expandable-content {
+            max-height: 120px;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            position: relative;
+        }
+
+        .expandable-content.expanded {
+            max-height: 2000px;
+            /* Large enough to fit content */
+        }
+
+        .expandable-content:not(.expanded):not(.no-fade)::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.8));
+            pointer-events: none;
+        }
+
+        .read-more-btn {
+            position: absolute;
+            bottom: 16px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #0ea5e9;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+
+        .read-more-btn:hover {
+            color: #0369a1;
+            text-decoration: underline;
+        }
+
+        .read-more-btn::after {
+            content: "Read More";
+        }
+
+        .expandable-content.expanded+.read-more-btn::after {
+            content: "Read Less";
+        }
+
         /* Journey in Frames Gallery */
         .gallery-section {
             padding: 80px 0;
@@ -354,51 +602,260 @@
                     </div>
                 </article>
 
-                <!-- inclusion -->
-                <article class="itinerary-day" aria-labelledby="inclusion-title">
-                    <div class="day-content">
-                        <button class="day-toggle" aria-expanded="false" aria-controls="desc-inclusion">
-                            <h3 id="inclusion-title" class="day-title">Inclusion</h3>
-                            <span class="day-arrow" aria-hidden="true">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                        </button>
-                        <div id="desc-inclusion" class="day-desc" aria-hidden="true">
-                            <p>
-                                Bhutan offers breathtaking mountains, peaceful monasteries, and a unique culture.
-                                Join us for an unforgettable international experience.
-                            </p>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- inclusion -->
-                <article class="itinerary-day" aria-labelledby="inclusion-title">
-                    <div class="day-content">
-                        <button class="day-toggle" aria-expanded="false" aria-controls="desc-inclusion">
-                            <h3 id="inclusion-title" class="day-title">Inclusion</h3>
-                            <span class="day-arrow" aria-hidden="true">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                        </button>
-                        <div id="desc-inclusion" class="day-desc" aria-hidden="true">
-                            <p>
-                                Bhutan offers breathtaking mountains, peaceful monasteries, and a unique culture.
-                                Join us for an unforgettable international experience.
-                            </p>
-                        </div>
-                    </div>
-                </article>
+                
 
             </div>
+
+            <!-- SECTION 1: INCLUSIONS -->
+            <section class="package-section inclusions" id="inclusions">
+                <div class="section-header">
+                    <h2 class="section-title">Inclusions</h2>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Entire travel as per the itinerary by tempo traveler.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        6 nights accommodation – 1 Night in Hotel in Jowai, 2 Nights in Hotel at Cherrapunjee, 1 Night
+                        in Camps at Shnongpdeng & 1 Night in Hotel at Shillong on double/triple sharing basis.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        6 meals – Breakfast on Day 2, Day 3, Day 4, Day 5, Day 6 + Dinner on Day 2.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Entry fees to the sightseeing places mentioned in the itinerary.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Guided trek to various points.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Team Captain throughout the trip.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Medical Kit to handle emergency conditions.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Driver night charges, toll & parking charges.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        All inner line permits.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Barbeque at Shnongpdeng (If Weather permits).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Bonfire at Shnongpdeng (If Weather permits).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Boating, Cliff jumping and Snorkeling in Shnongpdeng (If Weather permits).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Boating, Guide, 4X4 Vehicle for Krem Chympe Caves.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SECTION 2: EXCLUSIONS -->
+            <section class="package-section exclusions" id="exclusions">
+                <div class="section-header">
+                    <h2 class="section-title">Exclusions</h2>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        GST (5%) is applicable extra.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other food or beverage charges that are not included in the package.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other costing involved due to any kind of natural calamity, forced circumstances, which are
+                        out of our control.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other expense not mentioned in the inclusions.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SECTION 3: OTHER INFORMATION -->
+            <section class="package-section other-info" id="other-info">
+                <div class="section-header">
+                    <h2 class="section-title">Other Information</h2>
+                </div>
+
+                <div class="info-grid">
+                    <!-- Subsection: Must Carry -->
+                    <div class="info-subsection">
+                        <h3 class="subsection-title">Must Carry</h3>
+                        <div class="expandable-content">
+                            <ul class="nested-list">
+                                <li>Authentic Government ID Card</li>
+                                <li>Comfortable warm clothing like woolen socks, cap, fleece jackets or warmers, down
+                                    jacket, toiletries</li>
+                                <li>Sunscreen & lip balm, Good UV protection sunglasses</li>
+                                <li>Personal Medicines (if any)</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn"></button>
+                    </div>
+
+                    <!-- Subsection: Travel Essentials -->
+                    <div class="info-subsection">
+                        <h3 class="subsection-title">Travel Essentials</h3>
+
+                        <div class="expandable-content">
+                            <span class="category-label">Gears:</span>
+                            <ul class="nested-list">
+                                <li>A rucksack bag and a day pack</li>
+                                <li>3-litre water bladder or water bottle</li>
+                            </ul>
+
+                            <span class="category-label">Clothes:</span>
+                            <ul class="nested-list">
+                                <li>A sun cap and a woolen cap</li>
+                                <li>UV protected sunglasses</li>
+                                <li>One cotton long sleeves and 2 short sleeve t-shirt</li>
+                                <li>1 fleece jacket</li>
+                                <li>1 heavy thick jacket/down jacket</li>
+                                <li>1 pair of gloves</li>
+                                <li>At least 2 long pants (trek pants and cargo pants are favourable)</li>
+                                <li>4 sets of undergarments</li>
+                                <li>2 pair of socks</li>
+                                <li>A small towel</li>
+                                <li>A rain jacket or a poncho</li>
+                            </ul>
+
+                            <span class="category-label">Footwear:</span>
+                            <ul class="nested-list">
+                                <li>Above-the-ankle waterproof and breathable hiking boots with good grip</li>
+                                <li>Flip flops/sandals</li>
+                            </ul>
+
+                            <span class="category-label">Medication:</span>
+                            <ul class="nested-list">
+                                <li>Glucose powder</li>
+                                <li>Medicines for headaches, diarrhoea, motion sickness</li>
+                                <li>Dettol</li>
+                                <li>Bandages</li>
+                                <li>Cotton</li>
+                            </ul>
+
+                            <span class="category-label">Personal Accessories:</span>
+                            <ul class="nested-list">
+                                <li>Toothpaste, toothbrush</li>
+                                <li>Paper soap, or sanitizer</li>
+                                <li>Sunscreen minimum of spf40, lip balm, cold creams</li>
+                                <li>Body spray</li>
+                                <li>LED torch light</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn"></button>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </section>
 
@@ -489,6 +946,27 @@
         </svg>
     </div>
     <script>
+        
+        // Read More / Less Toggle for Other Info
+        document.querySelectorAll('.info-subsection').forEach(subsection => {
+            const content = subsection.querySelector('.expandable-content');
+            const button = subsection.querySelector('.read-more-btn');
+
+            if (content && button) {
+                // Only show button if content exceeds truncation height (120px)
+                if (content.scrollHeight <= 120) {
+                    button.style.display = 'none';
+                    content.style.maxHeight = 'none';
+                    content.classList.add('no-fade');
+                } else {
+                    button.addEventListener('click', () => {
+                        content.classList.toggle('expanded');
+                    });
+                }
+            }
+        });
+
+
         // Journey in Frames Slider Logic
         (function () {
             const initGallery = () => {
@@ -662,8 +1140,259 @@
                         alt="Travel 6"></div>
             </div>
         </div>
-    </div>
-</section>
+
+            <!-- SECTION 1: INCLUSIONS -->
+            <section class="package-section inclusions" id="inclusions">
+                <div class="section-header">
+                    <h2 class="section-title">Inclusions</h2>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Entire travel as per the itinerary by tempo traveler.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        6 nights accommodation – 1 Night in Hotel in Jowai, 2 Nights in Hotel at Cherrapunjee, 1 Night
+                        in Camps at Shnongpdeng & 1 Night in Hotel at Shillong on double/triple sharing basis.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        6 meals – Breakfast on Day 2, Day 3, Day 4, Day 5, Day 6 + Dinner on Day 2.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Entry fees to the sightseeing places mentioned in the itinerary.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Guided trek to various points.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Team Captain throughout the trip.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Medical Kit to handle emergency conditions.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Driver night charges, toll & parking charges.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        All inner line permits.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Barbeque at Shnongpdeng (If Weather permits).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Bonfire at Shnongpdeng (If Weather permits).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Boating, Cliff jumping and Snorkeling in Shnongpdeng (If Weather permits).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Boating, Guide, 4X4 Vehicle for Krem Chympe Caves.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SECTION 2: EXCLUSIONS -->
+            <section class="package-section exclusions" id="exclusions">
+                <div class="section-header">
+                    <h2 class="section-title">Exclusions</h2>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        GST (5%) is applicable extra.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other food or beverage charges that are not included in the package.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other costing involved due to any kind of natural calamity, forced circumstances, which are
+                        out of our control.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other expense not mentioned in the inclusions.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SECTION 3: OTHER INFORMATION -->
+            <section class="package-section other-info" id="other-info">
+                <div class="section-header">
+                    <h2 class="section-title">Other Information</h2>
+                </div>
+
+                <div class="info-grid">
+                    <!-- Subsection: Must Carry -->
+                    <div class="info-subsection">
+                        <h3 class="subsection-title">Must Carry</h3>
+                        <div class="expandable-content">
+                            <ul class="nested-list">
+                                <li>Authentic Government ID Card</li>
+                                <li>Comfortable warm clothing like woolen socks, cap, fleece jackets or warmers, down
+                                    jacket, toiletries</li>
+                                <li>Sunscreen & lip balm, Good UV protection sunglasses</li>
+                                <li>Personal Medicines (if any)</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn"></button>
+                    </div>
+
+                    <!-- Subsection: Travel Essentials -->
+                    <div class="info-subsection">
+                        <h3 class="subsection-title">Travel Essentials</h3>
+
+                        <div class="expandable-content">
+                            <span class="category-label">Gears:</span>
+                            <ul class="nested-list">
+                                <li>A rucksack bag and a day pack</li>
+                                <li>3-litre water bladder or water bottle</li>
+                            </ul>
+
+                            <span class="category-label">Clothes:</span>
+                            <ul class="nested-list">
+                                <li>A sun cap and a woolen cap</li>
+                                <li>UV protected sunglasses</li>
+                                <li>One cotton long sleeves and 2 short sleeve t-shirt</li>
+                                <li>1 fleece jacket</li>
+                                <li>1 heavy thick jacket/down jacket</li>
+                                <li>1 pair of gloves</li>
+                                <li>At least 2 long pants (trek pants and cargo pants are favourable)</li>
+                                <li>4 sets of undergarments</li>
+                                <li>2 pair of socks</li>
+                                <li>A small towel</li>
+                                <li>A rain jacket or a poncho</li>
+                            </ul>
+
+                            <span class="category-label">Footwear:</span>
+                            <ul class="nested-list">
+                                <li>Above-the-ankle waterproof and breathable hiking boots with good grip</li>
+                                <li>Flip flops/sandals</li>
+                            </ul>
+
+                            <span class="category-label">Medication:</span>
+                            <ul class="nested-list">
+                                <li>Glucose powder</li>
+                                <li>Medicines for headaches, diarrhoea, motion sickness</li>
+                                <li>Dettol</li>
+                                <li>Bandages</li>
+                                <li>Cotton</li>
+                            </ul>
+
+                            <span class="category-label">Personal Accessories:</span>
+                            <ul class="nested-list">
+                                <li>Toothpaste, toothbrush</li>
+                                <li>Paper soap, or sanitizer</li>
+                                <li>Sunscreen minimum of spf40, lip balm, cold creams</li>
+                                <li>Body spray</li>
+                                <li>LED torch light</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn"></button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </section>
 
 <!-- Contact -->
 <section id="contact" class="section bg-pastel">
@@ -730,8 +1459,259 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+
+            <!-- SECTION 1: INCLUSIONS -->
+            <section class="package-section inclusions" id="inclusions">
+                <div class="section-header">
+                    <h2 class="section-title">Inclusions</h2>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Entire travel as per the itinerary by tempo traveler.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        6 nights accommodation – 1 Night in Hotel in Jowai, 2 Nights in Hotel at Cherrapunjee, 1 Night
+                        in Camps at Shnongpdeng & 1 Night in Hotel at Shillong on double/triple sharing basis.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        6 meals – Breakfast on Day 2, Day 3, Day 4, Day 5, Day 6 + Dinner on Day 2.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Entry fees to the sightseeing places mentioned in the itinerary.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Guided trek to various points.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Team Captain throughout the trip.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Medical Kit to handle emergency conditions.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Driver night charges, toll & parking charges.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        All inner line permits.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Barbeque at Shnongpdeng (If Weather permits).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Bonfire at Shnongpdeng (If Weather permits).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Boating, Cliff jumping and Snorkeling in Shnongpdeng (If Weather permits).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Boating, Guide, 4X4 Vehicle for Krem Chympe Caves.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SECTION 2: EXCLUSIONS -->
+            <section class="package-section exclusions" id="exclusions">
+                <div class="section-header">
+                    <h2 class="section-title">Exclusions</h2>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        GST (5%) is applicable extra.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other food or beverage charges that are not included in the package.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other costing involved due to any kind of natural calamity, forced circumstances, which are
+                        out of our control.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other expense not mentioned in the inclusions.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SECTION 3: OTHER INFORMATION -->
+            <section class="package-section other-info" id="other-info">
+                <div class="section-header">
+                    <h2 class="section-title">Other Information</h2>
+                </div>
+
+                <div class="info-grid">
+                    <!-- Subsection: Must Carry -->
+                    <div class="info-subsection">
+                        <h3 class="subsection-title">Must Carry</h3>
+                        <div class="expandable-content">
+                            <ul class="nested-list">
+                                <li>Authentic Government ID Card</li>
+                                <li>Comfortable warm clothing like woolen socks, cap, fleece jackets or warmers, down
+                                    jacket, toiletries</li>
+                                <li>Sunscreen & lip balm, Good UV protection sunglasses</li>
+                                <li>Personal Medicines (if any)</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn"></button>
+                    </div>
+
+                    <!-- Subsection: Travel Essentials -->
+                    <div class="info-subsection">
+                        <h3 class="subsection-title">Travel Essentials</h3>
+
+                        <div class="expandable-content">
+                            <span class="category-label">Gears:</span>
+                            <ul class="nested-list">
+                                <li>A rucksack bag and a day pack</li>
+                                <li>3-litre water bladder or water bottle</li>
+                            </ul>
+
+                            <span class="category-label">Clothes:</span>
+                            <ul class="nested-list">
+                                <li>A sun cap and a woolen cap</li>
+                                <li>UV protected sunglasses</li>
+                                <li>One cotton long sleeves and 2 short sleeve t-shirt</li>
+                                <li>1 fleece jacket</li>
+                                <li>1 heavy thick jacket/down jacket</li>
+                                <li>1 pair of gloves</li>
+                                <li>At least 2 long pants (trek pants and cargo pants are favourable)</li>
+                                <li>4 sets of undergarments</li>
+                                <li>2 pair of socks</li>
+                                <li>A small towel</li>
+                                <li>A rain jacket or a poncho</li>
+                            </ul>
+
+                            <span class="category-label">Footwear:</span>
+                            <ul class="nested-list">
+                                <li>Above-the-ankle waterproof and breathable hiking boots with good grip</li>
+                                <li>Flip flops/sandals</li>
+                            </ul>
+
+                            <span class="category-label">Medication:</span>
+                            <ul class="nested-list">
+                                <li>Glucose powder</li>
+                                <li>Medicines for headaches, diarrhoea, motion sickness</li>
+                                <li>Dettol</li>
+                                <li>Bandages</li>
+                                <li>Cotton</li>
+                            </ul>
+
+                            <span class="category-label">Personal Accessories:</span>
+                            <ul class="nested-list">
+                                <li>Toothpaste, toothbrush</li>
+                                <li>Paper soap, or sanitizer</li>
+                                <li>Sunscreen minimum of spf40, lip balm, cold creams</li>
+                                <li>Body spray</li>
+                                <li>LED torch light</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn"></button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </section>
 
 <!-- Footer -->
 <footer>

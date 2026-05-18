@@ -29,6 +29,32 @@
             background-position: center;
         }
 
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* Initial Poster Image Styles */
+        .hero-poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 2; /* Sits above the video */
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        /* Hero Video Element Styles */
+        .hero-video-element,
         .hero-video {
             position: absolute;
             top: 50%;
@@ -38,13 +64,16 @@
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: 1;
-            pointer-events: none;
-            animation: heroVideoFadeIn 1.5s ease-in-out;
+            opacity: 0; /* Hidden initially until ready */
+            transition: opacity 1.2s ease-in-out;
+            pointer-events: none !important; /* Force block all pointer actions to prevent default overlay triggers */
         }
 
-        @keyframes heroVideoFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* FIX: Prevent ALL gestures on the hero container and all descendants on mobile/desktop.
+           This absolutely prevents browsers from intercepting clicks and displaying native play/pause overlay icons. */
+        .Rajasthan-hero,
+        .Rajasthan-hero * {
+            pointer-events: none !important;
         }
 
         .hero-overlay {
@@ -52,6 +81,33 @@
             inset: 0;
             background: rgba(68, 67, 67, 0.45);
             z-index: 2;
+            pointer-events: none !important; /* Block mouse/touch events */
+        }
+
+        /* Hide native video controls, overlays & play buttons across Safari, Chrome, Firefox, iOS, and Android */
+        .hero-video-element::-webkit-media-controls,
+        .hero-video-element::-webkit-media-controls-overlay-play-button,
+        .hero-video-element::-webkit-media-controls-start-playback-button,
+        .hero-video-element::-webkit-media-controls-play-button,
+        .hero-video-element::-webkit-media-controls-panel,
+        .hero-video-element::-webkit-media-controls-enclosure,
+        .hero-video::-webkit-media-controls,
+        .hero-video::-webkit-media-controls-overlay-play-button,
+        .hero-video::-webkit-media-controls-start-playback-button,
+        .hero-video::-webkit-media-controls-play-button,
+        .hero-video::-webkit-media-controls-panel,
+        .hero-video::-webkit-media-controls-enclosure {
+            display: none !important;
+            -webkit-appearance: none !important;
+            opacity: 0 !important;
+        }
+
+        /* Hide Firefox native video controls */
+        .hero-video-element::-moz-meter-bar,
+        .hero-video-element::-moz-range-track,
+        .hero-video::-moz-meter-bar,
+        .hero-video::-moz-range-track {
+            display: none !important;
         }
 
         .Rajasthan-hero .hero-content {
@@ -106,10 +162,28 @@
 
     <!-- Destination Hero Section -->
     <section class="hero dest-page-hero Rajasthan-hero">
-        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="images/RajasthanCard.jpg">
-            <source src="videos/Rajasthan_intro.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- Smooth Transition Hero Video -->
+        <div class="hero-video-container">
+            <!-- Initial Poster Image (Fades out when video starts) -->
+            <div id="heroPoster" class="hero-poster" style="background-image: url('images/RajasthanCard.jpg');"></div>
+
+            <!-- Video Element (Cloudinary Hosted - Fades in when ready) -->
+            <!-- Added disablePictureInPicture and disableRemotePlayback to prevent native UI controls from appearing -->
+            <!-- Linked to id="heroVideo" to apply JavaScript dynamic autoplay/muted logic -->
+            <video 
+                id="heroVideo" 
+                class="hero-video-element hero-video" 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                webkit-playsinline 
+                preload="auto"
+                disablePictureInPicture 
+                disableRemotePlayback>
+                <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/v1777167004/Rajasthan_intro_zdupms.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 style="color:#ffffff; font-size:3.5rem;">
@@ -189,8 +263,55 @@
             <p class="faq-subtitle">Your right to Know!</p>
             <div class="yellow-underline"></div>
         </div>
-        <div class="faq-container">
-            <!-- Dynamic Content via JS -->
+                <div class="faq-container">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item" id="faq-0">
+                <div class="faq-question">
+                    <h3>Q: What is the best time for a Rajasthan trip?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Winter (October to March) is the most pleasant time to explore the forts and deserts.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div class="faq-item" id="faq-1">
+                <div class="faq-question">
+                    <h3>Q: How many days are enough for Rajasthan?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: A comprehensive tour takes 10-14 days, but a quick trip to 2-3 cities can be done in 6-7 days.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div class="faq-item" id="faq-2">
+                <div class="faq-question">
+                    <h3>Q: What are the must-visit cities?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Jaipur (Pink City), Udaipur (City of Lakes), Jodhpur (Blue City), and Jaisalmer (Golden City) are musts.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 4 -->
+            <div class="faq-item" id="faq-3">
+                <div class="faq-question">
+                    <h3>Q: Is Rajasthan safe for tourists?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Yes, it is very safe. Tourism is a major industry and locals are generally very helpful and hospitable.
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -247,25 +368,69 @@
 
     <script src="script.js"></script>
     <script>
-        const faqs = [
-            {
-                question: "What is the best time for a Rajasthan trip?",
-                answer: "Winter (October to March) is the most pleasant time to explore the forts and deserts."
-            },
-            {
-                question: "How many days are enough for Rajasthan?",
-                answer: "A comprehensive tour takes 10-14 days, but a quick trip to 2-3 cities can be done in 6-7 days."
-            },
-            {
-                question: "What are the must-visit cities?",
-                answer: "Jaipur (Pink City), Udaipur (City of Lakes), Jodhpur (Blue City), and Jaisalmer (Golden City) are musts."
-            },
-            {
-                question: "Is Rajasthan safe for tourists?",
-                answer: "Yes, it is very safe. Tourism is a major industry and locals are generally very helpful and hospitable."
+        // Smooth Rajasthan Hero Video Transition Logic & Autoplay Enforcement
+        document.addEventListener('DOMContentLoaded', () => {
+            const rajasthanVideo = document.getElementById('heroVideo');
+            const rajasthanPoster = document.getElementById('heroPoster');
+
+            if (rajasthanVideo) {
+                // Set attributes dynamically to force pure background autoplay policies
+                rajasthanVideo.muted = true;
+                rajasthanVideo.defaultMuted = true;
+                rajasthanVideo.loop = true;
+                rajasthanVideo.playsInline = true;
+                rajasthanVideo.setAttribute('muted', '');
+                rajasthanVideo.setAttribute('playsinline', '');
+                rajasthanVideo.setAttribute('webkit-playsinline', '');
+                rajasthanVideo.setAttribute('loop', '');
+
+                const playAttempt = () => {
+                    rajasthanVideo.play().then(() => {
+                        rajasthanVideo.style.opacity = '1';
+                        if (rajasthanPoster) {
+                            rajasthanPoster.style.opacity = '0';
+                            // Ensure display is block while active, then hide poster
+                            rajasthanPoster.style.display = 'block';
+                            setTimeout(() => {
+                                // Double check video is still playing before hiding poster
+                                if (!rajasthanVideo.paused) {
+                                    rajasthanPoster.style.display = 'none';
+                                }
+                            }, 1200);
+                        }
+                    }).catch(err => {
+                        console.log("Video autoplay deferred, waiting for user gesture.", err);
+                        // Safe fallback for low power mode - keep video invisible and show poster
+                        rajasthanVideo.style.opacity = '0';
+                        if (rajasthanPoster) {
+                            rajasthanPoster.style.opacity = '1';
+                            rajasthanPoster.style.display = 'block';
+                        }
+                    });
+                };
+
+                // Aggressive initialization triggers
+                playAttempt();
+                rajasthanVideo.addEventListener('loadedmetadata', playAttempt);
+                rajasthanVideo.addEventListener('canplay', playAttempt);
+
+                // Auto-resume if anything attempts to pause the background loop (prevents browser play icon trigger)
+                rajasthanVideo.addEventListener('pause', () => {
+                    rajasthanVideo.play().catch(() => { });
+                });
+
+                // User interaction fallbacks to guarantee silent background playback start
+                const triggerOnGesture = () => {
+                    playAttempt();
+                    document.removeEventListener('click', triggerOnGesture);
+                    document.removeEventListener('touchstart', triggerOnGesture);
+                };
+                document.addEventListener('click', triggerOnGesture);
+                document.addEventListener('touchstart', triggerOnGesture);
             }
-        ];
+        });
     </script>
+    
     <script src="faq.js"></script>
     <script>
         (function() {

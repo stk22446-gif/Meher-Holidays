@@ -29,6 +29,32 @@
             background-color: #000;
         }
 
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* Initial Poster Image Styles */
+        .hero-poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 2; /* Sits above the video */
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        /* Hero Video Element Styles */
+        .hero-video-element,
         .hero-video {
             position: absolute;
             top: 50%;
@@ -38,13 +64,16 @@
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: 1;
-            pointer-events: none;
-            animation: heroVideoFadeIn 1.5s ease-in-out;
+            opacity: 0; /* Hidden initially until ready */
+            transition: opacity 1.2s ease-in-out;
+            pointer-events: none !important; /* Force block all pointer actions to prevent default overlay triggers */
         }
 
-        @keyframes heroVideoFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* FIX: Prevent ALL gestures on the hero container and all descendants on mobile/desktop.
+           This absolutely prevents browsers from intercepting clicks and displaying native play/pause overlay icons. */
+        .himachal-hero,
+        .himachal-hero * {
+            pointer-events: none !important;
         }
 
         .hero-overlay {
@@ -52,6 +81,33 @@
             inset: 0;
             background: rgba(68, 67, 67, 0.45);
             z-index: 2;
+            pointer-events: none !important; /* Block mouse/touch events */
+        }
+
+        /* Hide native video controls, overlays & play buttons across Safari, Chrome, Firefox, iOS, and Android */
+        .hero-video-element::-webkit-media-controls,
+        .hero-video-element::-webkit-media-controls-overlay-play-button,
+        .hero-video-element::-webkit-media-controls-start-playback-button,
+        .hero-video-element::-webkit-media-controls-play-button,
+        .hero-video-element::-webkit-media-controls-panel,
+        .hero-video-element::-webkit-media-controls-enclosure,
+        .hero-video::-webkit-media-controls,
+        .hero-video::-webkit-media-controls-overlay-play-button,
+        .hero-video::-webkit-media-controls-start-playback-button,
+        .hero-video::-webkit-media-controls-play-button,
+        .hero-video::-webkit-media-controls-panel,
+        .hero-video::-webkit-media-controls-enclosure {
+            display: none !important;
+            -webkit-appearance: none !important;
+            opacity: 0 !important;
+        }
+
+        /* Hide Firefox native video controls */
+        .hero-video-element::-moz-meter-bar,
+        .hero-video-element::-moz-range-track,
+        .hero-video::-moz-meter-bar,
+        .hero-video::-moz-range-track {
+            display: none !important;
         }
 
         .himachal-hero .hero-content {
@@ -221,10 +277,28 @@
 
     <!-- Destination Hero Section -->
     <section class="hero dest-page-hero himachal-hero">
-        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="images/Himachal_pradesh_Card.jpg">
-            <source src="videos/Himachal_intro.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- Smooth Transition Hero Video -->
+        <div class="hero-video-container">
+            <!-- Initial Poster Image (Fades out when video starts) -->
+            <div id="heroPoster" class="hero-poster" style="background-image: url('images/Himachal_pradesh_Card.jpg');"></div>
+
+            <!-- Video Element (Cloudinary Hosted - Fades in when ready) -->
+            <!-- Added disablePictureInPicture and disableRemotePlayback to prevent native UI controls from appearing -->
+            <!-- Linked to id="heroVideo" to apply JavaScript dynamic autoplay/muted logic -->
+            <video 
+                id="heroVideo" 
+                class="hero-video-element hero-video" 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                webkit-playsinline 
+                preload="auto"
+                disablePictureInPicture 
+                disableRemotePlayback>
+                <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/v1777167003/Himachal_intro_uepasv.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 style="color:#ffffff; font-size:3.5rem;">
@@ -443,8 +517,67 @@
             <p class="faq-subtitle">Your right to Know!</p>
             <div class="yellow-underline"></div>
         </div>
-        <div class="faq-container">
-            <!-- Dynamic Content via JS -->
+                <div class="faq-container">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item" id="faq-0">
+                <div class="faq-question">
+                    <h3>Q: What is the best time to visit Himachal Pradesh?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: March to June (Summer) and October to February (Winter) are the best times. Monsoons (July-September) should be avoided due to landslides.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div class="faq-item" id="faq-1">
+                <div class="faq-question">
+                    <h3>Q: Do I need any permits for Spiti Valley?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Indian tourists do not need permits, but foreign nationals require an Inner Line Permit to visit certain areas near the Tibetan border.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div class="faq-item" id="faq-2">
+                <div class="faq-question">
+                    <h3>Q: Is it safe to travel to Himachal during winters?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Yes, but be prepared for heavy snow and sub-zero temperatures. Some roads like Rohtang Pass or Kunzum Pass might be closed.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 4 -->
+            <div class="faq-item" id="faq-3">
+                <div class="faq-question">
+                    <h3>Q: What are the must-try local dishes?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Don't miss Siddu, Dham, Madra, and the local trout fish preparations.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 5 -->
+            <div class="faq-item" id="faq-4">
+                <div class="faq-question">
+                    <h3>Q: Is Himachal safe for solo female travelers?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Himachal is one of the safest states in India for women. The locals are helpful and respectful.
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -513,31 +646,70 @@
                 }
             });
         });
-    </script>
-    <script>
-        const faqs = [
-            {
-                question: "What is the best time to visit Himachal Pradesh?",
-                answer: "March to June (Summer) and October to February (Winter) are the best times. Monsoons (July-September) should be avoided due to landslides."
-            },
-            {
-                question: "Do I need any permits for Spiti Valley?",
-                answer: "Indian tourists do not need permits, but foreign nationals require an Inner Line Permit to visit certain areas near the Tibetan border."
-            },
-            {
-                question: "Is it safe to travel to Himachal during winters?",
-                answer: "Yes, but be prepared for heavy snow and sub-zero temperatures. Some roads like Rohtang Pass or Kunzum Pass might be closed."
-            },
-            {
-                question: "What are the must-try local dishes?",
-                answer: "Don't miss Siddu, Dham, Madra, and the local trout fish preparations."
-            },
-            {
-                question: "Is Himachal safe for solo female travelers?",
-                answer: "Himachal is one of the safest states in India for women. The locals are helpful and respectful."
+
+        // Smooth Himachal Hero Video Transition Logic & Autoplay Enforcement
+        document.addEventListener('DOMContentLoaded', () => {
+            const himachalVideo = document.getElementById('heroVideo');
+            const himachalPoster = document.getElementById('heroPoster');
+
+            if (himachalVideo) {
+                // Set attributes dynamically to force pure background autoplay policies
+                himachalVideo.muted = true;
+                himachalVideo.defaultMuted = true;
+                himachalVideo.loop = true;
+                himachalVideo.playsInline = true;
+                himachalVideo.setAttribute('muted', '');
+                himachalVideo.setAttribute('playsinline', '');
+                himachalVideo.setAttribute('webkit-playsinline', '');
+                himachalVideo.setAttribute('loop', '');
+
+                const playAttempt = () => {
+                    himachalVideo.play().then(() => {
+                        himachalVideo.style.opacity = '1';
+                        if (himachalPoster) {
+                            himachalPoster.style.opacity = '0';
+                            // Ensure display is block while active, then hide poster
+                            himachalPoster.style.display = 'block';
+                            setTimeout(() => {
+                                // Double check video is still playing before hiding poster
+                                if (!himachalVideo.paused) {
+                                    himachalPoster.style.display = 'none';
+                                }
+                            }, 1200);
+                        }
+                    }).catch(err => {
+                        console.log("Video autoplay deferred, waiting for user gesture.", err);
+                        // Safe fallback for low power mode - keep video invisible and show poster
+                        himachalVideo.style.opacity = '0';
+                        if (himachalPoster) {
+                            himachalPoster.style.opacity = '1';
+                            himachalPoster.style.display = 'block';
+                        }
+                    });
+                };
+
+                // Aggressive initialization triggers
+                playAttempt();
+                himachalVideo.addEventListener('loadedmetadata', playAttempt);
+                himachalVideo.addEventListener('canplay', playAttempt);
+
+                // Auto-resume if anything attempts to pause the background loop (prevents browser play icon trigger)
+                himachalVideo.addEventListener('pause', () => {
+                    himachalVideo.play().catch(() => { });
+                });
+
+                // User interaction fallbacks to guarantee silent background playback start
+                const triggerOnGesture = () => {
+                    playAttempt();
+                    document.removeEventListener('click', triggerOnGesture);
+                    document.removeEventListener('touchstart', triggerOnGesture);
+                };
+                document.addEventListener('click', triggerOnGesture);
+                document.addEventListener('touchstart', triggerOnGesture);
             }
-        ];
+        });
     </script>
+    
     <script src="faq.js"></script>
     <script>
         (function() {

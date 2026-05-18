@@ -24,11 +24,37 @@
             height: 80vh;
             min-height: 520px;
             overflow: hidden;
+            background-color: #000;
             background-size: cover;
             background-position: center;
-            background-color: #000;
         }
 
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* Initial Poster Image Styles */
+        .hero-poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 2; /* Sits above the video */
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        /* Hero Video Element Styles */
+        .hero-video-element,
         .hero-video {
             position: absolute;
             top: 50%;
@@ -38,18 +64,16 @@
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: 1;
-            pointer-events: none;
-            animation: heroVideoFadeIn 1.5s ease-in-out;
+            opacity: 0; /* Hidden initially until ready */
+            transition: opacity 1.2s ease-in-out;
+            pointer-events: none !important; /* Force block all pointer actions to prevent default overlay triggers */
         }
 
-        @keyframes heroVideoFadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        /* FIX: Prevent ALL gestures on the hero container and all descendants on mobile/desktop.
+           This absolutely prevents browsers from intercepting clicks and displaying native play/pause overlay icons. */
+        .Arunachal-hero,
+        .Arunachal-hero * {
+            pointer-events: none !important;
         }
 
         .hero-overlay {
@@ -57,6 +81,33 @@
             inset: 0;
             background: rgba(68, 67, 67, 0.45);
             z-index: 2;
+            pointer-events: none !important; /* Block mouse/touch events */
+        }
+
+        /* Hide native video controls, overlays & play buttons across Safari, Chrome, Firefox, iOS, and Android */
+        .hero-video-element::-webkit-media-controls,
+        .hero-video-element::-webkit-media-controls-overlay-play-button,
+        .hero-video-element::-webkit-media-controls-start-playback-button,
+        .hero-video-element::-webkit-media-controls-play-button,
+        .hero-video-element::-webkit-media-controls-panel,
+        .hero-video-element::-webkit-media-controls-enclosure,
+        .hero-video::-webkit-media-controls,
+        .hero-video::-webkit-media-controls-overlay-play-button,
+        .hero-video::-webkit-media-controls-start-playback-button,
+        .hero-video::-webkit-media-controls-play-button,
+        .hero-video::-webkit-media-controls-panel,
+        .hero-video::-webkit-media-controls-enclosure {
+            display: none !important;
+            -webkit-appearance: none !important;
+            opacity: 0 !important;
+        }
+
+        /* Hide Firefox native video controls */
+        .hero-video-element::-moz-meter-bar,
+        .hero-video-element::-moz-range-track,
+        .hero-video::-moz-meter-bar,
+        .hero-video::-moz-range-track {
+            display: none !important;
         }
 
         .Arunachal-hero .hero-content {
@@ -114,10 +165,28 @@
 
     <!-- Destination Hero Section -->
     <section class="hero dest-page-hero Arunachal-hero">
-        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="images/ArunachalCard.jpg">
-            <source src="videos/Arunachal_intro.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- Smooth Transition Hero Video -->
+        <div class="hero-video-container">
+            <!-- Initial Poster Image (Fades out when video starts) -->
+            <div id="heroPoster" class="hero-poster" style="background-image: url('images/ArunachalCard.jpg');"></div>
+
+            <!-- Video Element (Cloudinary Hosted - Fades in when ready) -->
+            <!-- Added disablePictureInPicture and disableRemotePlayback to prevent native UI controls from appearing -->
+            <!-- Linked to id="heroVideo" to apply JavaScript dynamic autoplay/muted logic -->
+            <video 
+                id="heroVideo" 
+                class="hero-video-element hero-video" 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                webkit-playsinline 
+                preload="auto"
+                disablePictureInPicture 
+                disableRemotePlayback>
+                <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/v1777167011/Arunachal_intro_n1e2y3.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 style="color:#ffffff; font-size:3.5rem;">
@@ -212,8 +281,67 @@
             <p class="faq-subtitle">Your right to Know!</p>
             <div class="yellow-underline"></div>
         </div>
-        <div class="faq-container">
-            <!-- Dynamic Content via JS -->
+                <div class="faq-container">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item" id="faq-0">
+                <div class="faq-question">
+                    <h3>Q: How much does a trip to Arunachal Pradesh cost?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: A standard 7-8 day trip can cost between ₹25,000 to ₹40,000 per person depending on group size and stay preferences.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div class="faq-item" id="faq-1">
+                <div class="faq-question">
+                    <h3>Q: Is an Inner Line Permit (ILP) mandatory?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Yes, all Indian and foreign tourists require a permit to enter Arunachal Pradesh. We can assist you with the process.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div class="faq-item" id="faq-2">
+                <div class="faq-question">
+                    <h3>Q: What is the best time to visit?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: October to April is the peak season. March-April is great for blossoms, while winters are perfect for snow in Tawang.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 4 -->
+            <div class="faq-item" id="faq-3">
+                <div class="faq-question">
+                    <h3>Q: What are the must-try local dishes?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Don't miss Thukpa, Momos, and the traditional bamboo shoot delicacies like Pehak.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 5 -->
+            <div class="faq-item" id="faq-4">
+                <div class="faq-question">
+                    <h3>Q: Is Arunachal safe for solo travelers?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Arunachal is extremely safe and welcoming. Locals are known for their hospitality and helpful nature.
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -271,29 +399,69 @@
 
     <script src="script.js"></script>
     <script>
-        const faqs = [
-            {
-                question: "How much does a trip to Arunachal Pradesh cost?",
-                answer: "A standard 7-8 day trip can cost between ₹25,000 to ₹40,000 per person depending on group size and stay preferences."
-            },
-            {
-                question: "Is an Inner Line Permit (ILP) mandatory?",
-                answer: "Yes, all Indian and foreign tourists require a permit to enter Arunachal Pradesh. We can assist you with the process."
-            },
-            {
-                question: "What is the best time to visit?",
-                answer: "October to April is the peak season. March-April is great for blossoms, while winters are perfect for snow in Tawang."
-            },
-            {
-                question: "What are the must-try local dishes?",
-                answer: "Don't miss Thukpa, Momos, and the traditional bamboo shoot delicacies like Pehak."
-            },
-            {
-                question: "Is Arunachal safe for solo travelers?",
-                answer: "Arunachal is extremely safe and welcoming. Locals are known for their hospitality and helpful nature."
+        // Smooth Arunachal Hero Video Transition Logic & Autoplay Enforcement
+        document.addEventListener('DOMContentLoaded', () => {
+            const arunachalVideo = document.getElementById('heroVideo');
+            const arunachalPoster = document.getElementById('heroPoster');
+
+            if (arunachalVideo) {
+                // Set attributes dynamically to force pure background autoplay policies
+                arunachalVideo.muted = true;
+                arunachalVideo.defaultMuted = true;
+                arunachalVideo.loop = true;
+                arunachalVideo.playsInline = true;
+                arunachalVideo.setAttribute('muted', '');
+                arunachalVideo.setAttribute('playsinline', '');
+                arunachalVideo.setAttribute('webkit-playsinline', '');
+                arunachalVideo.setAttribute('loop', '');
+
+                const playAttempt = () => {
+                    arunachalVideo.play().then(() => {
+                        arunachalVideo.style.opacity = '1';
+                        if (arunachalPoster) {
+                            arunachalPoster.style.opacity = '0';
+                            // Ensure display is block while active, then hide poster
+                            arunachalPoster.style.display = 'block';
+                            setTimeout(() => {
+                                // Double check video is still playing before hiding poster
+                                if (!arunachalVideo.paused) {
+                                    arunachalPoster.style.display = 'none';
+                                }
+                            }, 1200);
+                        }
+                    }).catch(err => {
+                        console.log("Video autoplay deferred, waiting for user gesture.", err);
+                        // Safe fallback for low power mode - keep video invisible and show poster
+                        arunachalVideo.style.opacity = '0';
+                        if (arunachalPoster) {
+                            arunachalPoster.style.opacity = '1';
+                            arunachalPoster.style.display = 'block';
+                        }
+                    });
+                };
+
+                // Aggressive initialization triggers
+                playAttempt();
+                arunachalVideo.addEventListener('loadedmetadata', playAttempt);
+                arunachalVideo.addEventListener('canplay', playAttempt);
+
+                // Auto-resume if anything attempts to pause the background loop (prevents browser play icon trigger)
+                arunachalVideo.addEventListener('pause', () => {
+                    arunachalVideo.play().catch(() => { });
+                });
+
+                // User interaction fallbacks to guarantee silent background playback start
+                const triggerOnGesture = () => {
+                    playAttempt();
+                    document.removeEventListener('click', triggerOnGesture);
+                    document.removeEventListener('touchstart', triggerOnGesture);
+                };
+                document.addEventListener('click', triggerOnGesture);
+                document.addEventListener('touchstart', triggerOnGesture);
             }
-        ];
+        });
     </script>
+    
     <script src="faq.js"></script>
 
 </body>

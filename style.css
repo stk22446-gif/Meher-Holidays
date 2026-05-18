@@ -1170,6 +1170,8 @@ header {
     transition: var(--transition);
     display: flex;
     flex-direction: column;
+    position: relative; /* Fix safari border-radius overflow bug */
+    z-index: 1;
 }
 
 .package-card:hover {
@@ -1181,6 +1183,8 @@ header {
     position: relative;
     height: 250px;
     overflow: hidden;
+    border-top-left-radius: var(--border-radius); /* Enforce rounded corners on mobile */
+    border-top-right-radius: var(--border-radius);
 }
 
 .package-img img {

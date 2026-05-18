@@ -29,6 +29,32 @@
             background-color: #000;
         }
 
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* Initial Poster Image Styles */
+        .hero-poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 2; /* Sits above the video */
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        /* Hero Video Element Styles */
+        .hero-video-element,
         .hero-video {
             position: absolute;
             top: 50%;
@@ -38,13 +64,16 @@
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: 1;
-            pointer-events: none;
-            animation: heroVideoFadeIn 1.5s ease-in-out;
+            opacity: 0; /* Hidden initially until ready */
+            transition: opacity 1.2s ease-in-out;
+            pointer-events: none !important; /* Force block all pointer actions to prevent default overlay triggers */
         }
 
-        @keyframes heroVideoFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* FIX: Prevent ALL gestures on the hero container and all descendants on mobile/desktop.
+           This absolutely prevents browsers from intercepting clicks and displaying native play/pause overlay icons. */
+        .Kashmir-hero,
+        .Kashmir-hero * {
+            pointer-events: none !important;
         }
 
         .hero-overlay {
@@ -52,6 +81,33 @@
             inset: 0;
             background: rgba(68, 67, 67, 0.45);
             z-index: 2;
+            pointer-events: none !important; /* Block mouse/touch events */
+        }
+
+        /* Hide native video controls, overlays & play buttons across Safari, Chrome, Firefox, iOS, and Android */
+        .hero-video-element::-webkit-media-controls,
+        .hero-video-element::-webkit-media-controls-overlay-play-button,
+        .hero-video-element::-webkit-media-controls-start-playback-button,
+        .hero-video-element::-webkit-media-controls-play-button,
+        .hero-video-element::-webkit-media-controls-panel,
+        .hero-video-element::-webkit-media-controls-enclosure,
+        .hero-video::-webkit-media-controls,
+        .hero-video::-webkit-media-controls-overlay-play-button,
+        .hero-video::-webkit-media-controls-start-playback-button,
+        .hero-video::-webkit-media-controls-play-button,
+        .hero-video::-webkit-media-controls-panel,
+        .hero-video::-webkit-media-controls-enclosure {
+            display: none !important;
+            -webkit-appearance: none !important;
+            opacity: 0 !important;
+        }
+
+        /* Hide Firefox native video controls */
+        .hero-video-element::-moz-meter-bar,
+        .hero-video-element::-moz-range-track,
+        .hero-video::-moz-meter-bar,
+        .hero-video::-moz-range-track {
+            display: none !important;
         }
 
         .Kashmir-hero .hero-content {
@@ -221,10 +277,28 @@
 
     <!-- Destination Hero Section -->
     <section class="hero dest-page-hero Kashmir-hero">
-        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="images/KashmirCard.jpg">
-            <source src="videos/Kashmir_intro.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- Smooth Transition Hero Video -->
+        <div class="hero-video-container">
+            <!-- Initial Poster Image (Fades out when video starts) -->
+            <div id="heroPoster" class="hero-poster" style="background-image: url('images/KashmirCard.jpg');"></div>
+
+            <!-- Video Element (Cloudinary Hosted - Fades in when ready) -->
+            <!-- Added disablePictureInPicture and disableRemotePlayback to prevent native UI controls from appearing -->
+            <!-- Linked to id="heroVideo" to apply JavaScript dynamic autoplay/muted logic -->
+            <video 
+                id="heroVideo" 
+                class="hero-video-element hero-video" 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                webkit-playsinline 
+                preload="auto"
+                disablePictureInPicture 
+                disableRemotePlayback>
+                <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/v1777166995/Kashmir_intro_g0p1dt.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 style="color:#ffffff; font-size:3.5rem;">
@@ -304,8 +378,67 @@
             <p class="faq-subtitle">Your right to Know!</p>
             <div class="yellow-underline"></div>
         </div>
-        <div class="faq-container">
-            <!-- Dynamic Content via JS -->
+                <div class="faq-container">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item" id="faq-0">
+                <div class="faq-question">
+                    <h3>Q: Is it safe to travel to Kashmir now?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Yes, Kashmir is a major tourist hub and very safe. Millions of tourists visit every year for its beauty.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div class="faq-item" id="faq-1">
+                <div class="faq-question">
+                    <h3>Q: When can I see the Tulip Garden?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: The Indira Gandhi Memorial Tulip Garden in Srinagar is typically open for 3-4 weeks in April.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div class="faq-item" id="faq-2">
+                <div class="faq-question">
+                    <h3>Q: Does mobile internet work in Kashmir?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Only postpaid mobile connections work in J&K. Prepaid cards from other states will not have network access.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 4 -->
+            <div class="faq-item" id="faq-3">
+                <div class="faq-question">
+                    <h3>Q: Can I stay in a Houseboat on Dal Lake?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Absolutely! Staying in a traditional cedar-wood houseboat is one of the most iconic experiences in Srinagar.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 5 -->
+            <div class="faq-item" id="faq-4">
+                <div class="faq-question">
+                    <h3>Q: What is the best time for snow in Gulmarg?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: For heavy snow and skiing, the best time is from late December to late February.
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -374,31 +507,70 @@
                 }
             });
         });
-    </script>
-    <script>
-        const faqs = [
-            {
-                question: "Is it safe to travel to Kashmir now?",
-                answer: "Yes, Kashmir is a major tourist hub and very safe. Millions of tourists visit every year for its beauty."
-            },
-            {
-                question: "When can I see the Tulip Garden?",
-                answer: "The Indira Gandhi Memorial Tulip Garden in Srinagar is typically open for 3-4 weeks in April."
-            },
-            {
-                question: "Does mobile internet work in Kashmir?",
-                answer: "Only postpaid mobile connections work in J&K. Prepaid cards from other states will not have network access."
-            },
-            {
-                question: "Can I stay in a Houseboat on Dal Lake?",
-                answer: "Absolutely! Staying in a traditional cedar-wood houseboat is one of the most iconic experiences in Srinagar."
-            },
-            {
-                question: "What is the best time for snow in Gulmarg?",
-                answer: "For heavy snow and skiing, the best time is from late December to late February."
+
+        // Smooth Kashmir Hero Video Transition Logic & Autoplay Enforcement
+        document.addEventListener('DOMContentLoaded', () => {
+            const kashmirVideo = document.getElementById('heroVideo');
+            const kashmirPoster = document.getElementById('heroPoster');
+
+            if (kashmirVideo) {
+                // Set attributes dynamically to force pure background autoplay policies
+                kashmirVideo.muted = true;
+                kashmirVideo.defaultMuted = true;
+                kashmirVideo.loop = true;
+                kashmirVideo.playsInline = true;
+                kashmirVideo.setAttribute('muted', '');
+                kashmirVideo.setAttribute('playsinline', '');
+                kashmirVideo.setAttribute('webkit-playsinline', '');
+                kashmirVideo.setAttribute('loop', '');
+
+                const playAttempt = () => {
+                    kashmirVideo.play().then(() => {
+                        kashmirVideo.style.opacity = '1';
+                        if (kashmirPoster) {
+                            kashmirPoster.style.opacity = '0';
+                            // Ensure display is block while active, then hide poster
+                            kashmirPoster.style.display = 'block';
+                            setTimeout(() => {
+                                // Double check video is still playing before hiding poster
+                                if (!kashmirVideo.paused) {
+                                    kashmirPoster.style.display = 'none';
+                                }
+                            }, 1200);
+                        }
+                    }).catch(err => {
+                        console.log("Video autoplay deferred, waiting for user gesture.", err);
+                        // Safe fallback for low power mode - keep video invisible and show poster
+                        kashmirVideo.style.opacity = '0';
+                        if (kashmirPoster) {
+                            kashmirPoster.style.opacity = '1';
+                            kashmirPoster.style.display = 'block';
+                        }
+                    });
+                };
+
+                // Aggressive initialization triggers
+                playAttempt();
+                kashmirVideo.addEventListener('loadedmetadata', playAttempt);
+                kashmirVideo.addEventListener('canplay', playAttempt);
+
+                // Auto-resume if anything attempts to pause the background loop (prevents browser play icon trigger)
+                kashmirVideo.addEventListener('pause', () => {
+                    kashmirVideo.play().catch(() => { });
+                });
+
+                // User interaction fallbacks to guarantee silent background playback start
+                const triggerOnGesture = () => {
+                    playAttempt();
+                    document.removeEventListener('click', triggerOnGesture);
+                    document.removeEventListener('touchstart', triggerOnGesture);
+                };
+                document.addEventListener('click', triggerOnGesture);
+                document.addEventListener('touchstart', triggerOnGesture);
             }
-        ];
+        });
     </script>
+    
     <script src="faq.js"></script>
     <script>
         (function() {

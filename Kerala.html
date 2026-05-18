@@ -40,30 +40,62 @@
             overflow: hidden;
         }
 
-        .hero-video-iframe {
+        /* Initial Poster Image Styles */
+        .hero-poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 2;
+            /* Sits above the video */
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        /* Hero Video Element Styles */
+        .hero-video-element,
+        .hero-video {
             position: absolute;
             top: 50%;
             left: 50%;
             width: 100%;
             height: 100%;
+            object-fit: cover;
             transform: translate(-50%, -50%);
-            border: none;
-            animation: heroVideoFadeIn 1.5s ease-in-out;
+            z-index: 1;
+            opacity: 0;
+            /* Hidden initially until ready */
+            transition: opacity 1.2s ease-in-out;
+            pointer-events: none !important;
+            /* Force block all pointer actions to prevent default overlay triggers */
         }
 
-        /* Responsive scaling to simulate object-fit: cover for the iframe */
-        @media (min-aspect-ratio: 16/9) {
-            .hero-video-iframe {
-                width: 100%;
-                height: 56.25vw;
-            }
+        /* Hide native video controls, overlays & play buttons across Safari, Chrome, Firefox, iOS, and Android */
+        .hero-video-element::-webkit-media-controls,
+        .hero-video-element::-webkit-media-controls-overlay-play-button,
+        .hero-video-element::-webkit-media-controls-start-playback-button,
+        .hero-video-element::-webkit-media-controls-play-button,
+        .hero-video-element::-webkit-media-controls-panel,
+        .hero-video-element::-webkit-media-controls-enclosure,
+        .hero-video::-webkit-media-controls,
+        .hero-video::-webkit-media-controls-overlay-play-button,
+        .hero-video::-webkit-media-controls-start-playback-button,
+        .hero-video::-webkit-media-controls-play-button,
+        .hero-video::-webkit-media-controls-panel,
+        .hero-video::-webkit-media-controls-enclosure {
+            display: none !important;
+            -webkit-appearance: none !important;
+            opacity: 0 !important;
         }
 
-        @media (max-aspect-ratio: 16/9) {
-            .hero-video-iframe {
-                width: 177.78vh;
-                height: 100%;
-            }
+        /* Hide Firefox native video controls */
+        .hero-video-element::-moz-meter-bar,
+        .hero-video-element::-moz-range-track,
+        .hero-video::-moz-meter-bar,
+        .hero-video::-moz-range-track {
+            display: none !important;
         }
 
         @keyframes heroVideoFadeIn {
@@ -81,6 +113,14 @@
             inset: 0;
             background: rgba(68, 67, 67, 0.45);
             z-index: 2;
+            pointer-events: none !important; /* Block mouse/touch events */
+        }
+
+        /* FIX: Prevent ALL gestures on the hero container and all descendants on mobile/desktop.
+           This absolutely prevents browsers from intercepting clicks and displaying native play/pause overlay icons. */
+        .Kerala-hero,
+        .Kerala-hero * {
+            pointer-events: none !important;
         }
 
         .Kerala-hero .hero-content {
@@ -135,15 +175,27 @@
 
     <!-- Destination Hero Section -->
     <section class="hero dest-page-hero Kerala-hero">
-        <!-- Cloudinary Responsive Video Embed -->
+        <!-- Smooth Transition Hero Video -->
         <div class="hero-video-container">
-            <iframe 
-                src="https://player.cloudinary.com/embed/?cloud_name=dfzk4sfkw&public_id=Kerala_am8ruc&autoplay=true&muted=true&loop=true&controls=false" 
-                allow="autoplay; fullscreen; encrypted-media; picture-in-picture" 
-                allowfullscreen 
-                frameborder="0"
-                class="hero-video-iframe">
-            </iframe>
+            <!-- Initial Poster Image (Fades out when video starts) -->
+            <div id="heroPoster" class="hero-poster" style="background-image: url('images/KeralaCard.jpg');"></div>
+
+            <!-- Video Element (Cloudinary Hosted - Fades in when ready) -->
+            <!-- Added disablePictureInPicture and disableRemotePlayback to prevent native UI controls from appearing -->
+            <!-- Ensured id="heroVideo" is restored to link JavaScript dynamic autoplay/muted logic -->
+            <video 
+                id="heroVideo" 
+                class="hero-video-element hero-video" 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                webkit-playsinline 
+                preload="auto"
+                disablePictureInPicture 
+                disableRemotePlayback>
+                <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/Kerala_am8ruc.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -237,8 +289,55 @@
             <p class="faq-subtitle">Your right to Know!</p>
             <div class="yellow-underline"></div>
         </div>
-        <div class="faq-container">
-            <!-- Dynamic Content via JS -->
+                <div class="faq-container">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item" id="faq-0">
+                <div class="faq-question">
+                    <h3>Q: What is the best time to visit Kerala?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: September to March is the best time. The monsoon season (June-August) is great for Ayurveda treatments.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div class="faq-item" id="faq-1">
+                <div class="faq-question">
+                    <h3>Q: Should I stay in a Houseboat in Alleppey?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Yes, an overnight stay in an Alleppey backwater houseboat is a must-do Kerala experience.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div class="faq-item" id="faq-2">
+                <div class="faq-question">
+                    <h3>Q: Which are the best beaches in Kerala?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Varkala, Kovalam, and Marari are among the most beautiful and popular beaches.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 4 -->
+            <div class="faq-item" id="faq-3">
+                <div class="faq-question">
+                    <h3>Q: Is Kerala good for a family trip?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Kerala is one of the most family-friendly destinations in India, offering something for all age groups.
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -308,27 +407,73 @@
                 }
             });
         });
-    </script>
-    <script>
-        const faqs = [
-            {
-                question: "What is the best time to visit Kerala?",
-                answer: "September to March is the best time. The monsoon season (June-August) is great for Ayurveda treatments."
-            },
-            {
-                question: "Should I stay in a Houseboat in Alleppey?",
-                answer: "Yes, an overnight stay in an Alleppey backwater houseboat is a must-do Kerala experience."
-            },
-            {
-                question: "Which are the best beaches in Kerala?",
-                answer: "Varkala, Kovalam, and Marari are among the most beautiful and popular beaches."
-            },
-            {
-                question: "Is Kerala good for a family trip?",
-                answer: "Kerala is one of the most family-friendly destinations in India, offering something for all age groups."
+
+        // Smooth Kerala Hero Video Transition Logic & Autoplay Enforcement
+        document.addEventListener('DOMContentLoaded', () => {
+            const keralaVideo = document.getElementById('heroVideo');
+            const keralaPoster = document.getElementById('heroPoster');
+
+            if (keralaVideo) {
+                // Set attributes dynamically to force pure background autoplay policies
+                keralaVideo.muted = true;
+                keralaVideo.defaultMuted = true;
+                keralaVideo.loop = true;
+                keralaVideo.playsInline = true;
+                keralaVideo.setAttribute('muted', '');
+                keralaVideo.setAttribute('playsinline', '');
+                keralaVideo.setAttribute('webkit-playsinline', '');
+                keralaVideo.setAttribute('loop', '');
+
+                const playAttempt = () => {
+                    keralaVideo.play().then(() => {
+                        keralaVideo.style.opacity = '1';
+                        if (keralaPoster) {
+                            keralaPoster.style.opacity = '0';
+                            // Ensure display is block while active, then hide poster
+                            keralaPoster.style.display = 'block';
+                            setTimeout(() => {
+                                // Double check video is still playing before hiding poster
+                                if (!keralaVideo.paused) {
+                                    keralaPoster.style.display = 'none';
+                                }
+                            }, 1200);
+                        }
+                    }).catch(err => {
+                        console.log("Video autoplay deferred, waiting for user gesture.", err);
+                        // If autoplay is blocked by system (e.g. low power mode),
+                        // immediately keep the video invisible (opacity 0) and reveal the static poster.
+                        // Since the poster is opaque and sits above the video (z-index: 2),
+                        // any default OS/browser play controls are completely hidden behind the poster!
+                        keralaVideo.style.opacity = '0';
+                        if (keralaPoster) {
+                            keralaPoster.style.opacity = '1';
+                            keralaPoster.style.display = 'block';
+                        }
+                    });
+                };
+
+                // Aggressive initialization triggers
+                playAttempt();
+                keralaVideo.addEventListener('loadedmetadata', playAttempt);
+                keralaVideo.addEventListener('canplay', playAttempt);
+
+                // Auto-resume if anything attempts to pause the background loop (prevents browser play icon trigger)
+                keralaVideo.addEventListener('pause', () => {
+                    keralaVideo.play().catch(() => { });
+                });
+
+                // User interaction fallbacks to guarantee silent background playback start
+                const triggerOnGesture = () => {
+                    playAttempt();
+                    document.removeEventListener('click', triggerOnGesture);
+                    document.removeEventListener('touchstart', triggerOnGesture);
+                };
+                document.addEventListener('click', triggerOnGesture);
+                document.addEventListener('touchstart', triggerOnGesture);
             }
-        ];
+        });
     </script>
+    
     <script src="faq.js"></script>
     <script>
         (function () {

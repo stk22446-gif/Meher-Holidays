@@ -626,7 +626,7 @@
         </div>
 
         <!-- Card 6 -->
-        <div class="dest-card">
+        <div class="dest-card card">
           <div class="dest-img-wrap">
             <img src="images/MeghalayaCard.jpg" alt="Meghalaya">
             <div class="dest-overlay"></div>
@@ -944,7 +944,10 @@
         opacity: 0.4;
       }
 
-      /* Mobile View Specifics */
+      /* ===================================
+         MOBILE ORBIT CAROUSEL — FINAL FIX
+         All changes scoped to max-width: 768px
+      =================================== */
       @media (max-width: 768px) {
         .desktop-only {
           display: none;
@@ -954,71 +957,122 @@
           display: block;
         }
 
+        /* Section: reduce vertical padding for a compact look */
+        .orbit-gallery-section {
+          padding: 50px 0;
+        }
+
+        /* Remove container side-padding so the orbit can truly center
+           against the full screen width, not the padded column */
+        .gallery-mobile-view .container {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        /* Title section: restore comfortable text padding */
+        .gallery-mobile-view .section-title {
+          padding: 0 20px;
+          margin-bottom: 30px;
+        }
+
+        /* VIEWPORT — full screen width, orbit centered inside */
         .gallery-mobile-view .orbit-viewport {
-          height: 450px;
-        }
-
-        .gallery-mobile-view .orbit-track {
-          width: 280px;
-          height: 280px;
-        }
-
-        .gallery-mobile-view .orbit-center {
+          width: 100%;
+          height: 420px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           position: relative;
-          width: 180px;
-          height: 180px;
+          perspective: 1000px;
+          perspective-origin: 50% 50%;
+          overflow: visible;
+        }
+
+        /* ORBIT TRACK — perfectly centered square container
+           FORMULA: track_size = 240px, radius = 120px, offset = 120px
+           Items range from 0 to 240, sitting perfectly on the track edges */
+        .gallery-mobile-view .orbit-track {
+          width: 240px;
+          height: 240px;
+          position: relative;
+          margin: 0 auto !important;
+          flex-shrink: 0;
+          transform-style: preserve-3d;
+          transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* CENTER CIRCLE — anchored to mathematical center */
+        .gallery-mobile-view .orbit-center {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 150px;
+          height: 150px;
           z-index: 5;
         }
 
+        .gallery-mobile-view .center-img-wrapper {
+          border-width: 5px !important;
+        }
+
         .gallery-mobile-view .center-info {
-          padding: 25px 10px 15px;
+          padding: 12px 10px 8px;
         }
 
         .gallery-mobile-view .center-info h3 {
-          font-size: 1rem;
+          font-size: 0.9rem;
           font-weight: 600;
           margin: 0;
         }
 
+        /* ORBIT ITEMS — slightly larger for clarity */
         .gallery-mobile-view .orbit-item {
-          width: 44px;
-          height: 44px;
-          margin-left: -22px;
-          margin-top: -22px;
+          width: 38px;
+          height: 38px;
+          margin-left: -19px;
+          margin-top: -19px;
         }
 
+        /* NAV ARROWS — positioned relative to the full viewport */
         .gallery-mobile-view .orbit-nav {
           position: absolute;
-          width: 100%;
+          top: 50%;
+          left: 0;
+          right: 0;
+          transform: translateY(-50%);
           display: flex;
           justify-content: space-between;
-          top: 50%;
-          transform: translateY(-50%);
+          padding: 0 8px;
           pointer-events: none;
-          z-index: 100;
-          padding: 0 10px;
+          z-index: 200;
         }
 
         .gallery-mobile-view .nav-circle {
-          width: 44px;
-          height: 44px;
-          background: rgba(255, 255, 255, 0.9);
+          width: 42px;
+          height: 42px;
+          background: rgba(255, 255, 255, 0.95);
+          box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+          pointer-events: auto;
         }
 
+        /* Side groups scaled for symmetry */
         .gallery-mobile-view .orbit-group.prev {
-          /* FIX: Replaced 120vw with 100% and added !important to ensure it fits */
-          transform: translateX(-100%) scale(0.5) !important;
+          transform: translateX(-110%) scale(0.3) !important;
           opacity: 0;
+          pointer-events: none;
         }
 
         .gallery-mobile-view .orbit-group.next {
-          /* FIX: Replaced 120vw with 100% and added !important to ensure it fits */
-          transform: translateX(100%) scale(0.5) !important;
+          transform: translateX(110%) scale(0.3) !important;
           opacity: 0;
+          pointer-events: none;
         }
 
-        .orbit-gallery-section {
-          padding: 60px 0;
+        /* GROUP INDICATOR DOTS */
+        .gallery-mobile-view .orbit-group-indicator {
+          margin-top: 20px;
+          padding: 0 20px;
         }
       }
     </style>
@@ -1062,8 +1116,12 @@
 
         function createGallery(isMobile) {
           const suffix = isMobile ? 'Mobile' : 'Desktop';
-          const radius = isMobile ? 140 : 350;
-          const offset = isMobile ? 140 : 350;
+          /* --- MOBILE ORBIT GEOMETRY (UPSCALED) ---
+           *  track_size = 280px (CSS) → center of track at 140px
+           *  orbit_radius = 120px  (center-to-item-center distance)
+           *  Result: Perfect mathematical circle within 280px track box. */
+          const radius = isMobile ? 120 : 350;
+          const offset = isMobile ? 120 : 350;
 
           const track = document.getElementById('orbitTrack' + suffix);
           const groupDots = document.getElementById('orbitGroupDots' + suffix);
@@ -1082,7 +1140,7 @@
             const groupEl = document.createElement('div');
             groupEl.className = 'orbit-group';
             groupEl.innerHTML = `
-                <svg class="orbit-path-svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="0.3" stroke-dasharray="2 2" /></svg>
+                <svg class="orbit-path-svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="0.3" stroke-dasharray="2 2" /></svg>
                 <div class="orbit-center">
                   <div class="center-img-wrapper">
                     <img src="${data.images[0].src}" alt="">
