@@ -3621,3 +3621,48 @@ video:not(.hero-video) {
         font-size: 2.1rem !important;
     }
 }
+
+
+/* ==========================================================================
+   5. Mobile Button Sizing & Optimization Overrides (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Make the "Book Now" & promo CTA buttons compact, elegant, and balanced on mobile views */
+    .btn-promo,
+    .bhutan-ctas .btn-promo,
+    .promo-buttons .btn-promo {
+        width: auto !important;          /* Prevents button from stretching full-width */
+        min-width: 165px !important;     /* Solid baseline size for premium clickability */
+        max-width: 240px !important;     /* Balanced maximum width constraint */
+        margin: 0 auto !important;       /* Clean horizontal centering */
+        padding: 10px 26px !important;   /* Compact padding to reduce excessive height */
+        font-size: 0.95rem !important;   /* Scaled typography for mobile ratios */
+        align-self: center !important;   /* Centers flexbox items */
+        border-radius: 10px !important;  /* Modern, balanced rounded corners */
+        display: inline-flex !important; /* Centered inline block layout for perfect sizing */
+    }
+}
+
+
+/* ==========================================================================
+   6. Hero "Book Now" Mobile Button Optimization (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Target the hero content "Book Now" and CTA buttons to make them compact, balanced, and centered */
+    .hero-content .btn,
+    .hero-content .btn-promo,
+    .dest-page-hero .btn,
+    .dest-page-hero .btn-promo,
+    .bhutan-content .btn,
+    .bhutan-content .btn-promo {
+        width: auto !important;          /* Defeats the 100% full-width mobile stretching */
+        min-width: 140px !important;     /* Compact premium standard baseline clickable target */
+        max-width: 200px !important;     /* Restricts maximum footprint to fit gracefully on small phones */
+        padding: 10px 22px !important;   /* Tight, compact vertical and horizontal padding (reduces excessive height) */
+        font-size: 0.9rem !important;    /* Slightly scaled typography to align with compact footprint */
+        margin: 16px auto 0 auto !important; /* Centered horizontally inside hero section container with top margin */
+        align-self: center !important;   /* Flexbox horizontal centering fallback */
+        display: inline-flex !important; /* Forces inline-flex block boundary for perfect auto-centering */
+        border-radius: 30px !important;  /* Preserves original rounded button pill styling */
+    }
+}

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="faq.css">
     <style>
         .bhutan-hero {
             position: relative;
@@ -228,122 +229,256 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* FAQ Section Styles */
-        .faq-section {
-            padding: 80px 0;
-            background-color: transparent;
+        /* ==========================================================================
+           PACKAGE INCLUSIONS, EXCLUSIONS, & OTHER INFO STYLES
+           ========================================================================== */
+        :root {
+            --primary-green: #22c55e;
+            --bg-green: #f0fdf4;
+            --primary-red: #ef4444;
+            --bg-red: #fef2f2;
+            --primary-gray: #6b7280;
+            --bg-gray: #f9fafb;
+            --border-gray: #e5e7eb;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --radius: 12px;
         }
 
-        .faq-header {
-            text-align: center;
-            margin-bottom: 50px;
+        /* Section Cards */
+        .package-section {
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid transparent;
+            margin-bottom: 32px;
         }
 
-        .faq-header h2 {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--text-dark);
-            font-family: var(--font-heading);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .faq-header p {
-            font-size: 18px;
-            color: var(--primary-color);
-            font-family: var(--font-main);
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        .yellow-underline {
-            width: 80px;
-            height: 4px;
-            background-color: #ffd700;
-            margin: 0 auto;
-            border-radius: 2px;
-        }
-
-        .faq-grid {
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            padding: 0 20px;
-        }
-
-        .faq-item {
-            background-color: var(--bg-white);
-            border: 1.5px solid #e2e8f0;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.03);
-            margin-bottom: 20px;
-        }
-
-        .faq-item:hover {
-            border-color: var(--secondary-color);
-            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.08);
+        .package-section:hover {
             transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
 
-        .faq-question {
-            padding: 22px 28px;
+        /* Specific Themes */
+        .inclusions {
+            background-color: var(--bg-green);
+            border-color: #dcfce7;
+        }
+
+        .exclusions {
+            background-color: var(--bg-red);
+            border-color: #fee2e2;
+        }
+
+        .other-info {
+            background-color: var(--bg-gray);
+            border-color: var(--border-gray);
+        }
+
+        /* Headings */
+        .section-header {
+            margin-bottom: 24px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            cursor: pointer;
-            user-select: none;
         }
 
-        .faq-question h3 {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-dark);
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            padding-left: 16px;
+            border-left: 5px solid transparent;
+            line-height: 1;
             margin: 0;
-            line-height: 1.4;
-            transition: color 0.3s ease;
         }
 
-        .faq-item:hover .faq-question h3 { color: var(--primary-color); }
-
-        .arrow {
-            font-size: 18px;
-            color: #94a3b8;
-            transition: transform 0.3s ease;
-            font-weight: bold;
+        .inclusions .section-title {
+            border-color: var(--primary-green);
+            color: #166534;
         }
 
-        .faq-item.active .arrow {
-            color: var(--primary-color);
-            transform: rotate(180deg);
+        .exclusions .section-title {
+            border-color: var(--primary-red);
+            color: #991b1b;
         }
 
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            background-color: var(--bg-light);
+        .other-info .section-title {
+            border-color: #0ea5e9;
+            color: #0c4a6e;
         }
 
-        .faq-answer-content {
-            padding: 25px 28px;
-            color: var(--text-light);
-            line-height: 1.7;
+        /* List Styling */
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            padding: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
             font-size: 16px;
-            border-top: 1px solid #f1f5f9;
+            color: var(--text-muted);
         }
 
-        .faq-item.active {
-            border-color: var(--primary-color);
-            box-shadow: 0 15px 35px rgba(30, 64, 175, 0.12);
+        .package-section .icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1.5px solid currentColor;
+            padding: 3px;
         }
 
-        .faq-item.active .faq-question h3 { color: var(--primary-color); }
-    </style>
+        /* Other Info Subsections */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .info-subsection {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .subsection-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0369a1;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #e0f2fe;
+            padding-bottom: 8px;
+            display: block;
+        }
+
+        .nested-list {
+            list-style: none;
+            padding-left: 0;
+            color: var(--text-muted);
+        }
+
+        .nested-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .nested-list li::before {
+            content: "•";
+            color: #0ea5e9;
+            font-weight: bold;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        .category-label {
+            display: block;
+            font-weight: 700;
+            color: #0c4a6e;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: #e0f2fe;
+            padding: 4px 8px;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        /* Custom SVG Icons */
+        .check-icon {
+            color: var(--primary-green);
+            background-color: #f0fdf4;
+        }
+
+        .cross-icon {
+            color: var(--primary-red);
+            background-color: #fef2f2;
+        }
+
+        @media (max-width: 768px) {
+            .package-section {
+                padding: 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Read More Functionality */
+        .info-subsection {
+            position: relative;
+            padding-bottom: 50px !important;
+        }
+
+        .expandable-content {
+            max-height: 120px;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            position: relative;
+        }
+
+        .expandable-content.expanded {
+            max-height: 2000px;
+        }
+
+        .expandable-content:not(.expanded):not(.no-fade)::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.8));
+            pointer-events: none;
+        }
+
+        .read-more-btn {
+            position: absolute;
+            bottom: 16px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #0ea5e9;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+
+        .read-more-btn:hover {
+            color: #0369a1;
+            text-decoration: underline;
+        }
+
+        .read-more-btn::after {
+            content: "Read More";
+        }
+
+        .expandable-content.expanded+.read-more-btn::after {
+            content: "Read Less";
+        }
+
+</style>
 </head>
 
 <body>
@@ -549,6 +684,285 @@
                 </article>
             </div>
         </div>
+        </section>
+
+    <!-- SECTION: INCLUSIONS, EXCLUSIONS & OTHER INFO -->
+    <section class="package-details-section section" id="details">
+        <div class="container">
+            <!-- SECTION 1: INCLUSIONS -->
+            <section class="package-section inclusions" id="inclusions">
+                <div class="section-header">
+                    <h2 class="section-title">Inclusions</h2>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Entire travel as per the itinerary by private, comfortable vehicle (SUV / Coaster Bus).
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        6 nights accommodation – comfortable, hand-picked hotels in Thimphu, Punakha, and Paro on double/triple sharing basis.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Breakfast on all days at the hotels.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        All inner line route permits, immigration clearance, and entry fees to monument points.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Guided trek to Taktsang (Tiger's Nest) Monastery.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Team Captain throughout the trip.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Medical Kit to handle emergency conditions.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon check-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        Driver night charges, toll charges, state tax & parking charges.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SECTION 2: EXCLUSIONS -->
+            <section class="package-section exclusions" id="exclusions">
+                <div class="section-header">
+                    <h2 class="section-title">Exclusions</h2>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        GST (5%) and TCS (5%/20%) is applicable extra.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Sustainable Development Fee (SDF) of INR 1,200/- per person per night for Indian nationals.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any food or beverage charges not explicitly mentioned under inclusions.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Optional river rafting in Mo Chu River or any personal activity costs.
+                    </li>
+                    <li class="feature-item">
+                        <div class="icon cross-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        Any other costing involved due to natural calamities, roadblocks, or circumstances beyond our control.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SECTION 3: OTHER INFORMATION -->
+            <section class="package-section other-info" id="other-info">
+                <div class="section-header">
+                    <h2 class="section-title">Other Information</h2>
+                </div>
+                <div class="info-grid">
+                    <!-- Subsection: Must Carry -->
+                    <div class="info-subsection">
+                        <h3 class="subsection-title">Must Carry</h3>
+                        <div class="expandable-content">
+                            <ul class="nested-list">
+                                <li>Original Passport (valid for min 6 months) OR original Voter ID Card for permit clearance.</li>
+                                <li>Comfortable warm clothing (jacket, fleece, thermals, gloves, woolen socks).</li>
+                                <li>Sturdy trekking/hiking shoes with good grip.</li>
+                                <li>Sunscreen, lip balm, sunglasses, and personal toiletries.</li>
+                                <li>Personal Medicines.</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn"></button>
+                    </div>
+
+                    <!-- Subsection: Travel Essentials -->
+                    <div class="info-subsection">
+                        <h3 class="subsection-title">Travel Essentials</h3>
+                        <div class="expandable-content">
+                            <span class="category-label">Gears & Clothing:</span>
+                            <ul class="nested-list">
+                                <li>Main travel rucksack/bag and a comfortable 20-30L day pack.</li>
+                                <li>A sun cap and woolen cap.</li>
+                                <li>Heavy down jacket and mid-layers (fleece/sweaters).</li>
+                                <li>At least 2-3 pairs of quick-dry trekking pants.</li>
+                                <li>Rain jacket or high-quality poncho.</li>
+                            </ul>
+                            <span class="category-label">Currency Details:</span>
+                            <ul class="nested-list">
+                                <li>Physical Indian Rupees (INR) cash in denominations of 100 and 500 (widely accepted in Bhutan).</li>
+                                <li>Ensure notes are clean and crisp as damaged notes are not accepted.</li>
+                            </ul>
+                        </div>
+                        <button class="read-more-btn"></button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- SECTION: JOURNEY IN FRAMES (GALLERY SLIDER) -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-header">
+            <h2>Journey in Frames</h2>
+            <p>Pictures Perfect Moments</p>
+        </div>
+        <div class="gallery-container">
+            <div class="gallery-nav">
+                <button class="nav-btn prev" id="galleryPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-btn next" id="galleryNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="gallery-slider-wrapper" id="galleryWrapper">
+                <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1578593139811-292c01907477?auto=format&fit=crop&q=80&w=600" alt="Tiger's Nest Monastery, Paro, Bhutan">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1548986211-2f5202bdda2d?auto=format&fit=crop&q=80&w=600" alt="Punakha Dzong, Bhutan">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&q=80&w=600" alt="Bhutanese Culture & Prayer Flags">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&q=80&w=600" alt="Scenic Thimphu Valley, Bhutan">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=600" alt="Misty Mountains of Bhutan">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: FREQUENTLY ASKED QUESTIONS (FAQ) -->
+    <section class="faq-section" id="faq">
+        <div class="faq-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Your right to Know!</p>
+            <div class="yellow-underline"></div>
+        </div>
+        <div class="faq-container">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item" id="faq-0">
+                <div class="faq-question">
+                    <h3>Q: Do Indian tourists need a passport or visa to visit Bhutan?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Indian citizens do not require a visa to visit Bhutan. However, you must carry either a valid original Passport (with at least 6 months validity) or an original Voter ID Card issued by the Election Commission of India. An entry permit will be issued at the border.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div class="faq-item" id="faq-1">
+                <div class="faq-question">
+                    <h3>Q: What is the Sustainable Development Fee (SDF) for Bhutan?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Indian tourists are required to pay a Sustainable Development Fee (SDF) of INR 1,200/- per person per night. For other international nationalities, the fee is USD 100/- per person per night.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div class="faq-item" id="faq-2">
+                <div class="faq-question">
+                    <h3>Q: Is the trek to Tiger's Nest difficult?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: The trek to Taktsang (Tiger's Nest) Monastery is moderately challenging and takes about 4 to 5 hours round trip. It is a steady uphill climb, but horses can be hired (for going uphill only) if needed. We recommend regular walking/cardio preparation before the trip.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 4 -->
+            <div class="faq-item" id="faq-3">
+                <div class="faq-question">
+                    <h3>Q: Can I use Indian Rupees (INR) in Bhutan?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: Yes, Indian Rupees in denominations of INR 100 and INR 500 are widely accepted across Bhutan. However, we advise carrying physical cash, as digital transactions and cards might not work in remote locations.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ Item 5 -->
+            <div class="faq-item" id="faq-4">
+                <div class="faq-question">
+                    <h3>Q: What is the best time of year to visit Bhutan?</h3>
+                    <span class="faq-arrow"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        A: The best time to visit Bhutan is from October to December (clear sunny skies and pleasant weather) and from March to May (spring season with beautiful blooming flowers).
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Contact -->
@@ -701,6 +1115,26 @@
             };
             if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
         })();
+    </script>
+
+    <script>
+        // Read More / Less Toggle for Other Info
+        document.querySelectorAll('.info-subsection').forEach(subsection => {
+            const content = subsection.querySelector('.expandable-content');
+            const button = subsection.querySelector('.read-more-btn');
+
+            if (content && button) {
+                if (content.scrollHeight <= 120) {
+                    button.style.display = 'none';
+                    content.style.maxHeight = 'none';
+                    content.classList.add('no-fade');
+                } else {
+                    button.addEventListener('click', () => {
+                        content.classList.toggle('expanded');
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>
