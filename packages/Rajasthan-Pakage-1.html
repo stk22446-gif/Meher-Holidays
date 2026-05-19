@@ -258,7 +258,161 @@
         .expandable-content.expanded+.read-more-btn::after {
             content: "Read Less";
         }
-    </style>
+    
+        /* Journey in Frames Gallery */
+        .gallery-section {
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .gallery-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1f2937;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .gallery-header p {
+            font-size: 18px;
+            color: #9ca3af;
+            font-weight: 400;
+        }
+
+        .gallery-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .gallery-slider-wrapper {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            cursor: grab;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+        }
+
+        .gallery-slider-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-slider-wrapper:active {
+            cursor: grabbing;
+        }
+
+        .gallery-slider {
+            display: flex;
+            gap: 25px;
+            padding: 20px 50px;
+            width: max-content;
+        }
+
+        .gallery-item {
+            flex: 0 0 280px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            aspect-ratio: 1/1.2;
+            scroll-snap-align: center;
+        }
+
+        .gallery-item:nth-child(odd) {
+            transform: rotate(-2deg);
+        }
+
+        .gallery-item:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+            filter: brightness(0.9);
+        }
+
+        .gallery-item:hover {
+            transform: rotate(0) scale(1.05);
+            z-index: 10;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(1.1);
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            right: 10px;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            background-color: #0ea5e9;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: auto;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-btn i {
+            font-size: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-item {
+                flex: 0 0 240px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .gallery-item {
+                flex: 0 0 260px;
+            }
+
+            .gallery-slider {
+                padding: 20px 30px;
+                gap: 20px;
+            }
+
+            .gallery-container {
+                padding: 0;
+            }
+
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                background-color: rgba(14, 165, 233, 0.9);
+            }
+        }
+
+</style>
 </head>
 
 <body>
@@ -711,11 +865,12 @@
 
             <div class="gallery-slider-wrapper" id="galleryWrapper">
                 <div class="gallery-slider" id="gallerySlider">
-                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&q=80&w=600" alt="Travel Memories"></div>
-<div class="gallery-item"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&q=80&w=600" alt="Travel Memories"></div>
-<div class="gallery-item"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=600" alt="Travel Memories"></div>
-<div class="gallery-item"><img src="https://images.unsplash.com/photo-1530789253588-583c8241a6e0?auto=format&fit=crop&q=80&w=600" alt="Travel Memories"></div>
-<div class="gallery-item"><img src="https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&q=80&w=600" alt="Travel Memories"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&q=80&w=600" alt="Hawa Mahal, Jaipur"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?auto=format&fit=crop&q=80&w=600" alt="Amer Fort, Jaipur"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1590050752117-238cb0612b1b?auto=format&fit=crop&q=80&w=600" alt="Lake Pichola, Udaipur"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&q=80&w=600" alt="Thar Desert Safari, Jaisalmer"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&q=80&w=600" alt="Heritage Palace Entrance"></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1598977123418-45f04b6141bc?auto=format&fit=crop&q=80&w=600" alt="Colors of Rajasthan"></div>
                 </div>
             </div>
         </div>
