@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dreamy Himachal Getaway | Meher Holidays</title>
+    <!-- FontAwesome & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../footer.css">
     <style>
-        :root {
+:root {
             --primary-green: #22c55e;
             --bg-green: #f0fdf4;
             --primary-red: #ef4444;
@@ -414,8 +416,6 @@
 
 <body>
 
-
-
     <!-- Header / Nav -->
     <header id="header">
         <div class="container nav-container">
@@ -434,7 +434,7 @@
         </div>
     </header>
 
-    <!-- CONTENT -->
+    <!-- CONTENT HERO -->
     <section class="why-section section" data-animated-bg="true"
         style="background-image: url('../images/DreamyHimachalGetaway.jpg');">
         <div class="container">
@@ -449,7 +449,7 @@
         </div>
     </section>
 
-    <!-- ITINERARY -->
+    <!-- ITINERARY & INFO -->
     <section id="itinerary" class="itinerary-section section" data-animated-bg="true">
         <div class="container">
             <h2>Summer Spiti Valley Adventure Itinerary</h2>
@@ -487,9 +487,9 @@
                 </a>
             </div>
 
-            <div class="itinerary-list">
-                <!-- Day 1 -->
-                <article class="itinerary-day" aria-labelledby="day1-title">
+            
+    <div class="itinerary-list">
+        <article class="itinerary-day" aria-labelledby="day1-title">
                     <div class="day-content">
                         <button class="day-toggle" aria-expanded="false" aria-controls="desc-day1">
                             <h3 id="day1-title" class="day-title">Day1: Arrival and Roadtrip to Thimphu</h3>
@@ -512,9 +512,7 @@
                         </div>
                     </div>
                 </article>
-
-                <!-- Day 2 -->
-                <article class="itinerary-day" aria-labelledby="day2-title">
+<article class="itinerary-day" aria-labelledby="day2-title">
                     <div class="day-content">
                         <button class="day-toggle" aria-expanded="false" aria-controls="desc-day2">
                             <h3 id="day2-title" class="day-title">Day 2: DayTrip to Punakha</h3>
@@ -537,9 +535,7 @@
                         </div>
                     </div>
                 </article>
-
-                <!-- Day 3 -->
-                <article class="itinerary-day" aria-labelledby="day3-title">
+<article class="itinerary-day" aria-labelledby="day3-title">
                     <div class="day-content">
                         <button class="day-toggle" aria-expanded="false" aria-controls="desc-day3">
                             <h3 id="day3-title" class="day-title">Day 3: Thimphu to Paro</h3>
@@ -559,9 +555,7 @@
                         </div>
                     </div>
                 </article>
-
-                <!-- Day 4 -->
-                <article class="itinerary-day" aria-labelledby="day4-title">
+<article class="itinerary-day" aria-labelledby="day4-title">
                     <div class="day-content">
                         <button class="day-toggle" aria-expanded="false" aria-controls="desc-day4">
                             <h3 id="day4-title" class="day-title">Day 4: Tiger’s Nest Trek</h3>
@@ -581,9 +575,7 @@
                         </div>
                     </div>
                 </article>
-
-                <!-- Day 5 -->
-                <article class="itinerary-day" aria-labelledby="day5-title">
+<article class="itinerary-day" aria-labelledby="day5-title">
                     <div class="day-content">
                         <button class="day-toggle" aria-expanded="false" aria-controls="desc-day5">
                             <h3 id="day5-title" class="day-title">Day 5: Departure</h3>
@@ -602,13 +594,10 @@
                         </div>
                     </div>
                 </article>
+    </div>
 
-                
-
-            </div>
-
-            <!-- SECTION 1: INCLUSIONS -->
-            <section class="package-section inclusions" id="inclusions">
+    <!-- INCLUSIONS & EXCLUSIONS -->
+    <section class="package-section inclusions" id="inclusions">
                 <div class="section-header">
                     <h2 class="section-title">Inclusions</h2>
                 </div>
@@ -733,9 +722,7 @@
                     </li>
                 </ul>
             </section>
-
-            <!-- SECTION 2: EXCLUSIONS -->
-            <section class="package-section exclusions" id="exclusions">
+    <section class="package-section exclusions" id="exclusions">
                 <div class="section-header">
                     <h2 class="section-title">Exclusions</h2>
                 </div>
@@ -779,9 +766,7 @@
                     </li>
                 </ul>
             </section>
-
-            <!-- SECTION 3: OTHER INFORMATION -->
-            <section class="package-section other-info" id="other-info">
+    <section class="package-section other-info" id="other-info">
                 <div class="section-header">
                     <h2 class="section-title">Other Information</h2>
                 </div>
@@ -856,72 +841,121 @@
                     </div>
                 </div>
             </section>
+    
+    </div> <!-- Closes .container of itinerary -->
+    </section> <!-- Closes #itinerary section -->
 
+    <!-- SECTION: JOURNEY IN FRAMES GALLERY -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-header">
+            <h2>Journey in Frames</h2>
+            <p>Pictures Perfect Moments</p>
+        </div>
+
+        <div class="gallery-container">
+            <div class="gallery-nav">
+                <button class="nav-btn prev" id="galleryPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-btn next" id="galleryNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="gallery-slider-wrapper" id="galleryWrapper">
+                <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&q=80&w=600"
+                        alt="Travel 1"></div>
+<div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=600"
+                        alt="Travel 2"></div>
+<div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=600"
+                        alt="Travel 3"></div>
+<div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=600"
+                        alt="Travel 4"></div>
+<div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1530789253588-583c8241a6e0?auto=format&fit=crop&q=80&w=600"
+                        alt="Travel 6"></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <script>
-        // IntersectionObserver to reveal itinerary days on scroll
-        (function () {
-            if (!('IntersectionObserver' in window)) {
-                // fallback: reveal all
-                document.querySelectorAll('.itinerary-day').forEach(function (el) { el.classList.add('in-view'); });
-                return;
-            }
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section bg-pastel">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>Ready for your next adventure? Contact us today to plan your trip!</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <a href="tel:+917338132315">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+91 73381 32315</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="mailto:holidaysmeher@gmail.com">
+                            <i class="fas fa-envelope"></i>
+                            <span>holidaysmeher@gmail.com</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://www.google.com/maps/place/Meher+Holidays/@20.8830269,74.1891013,5.61z/data=!4m15!1m8!3m7!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!2sMeher+Holidays!8m2!3d23.760715!4d76.3794754!10e5!16s%2Fg%2F11xgsh1k45!3m5!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!8m2!3d23.760715!4d76.3794754!16s%2Fg%2F11xgsh1k45?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bengaluru, Karnataka</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://instagram.com/meher_holidays" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://facebook.com/holidaysmeher" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
 
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12 });
+            <div class="contact-form-container">
+                <form action="https://formspree.io/f/xqewjokd" method="POST" id="contactForm" class="contact-form">
+                    <input type="text" name="_gotcha" style="display:none">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                </form>
 
-            document.querySelectorAll('.itinerary-day').forEach(function (el) { observer.observe(el); });
-        })();
-    </script>
+                <!-- Success Video Scene (Replaces Form on Submit) -->
+                <div id="success-video-wrap" class="success-video-wrap">
+                    <video id="success-video" muted playsinline>
+                        <source src="../FormFillUp/one.webm" type="video/webm">
+                    </video>
+                    <div class="success-message-overlay">
+                        <h3>Message Sent!</h3>
+                        <p>Thank you for your query. We will contact you soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        // Page-scoped smooth scroll for "View Itinerary" on Bhutan page only
-        (function () {
-            function initSmoothScroll() {
-                var link = document.querySelector('.bhutan-ctas a[href="#itinerary"]');
-                if (!link) return;
-                link.addEventListener('click', function (e) {
-                    var target = document.querySelector('#itinerary');
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        // update URL hash without jumping
-                        history.replaceState && history.replaceState(null, '', '#itinerary');
-                    }
-                    // if no target on this page, allow default (could be an external itinerary page)
-                });
-            }
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initSmoothScroll);
-            } else {
-                initSmoothScroll();
-            }
-        })();
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-skyline"></div>
+        <div class="container footer-content" style="position: relative; z-index: 10; margin-top: -20px; text-align: center;">
+            <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
+        </div>
+    </footer>
 
     <!-- Travel Background Animation -->
     <div class="travel-bg-animation">
@@ -932,8 +966,7 @@
         <i class="fas fa-solid fa-motorcycle bike"></i>
         <!-- Detailed Shikara Houseboat SVG -->
         <svg class="houseboat" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z"
-                fill="currentColor" />
+            <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z" fill="currentColor" />
             <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8" />
             <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor" />
             <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
@@ -946,15 +979,91 @@
             <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
         </svg>
     </div>
+
+    <!-- Scripts -->
+    <script src="../script.js"></script>
     <script>
-        
+        // Accordion behaviour for itinerary
+        (function () {
+            function setExpandedState(article, desc, toggle, expanded) {
+                article.classList.toggle('active', expanded);
+                article.classList.toggle('open', expanded);
+                toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                desc.setAttribute('aria-hidden', expanded ? 'false' : 'true');
+            }
+
+            function closeArticle(article, desc, toggle) {
+                desc.style.maxHeight = desc.scrollHeight + 'px';
+                setExpandedState(article, desc, toggle, false);
+                requestAnimationFrame(function () { desc.style.maxHeight = '0px'; });
+            }
+
+            function openArticle(article, desc, toggle) {
+                setExpandedState(article, desc, toggle, true);
+                var full = desc.scrollHeight;
+                desc.style.maxHeight = full + 'px';
+            }
+
+            function init() {
+                var toggles = document.querySelectorAll('.day-toggle');
+                var articles = Array.prototype.slice.call(document.querySelectorAll('.itinerary-day'));
+
+                toggles.forEach(function (toggle) {
+                    var controls = toggle.getAttribute('aria-controls');
+                    var desc = document.getElementById(controls);
+                    var article = toggle.closest('.itinerary-day');
+                    if (!desc || !article) return;
+
+                    var startsOpen = article.classList.contains('active') || article.classList.contains('open');
+                    setExpandedState(article, desc, toggle, startsOpen);
+                    desc.style.maxHeight = startsOpen ? desc.scrollHeight + 'px' : '';
+
+                    desc.addEventListener('transitionend', function (e) {
+                        if (e.propertyName !== 'max-height') return;
+                        if (article.classList.contains('active') || article.classList.contains('open')) {
+                            desc.style.maxHeight = desc.scrollHeight + 'px';
+                        } else {
+                            desc.style.maxHeight = '';
+                        }
+                    });
+
+                    toggle.addEventListener('click', function (e) {
+                        var isOpen = article.classList.contains('active') || article.classList.contains('open');
+                        if (isOpen) {
+                            closeArticle(article, desc, toggle);
+                        } else {
+                            articles.forEach(function (other) {
+                                if (other !== article && (other.classList.contains('active') || other.classList.contains('open'))) {
+                                    var t = other.querySelector('.day-toggle');
+                                    var c = t && t.getAttribute('aria-controls') && document.getElementById(t.getAttribute('aria-controls'));
+                                    if (c) closeArticle(other, c, t);
+                                }
+                            });
+                            openArticle(article, desc, toggle);
+                        }
+                    });
+                });
+
+                var resizeTimer;
+                window.addEventListener('resize', function () {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(function () {
+                        document.querySelectorAll('.itinerary-day.active .day-desc, .itinerary-day.open .day-desc').forEach(function (d) {
+                            d.style.maxHeight = d.scrollHeight + 'px';
+                        });
+                    }, 120);
+                });
+            }
+
+            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+        })();
+
         // Read More / Less Toggle for Other Info
         document.querySelectorAll('.info-subsection').forEach(subsection => {
             const content = subsection.querySelector('.expandable-content');
             const button = subsection.querySelector('.read-more-btn');
 
             if (content && button) {
-                // Only show button if content exceeds truncation height (120px)
                 if (content.scrollHeight <= 120) {
                     button.style.display = 'none';
                     content.style.maxHeight = 'none';
@@ -967,8 +1076,7 @@
             }
         });
 
-
-        // Journey in Frames Slider Logic
+        // Journey in Frames Slider Logic with Center Alignment Math
         (function () {
             const initGallery = () => {
                 const sliderWrapper = document.getElementById('galleryWrapper');
@@ -1012,800 +1120,26 @@
                 initGallery();
             }
         })();
-    </script>
-</body>
 
-</html>
-
-<script>
-    // Accordion behaviour for itinerary
-    (function () {
-        function setExpandedState(article, desc, toggle, expanded) {
-            article.classList.toggle('active', expanded);
-            article.classList.toggle('open', expanded);
-            toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-            desc.setAttribute('aria-hidden', expanded ? 'false' : 'true');
-        }
-
-        function closeArticle(article, desc, toggle) {
-            // animate collapse
-            desc.style.maxHeight = desc.scrollHeight + 'px';
-            setExpandedState(article, desc, toggle, false);
-            // allow repaint
-            requestAnimationFrame(function () { desc.style.maxHeight = '0px'; });
-        }
-
-        function openArticle(article, desc, toggle) {
-            setExpandedState(article, desc, toggle, true);
-            // set to content height to animate
-            var full = desc.scrollHeight;
-            desc.style.maxHeight = full + 'px';
-        }
-
-        function init() {
-            var toggles = document.querySelectorAll('.day-toggle');
-            var articles = Array.prototype.slice.call(document.querySelectorAll('.itinerary-day'));
-
-            toggles.forEach(function (toggle) {
-                var controls = toggle.getAttribute('aria-controls');
-                var desc = document.getElementById(controls);
-                var article = toggle.closest('.itinerary-day');
-                if (!desc || !article) return;
-
-                var startsOpen = article.classList.contains('active') || article.classList.contains('open');
-                setExpandedState(article, desc, toggle, startsOpen);
-                desc.style.maxHeight = startsOpen ? desc.scrollHeight + 'px' : '';
-
-                desc.addEventListener('transitionend', function (e) {
-                    if (e.propertyName !== 'max-height') return;
-
-                    if (article.classList.contains('active') || article.classList.contains('open')) {
-                        desc.style.maxHeight = desc.scrollHeight + 'px';
-                    } else {
-                        desc.style.maxHeight = '';
-                    }
-                });
-
-                toggle.addEventListener('click', function (e) {
-                    var isOpen = article.classList.contains('active') || article.classList.contains('open');
-                    if (isOpen) {
-                        closeArticle(article, desc, toggle);
-                    } else {
-                        // close others (only one open at a time)
-                        articles.forEach(function (other) {
-                            if (other !== article && (other.classList.contains('active') || other.classList.contains('open'))) {
-                                var t = other.querySelector('.day-toggle');
-                                var c = t && t.getAttribute('aria-controls') && document.getElementById(t.getAttribute('aria-controls'));
-                                if (c) closeArticle(other, c, t);
-                            }
-                        });
-                        openArticle(article, desc, toggle);
-                    }
-                });
-
-                // support keyboard accessibility: handled by button element natively
-            });
-
-            // adjust open max-heights on resize
-            var resizeTimer;
-            window.addEventListener('resize', function () {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function () {
-                    document.querySelectorAll('.itinerary-day.active .day-desc, .itinerary-day.open .day-desc').forEach(function (d) {
-                        d.style.maxHeight = d.scrollHeight + 'px';
-                    });
-                }, 120);
-            });
-        }
-
-        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-    })();
-</script>
-
-<!-- SECTION: JOURNEY IN FRAMES GALLERY -->
-<section class="gallery-section" id="gallery">
-    <div class="gallery-header">
-        <h2>Journey in Frames</h2>
-        <p>Pictures Perfect Moments</p>
-    </div>
-
-    <div class="gallery-container">
-        <div class="gallery-nav">
-            <button class="nav-btn prev" id="galleryPrev">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="nav-btn next" id="galleryNext">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-
-        <div class="gallery-slider-wrapper" id="galleryWrapper">
-            <div class="gallery-slider" id="gallerySlider">
-                <div class="gallery-item"><img
-                        src="https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&q=80&w=600"
-                        alt="Travel 1"></div>
-                <div class="gallery-item"><img
-                        src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=600"
-                        alt="Travel 2"></div>
-                <div class="gallery-item"><img
-                        src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=600"
-                        alt="Travel 3"></div>
-                <div class="gallery-item"><img
-                        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=600"
-                        alt="Travel 4"></div>
-                <div class="gallery-item"><img
-                        src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=600"
-                        alt="Travel 5"></div>
-                <div class="gallery-item"><img
-                        src="https://images.unsplash.com/photo-1530789253588-583c8241a6e0?auto=format&fit=crop&q=80&w=600"
-                        alt="Travel 6"></div>
-            </div>
-        </div>
-
-            <!-- SECTION 1: INCLUSIONS -->
-            <section class="package-section inclusions" id="inclusions">
-                <div class="section-header">
-                    <h2 class="section-title">Inclusions</h2>
-                </div>
-                <ul class="feature-list">
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Entire travel as per the itinerary by tempo traveler.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        6 nights accommodation – 1 Night in Hotel in Jowai, 2 Nights in Hotel at Cherrapunjee, 1 Night
-                        in Camps at Shnongpdeng & 1 Night in Hotel at Shillong on double/triple sharing basis.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        6 meals – Breakfast on Day 2, Day 3, Day 4, Day 5, Day 6 + Dinner on Day 2.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Entry fees to the sightseeing places mentioned in the itinerary.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Guided trek to various points.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Team Captain throughout the trip.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Medical Kit to handle emergency conditions.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Driver night charges, toll & parking charges.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        All inner line permits.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Barbeque at Shnongpdeng (If Weather permits).
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Bonfire at Shnongpdeng (If Weather permits).
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Boating, Cliff jumping and Snorkeling in Shnongpdeng (If Weather permits).
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Boating, Guide, 4X4 Vehicle for Krem Chympe Caves.
-                    </li>
-                </ul>
-            </section>
-
-            <!-- SECTION 2: EXCLUSIONS -->
-            <section class="package-section exclusions" id="exclusions">
-                <div class="section-header">
-                    <h2 class="section-title">Exclusions</h2>
-                </div>
-                <ul class="feature-list">
-                    <li class="feature-item">
-                        <div class="icon cross-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </div>
-                        GST (5%) is applicable extra.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon cross-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </div>
-                        Any other food or beverage charges that are not included in the package.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon cross-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </div>
-                        Any other costing involved due to any kind of natural calamity, forced circumstances, which are
-                        out of our control.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon cross-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </div>
-                        Any other expense not mentioned in the inclusions.
-                    </li>
-                </ul>
-            </section>
-
-            <!-- SECTION 3: OTHER INFORMATION -->
-            <section class="package-section other-info" id="other-info">
-                <div class="section-header">
-                    <h2 class="section-title">Other Information</h2>
-                </div>
-
-                <div class="info-grid">
-                    <!-- Subsection: Must Carry -->
-                    <div class="info-subsection">
-                        <h3 class="subsection-title">Must Carry</h3>
-                        <div class="expandable-content">
-                            <ul class="nested-list">
-                                <li>Authentic Government ID Card</li>
-                                <li>Comfortable warm clothing like woolen socks, cap, fleece jackets or warmers, down
-                                    jacket, toiletries</li>
-                                <li>Sunscreen & lip balm, Good UV protection sunglasses</li>
-                                <li>Personal Medicines (if any)</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn"></button>
-                    </div>
-
-                    <!-- Subsection: Travel Essentials -->
-                    <div class="info-subsection">
-                        <h3 class="subsection-title">Travel Essentials</h3>
-
-                        <div class="expandable-content">
-                            <span class="category-label">Gears:</span>
-                            <ul class="nested-list">
-                                <li>A rucksack bag and a day pack</li>
-                                <li>3-litre water bladder or water bottle</li>
-                            </ul>
-
-                            <span class="category-label">Clothes:</span>
-                            <ul class="nested-list">
-                                <li>A sun cap and a woolen cap</li>
-                                <li>UV protected sunglasses</li>
-                                <li>One cotton long sleeves and 2 short sleeve t-shirt</li>
-                                <li>1 fleece jacket</li>
-                                <li>1 heavy thick jacket/down jacket</li>
-                                <li>1 pair of gloves</li>
-                                <li>At least 2 long pants (trek pants and cargo pants are favourable)</li>
-                                <li>4 sets of undergarments</li>
-                                <li>2 pair of socks</li>
-                                <li>A small towel</li>
-                                <li>A rain jacket or a poncho</li>
-                            </ul>
-
-                            <span class="category-label">Footwear:</span>
-                            <ul class="nested-list">
-                                <li>Above-the-ankle waterproof and breathable hiking boots with good grip</li>
-                                <li>Flip flops/sandals</li>
-                            </ul>
-
-                            <span class="category-label">Medication:</span>
-                            <ul class="nested-list">
-                                <li>Glucose powder</li>
-                                <li>Medicines for headaches, diarrhoea, motion sickness</li>
-                                <li>Dettol</li>
-                                <li>Bandages</li>
-                                <li>Cotton</li>
-                            </ul>
-
-                            <span class="category-label">Personal Accessories:</span>
-                            <ul class="nested-list">
-                                <li>Toothpaste, toothbrush</li>
-                                <li>Paper soap, or sanitizer</li>
-                                <li>Sunscreen minimum of spf40, lip balm, cold creams</li>
-                                <li>Body spray</li>
-                                <li>LED torch light</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn"></button>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-    </section>
-
-<!-- Contact -->
-<section id="contact" class="section bg-pastel">
-    <div class="container contact-container">
-        <div class="contact-info">
-            <h2>Get in Touch</h2>
-            <p>Ready for your next adventure? Contact us today to plan your trip!</p>
-            <div class="contact-details">
-                <div class="contact-item">
-                    <a href="tel:+917338132315">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>+91 73381 32315</span>
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <a href="mailto:holidaysmeher@gmail.com">
-                        <i class="fas fa-envelope"></i>
-                        <span>holidaysmeher@gmail.com</span>
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <a href="https://www.google.com/maps/place/Meher+Holidays/@20.8830269,74.1891013,5.61z/data=!4m15!1m8!3m7!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!2sMeher+Holidays!8m2!3d23.760715!4d76.3794754!10e5!16s%2Fg%2F11xgsh1k45!3m5!1s0x4c7f36915957e1d7:0x7ef67250d68600d2!8m2!3d23.760715!4d76.3794754!16s%2Fg%2F11xgsh1k45?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
-                        target="_blank">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Bengaluru, Karnataka</span>
-                    </a>
-                </div>
-            </div>
-            <div class="social-links">
-                <a href="https://instagram.com/meher_holidays" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/917338132315" class="social-icon" target="_blank"><i
-                        class="fab fa-whatsapp"></i></a>
-                <a href="https://facebook.com/holidaysmeher" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            </div>
-        </div>
-
-        <div class="contact-form-container">
-            <form action="https://formspree.io/f/xqewjokd" method="POST" id="contactForm" class="contact-form">
-                <input type="text" name="_gotcha" style="display:none">
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Your Email Address" required>
-                </div>
-                <div class="form-group">
-                    <input type="tel" name="phone" placeholder="Your Phone Number" required>
-                </div>
-                <div class="form-group">
-                    <textarea name="message" rows="4" placeholder="How can we help you plan your trip?"
-                        required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-            </form>
-
-            <!-- Success Video Scene (Replaces Form on Submit) -->
-            <div id="success-video-wrap" class="success-video-wrap">
-                <video id="success-video" muted playsinline>
-                    <source src="../FormFillUp/one.webm" type="video/webm">
-                </video>
-                <div class="success-message-overlay">
-                    <h3>Message Sent!</h3>
-                    <p>Thank you for your query. We will contact you soon.</p>
-                </div>
-            </div>
-        </div>
-
-            <!-- SECTION 1: INCLUSIONS -->
-            <section class="package-section inclusions" id="inclusions">
-                <div class="section-header">
-                    <h2 class="section-title">Inclusions</h2>
-                </div>
-                <ul class="feature-list">
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Entire travel as per the itinerary by tempo traveler.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        6 nights accommodation – 1 Night in Hotel in Jowai, 2 Nights in Hotel at Cherrapunjee, 1 Night
-                        in Camps at Shnongpdeng & 1 Night in Hotel at Shillong on double/triple sharing basis.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        6 meals – Breakfast on Day 2, Day 3, Day 4, Day 5, Day 6 + Dinner on Day 2.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Entry fees to the sightseeing places mentioned in the itinerary.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Guided trek to various points.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Team Captain throughout the trip.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Medical Kit to handle emergency conditions.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Driver night charges, toll & parking charges.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        All inner line permits.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Barbeque at Shnongpdeng (If Weather permits).
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Bonfire at Shnongpdeng (If Weather permits).
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Boating, Cliff jumping and Snorkeling in Shnongpdeng (If Weather permits).
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon check-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                            </svg>
-                        </div>
-                        Boating, Guide, 4X4 Vehicle for Krem Chympe Caves.
-                    </li>
-                </ul>
-            </section>
-
-            <!-- SECTION 2: EXCLUSIONS -->
-            <section class="package-section exclusions" id="exclusions">
-                <div class="section-header">
-                    <h2 class="section-title">Exclusions</h2>
-                </div>
-                <ul class="feature-list">
-                    <li class="feature-item">
-                        <div class="icon cross-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </div>
-                        GST (5%) is applicable extra.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon cross-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </div>
-                        Any other food or beverage charges that are not included in the package.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon cross-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </div>
-                        Any other costing involved due to any kind of natural calamity, forced circumstances, which are
-                        out of our control.
-                    </li>
-                    <li class="feature-item">
-                        <div class="icon cross-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </div>
-                        Any other expense not mentioned in the inclusions.
-                    </li>
-                </ul>
-            </section>
-
-            <!-- SECTION 3: OTHER INFORMATION -->
-            <section class="package-section other-info" id="other-info">
-                <div class="section-header">
-                    <h2 class="section-title">Other Information</h2>
-                </div>
-
-                <div class="info-grid">
-                    <!-- Subsection: Must Carry -->
-                    <div class="info-subsection">
-                        <h3 class="subsection-title">Must Carry</h3>
-                        <div class="expandable-content">
-                            <ul class="nested-list">
-                                <li>Authentic Government ID Card</li>
-                                <li>Comfortable warm clothing like woolen socks, cap, fleece jackets or warmers, down
-                                    jacket, toiletries</li>
-                                <li>Sunscreen & lip balm, Good UV protection sunglasses</li>
-                                <li>Personal Medicines (if any)</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn"></button>
-                    </div>
-
-                    <!-- Subsection: Travel Essentials -->
-                    <div class="info-subsection">
-                        <h3 class="subsection-title">Travel Essentials</h3>
-
-                        <div class="expandable-content">
-                            <span class="category-label">Gears:</span>
-                            <ul class="nested-list">
-                                <li>A rucksack bag and a day pack</li>
-                                <li>3-litre water bladder or water bottle</li>
-                            </ul>
-
-                            <span class="category-label">Clothes:</span>
-                            <ul class="nested-list">
-                                <li>A sun cap and a woolen cap</li>
-                                <li>UV protected sunglasses</li>
-                                <li>One cotton long sleeves and 2 short sleeve t-shirt</li>
-                                <li>1 fleece jacket</li>
-                                <li>1 heavy thick jacket/down jacket</li>
-                                <li>1 pair of gloves</li>
-                                <li>At least 2 long pants (trek pants and cargo pants are favourable)</li>
-                                <li>4 sets of undergarments</li>
-                                <li>2 pair of socks</li>
-                                <li>A small towel</li>
-                                <li>A rain jacket or a poncho</li>
-                            </ul>
-
-                            <span class="category-label">Footwear:</span>
-                            <ul class="nested-list">
-                                <li>Above-the-ankle waterproof and breathable hiking boots with good grip</li>
-                                <li>Flip flops/sandals</li>
-                            </ul>
-
-                            <span class="category-label">Medication:</span>
-                            <ul class="nested-list">
-                                <li>Glucose powder</li>
-                                <li>Medicines for headaches, diarrhoea, motion sickness</li>
-                                <li>Dettol</li>
-                                <li>Bandages</li>
-                                <li>Cotton</li>
-                            </ul>
-
-                            <span class="category-label">Personal Accessories:</span>
-                            <ul class="nested-list">
-                                <li>Toothpaste, toothbrush</li>
-                                <li>Paper soap, or sanitizer</li>
-                                <li>Sunscreen minimum of spf40, lip balm, cold creams</li>
-                                <li>Body spray</li>
-                                <li>LED torch light</li>
-                            </ul>
-                        </div>
-                        <button class="read-more-btn"></button>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-    </section>
-
-<!-- Footer -->
-<footer>
-    <div class="container footer-content">
-        <p>&copy; 2026 Meher Holidays. All rights reserved.</p>
-    </div>
-</footer>
-
-<script src="../script.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Travel Background Animation -->
-<div class="travel-bg-animation">
-    <i class="fas fa-solid fa-cloud cloud c1"></i>
-    <i class="fas fa-solid fa-cloud cloud c2"></i>
-    <i class="fas fa-solid fa-cloud cloud c3"></i>
-    <i class="fas fa-solid fa-plane plane"></i>
-    <i class="fas fa-solid fa-motorcycle bike"></i>
-    <!-- Detailed Shikara Houseboat SVG -->
-    <svg class="houseboat" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50 300 Q 50 360 400 360 L 650 360 Q 750 360 780 180 Q 750 280 650 300 L 50 300 Z"
-            fill="currentColor" />
-        <path d="M120 300 L 120 200 L 180 160 L 580 160 L 640 200 L 640 300 Z" fill="currentColor" opacity="0.8" />
-        <path d="M180 160 L 380 110 L 580 160 Z" fill="currentColor" />
-        <rect x="180" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
-        <rect x="230" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
-        <rect x="280" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
-        <rect x="330" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
-        <rect x="380" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
-        <rect x="430" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
-        <rect x="480" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
-        <rect x="530" y="210" width="30" height="50" rx="3" fill="white" opacity="0.3" />
-    </svg>
-</div>
-<script>
-    // Journey in Frames Slider Logic
-    (function () {
-        const initGallery = () => {
-            const sliderWrapper = document.getElementById('galleryWrapper');
-            const prevBtn = document.getElementById('galleryPrev');
-            const nextBtn = document.getElementById('galleryNext');
-
-            if (sliderWrapper && prevBtn && nextBtn) {
-                const getScrollAmount = () => sliderWrapper.clientWidth * 0.8;
-
-                nextBtn.onclick = (e) => {
-                    e.preventDefault();
-                    const isAtEnd = sliderWrapper.scrollLeft + sliderWrapper.clientWidth >= sliderWrapper.scrollWidth - 10;
-                    if (isAtEnd) {
-                        sliderWrapper.scrollTo({ left: 0, behavior: 'smooth' });
-                    } else {
-                        sliderWrapper.scrollBy({
-                            left: getScrollAmount(),
-                            behavior: 'smooth'
-                        });
-                    }
-                };
-
-                prevBtn.onclick = (e) => {
-                    e.preventDefault();
-                    const isAtStart = sliderWrapper.scrollLeft <= 10;
-                    if (isAtStart) {
-                        sliderWrapper.scrollTo({ left: sliderWrapper.scrollWidth, behavior: 'smooth' });
-                    } else {
-                        sliderWrapper.scrollBy({
-                            left: -getScrollAmount(),
-                            behavior: 'smooth'
-                        });
-                    }
-                };
+        // IntersectionObserver to reveal itinerary days on scroll
+        (function () {
+            if (!('IntersectionObserver' in window)) {
+                document.querySelectorAll('.itinerary-day').forEach(function (el) { el.classList.add('in-view'); });
+                return;
             }
-        };
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initGallery);
-        } else {
-            initGallery();
-        }
-    })();
-</script>
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            document.querySelectorAll('.itinerary-day').forEach(function (el) { observer.observe(el); });
+        })();
+    </script>
 </body>
 
 </html>
