@@ -47,20 +47,20 @@
         .global-loader-video {
             width: 90%;
             height: auto;
-            max-width: 480px; /* High-end cinematic dimensions on desktop/laptops */
-            max-height: 270px;
-            object-fit: contain; /* Eliminates stretch, zoom, or severe cropping */
+            max-width: 660px; /* Significantly increased size by ~35% for prominent visual presence (originally 480px) */
+            max-height: 370px; /* Scaled height proportionally to keep perfect 16:9 cinematic aspect ratio (originally 270px) */
+            object-fit: contain; /* Eliminates stretch, zoom, or severe cropping to maintain sharpness */
             filter: brightness(1.02) contrast(1.05); /* Premium depth and clarity */
             background-color: #ffffff; /* Matches video background exactly */
             mix-blend-mode: multiply; /* Dissolves any off-white compression edges seamlessly into the canvas */
         }
         @media (max-width: 768px) {
             .global-loader-video {
-                width: 80%; /* Balanced containment on mobile and tablet viewport margins */
+                width: 90%; /* Expanded containment on mobile and tablet viewport margins for maximum visibility */
                 height: auto;
-                max-width: 320px;
-                max-height: 180px;
-                object-fit: contain; /* Standard responsive mobile boundaries */
+                max-width: 440px; /* Significantly increased mobile width boundary by ~37.5% (originally 320px) */
+                max-height: 250px; /* Proportionally scaled height to prevent distortion (originally 180px) */
+                object-fit: contain; /* Keeps the video sharp and un-distorted on all devices */
             }
         }
     `;
