@@ -6,12 +6,140 @@
  * 3. ANIMATIONS: Handles Intersection Observer for fade-in effects.
  * 4. DESTINATION PAGES: Destination-specific logic is often kept inside the page's <script> tag.
  */
+
+/* ==========================================================================
+   GLOBAL CINEMATIC LOADING OVERLAY SYSTEM (buffer.mp4)
+   ========================================================================== */
+(function() {
+    // Completely exclude index.html (homepage and domain root) from the global loading overlay system
+    const isHomepage = window.location.pathname.toLowerCase().endsWith('index.html') || 
+                       window.location.pathname.endsWith('/') || 
+                       window.location.pathname.split('/').pop() === '';
+    if (isHomepage) {
+        return; 
+    }
+
+    // 1. Inject loader stylesheet rules instantly to prevent any blank white flashes or unstyled content leaks
+    const loaderStyles = document.createElement('style');
+    loaderStyles.innerHTML = `
+        .global-loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #ffffff; /* Pure white to match the loading video frame background perfectly */
+            z-index: 999999999; /* Highest z-index context to overlay above header, drawer, and popups */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s;
+            pointer-events: auto;
+        }
+        .global-loader-overlay.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .global-loader-video {
+            width: 90%;
+            height: auto;
+            max-width: 480px; /* High-end cinematic dimensions on desktop/laptops */
+            max-height: 270px;
+            object-fit: contain; /* Eliminates stretch, zoom, or severe cropping */
+            filter: brightness(1.02) contrast(1.05); /* Premium depth and clarity */
+            background-color: #ffffff; /* Matches video background exactly */
+            mix-blend-mode: multiply; /* Dissolves any off-white compression edges seamlessly into the canvas */
+        }
+        @media (max-width: 768px) {
+            .global-loader-video {
+                width: 80%; /* Balanced containment on mobile and tablet viewport margins */
+                height: auto;
+                max-width: 320px;
+                max-height: 180px;
+                object-fit: contain; /* Standard responsive mobile boundaries */
+            }
+        }
+    `;
+    document.head.appendChild(loaderStyles);
+
+    // 2. Directory Depth Auditor:
+    // Dynamically calculate the correct relative path to the videos folder depending on the page's directory depth.
+    // If hosted inside the /packages/ sub-directory, prepend '../' to target the root directory assets correctly.
+    const isPackagePage = window.location.pathname.toLowerCase().includes('/packages/');
+    const videoPath = isPackagePage ? '../videos/buffer.mp4' : 'videos/buffer.mp4';
+
+    // 3. Create and configure loading overlay element with iOS-safe autoplay video player
+    const loader = document.createElement('div');
+    loader.id = 'global-loader';
+    loader.className = 'global-loader-overlay';
+    loader.innerHTML = `
+        <video class="global-loader-video" autoplay muted playsinline loop preload="auto">
+            <source src="${videoPath}" type="video/mp4">
+        </video>
+    `;
+    
+    // 4. Render immediately in DOM layout at the absolute beginning of body
+    if (document.body) {
+        document.body.insertBefore(loader, document.body.firstChild);
+    } else {
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.insertBefore(loader, document.body.firstChild);
+        });
+    }
+
+    // 5. Dismiss loader dynamically once the page and all visual resources are 100% loaded
+    const dismissLoader = () => {
+        setTimeout(() => {
+            loader.classList.add('fade-out');
+            // Unmount from DOM after transition animation finishes to release CPU/GPU memory & hardware threads
+            setTimeout(() => {
+                if (loader.parentNode) {
+                    loader.parentNode.removeChild(loader);
+                }
+            }, 800);
+        }, 200); // Gentle baseline delay to appreciate the premium loading aesthetic
+    };
+
+    if (document.readyState === 'complete') {
+        dismissLoader();
+    } else {
+        window.addEventListener('load', dismissLoader);
+    }
+
+    // 6. Cinematic page routing exit transition (Smoothly mask next page loads during navigation clicks)
+    window.addEventListener('beforeunload', () => {
+        const exitLoader = document.createElement('div');
+        exitLoader.className = 'global-loader-overlay';
+        exitLoader.style.opacity = '0';
+        exitLoader.innerHTML = `
+            <video class="global-loader-video" autoplay muted playsinline loop>
+                <source src="${videoPath}" type="video/mp4">
+            </video>
+        `;
+        document.body.appendChild(exitLoader);
+        
+        // Trigger layout reflow to animate entrance fade-in
+        exitLoader.offsetWidth;
+        exitLoader.style.opacity = '1';
+    });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Drawer Menu
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
 
     if (mobileMenuBtn && navLinks) {
+        // Dynamically inject the three custom animated spans to support transitions on all subpages
+        mobileMenuBtn.innerHTML = `
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        `;
         // Create Drawer Overlay
         const overlay = document.createElement('div');
         overlay.className = 'drawer-overlay';
@@ -22,26 +150,31 @@ document.addEventListener('DOMContentLoaded', () => {
         drawerHeader.className = 'drawer-header';
         drawerHeader.innerHTML = `
             <a href="index.html" class="drawer-logo"><img src="images/logo.png" alt="Logo"></a>
-            <button class="drawer-close"><i class="fas fa-times"></i></button>
         `;
         navLinks.insertBefore(drawerHeader, navLinks.firstChild);
-
-        const drawerCloseBtn = drawerHeader.querySelector('.drawer-close');
 
         const openDrawer = () => {
             navLinks.classList.add('active');
             overlay.classList.add('active');
+            mobileMenuBtn.classList.add('active'); // Activate hamburger-to-X animation
             document.body.style.overflow = 'hidden'; // Prevent scrolling
         };
 
         const closeDrawer = () => {
             navLinks.classList.remove('active');
             overlay.classList.remove('active');
+            mobileMenuBtn.classList.remove('active'); // Restore X-to-hamburger transition
             document.body.style.overflow = '';
         };
 
-        mobileMenuBtn.addEventListener('click', openDrawer);
-        drawerCloseBtn.addEventListener('click', closeDrawer);
+        // Enable toggling menu on clicking the animated icon directly
+        mobileMenuBtn.addEventListener('click', () => {
+            if (mobileMenuBtn.classList.contains('active')) {
+                closeDrawer();
+            } else {
+                openDrawer();
+            }
+        });
         overlay.addEventListener('click', closeDrawer);
 
         // Close menu when clicking a link
@@ -138,8 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const textToType = typingElement.getAttribute('data-text');
         let charIndex = 0;
 
-        // Start typing after a short delay
-        setTimeout(() => {
+        const startTyping = () => {
             const typeWriter = setInterval(() => {
                 if (charIndex < textToType.length) {
                     typingElement.textContent += textToType.charAt(charIndex);
@@ -148,7 +280,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     clearInterval(typeWriter);
                 }
             }, 60); // typing speed
-        }, 1000); // initial delay to sync with fade in
+        };
+
+        // If intro screen is active, wait for the custom 'introRevealed' event to fire
+        if (document.body.classList.contains('intro-running')) {
+            document.addEventListener('introRevealed', () => {
+                setTimeout(startTyping, 400); // starts typing exactly as the text rises into focus
+            });
+        } else {
+            // Default load delay for other subpages
+            setTimeout(startTyping, 1000);
+        }
     }
 
     // Hero Slider Logic

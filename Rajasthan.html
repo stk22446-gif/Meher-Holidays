@@ -49,7 +49,8 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            z-index: 2; /* Sits above the video */
+            z-index: 2;
+            /* Sits above the video */
             transition: opacity 1.2s ease-in-out;
         }
 
@@ -64,9 +65,11 @@
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: 1;
-            opacity: 0; /* Hidden initially until ready */
+            opacity: 0;
+            /* Hidden initially until ready */
             transition: opacity 1.2s ease-in-out;
-            pointer-events: none !important; /* Force block all pointer actions to prevent default overlay triggers */
+            pointer-events: none !important;
+            /* Force block all pointer actions to prevent default overlay triggers */
         }
 
         /* FIX: Prevent ALL gestures on the hero container and all descendants on mobile/desktop.
@@ -81,7 +84,8 @@
             inset: 0;
             background: rgba(68, 67, 67, 0.45);
             z-index: 2;
-            pointer-events: none !important; /* Block mouse/touch events */
+            pointer-events: none !important;
+            /* Block mouse/touch events */
         }
 
         /* Hide native video controls, overlays & play buttons across Safari, Chrome, Firefox, iOS, and Android */
@@ -139,10 +143,10 @@
             }
         }
     </style>
-  <!-- Favicon Links -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="apple-touch-icon" href="images/favicon.png">
-  <meta name="msapplication-TileImage" content="images/favicon.png">
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <meta name="msapplication-TileImage" content="images/favicon.png">
 </head>
 
 <body>
@@ -174,18 +178,10 @@
             <!-- Video Element (Cloudinary Hosted - Fades in when ready) -->
             <!-- Added disablePictureInPicture and disableRemotePlayback to prevent native UI controls from appearing -->
             <!-- Linked to id="heroVideo" to apply JavaScript dynamic autoplay/muted logic -->
-            <video 
-                id="heroVideo" 
-                class="hero-video-element hero-video" 
-                autoplay 
-                muted 
-                loop 
-                playsinline 
-                webkit-playsinline 
-                preload="auto"
-                disablePictureInPicture 
-                disableRemotePlayback>
-                <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/v1777167004/Rajasthan_intro_zdupms.mp4" type="video/mp4">
+            <video id="heroVideo" class="hero-video-element hero-video" autoplay muted loop playsinline
+                webkit-playsinline preload="auto" disablePictureInPicture disableRemotePlayback>
+                <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/v1777167004/Rajasthan_intro_zdupms.mp4"
+                    type="video/mp4">
             </video>
         </div>
         <div class="hero-overlay"></div>
@@ -205,19 +201,30 @@
             <div class="about-content" style="padding: 40px; width: 100%; text-align: left;">
                 <h2 style="margin-bottom: 20px;">About Rajasthan</h2>
                 <div class="divider" style="margin: 0 0 30px 0;"></div>
-                <p>Welcome to Rajasthan, the Land of Kings. From its magnificent forts and palaces to the golden Thar Desert, Rajasthan offers an unforgettable journey into India's royal past.</p>
-                <p>Join Meher Holidays as we take you on a carefully curated journey through the best spots, hidden gems, and local experiences that Rajasthan has to offer.</p>
+                <p>Welcome to Rajasthan, the Land of Kings. From its magnificent forts and palaces to the golden Thar
+                    Desert, Rajasthan offers an unforgettable journey into India's royal past.</p>
+                <p>Join Meher Holidays as we take you on a carefully curated journey through the best spots, hidden
+                    gems, and local experiences that Rajasthan has to offer.</p>
 
                 <h3 style="margin-top: 40px; margin-bottom: 20px;">Travel Highlights</h3>
                 <ul class="highlights-list">
-                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Majestic Forts of Jaipur and Jodhpur</li>
-                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Desert Safari in Jaisalmer</li>
-                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Serene Lakes of Udaipur</li>
-                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Expert local guides and heritage stays</li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Majestic Forts of
+                        Jaipur and Jodhpur</li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Desert Safari in
+                        Jaisalmer</li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Serene Lakes of
+                        Udaipur</li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Expert local guides
+                        and heritage stays</li>
                 </ul>
 
                 <div style="margin-top: 50px; text-align: center;">
-                    <a href="https://wa.me/917338132315?text=I'm interested in booking a trip to Rajasthan" class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;">
+                    <a href="https://wa.me/917338132315?text=I'm interested in booking a trip to Rajasthan"
+                        class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;">
                         <i class="fab fa-whatsapp"></i> Book Now via WhatsApp
                     </a>
                 </div>
@@ -250,8 +257,33 @@
                                 <h4>INR 27,999/-</h4>
                             </div>
                             <div class="tp-actions">
-                                <a href="https://wa.me/917338132315?text=I'm interested in the Rajasthan Experience" class="btn btn-outline" target="_blank">Contact Us</a>
+                                <a href="https://wa.me/917338132315?text=I'm interested in the Rajasthan Experience"
+                                    class="btn btn-outline" target="_blank">Contact Us</a>
                                 <a href="packages/Rajasthan-Pakage-1.html" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="tour-package-card">
+                    <div class="tp-img-wrap">
+                        <img src="images/RajasthanCard.jpg" alt="Palace to Dunes Experience">
+                    </div>
+                    <div class="tp-content">
+                        <h3>Palace to Dunes Experience</h3>
+                        <div class="tp-details">
+                            <p><i class="fas fa-route"></i> Jaipur &#8594; Jodhpur &#8594; Jaisalmer</p>
+                            <p class="trip-duration">6 Days / 5 Nights</p>
+                        </div>
+                        <div class="tp-footer">
+                            <div class="tp-price">
+                                <span>Starting Price Per Adult</span>
+                                <h4>INR 21,999/-</h4>
+                            </div>
+                            <div class="tp-actions">
+                                <a href="https://wa.me/917338132315?text=I'm interested in the Palace to Dunes Experience"
+                                    class="btn btn-outline" target="_blank">Contact Us</a>
+                                <a href="packages/Rajasthan-Pakage-2.html" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -267,7 +299,7 @@
             <p class="faq-subtitle">Your right to Know!</p>
             <div class="yellow-underline"></div>
         </div>
-                <div class="faq-container">
+        <div class="faq-container">
             <!-- FAQ Item 1 -->
             <div class="faq-item" id="faq-0">
                 <div class="faq-question">
@@ -288,7 +320,8 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        A: A comprehensive tour takes 10-14 days, but a quick trip to 2-3 cities can be done in 6-7 days.
+                        A: A comprehensive tour takes 10-14 days, but a quick trip to 2-3 cities can be done in 6-7
+                        days.
                     </div>
                 </div>
             </div>
@@ -300,7 +333,8 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        A: Jaipur (Pink City), Udaipur (City of Lakes), Jodhpur (Blue City), and Jaisalmer (Golden City) are musts.
+                        A: Jaipur (Pink City), Udaipur (City of Lakes), Jodhpur (Blue City), and Jaisalmer (Golden City)
+                        are musts.
                     </div>
                 </div>
             </div>
@@ -312,7 +346,8 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        A: Yes, it is very safe. Tourism is a major industry and locals are generally very helpful and hospitable.
+                        A: Yes, it is very safe. Tourism is a major industry and locals are generally very helpful and
+                        hospitable.
                     </div>
                 </div>
             </div>
@@ -355,7 +390,8 @@
                         <input type="email" name="email" placeholder="Your Email Address" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
+                        <textarea name="message" rows="4" placeholder="How can we help you plan your trip?"
+                            required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">Send Message</button>
                 </form>
@@ -434,10 +470,10 @@
             }
         });
     </script>
-    
+
     <script src="faq.js"></script>
     <script>
-        (function() {
+        (function () {
             const init = () => {
                 const slider = document.getElementById('galleryWrapper');
                 const prev = document.getElementById('galleryPrev');
@@ -452,4 +488,5 @@
         })();
     </script>
 </body>
+
 </html>

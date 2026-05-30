@@ -49,7 +49,8 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            z-index: 2; /* Sits above the video */
+            z-index: 2;
+            /* Sits above the video */
             transition: opacity 1.2s ease-in-out;
         }
 
@@ -64,9 +65,11 @@
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: 1;
-            opacity: 0; /* Hidden initially until ready */
+            opacity: 0;
+            /* Hidden initially until ready */
             transition: opacity 1.2s ease-in-out;
-            pointer-events: none !important; /* Force block all pointer actions to prevent default overlay triggers */
+            pointer-events: none !important;
+            /* Force block all pointer actions to prevent default overlay triggers */
         }
 
         /* FIX: Prevent ALL gestures on the hero container and all descendants on mobile/desktop.
@@ -81,7 +84,8 @@
             inset: 0;
             background: rgba(68, 67, 67, 0.45);
             z-index: 2;
-            pointer-events: none !important; /* Block mouse/touch events */
+            pointer-events: none !important;
+            /* Block mouse/touch events */
         }
 
         /* Hide native video controls, overlays & play buttons across Safari, Chrome, Firefox, iOS, and Android */
@@ -206,8 +210,13 @@
             scroll-snap-align: center;
         }
 
-        .gallery-item:nth-child(odd) { transform: rotate(-2deg); }
-        .gallery-item:nth-child(even) { transform: rotate(2deg); }
+        .gallery-item:nth-child(odd) {
+            transform: rotate(-2deg);
+        }
+
+        .gallery-item:nth-child(even) {
+            transform: rotate(2deg);
+        }
 
         .gallery-item img {
             width: 100%;
@@ -223,7 +232,9 @@
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .gallery-item:hover img { filter: brightness(1.1); }
+        .gallery-item:hover img {
+            filter: brightness(1.1);
+        }
 
         .gallery-nav {
             position: absolute;
@@ -252,12 +263,11 @@
             box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
     </style>
-  <!-- Favicon Links -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="apple-touch-icon" href="images/favicon.png">
-  <meta name="msapplication-TileImage" content="images/favicon.png">
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <meta name="msapplication-TileImage" content="images/favicon.png">
 </head>
 
 <body>
@@ -289,18 +299,10 @@
             <!-- Video Element (Cloudinary Hosted - Fades in when ready) -->
             <!-- Added disablePictureInPicture and disableRemotePlayback to prevent native UI controls from appearing -->
             <!-- Linked to id="heroVideo" to apply JavaScript dynamic autoplay/muted logic -->
-            <video 
-                id="heroVideo" 
-                class="hero-video-element hero-video" 
-                autoplay 
-                muted 
-                loop 
-                playsinline 
-                webkit-playsinline 
-                preload="auto"
-                disablePictureInPicture 
-                disableRemotePlayback>
-                <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/v1777166995/Kashmir_intro_g0p1dt.mp4" type="video/mp4">
+            <video id="heroVideo" class="hero-video-element hero-video" autoplay muted loop playsinline
+                webkit-playsinline preload="auto" disablePictureInPicture disableRemotePlayback>
+                <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/v1777166995/Kashmir_intro_g0p1dt.mp4"
+                    type="video/mp4">
             </video>
         </div>
         <div class="hero-overlay"></div>
@@ -320,19 +322,30 @@
             <div class="about-content" style="padding: 40px; width: 100%; text-align: left;">
                 <h2 style="margin-bottom: 20px;">About Kashmir</h2>
                 <div class="divider" style="margin: 0 0 30px 0;"></div>
-                <p>Welcome to Kashmir, the "Paradise on Earth". From its breathtaking snow-capped peaks to its serene Dal Lake, Kashmir offers an unforgettable experience for every traveler.</p>
-                <p>Join Meher Holidays as we take you on a carefully curated journey through the best spots, hidden gems, and local experiences that Kashmir has to offer.</p>
+                <p>Welcome to Kashmir, the "Paradise on Earth". From its breathtaking snow-capped peaks to its serene
+                    Dal Lake, Kashmir offers an unforgettable experience for every traveler.</p>
+                <p>Join Meher Holidays as we take you on a carefully curated journey through the best spots, hidden
+                    gems, and local experiences that Kashmir has to offer.</p>
 
                 <h3 style="margin-top: 40px; margin-bottom: 20px;">Travel Highlights</h3>
                 <ul class="highlights-list">
-                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Iconic Shikara rides on Dal Lake</li>
-                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Gondola rides in Gulmarg</li>
-                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Traditional Wazwan culinary experiences</li>
-                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Expert local guides and seamless travel</li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Iconic Shikara rides
+                        on Dal Lake</li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Gondola rides in
+                        Gulmarg</li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Traditional Wazwan
+                        culinary experiences</li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Expert local guides
+                        and seamless travel</li>
                 </ul>
 
                 <div style="margin-top: 50px; text-align: center;">
-                    <a href="https://wa.me/917338132315?text=I'm interested in booking a trip to Kashmir" class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;">
+                    <a href="https://wa.me/917338132315?text=I'm interested in booking a trip to Kashmir"
+                        class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;">
                         <i class="fab fa-whatsapp"></i> Book Now via WhatsApp
                     </a>
                 </div>
@@ -356,7 +369,8 @@
                     <div class="tp-content">
                         <h3>Kashmir Essential Tour</h3>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Srinagar &#8594; Gulmarg &#8594; Sonamarg &#8594; Pahalgam &#8594; Departure</p>
+                            <p><i class="fas fa-route"></i> Srinagar &#8594; Gulmarg &#8594; Sonamarg &#8594; Pahalgam
+                                &#8594; Departure</p>
                             <p class="trip-duration">6 Days / 5 Nights</p>
                         </div>
                         <div class="tp-footer">
@@ -365,8 +379,61 @@
                                 <h4>INR 24,999/-</h4>
                             </div>
                             <div class="tp-actions">
-                                <a href="https://wa.me/917338132315?text=I'm interested in the Kashmir Essential Tour" class="btn btn-outline" target="_blank">Contact Us</a>
+                                <a href="https://wa.me/917338132315?text=I'm interested in the Kashmir Essential Tour"
+                                    class="btn btn-outline" target="_blank">Contact Us</a>
                                 <a href="packages/Kashmir-Pakage-1.html" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="tour-package-card">
+                    <div class="tp-img-wrap">
+                        <img src="images/KashmirCard.jpg" alt="Kashmir Premium Tour">
+                    </div>
+                    <div class="tp-content">
+                        <h3>Kashmir Premium Tour</h3>
+                        <div class="tp-details">
+                            <p><i class="fas fa-route"></i> Srinagar &#8594; Gulmarg &#8594; Pahalgam &#8594; Srinagar
+                                &#8594; Departure</p>
+                            <p class="trip-duration">5 Days / 4 Nights</p>
+                        </div>
+                        <div class="tp-footer">
+                            <div class="tp-price">
+                                <span>Starting Price Per Adult</span>
+                                <h4>INR 19,999/-</h4>
+                            </div>
+                            <div class="tp-actions">
+                                <a href="https://wa.me/917338132315?text=I'm interested in the Kashmir Premium Tour"
+                                    class="btn btn-outline" target="_blank">Contact Us</a>
+                                <a href="packages/Kashmir-Pakage-2.html" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="tour-package-card">
+                    <div class="tp-img-wrap">
+                        <img src="images/KashmirCard.jpg" alt="Kashmir Honeymoon Special">
+                    </div>
+                    <div class="tp-content">
+                        <h3>Kashmir Honeymoon Special</h3>
+                        <div class="tp-details">
+                            <p><i class="fas fa-route"></i> Srinagar &#8594; Sonamarg &#8594; Gulmarg &#8594; Pahalgam
+                                &#8594; Departure</p>
+                            <p class="trip-duration">7 Days / 6 Nights</p>
+                        </div>
+                        <div class="tp-footer">
+                            <div class="tp-price">
+                                <span>Starting Price Per Adult</span>
+                                <h4>INR 29,999/-</h4>
+                            </div>
+                            <div class="tp-actions">
+                                <a href="https://wa.me/917338132315?text=I'm interested in the Kashmir Honeymoon Special"
+                                    class="btn btn-outline" target="_blank">Contact Us</a>
+                                <a href="packages/Kashmir-Pakage-3.html" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -382,7 +449,7 @@
             <p class="faq-subtitle">Your right to Know!</p>
             <div class="yellow-underline"></div>
         </div>
-                <div class="faq-container">
+        <div class="faq-container">
             <!-- FAQ Item 1 -->
             <div class="faq-item" id="faq-0">
                 <div class="faq-question">
@@ -391,7 +458,8 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        A: Yes, Kashmir is a major tourist hub and very safe. Millions of tourists visit every year for its beauty.
+                        A: Yes, Kashmir is a major tourist hub and very safe. Millions of tourists visit every year for
+                        its beauty.
                     </div>
                 </div>
             </div>
@@ -415,7 +483,8 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        A: Only postpaid mobile connections work in J&K. Prepaid cards from other states will not have network access.
+                        A: Only postpaid mobile connections work in J&K. Prepaid cards from other states will not have
+                        network access.
                     </div>
                 </div>
             </div>
@@ -427,7 +496,8 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        A: Absolutely! Staying in a traditional cedar-wood houseboat is one of the most iconic experiences in Srinagar.
+                        A: Absolutely! Staying in a traditional cedar-wood houseboat is one of the most iconic
+                        experiences in Srinagar.
                     </div>
                 </div>
             </div>
@@ -482,7 +552,8 @@
                         <input type="email" name="email" placeholder="Your Email Address" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
+                        <textarea name="message" rows="4" placeholder="How can we help you plan your trip?"
+                            required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">Send Message</button>
                 </form>
@@ -501,7 +572,7 @@
     <script>
         // Image to Video Transition Logic
         document.querySelectorAll('.tour-package-card').forEach(card => {
-            card.addEventListener('click', function() {
+            card.addEventListener('click', function () {
                 const video = this.querySelector('.video-player');
                 if (video) {
                     this.classList.add('play-video');
@@ -574,10 +645,10 @@
             }
         });
     </script>
-    
+
     <script src="faq.js"></script>
     <script>
-        (function() {
+        (function () {
             const init = () => {
                 const slider = document.getElementById('galleryWrapper');
                 const prev = document.getElementById('galleryPrev');
@@ -592,4 +663,5 @@
         })();
     </script>
 </body>
+
 </html>
