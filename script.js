@@ -10,13 +10,13 @@
 /* ==========================================================================
    GLOBAL CINEMATIC LOADING OVERLAY SYSTEM (buffer.mp4)
    ========================================================================== */
-(function() {
+(function () {
     // Completely exclude index.html (homepage and domain root) from the global loading overlay system
-    const isHomepage = window.location.pathname.toLowerCase().endsWith('index.html') || 
-                       window.location.pathname.endsWith('/') || 
-                       window.location.pathname.split('/').pop() === '';
+    const isHomepage = window.location.pathname.toLowerCase().endsWith('index.html') ||
+        window.location.pathname.endsWith('/') ||
+        window.location.pathname.split('/').pop() === '';
     if (isHomepage) {
-        return; 
+        return;
     }
 
     // 1. Inject loader stylesheet rules instantly to prevent any blank white flashes or unstyled content leaks
@@ -81,7 +81,7 @@
             <source src="${videoPath}" type="video/mp4">
         </video>
     `;
-    
+
     // 4. Render immediately in DOM layout at the absolute beginning of body
     if (document.body) {
         document.body.insertBefore(loader, document.body.firstChild);
@@ -121,7 +121,7 @@
             </video>
         `;
         document.body.appendChild(exitLoader);
-        
+
         // Trigger layout reflow to animate entrance fade-in
         exitLoader.offsetWidth;
         exitLoader.style.opacity = '1';
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Travel Theme Background Animation
     const addTravelBackground = () => {
         if (document.querySelector('.travel-bg-animation')) return;
-        
+
         const bgContainer = document.createElement('div');
         bgContainer.className = 'travel-bg-animation';
 
