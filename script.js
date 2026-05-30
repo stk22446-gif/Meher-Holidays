@@ -67,10 +67,8 @@
     document.head.appendChild(loaderStyles);
 
     // 2. Directory Depth Auditor:
-    // Dynamically calculate the correct relative path to the videos folder depending on the page's directory depth.
-    // If hosted inside the /packages/ sub-directory, prepend '../' to target the root directory assets correctly.
-    const isPackagePage = window.location.pathname.toLowerCase().includes('/packages/');
-    const videoPath = isPackagePage ? '../videos/buffer.mp4' : 'videos/buffer.mp4';
+    // With Cloudinary hosted assets, we no longer need complex relative path traversal.
+    const videoPath = 'https://res.cloudinary.com/dfzk4sfkw/video/upload/v1780166835/buffer_l76zjq.mp4';
 
     // 3. Create and configure loading overlay element with iOS-safe autoplay video player
     const loader = document.createElement('div');
