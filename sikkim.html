@@ -49,7 +49,8 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            z-index: 2; /* Sits above the video */
+            z-index: 2;
+            /* Sits above the video */
             transition: opacity 1.2s ease-in-out;
         }
 
@@ -64,9 +65,11 @@
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: 1;
-            opacity: 0; /* Hidden initially until ready */
+            opacity: 0;
+            /* Hidden initially until ready */
             transition: opacity 1.2s ease-in-out;
-            pointer-events: none !important; /* Force block all pointer actions to prevent default overlay triggers */
+            pointer-events: none !important;
+            /* Force block all pointer actions to prevent default overlay triggers */
         }
 
         /* FIX: Prevent ALL gestures on the hero container and all descendants on mobile/desktop.
@@ -81,7 +84,8 @@
             inset: 0;
             background: rgba(68, 67, 67, 0.45);
             z-index: 2;
-            pointer-events: none !important; /* Block mouse/touch events */
+            pointer-events: none !important;
+            /* Block mouse/touch events */
         }
 
         /* Hide native video controls, overlays & play buttons across Safari, Chrome, Firefox, iOS, and Android */
@@ -206,8 +210,13 @@
             scroll-snap-align: center;
         }
 
-        .gallery-item:nth-child(odd) { transform: rotate(-2deg); }
-        .gallery-item:nth-child(even) { transform: rotate(2deg); }
+        .gallery-item:nth-child(odd) {
+            transform: rotate(-2deg);
+        }
+
+        .gallery-item:nth-child(even) {
+            transform: rotate(2deg);
+        }
 
         .gallery-item img {
             width: 100%;
@@ -223,7 +232,9 @@
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .gallery-item:hover img { filter: brightness(1.1); }
+        .gallery-item:hover img {
+            filter: brightness(1.1);
+        }
 
         .gallery-nav {
             position: absolute;
@@ -253,10 +264,10 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
-  <!-- Favicon Links -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="apple-touch-icon" href="images/favicon.png">
-  <meta name="msapplication-TileImage" content="images/favicon.png">
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <meta name="msapplication-TileImage" content="images/favicon.png">
 </head>
 
 <body>
@@ -288,18 +299,10 @@
             <!-- Video Element (Cloudinary Hosted - Fades in when ready) -->
             <!-- Added disablePictureInPicture and disableRemotePlayback to prevent native UI controls from appearing -->
             <!-- Linked to id="heroVideo" to apply JavaScript dynamic autoplay/muted logic -->
-            <video 
-                id="heroVideo" 
-                class="hero-video-element hero-video" 
-                autoplay 
-                muted 
-                loop 
-                playsinline 
-                webkit-playsinline 
-                preload="auto"
-                disablePictureInPicture 
-                disableRemotePlayback>
-                <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/v1777166991/Sikkim_intro_xvxxfp.mp4" type="video/mp4">
+            <video id="heroVideo" class="hero-video-element hero-video" autoplay muted loop playsinline
+                webkit-playsinline preload="auto" disablePictureInPicture disableRemotePlayback>
+                <source src="https://res.cloudinary.com/dfzk4sfkw/video/upload/v1777166991/Sikkim_intro_xvxxfp.mp4"
+                    type="video/mp4">
             </video>
         </div>
         <div class="hero-overlay"></div>
@@ -319,19 +322,30 @@
             <div class="about-content" style="padding: 40px; width: 100%; text-align: left;">
                 <h2 style="margin-bottom: 20px;">About Sikkim</h2>
                 <div class="divider" style="margin: 0 0 30px 0;"></div>
-                <p>Welcome to Sikkim, the jewel of the Eastern Himalayas. From its serene monasteries and organic farms to the majestic Kanchenjunga peak, Sikkim offers a soulful retreat into nature's lap.</p>
-                <p>Join Meher Holidays as we take you on a carefully curated journey through the best spots, hidden gems, and local experiences that Sikkim has to offer.</p>
+                <p>Welcome to Sikkim, the jewel of the Eastern Himalayas. From its serene monasteries and organic farms
+                    to the majestic Kanchenjunga peak, Sikkim offers a soulful retreat into nature's lap.</p>
+                <p>Join Meher Holidays as we take you on a carefully curated journey through the best spots, hidden
+                    gems, and local experiences that Sikkim has to offer.</p>
 
                 <h3 style="margin-top: 40px; margin-bottom: 20px;">Travel Highlights</h3>
                 <ul class="highlights-list">
-                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Spiritual journey through Rumtek and Enchey monasteries</li>
-                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Breathtaking Tsomgo Lake and Nathula Pass</li>
-                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Scenic drives to North Sikkim (Lachen & Lachung)</li>
-                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Expert local guides and cozy boutique stays</li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Spiritual journey
+                        through Rumtek and Enchey monasteries</li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Breathtaking Tsomgo
+                        Lake and Nathula Pass</li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Scenic drives to North
+                        Sikkim (Lachen & Lachung)</li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;"><i
+                            class="fas fa-check-circle" style="color: var(--primary-color);"></i> Expert local guides
+                        and cozy boutique stays</li>
                 </ul>
 
                 <div style="margin-top: 50px; text-align: center;">
-                    <a href="https://wa.me/917338132315?text=I'm interested in booking a trip to Sikkim" class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;">
+                    <a href="https://wa.me/917338132315?text=I'm interested in booking a trip to Sikkim"
+                        class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;">
                         <i class="fab fa-whatsapp"></i> Book Now via WhatsApp
                     </a>
                 </div>
@@ -353,19 +367,46 @@
                         <img src="images/SikkimCard.png" alt="Sikkim Essential">
                     </div>
                     <div class="tp-content">
-                        <h3>Sikkim Essential</h3>
+                        <h3>Sikkim Essential Tour</h3>
+                        <p class="trip-duration">6 Days / 5 Nights</p>
                         <div class="tp-details">
-                            <p><i class="fas fa-route"></i> Gangtok &#8594; Tsomgo Lake &#8594; Lachen &#8594; Lachung &#8594; Gangtok</p>
-                            <p class="trip-duration">6 Days / 5 Nights</p>
+                            <p><i class="fas fa-route"></i> Gangtok &#8594; Nathula Pass &#8594; Darjeeling</p>
                         </div>
                         <div class="tp-footer">
                             <div class="tp-price">
                                 <span>Starting Price Per Adult</span>
-                                <h4>INR 22,500/-</h4>
+                                <h4>INR 24,999/-</h4>
                             </div>
                             <div class="tp-actions">
-                                <a href="https://wa.me/917338132315?text=I'm interested in the Sikkim Essential Tour" class="btn btn-outline" target="_blank">Contact Us</a>
+                                <a href="https://wa.me/917338132315?text=Hi Meher Holidays, I am interested in the Sikkim Essential Tour 6D/5N trip."
+                                    class="btn btn-outline" target="_blank">Contact Us</a>
                                 <a href="packages/Sikkim-Pakage-1.html" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="tour-package-card">
+                    <div class="tp-img-wrap">
+                        <img src="images/SikkimCard.png" alt="Whispers of Kanchenjunga">
+                    </div>
+                    <div class="tp-content">
+                        <h3>Whispers of Kanchenjunga</h3>
+                        <p class="trip-duration">7 Days / 6 Nights</p>
+                        <div class="tp-details">
+                            <p><i class="fas fa-route"></i> Darjeeling &#8594; Pelling &#8594; Gangtok &#8594; Nathula
+                                Pass</p>
+                        </div>
+                        <div class="tp-footer">
+                            <div class="tp-price">
+                                <span>Starting Price Per Adult</span>
+                                <h4>INR 28,999/-</h4>
+                            </div>
+                            <div class="tp-actions">
+                                <a href="https://wa.me/917338132315?text=Hi Meher Holidays, I am interested in the Whispers of Kanchenjunga 7D/6N trip."
+                                    class="btn btn-outline" target="_blank">Contact Us</a>
+                                <a href="packages/Sikkim-Pakage-2.html" class="btn btn-primary">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -381,7 +422,7 @@
             <p class="faq-subtitle">Your right to Know!</p>
             <div class="yellow-underline"></div>
         </div>
-                <div class="faq-container">
+        <div class="faq-container">
             <!-- FAQ Item 1 -->
             <div class="faq-item" id="faq-0">
                 <div class="faq-question">
@@ -390,7 +431,8 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        A: March to June and September to December are the best months. Spring (April-May) is great for blossoms.
+                        A: March to June and September to December are the best months. Spring (April-May) is great for
+                        blossoms.
                     </div>
                 </div>
             </div>
@@ -402,7 +444,8 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        A: Yes, an Inner Line Permit (ILP) is required for all Indian and foreign tourists. We can assist with the permit process.
+                        A: Yes, an Inner Line Permit (ILP) is required for all Indian and foreign tourists. We can
+                        assist with the permit process.
                     </div>
                 </div>
             </div>
@@ -426,7 +469,8 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        A: Absolutely! Sikkim is one of the safest and cleanest states in India, perfect for family vacations.
+                        A: Absolutely! Sikkim is one of the safest and cleanest states in India, perfect for family
+                        vacations.
                     </div>
                 </div>
             </div>
@@ -469,7 +513,8 @@
                         <input type="email" name="email" placeholder="Your Email Address" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" rows="4" placeholder="How can we help you plan your trip?" required></textarea>
+                        <textarea name="message" rows="4" placeholder="How can we help you plan your trip?"
+                            required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">Send Message</button>
                 </form>
@@ -548,10 +593,10 @@
             }
         });
     </script>
-    
+
     <script src="faq.js"></script>
     <script>
-        (function() {
+        (function () {
             const init = () => {
                 const slider = document.getElementById('galleryWrapper');
                 const prev = document.getElementById('galleryPrev');
@@ -566,4 +611,5 @@
         })();
     </script>
 </body>
+
 </html>
