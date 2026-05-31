@@ -11,15 +11,23 @@
    GLOBAL CINEMATIC LOADING OVERLAY SYSTEM (buffer.mp4)
    ========================================================================== */
 (function () {
-    // Completely exclude index.html (homepage and domain root) from the global loading overlay system
+    // 1. Session & Homepage Cinematic Integration:
+    // Determine if we are on the homepage or domain root
     const isHomepage = window.location.pathname.toLowerCase().endsWith('index.html') ||
         window.location.pathname.endsWith('/') ||
         window.location.pathname.split('/').pop() === '';
-    if (isHomepage) {
+    const splashPlayed = sessionStorage.getItem('splashPlayed') === 'true';
+
+    const perfEntries = performance.getEntriesByType('navigation');
+    const navType = perfEntries.length > 0 ? perfEntries[0].type : '';
+    const isReload = navType === 'reload';
+
+    // If splash has already been played on the homepage (and it's not a reload), bypass loader overlay completely
+    if (isHomepage && splashPlayed && !isReload) {
         return;
     }
 
-    // 1. Inject loader stylesheet rules instantly to prevent any blank white flashes or unstyled content leaks
+    // 2. Inject loader stylesheet rules instantly to prevent any blank white flashes or unstyled content leaks
     const loaderStyles = document.createElement('style');
     loaderStyles.innerHTML = `
         .global-loader-overlay {
@@ -28,49 +36,68 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #ffffff; /* Pure white to match the loading video frame background perfectly */
-            z-index: 999999999; /* Highest z-index context to overlay above header, drawer, and popups */
+            background-color: #faf8f5; /* Luxurious warm champagne base matching the intro overlay exactly */
+            z-index: 999999999; /* Higher z-index overlay context to float above headers, drawers, and overlays */
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
             opacity: 1;
             visibility: visible;
-            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s;
+            /* Coordinate hardware-accelerated transitions for premium slow cinematic blur dissolve */
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), filter 1.2s cubic-bezier(0.25, 1, 0.5, 1), visibility 1.2s;
             pointer-events: auto;
+            will-change: opacity, filter;
+        }
+        /* Immersive Radial Vignette Overlay: Softens the outer bounds of the loader video to completely eliminate the "floating box" feeling */
+        .global-loader-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(250, 248, 245, 0) 45%, rgba(250, 248, 245, 0.4) 75%, rgba(250, 248, 245, 0.98) 98%);
+            pointer-events: none;
+            z-index: 2;
         }
         .global-loader-overlay.fade-out {
             opacity: 0;
+            filter: blur(20px);
             visibility: hidden;
             pointer-events: none;
         }
         .global-loader-video {
             width: 90%;
             height: auto;
-            max-width: 660px; /* Significantly increased size by ~35% for prominent visual presence (originally 480px) */
-            max-height: 370px; /* Scaled height proportionally to keep perfect 16:9 cinematic aspect ratio (originally 270px) */
-            object-fit: contain; /* Eliminates stretch, zoom, or severe cropping to maintain sharpness */
-            filter: brightness(1.02) contrast(1.05); /* Premium depth and clarity */
-            background-color: #ffffff; /* Matches video background exactly */
-            mix-blend-mode: multiply; /* Dissolves any off-white compression edges seamlessly into the canvas */
+            max-width: 660px; /* Sized for prominent cinematic presence */
+            max-height: 370px; /* 16:9 cinematic aspect ratio */
+            object-fit: contain;
+            filter: brightness(1.02) contrast(1.05); /* Sleek depth & color contrast adjustments */
+            background-color: transparent; /* Changed from white to transparent to integrate with champagne overlay canvas */
+            mix-blend-mode: multiply; /* Dissolves compression edges seamlessly */
+            z-index: 1;
+            /* Premium receding scale effect during exit transition */
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+        .global-loader-overlay.fade-out .global-loader-video {
+            transform: scale(0.95);
         }
         @media (max-width: 768px) {
             .global-loader-video {
-                width: 90%; /* Expanded containment on mobile and tablet viewport margins for maximum visibility */
+                width: 90%;
                 height: auto;
-                max-width: 440px; /* Significantly increased mobile width boundary by ~37.5% (originally 320px) */
-                max-height: 250px; /* Proportionally scaled height to prevent distortion (originally 180px) */
-                object-fit: contain; /* Keeps the video sharp and un-distorted on all devices */
+                max-width: 440px;
+                max-height: 250px;
+                object-fit: contain;
             }
         }
     `;
     document.head.appendChild(loaderStyles);
 
-    // 2. Directory Depth Auditor:
+    // 3. Directory Depth Auditor:
     // With Cloudinary hosted assets, we no longer need complex relative path traversal.
     const videoPath = 'https://res.cloudinary.com/dfzk4sfkw/video/upload/v1780166835/buffer_l76zjq.mp4';
 
-    // 3. Create and configure loading overlay element with iOS-safe autoplay video player
+    // 4. Create and configure loading overlay element with iOS-safe autoplay video player
     const loader = document.createElement('div');
     loader.id = 'global-loader';
     loader.className = 'global-loader-overlay';
@@ -80,26 +107,72 @@
         </video>
     `;
 
-    // 4. Render immediately in DOM layout at the absolute beginning of body
+    // 5. Render immediately in DOM layout and lock scrolling
+    const lockScroll = () => {
+        document.body.style.overflow = 'hidden';
+    };
+
     if (document.body) {
         document.body.insertBefore(loader, document.body.firstChild);
+        lockScroll();
     } else {
         document.addEventListener('DOMContentLoaded', () => {
             document.body.insertBefore(loader, document.body.firstChild);
+            lockScroll();
         });
     }
 
-    // 5. Dismiss loader dynamically once the page and all visual resources are 100% loaded
+    // 6. Dismiss loader dynamically once the page and all visual resources are 100% loaded
     const dismissLoader = () => {
-        setTimeout(() => {
-            loader.classList.add('fade-out');
-            // Unmount from DOM after transition animation finishes to release CPU/GPU memory & hardware threads
+        const introVideo = document.getElementById('intro-video');
+
+        const triggerFadeOut = () => {
             setTimeout(() => {
-                if (loader.parentNode) {
-                    loader.parentNode.removeChild(loader);
+                loader.classList.add('fade-out');
+
+                // Re-enable body scrolling ONLY if we are not transitioning into the homepage intro video overlay
+                const introOverlay = document.getElementById('intro-overlay');
+                const introRunning = document.body.classList.contains('intro-running');
+                if (!introOverlay || !introRunning) {
+                    document.body.style.overflow = '';
                 }
-            }, 800);
-        }, 200); // Gentle baseline delay to appreciate the premium loading aesthetic
+
+                // Unmount from DOM after transition finishes to release hardware threads and GPU memory
+                setTimeout(() => {
+                    if (loader.parentNode) {
+                        loader.parentNode.removeChild(loader);
+                    }
+                }, 1200); // Matched to premium 1.2s cinematic fade out
+            }, 200); // Subtle baseline delay to appreciate premium branding
+        };
+
+        if (isHomepage && introVideo) {
+            // PERFECT VISUAL BLENDING SYNC:
+            // Defer fading out the loader overlay until the homepage intro video starts actively playing.
+            // This guarantees absolutely zero black frames, lags, or white flashes.
+            let completed = false;
+            const proceed = () => {
+                if (completed) return;
+                completed = true;
+                triggerFadeOut();
+            };
+
+            // If intro video is already playing in the background
+            if (!introVideo.paused && introVideo.currentTime > 0) {
+                proceed();
+            } else {
+                introVideo.addEventListener('playing', proceed);
+                introVideo.addEventListener('play', proceed);
+                
+                // Fallbacks: if video errors, finishes, or gets stuck, proceed safely
+                introVideo.addEventListener('error', proceed);
+                introVideo.addEventListener('ended', proceed);
+                setTimeout(proceed, 3000); // 3s safety cap post-page-load
+            }
+        } else {
+            // Standard instant/subpage exit
+            triggerFadeOut();
+        }
     };
 
     if (document.readyState === 'complete') {
@@ -108,7 +181,7 @@
         window.addEventListener('load', dismissLoader);
     }
 
-    // 6. Cinematic page routing exit transition (Smoothly mask next page loads during navigation clicks)
+    // 7. Cinematic page routing exit transition (Smoothly mask next page loads during navigation clicks)
     window.addEventListener('beforeunload', () => {
         const exitLoader = document.createElement('div');
         exitLoader.className = 'global-loader-overlay';

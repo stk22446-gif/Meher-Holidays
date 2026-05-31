@@ -44,8 +44,10 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), visibility 1.2s;
+      /* Integrated hardware-accelerated transforms and filter blurs for ultra-smooth exit transitions */
+      transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), filter 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), visibility 1.2s;
       pointer-events: auto;
+      will-change: opacity, filter, transform;
     }
 
     /* Immersive Vignette Gradient Overlay: Blends the edges of the video into the surrounding site naturally */
@@ -127,9 +129,11 @@
       }
     }
 
-    /* Class to trigger the smooth fade out */
+    /* Class to trigger the smooth fade out with modern GPU blur dissolve & expansion scale */
     .intro-video-overlay.fade-out {
       opacity: 0;
+      filter: blur(20px);
+      transform: scale(1.02); /* Exquisite receding/expanding blur dissolve transition */
       visibility: hidden;
       pointer-events: none;
     }
