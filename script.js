@@ -11,19 +11,12 @@
    GLOBAL CINEMATIC LOADING OVERLAY SYSTEM (buffer.mp4)
    ========================================================================== */
 (function () {
-    // 1. Session & Homepage Cinematic Integration:
-    // Determine if we are on the homepage or domain root
+    // 1. Completely exclude index.html (homepage and domain root) from the global loading overlay system
+    // to prevent any double-loading, overlapping animations, or visual interference with the Splash/Intro screen.
     const isHomepage = window.location.pathname.toLowerCase().endsWith('index.html') ||
         window.location.pathname.endsWith('/') ||
         window.location.pathname.split('/').pop() === '';
-    const splashPlayed = sessionStorage.getItem('splashPlayed') === 'true';
-
-    const perfEntries = performance.getEntriesByType('navigation');
-    const navType = perfEntries.length > 0 ? perfEntries[0].type : '';
-    const isReload = navType === 'reload';
-
-    // If splash has already been played on the homepage (and it's not a reload), bypass loader overlay completely
-    if (isHomepage && splashPlayed && !isReload) {
+    if (isHomepage) {
         return;
     }
 
@@ -71,7 +64,7 @@
             max-height: 370px; /* 16:9 cinematic aspect ratio */
             object-fit: contain;
             filter: brightness(1.02) contrast(1.05); /* Sleek depth & color contrast adjustments */
-            background-color: transparent; /* Changed from white to transparent to integrate with champagne overlay canvas */
+            background-color: transparent; /* Transparent to integrate with champagne overlay canvas */
             mix-blend-mode: multiply; /* Dissolves compression edges seamlessly */
             z-index: 1;
             /* Premium receding scale effect during exit transition */
@@ -124,55 +117,19 @@
 
     // 6. Dismiss loader dynamically once the page and all visual resources are 100% loaded
     const dismissLoader = () => {
-        const introVideo = document.getElementById('intro-video');
+        setTimeout(() => {
+            loader.classList.add('fade-out');
 
-        const triggerFadeOut = () => {
+            // Re-enable body scrolling smoothly
+            document.body.style.overflow = '';
+
+            // Unmount from DOM after transition finishes to release hardware threads and GPU memory
             setTimeout(() => {
-                loader.classList.add('fade-out');
-
-                // Re-enable body scrolling ONLY if we are not transitioning into the homepage intro video overlay
-                const introOverlay = document.getElementById('intro-overlay');
-                const introRunning = document.body.classList.contains('intro-running');
-                if (!introOverlay || !introRunning) {
-                    document.body.style.overflow = '';
+                if (loader.parentNode) {
+                    loader.parentNode.removeChild(loader);
                 }
-
-                // Unmount from DOM after transition finishes to release hardware threads and GPU memory
-                setTimeout(() => {
-                    if (loader.parentNode) {
-                        loader.parentNode.removeChild(loader);
-                    }
-                }, 1200); // Matched to premium 1.2s cinematic fade out
-            }, 200); // Subtle baseline delay to appreciate premium branding
-        };
-
-        if (isHomepage && introVideo) {
-            // PERFECT VISUAL BLENDING SYNC:
-            // Defer fading out the loader overlay until the homepage intro video starts actively playing.
-            // This guarantees absolutely zero black frames, lags, or white flashes.
-            let completed = false;
-            const proceed = () => {
-                if (completed) return;
-                completed = true;
-                triggerFadeOut();
-            };
-
-            // If intro video is already playing in the background
-            if (!introVideo.paused && introVideo.currentTime > 0) {
-                proceed();
-            } else {
-                introVideo.addEventListener('playing', proceed);
-                introVideo.addEventListener('play', proceed);
-                
-                // Fallbacks: if video errors, finishes, or gets stuck, proceed safely
-                introVideo.addEventListener('error', proceed);
-                introVideo.addEventListener('ended', proceed);
-                setTimeout(proceed, 3000); // 3s safety cap post-page-load
-            }
-        } else {
-            // Standard instant/subpage exit
-            triggerFadeOut();
-        }
+            }, 1200); // Matched to premium 1.2s cinematic fade out
+        }, 200); // Subtle baseline delay to appreciate premium branding
     };
 
     if (document.readyState === 'complete') {
